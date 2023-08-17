@@ -15,13 +15,13 @@
             <div class="card">
                 <div class="card-body text-center">
 
-                    <h3 class="mb-4">Sign UP</h3>
+                    <h3 class="mb-4">Daftar</h3>
 
                     <span class="mb-2 text-muted">
                         {% if msg %}
                             <span class="text-danger">{{ msg | safe }}</span>
                         {% else %}
-                            Add your credentials
+                            Login dengan akun demo
                         {% endif %} 
                     </span>
 
@@ -30,7 +30,7 @@
 
                     <!-- Hide the form on success -->
                     {% if success %}
-                        <a href="{{ url_for('authentication_blueprint.login') }}" class="btn btn-primary shadow-2 mb-4">Sign IN</a>
+                        <a href="{{ url_for('authentication_blueprint.login') }}" class="btn btn-primary shadow-2 mb-4">Masuk</a>
                     {% else %}
 
                         <form role="form" method="post" action="">
@@ -49,26 +49,15 @@
                                 {{ form.password(placeholder="Password", class="form-control", type="password") }}
                             </div>
                             
-                            <button type="submit" name="register" class="btn btn-primary shadow-2 mb-4">Register</button>
+                            <button type="submit" name="register" class="btn btn-primary shadow-2 mb-4">Daftar</button>
 
                         </form>
                         
-                        <p class="mb-0 text-muted">Already have an account? <a href="{{ url_for('authentication_blueprint.login') }}">Login</a></p>
+                        <p class="mb-0 text-muted">Sudah punya akun? <a href="{{ url_for('authentication_blueprint.login') }}">Masuk</a></p>
                        
 
                     {% endif %}
                     
-                    {% if not success and config.SOCIAL_AUTH_GITHUB %}
-                        <div class="mx-2">
-
-                            <a href="{{url_for('authentication_blueprint.login_github')}}" class="btn">
-                                <i class="feather icon-github auth-icon"></i>
-                                
-                            </a>
-                            <br />
-                            <span class="mx-2">Sign UP with GitHub</span>
-                        </div>
-                    {% endif %}
 
                 </div>
             </div>
