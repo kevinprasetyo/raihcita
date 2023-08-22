@@ -3,7 +3,7 @@
 > 👉 **Step 1** 
 
 ```bash
-$ git clone https://github.com/kevinprasetyo/pkmergo
+$ git clone https://github.com/kevinprasetyo/pkmergo.git
 $ cd pkmergo
 ```
 
@@ -38,7 +38,7 @@ The meaning of each variable can be found below:
 > Download the code 
 
 ```bash
-$ git clone https://github.com/kevinprasetyo/pkmergo
+$ git clone https://github.com/kevinprasetyo/pkmergo.git
 $ cd pkmergo
 ```
 
