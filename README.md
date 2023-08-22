@@ -38,8 +38,8 @@ The meaning of each variable can be found below:
 > Download the code 
 
 ```bash
-$ git clone https://github.com/app-generator/flask-datta-able.git
-$ cd flask-datta-able
+$ git clone https://github.com/kevinprasetyo/pkmergo
+$ cd pkmergo
 ```
 
 <br />
