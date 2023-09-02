@@ -7,13 +7,56 @@ from apps.home import blueprint
 from flask import render_template, request
 from flask_login import login_required
 from jinja2 import TemplateNotFound
+from apps.home.models import Snisub
+from apps import db
 
 
 @blueprint.route('/index')
 @login_required
 def index():
-
     return render_template('home/index.html', segment='index')
+
+
+@blueprint.route('/snisub', methods=['GET', 'POST'])
+@login_required
+def snisub():
+    if request.method == 'POST':
+        perusahaan = request.form.get('perusahaan')
+        nama = request.form.get('nama')
+        posisi = request.form.get('posisi')
+        n1 = request.form.get('1')
+        n2 = request.form.get('2')
+        n3 = request.form.get('3')
+        n4 = request.form.get('4')
+        n5 = request.form.get('5')
+        n6 = request.form.get('6')
+        n6 = request.form.get('6')
+        n7 = request.form.get('7')
+        n8 = request.form.get('8')
+        n9 = request.form.get('9')
+        n10 = request.form.get('10')
+        n11 = request.form.get('11')
+        n12 = request.form.get('12')
+        n13 = request.form.get('13')
+        n14 = request.form.get('14')
+        n15 = request.form.get('15')
+        n16 = request.form.get('16')
+        n17 = request.form.get('17')
+        n18 = request.form.get('18')
+        n19 = request.form.get('19')
+        n20 = request.form.get('20')
+        n21 = request.form.get('21')
+        n22 = request.form.get('22')
+        n23 = request.form.get('23')
+
+        sni = Snisub(perusahaan=perusahaan, nama=nama, posisi=posisi, n1=n1, n2=n2, n3=n3, n4=n4, n5=n5, n6=n6, n7=n7, n8=n8, n9=n9,
+                     n10=n10, n11=n11, n12=n12, n13=n13, n14=n14, n15=n15, n16=n16, n17=n17, n18=n18, n19=n19, n20=n20, n21=n21, n22=n22, n23=n23)
+        db.session.add(sni)
+        db.session.commit()
+
+        return render_template('home/snisub.html', segment='snisub', sni=sni)
+
+    return render_template('home/sni.html', segment='sni')
 
 
 @blueprint.route('/<template>')
