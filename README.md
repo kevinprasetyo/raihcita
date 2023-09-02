@@ -1,10 +1,8 @@
-
-
-> 👉 **Step 1** 
+> 👉 **Step 1**
 
 ```bash
-$ git clone https://github.com/kevinprasetyo/pkmergo.git
-$ cd pkmergo
+$ git clone https://github.com/kevinprasetyo/ergocust.git
+$ cd ergocust
 ```
 
 <br />
@@ -12,7 +10,7 @@ $ cd pkmergo
 > 👉 **Step 2** - Start the APP in `Docker`
 
 ```bash
-$ docker-compose up --build 
+$ docker-compose up --build
 ```
 
 Visit `http://localhost:5085` in your browser. The app should be up & running.
@@ -21,7 +19,7 @@ Visit `http://localhost:5085` in your browser. The app should be up & running.
 
 ### ✨ Create a new `.env` file using sample `env.sample`
 
-The meaning of each variable can be found below: 
+The meaning of each variable can be found below:
 
 - `DEBUG`: if `True` the app runs in develoment mode
   - For production value `False` should be used
@@ -29,24 +27,24 @@ The meaning of each variable can be found below:
   - default value: `/static/assets`
 - `OAuth` via Github
   - `GITHUB_ID`=<GITHUB_ID_HERE>
-  - `GITHUB_SECRET`=<GITHUB_SECRET_HERE> 
+  - `GITHUB_SECRET`=<GITHUB_SECRET_HERE>
 
 <br />
 
 ## ✨ Manual Build
 
-> Download the code 
+> Download the code
 
 ```bash
-$ git clone https://github.com/kevinprasetyo/pkmergo.git
-$ cd pkmergo
+$ git clone https://github.com/kevinprasetyo/ergocust.git
+$ cd ergocust
 ```
 
 <br />
 
-### 👉 Set Up for `Unix`, `MacOS` 
+### 👉 Set Up for `Unix`, `MacOS`
 
-> Install modules via `VENV`  
+> Install modules via `VENV`
 
 ```bash
 $ virtualenv env
@@ -73,13 +71,13 @@ $ flask run
 $ flask run --cert=adhoc # For HTTPS server
 ```
 
-At this point, the app runs at `http://127.0.0.1:5000/`. 
+At this point, the app runs at `http://127.0.0.1:5000/`.
 
 <br />
 
-### 👉 Set Up for `Windows` 
+### 👉 Set Up for `Windows`
 
-> Install modules via `VENV` (windows) 
+> Install modules via `VENV` (windows)
 
 ```
 $ virtualenv env
@@ -92,7 +90,7 @@ $ pip install -r requirements.txt
 > Set Up Flask Environment
 
 ```bash
-$ # CMD 
+$ # CMD
 $ set FLASK_APP=run.py
 $ set FLASK_ENV=development
 $
@@ -111,13 +109,13 @@ $ flask run
 $ flask run --cert=adhoc # For HTTPS server
 ```
 
-At this point, the app runs at `http://127.0.0.1:5000/`. 
+At this point, the app runs at `http://127.0.0.1:5000/`.
 
 <br />
 
 ### 👉 Create Users
 
-By default, the app redirects guest users to authenticate. In order to access the private pages, follow this set up: 
+By default, the app redirects guest users to authenticate. In order to access the private pages, follow this set up:
 
 - Start the app via `flask run`
 - Access the `registration` page and create a new user:
@@ -140,9 +138,9 @@ The project is coded using blueprints, app factory pattern, dual configuration p
    |    |    |-- routes.py                  # Define app routes
    |    |
    |    |-- authentication/                 # Handles auth routes (login and register)
-   |    |    |-- routes.py                  # Define authentication routes  
-   |    |    |-- models.py                  # Defines models  
-   |    |    |-- forms.py                   # Define auth forms (login and register) 
+   |    |    |-- routes.py                  # Define authentication routes
+   |    |    |-- models.py                  # Defines models
+   |    |    |-- forms.py                   # Define auth forms (login and register)
    |    |
    |    |-- static/
    |    |    |-- <css, JS, images>          # CSS files, Javascripts files
@@ -166,7 +164,7 @@ The project is coded using blueprints, app factory pattern, dual configuration p
    |    |         |-- index.html            # Index page
    |    |         |-- 404-page.html         # 404 page
    |    |         |-- *.html                # All other pages
-   |    |    
+   |    |
    |  config.py                             # Set up the app
    |    __init__.py                         # Initialize the app
    |

@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: pkmergo
+    name: ergocust
     plan: starter
     env: python
-    region: frankfurt  # region should be same as your database region.
+    region: frankfurt # region should be same as your database region.
     buildCommand: "./build.sh"
     startCommand: "gunicorn run:app"
     envVars:
