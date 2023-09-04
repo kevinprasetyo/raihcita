@@ -32,3 +32,11 @@ class Snisub(db.Model):
     n21 = db.Column(db.Text, nullable=True)
     n22 = db.Column(db.Text, nullable=True)
     n23 = db.Column(db.Text, nullable=True)
+
+
+class Janji(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nama = db.Column(db.Text, nullable=True)
+    email = db.Column(db.Text, nullable=True)
+    hp = db.Column(db.Text, nullable=True)
+    tgl = db.Column(db.Text, nullable=True)

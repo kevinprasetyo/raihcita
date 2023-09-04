@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Buat Janji Konsultasi {% endblock %}
+{% block title %} UI Tables {% endblock %}
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -23,7 +23,7 @@
                                 </div>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="#!">Berhasil tersimpan</a></li>
+                                    <li class="breadcrumb-item"><a href="#!">Buat janji konsultasi berhasil</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -40,51 +40,34 @@
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>Terima kasih! Info lebih lanjut akan dikirim melalui email dalam waktu
-                                            kurang dari 24
-                                            jam</h5>
+                                        <h5>Jadwal konsultasi</h5>
 
                                     </div>
                                     <div class="card-block table-border-style">
                                         <div class="table-responsive">
                                             <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nomor</th>
+                                                        <th>Nama</th>
+                                                        <th>Tanggal</th>
+                                                        <th>Email</th>
+                                                        <th>No. HP</th>
+                                                    </tr>
+                                                </thead>
                                                 <tbody>
-                                                    {% if janji.id %}
+                                                    {% for jan in janji %}
                                                     <tr>
-                                                        <td>Nomor</td>
-                                                        <td>{{ janji.id }}</td>
+                                                        <td>{{ jan.id }}</td>
+                                                        <td>{{ jan.nama }}</td>
+                                                        <td>{{ jan.tgl }}</td>
+                                                        <td>{{ jan.email }}</td>
+                                                        <td>{{ jan.hp }}</td>
                                                     </tr>
-                                                    {% endif %}
-
-                                                    {% if janji.nama %}
-                                                    <tr>
-                                                        <td>Nama</td>
-                                                        <td>{{ janji.nama }}</td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if janji.tgl %}
-                                                    <tr>
-                                                        <td>Tanggal</td>
-                                                        <td>{{ janji.tgl }}</td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if janji.email %}
-                                                    <tr>
-                                                        <td>Email</td>
-                                                        <td>{{ janji.email }}</td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if janji.hp %}
-                                                    <tr>
-                                                        <td>HP</td>
-                                                        <td>{{ janji.hp }}</td>
-                                                    </tr>
-                                                    {% endif %}
+                                                    {% endfor %}
 
                                                 </tbody>
                                             </table>
-                                            <hr>
-
                                         </div>
                                     </div>
                                 </div>

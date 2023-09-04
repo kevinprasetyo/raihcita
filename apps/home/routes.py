@@ -7,7 +7,7 @@ from apps.home import blueprint
 from flask import render_template, request
 from flask_login import login_required
 from jinja2 import TemplateNotFound
-from apps.home.models import Snisub
+from apps.home.models import Snisub, Janji
 from apps import db
 
 
@@ -57,6 +57,23 @@ def snisub():
         return render_template('home/snisub.html', segment='snisub', sni=sni)
 
     return render_template('home/sni.html', segment='sni')
+
+
+@blueprint.route('/janji', methods=['GET', 'POST'])
+@login_required
+def janji():
+    if request.method == 'POST':
+        nama = request.form.get('nama')
+        email = request.form.get('email')
+        hp = request.form.get('hp')
+        tgl = request.form.get('tgl')
+
+        janji = Janji(nama=nama, email=email, hp=hp, tgl=tgl)
+        db.session.add(janji)
+        db.session.commit()
+
+        return render_template('home/janji.html', segment='janji', janji=janji)
+    return render_template('home/konsultasi.html', segment='konsultasi')
 
 
 @blueprint.route('/<template>')
