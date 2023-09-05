@@ -4,7 +4,7 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from apps.home import blueprint
-from flask import render_template, request
+from flask import render_template, request, flash, redirect
 from flask_login import login_required
 from jinja2 import TemplateNotFound
 from apps.home.models import Snisub, Janji
@@ -24,6 +24,7 @@ def snisub():
         perusahaan = request.form.get('perusahaan')
         nama = request.form.get('nama')
         posisi = request.form.get('posisi')
+        email = request.form.get('email')
         n1 = request.form.get('1')
         n2 = request.form.get('2')
         n3 = request.form.get('3')
@@ -49,14 +50,36 @@ def snisub():
         n22 = request.form.get('22')
         n23 = request.form.get('23')
 
-        sni = Snisub(perusahaan=perusahaan, nama=nama, posisi=posisi, n1=n1, n2=n2, n3=n3, n4=n4, n5=n5, n6=n6, n7=n7, n8=n8, n9=n9,
+        sni = Snisub(perusahaan=perusahaan, nama=nama, posisi=posisi, email=email, n1=n1, n2=n2, n3=n3, n4=n4, n5=n5, n6=n6, n7=n7, n8=n8, n9=n9,
                      n10=n10, n11=n11, n12=n12, n13=n13, n14=n14, n15=n15, n16=n16, n17=n17, n18=n18, n19=n19, n20=n20, n21=n21, n22=n22, n23=n23)
         db.session.add(sni)
         db.session.commit()
-
+        flash("Berhasil tersimpan")
         return render_template('home/snisub.html', segment='snisub', sni=sni)
-
+    elif "lihat" in request.args:
+        id = request.args.get("lihat")
+        lihat = Snisub.query.filter_by(id=id).one()
+        return render_template('home/snisub.html', segment='snisub', sni=lihat)
     return render_template('home/sni.html', segment='sni')
+
+
+@blueprint.route('/hasil', methods=['GET', 'POST'])
+@login_required
+def hasil():
+    if "email" in request.args:
+        email = request.args.get("email")
+        list = Snisub.query.filter_by(email=email).all()
+    elif "hapus" in request.args:
+        hapus = request.args.get("hapus")
+        hapus_sni = Snisub.query.filter_by(id=hapus).one()
+        email = hapus_sni.email
+        db.session.delete(hapus_sni)
+        db.session.commit()
+        flash("Berhasil dihapus")
+        return redirect(f'/hasil?email={email}')
+    else:
+        list = Snisub.query.all()
+    return render_template('home/hasil.html', segment='hasil', sni=list)
 
 
 @blueprint.route('/janji', methods=['GET', 'POST'])
@@ -71,9 +94,41 @@ def janji():
         janji = Janji(nama=nama, email=email, hp=hp, tgl=tgl)
         db.session.add(janji)
         db.session.commit()
+        flash("Berhasil tersimpan")
 
         return render_template('home/janji.html', segment='janji', janji=janji)
     return render_template('home/konsultasi.html', segment='konsultasi')
+
+
+@blueprint.route('/jadwal', methods=['GET', 'POST'])
+def jadwal():
+    if "email" in request.args:
+        email = request.args.get("email")
+        list = Janji.query.filter_by(email=email).all()
+    elif "hapus" in request.args:
+        hapus = request.args.get("hapus")
+        hapus_konsultasi = Janji.query.filter_by(id=hapus).one()
+        email = hapus_konsultasi.email
+        db.session.delete(hapus_konsultasi)
+        db.session.commit()
+        flash("Berhasil dihapus")
+        return redirect(f'/jadwal?email={email}')
+    else:
+        list = Janji.query.all()
+    return render_template('home/jadwal.html', segment='jadwal', janji=list)
+
+
+@blueprint.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit(id):
+    edit = Janji.query.filter_by(id=id).one()
+    if request.method == 'POST':
+        edit.nama = request.form.get('nama')
+        edit.hp = request.form.get('hp')
+        edit.tgl = request.form.get('tgl')
+        db.session.commit()
+        flash("Berhasil diubah")
+        return redirect(f'/jadwal?email={edit.email}')
+    return render_template('home/edit_konsultasi.html', segment='edit_konsultasi', edit=edit)
 
 
 @blueprint.route('/<template>')

@@ -1,55 +1,56 @@
 {% extends "layouts/base-fullscreen.html" %}
 
-{% block title %} Login {% endblock %}
+{% block title %} Masuk {% endblock %}
 
-{% block content %}   
+{% block content %}
 
-    <div class="auth-wrapper">
-        <div class="auth-content">
-            <div class="auth-bg">
-                <span class="r"></span>
-                <span class="r s"></span>
-                <span class="r s"></span>
-                <span class="r"></span>
-            </div>
-            <div class="card">
-                <div class="card-body text-center">
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="auth-bg">
+            <span class="r"></span>
+            <span class="r s"></span>
+            <span class="r s"></span>
+            <span class="r"></span>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
 
-                    <h3 class="mb-4">Masuk</h3>
+                <h3 class="mb-4">Masuk</h3>
 
-                    <span class="mb-0 text-muted">
-                        {% if msg %}
-                            <span class="text-danger">{{ msg | safe }}</span>
-                        {% else %}
-                            Bisa gunakan akun dengan <br> username: test <br> password: test
-                        {% endif %} 
-                    </span>
+                <span class="mb-0 text-muted">
+                    {% if msg %}
+                    <span class="text-danger">{{ msg | safe }}</span>
+                    {% else %}
+                    Bisa gunakan akun dengan <br> username: test <br> password: test
+                    {% endif %}
+                </span>
 
-                    <br />
-                    <br />
+                <br />
+                <br />
 
-                    <form role="form" method="post" action="">
+                <form role="form" method="post" action="">
 
-                        {{ form.hidden_tag() }}                    
+                    {{ form.hidden_tag() }}
 
-                        <div class="input-group mb-3">
-                            {{ form.username(placeholder="Username or email", class="form-control") }}
-                        </div>
-                        
-                        <div class="input-group mb-4">
-                            {{ form.password(placeholder="Password", class="form-control", type="password") }}
-                        </div>
-                        
-                        <button type="submit" name="login" class="btn btn-primary shadow-2 mb-4">Masuk</button>
+                    <div class="input-group mb-3">
+                        {{ form.username(placeholder="Username or email", class="form-control") }}
+                    </div>
 
-                    </form>
+                    <div class="input-group mb-4">
+                        {{ form.password(placeholder="Password", class="form-control", type="password") }}
+                    </div>
 
-                    <p class="mb-0 text-muted">Belum punya akun? <a href="{{ url_for('authentication_blueprint.register') }}" >Daftar</a></p>
-                    
+                    <button type="submit" name="login" class="btn btn-primary shadow-2 mb-4">Masuk</button>
 
-                </div>
+                </form>
+
+                <p class="mb-0 text-muted">Belum punya akun? <a
+                        href="{{ url_for('authentication_blueprint.register') }}">Daftar</a></p>
+
+
             </div>
         </div>
     </div>
+</div>
 
 {% endblock content %}

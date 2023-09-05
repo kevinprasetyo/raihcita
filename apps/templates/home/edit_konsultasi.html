@@ -56,36 +56,38 @@
                                     <div class="card-body">
                                         <h5>Informasi Pekerjaan</h5>
                                         <hr>
+                                        {% if edit %}
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <form role="form" method="post" action="/janji">
+
+                                                <form role="form" method="post" action="/edit/{{ edit.id }}">
                                                     <div class="form-group">
                                                         <label>Nama</label>
                                                         <input type="text" class="form-control" name="nama" id="nama"
-                                                            placeholder="Nama" required>
+                                                            placeholder="Nama" value="{{ edit.nama }}" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Email</label>
                                                         <input type="text" class="form-control" name="email" id="email"
-                                                            {% if current_user.email %} readonly
-                                                            value="{{ current_user.email }}" {% endif %}>
+                                                            readonly value="{{ current_user.email }}">
                                                     </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>No. HP</label>
                                                     <input type="text" class="form-control" name="hp" id="hp"
-                                                        placeholder="Nomor HP Whatsapp (optional)">
+                                                        placeholder="Nomor HP Whatsapp (optional)"
+                                                        value="{{ edit.hp }}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pilih Tanggal dan Jam</label>
                                                     <input type="datetime-local" class="form-control" name="tgl"
-                                                        id="tgl" required>
+                                                        id="tgl" value="{{ edit.tgl }}" required>
                                                 </div>
                                             </div>
 
                                         </div>
-
+                                        {% endif %}
 
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>

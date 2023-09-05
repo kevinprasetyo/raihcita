@@ -9,6 +9,7 @@ class Snisub(db.Model):
     tanggal = db.Column(db.DateTime(timezone=True), default=func.now())
     nama = db.Column(db.Text, nullable=True)
     posisi = db.Column(db.Text, nullable=True)
+    email = db.Column(db.Text, nullable=False)
     n1 = db.Column(db.Text, nullable=True)
     n2 = db.Column(db.Text, nullable=True)
     n3 = db.Column(db.Text, nullable=True)
@@ -37,6 +38,6 @@ class Snisub(db.Model):
 class Janji(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nama = db.Column(db.Text, nullable=True)
-    email = db.Column(db.Text, nullable=True)
+    email = db.Column(db.Text, nullable=False)
     hp = db.Column(db.Text, nullable=True)
     tgl = db.Column(db.Text, nullable=True)
