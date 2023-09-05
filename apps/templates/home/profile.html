@@ -19,82 +19,85 @@
                         <div class="row">
                             <div class="col-sm-8">
                                 <div class="card">
+                                    {% for message in get_flashed_messages() %}
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% endfor %}
                                     <div class="card-header">
                                         <h5>Edit Info</h5>
                                     </div>
                                     <div class="card-block">
-                                        <div class="row">
-                                            <div class="col-sm-6 mb-4">
-                                                <div class="form-group">
-                                                    <label for="exampleInputUsername">Username</label>
-                                                    <input class="form-control" id="exampleInputUsername" readonly
-                                                        value="{{ current_user.username }}" aria-describedby="userHelp"
-                                                        placeholder="Enter email">
+                                        <form action="/profile" method="POST">
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-4">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputUsername">Username</label>
+                                                        <input class="form-control" id="exampleInputUsername"
+                                                            name="username" readonly value="{{ current_user.username }}"
+                                                            aria-describedby="userHelp" placeholder="Enter email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-4">
+                                                    <div class="form-group">
+                                                        <label {% if not current_user.email %} class="text-danger" {%
+                                                            endif %} for="exampleInputEmail1">Email address</label>
+                                                        <input type="email" {% if current_user.email %} readonly
+                                                            value="{{ current_user.email }}" {% endif %}
+                                                            class="form-control" id="exampleInputEmail1"
+                                                            aria-describedby="emailHelp" placeholder="Enter email"
+                                                            name="email">
+                                                        {% if not current_user.email %}
+                                                        <small id="emailHelp" class="form-text text-danger">
+                                                            You don't have an email address associated with this
+                                                            account.
+                                                        </small>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 mb-4">
+                                                    <div class="form-group">
+                                                        <label for="fn">Nama</label>
+                                                        <input type="text" class="form-control" id="fn"
+                                                            aria-describedby="emailHelp" placeholder="Nama" name="nama"
+                                                            {% if profile %} value="{{ profile.nama }}" {% endif %}>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 mb-4">
+                                                    <div class="form-group">
+                                                        <label for="fn">Pekerjaan</label>
+                                                        <input type="text" class="form-control" id="fn"
+                                                            aria-describedby="emailHelp" placeholder="Pekerjaan"
+                                                            name="pekerjaan" {% if profile %}
+                                                            value="{{ profile.pekerjaan }}" {% endif %}>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 mb-4">
-                                                <div class="form-group">
-                                                    <label {% if not current_user.email %} class="text-danger" {% endif
-                                                        %} for="exampleInputEmail1">Email address</label>
-                                                    <input type="email" {% if current_user.email %} readonly
-                                                        value="{{ current_user.email }}" {% endif %}
-                                                        class="form-control" id="exampleInputEmail1"
-                                                        aria-describedby="emailHelp" placeholder="Enter email">
-                                                    {% if not current_user.email %}
-                                                    <small id="emailHelp" class="form-text text-danger">
-                                                        You don't have an email address associated with this account.
-                                                    </small>
-                                                    {% endif %}
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 mb-4">
-                                                <div class="form-group">
-                                                    <label for="fn">Nama Depan</label>
-                                                    <input type="text" class="form-control" id="fn"
-                                                        aria-describedby="emailHelp" placeholder="Nama Depan">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 mb-4">
-                                                <div class="form-group">
-                                                    <label for="ln">Nama Belakang</label>
-                                                    <input type="text" class="form-control" id="ln"
-                                                        aria-describedby="emailHelp" placeholder="Nama Belakang">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 mb-4">
-                                                <div class="form-group">
-                                                    <label for="add">Alamat</label>
-                                                    <input type="text" class="form-control" id="add"
-                                                        aria-describedby="emailHelp" placeholder="Alamat Lengkap">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 mb-4">
-                                                <div class="form-group">
-                                                    <label for="abt">Tentang</label>
-                                                    <textarea type="email" class="form-control" id="abt"
-                                                        aria-describedby="emailHelp" placeholder="Tentang"></textarea>
-                                                </div>
-                                            </div>
+
+
 
                                             <div class="col-sm-12 mb-2">
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-primary">Submit</button>
                                                 </div>
                                             </div>
-
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        <!-- [ Main Content ] end -->
+
                     </div>
+                    <!-- [ Main Content ] end -->
                 </div>
             </div>
         </div>
-
     </div>
+
+</div>
 </div>
 <!-- [ Main Content ] end -->
 

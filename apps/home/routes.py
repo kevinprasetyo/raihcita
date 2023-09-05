@@ -5,9 +5,9 @@ Copyright (c) 2019 - present AppSeed.us
 
 from apps.home import blueprint
 from flask import render_template, request, flash, redirect
-from flask_login import login_required
+from flask_login import login_required, current_user
 from jinja2 import TemplateNotFound
-from apps.home.models import Snisub, Janji
+from apps.home.models import Snisub, Janji, Profile
 from apps import db
 
 
@@ -15,6 +15,30 @@ from apps import db
 @login_required
 def index():
     return render_template('home/index.html', segment='index')
+
+
+@blueprint.route('/profile', methods=['GET', 'POST'])
+@login_required
+def profile():
+    try:
+        if request.method == 'POST':
+            username = request.form.get('username')
+            email = request.form.get('email')
+            nama = request.form.get('nama')
+            pekerjaan = request.form.get('pekerjaan')
+
+            profile = Profile(username=username, email=email,
+                              nama=nama, pekerjaan=pekerjaan)
+            db.session.add(profile)
+            db.session.commit()
+            flash("Berhasil tersimpan")
+            return render_template('home/profile.html', segment='profile', profile=profile)
+        else:
+            profile = Profile.query.filter_by(
+                email=current_user.email).order_by(Profile.id.desc()).first()
+            return render_template('home/profile.html', segment='profile', profile=profile)
+    except:
+        return render_template('home/profile.html', segment='profile')
 
 
 @blueprint.route('/snisub', methods=['GET', 'POST'])

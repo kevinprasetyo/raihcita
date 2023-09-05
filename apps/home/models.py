@@ -41,3 +41,11 @@ class Janji(db.Model):
     email = db.Column(db.Text, nullable=False)
     hp = db.Column(db.Text, nullable=True)
     tgl = db.Column(db.Text, nullable=True)
+
+
+class Profile(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.Text, nullable=True)
+    email = db.Column(db.Text, nullable=False)
+    nama = db.Column(db.Text, nullable=True)
+    pekerjaan = db.Column(db.Text, nullable=True)
