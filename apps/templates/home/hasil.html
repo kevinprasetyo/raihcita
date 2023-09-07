@@ -67,10 +67,10 @@
                                                     {% for sn in sni %}
                                                     <tr>
                                                         <td>{{ sn.id }}</td>
+                                                        <td>{{ sn.perusahaan }}</td>
                                                         <td>{{ sn.nama }}</td>
-                                                        <td>{{ sn.tgl }}</td>
+                                                        <td>{{ sn.posisi }}</td>
                                                         <td>{{ sn.email }}</td>
-                                                        <td>{{ sn.hp }}</td>
                                                         <td>
                                                             <form action="/snisub" method="GET">
                                                                 <button type="submit" class="btn btn-primary"
