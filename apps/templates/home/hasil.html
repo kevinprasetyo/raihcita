@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Hasil Asesmen {% endblock %}
+{% block title %} Hasil SNI {% endblock %}
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -23,7 +23,7 @@
                                 </div>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="#!">Hasil Asesmen</a></li>
+                                    <li class="breadcrumb-item"><a href="#!">Hasil SNI</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -48,43 +48,286 @@
                                     </div>
                                     {% endfor %}
                                     <div class="card-header">
-                                        <h5>Hasil Asesmen</h5>
+                                        <h5>Hasil SNI</h5>
 
                                     </div>
                                     <div class="card-block table-border-style">
                                         <div class="table-responsive">
                                             <table class="table table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Nomor Laporan</td>
+                                                        <td>{{ sni.id }}</td>
+                                                    </tr>
+                                                    {% if sni.perusahaan %}
+                                                    <tr>
+                                                        <td>Perusahaan</td>
+                                                        <td>{{ sni.perusahaan }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    <tr>
+                                                        <td>Tanggal</td>
+                                                        <td>{{ sni.tanggal }}</td>
+                                                    </tr>
+                                                    {% if sni.nama %}
+                                                    <tr>
+                                                        <td>Nama</td>
+                                                        <td>{{ sni.nama }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.posisi %}
+                                                    <tr>
+                                                        <td>Posisi</td>
+                                                        <td>{{ sni.posisi }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.email %}
+                                                    <tr>
+                                                        <td>email</td>
+                                                        <td>{{ sni.email }}</td>
+                                                    </tr>
+                                                    {% endif %}
+
+                                                </tbody>
+                                            </table>
+                                            <hr>
+                                            <table class="table table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th>Id</th>
-                                                        <th>Perusahaan</th>
-                                                        <th>Nama</th>
-                                                        <th>Posisi</th>
-                                                        <th>Email</th>
+                                                        <th>Potensi Bahaya</th>
+                                                        <th>Alternatif Perbaikan</th>
+                                                        <th>Produk Relevan</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {% for sn in sni %}
+                                                    {% if sni.n1 == '1a' %}
                                                     <tr>
-                                                        <td>{{ sn.id }}</td>
-                                                        <td>{{ sn.nama }}</td>
-                                                        <td>{{ sn.tgl }}</td>
-                                                        <td>{{ sn.email }}</td>
-                                                        <td>{{ sn.hp }}</td>
-                                                        <td>
-                                                            <form action="/snisub" method="GET">
-                                                                <button type="submit" class="btn btn-primary"
-                                                                    name="lihat" value="{{ sn.id }}">Lihat</button>
-                                                            </form>
+                                                        <td>Kepala menunduk</td>
+                                                        <td>- Menggunakan meja kerja yang sesuai dengan tinggi badan
+                                                            <br>
+                                                            pekerja atau meja kerja yang dapat diatur ketinggiannya
+                                                            <br>- Menggunakan kursi yang dapat diatur ketinggiannya
                                                         </td>
-                                                        <td>
-                                                            <form action="/hasil" method="GET">
-                                                                <button type="submit" class="btn btn-danger"
-                                                                    name="hapus" value="{{ sn.id }}">Hapus</button>
-                                                            </form>
-                                                        </td>
+                                                        <td>-</td>
                                                     </tr>
-                                                    {% endfor %}
+                                                    {% endif %}
+                                                    {% if sni.n2 == '2a' %}
+                                                    <tr>
+                                                        <td>Leher memuntir</td>
+                                                        <td>- Menggunakan meja kerja yang sesuai dengan tinggi badan
+                                                            <br>
+                                                            pekerja atau meja kerja yang dapat diatur ketinggiannya <br>
+                                                            - Meletakkan dokumen-dokumen di samping monitor
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n3 == '3a' %}
+                                                    <tr>
+                                                        <td>Leher tertekuk</td>
+                                                        <td>Menggunakan TWS untuk mempermudah mengangkat telepon</td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n4 == '4a' %}
+                                                    <tr>
+                                                        <td>Kepala tidak sejajar</td>
+                                                        <td>Menggunakan kursi dengan sandaran mencapai kepala</td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n5 == '5a' %}
+                                                    <tr>
+                                                        <td>Siku menjauhi tubuh</td>
+                                                        <td>- Meletakkan mouse/peralatan lainnya di samping keyboard
+                                                            <br>
+                                                            dengan tinggi yang sejajar. <br>
+                                                            - Menggunakan alas mouse (mouse pad).
+                                                        </td>
+                                                        <td>https://tokopedia.link/CADqL8CbgCb</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n6 == '6a' %}
+                                                    <tr>
+                                                        <td>Lengan tidak tertopang
+                                                        </td>
+                                                        <td>- Atur sandaran lengan untuk menopang siku <br> (namun tidak
+                                                            membuat siku terlalu tinggi. <br>
+                                                            - Pastikan sandaran lengan berada tepat <br> di bawah siku
+                                                            pengguna. <br>
+                                                            - Pastikan kursi memiliki lebar yang tepat untuk pengguna
+                                                        </td>
+                                                        <td>https://tokopedia.link/frxgXn7bgCb</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n7 == '7a' %}
+                                                    <tr>
+                                                        <td>Pergelangan tangan netral</td>
+                                                        <td>- Lepaskan kaki penyangga keyboard. <br>
+                                                            - Bila diperlukan, gunakan bantalan pada pergelangan tangan
+                                                            <br>
+                                                            agar posisinya tetap lurus.
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n8 == '8a' %}
+                                                    <tr>
+                                                        <td>Pergelangan tangan tertekuk</td>
+                                                        <td>Tempatkan keyboard di depan tubuh pada jarak yang cukup <br>
+                                                            dengan tetap memperhatikan siku dekat ke tubuh dan lengan
+                                                            <br>
+                                                            bawah sejajar dengan lantai ketika mengetik.
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n9 == '9a' %}
+                                                    <tr>
+                                                        <td>Kulit tertekan</td>
+                                                        <td>Berikan bantalan pada permukaan yang tajam atau keras</td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n10 == '10a' %}
+                                                    <tr>
+                                                        <td>Terdapat celah sandaran
+                                                        </td>
+                                                        <td>Atur stasiun kerja agar punggung dapat bersandar dengan <br>
+                                                            baik. Misal: mengatur keyboard atau monitor agar lebih dekat
+                                                            <br>
+                                                            dengan pengguna
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n11 == '11a' %}
+                                                    <tr>
+                                                        <td>Ruang untuk kaki</td>
+                                                        <td>Menggunakan meja kerja dengan ukuran lebar yang sesuai <br>
+                                                            dengan panjang popliteal pekerja</td>
+                                                        <td>Shopee</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n12 == '12a' %}
+                                                    <tr>
+                                                        <td>Membungkuk
+                                                        </td>
+                                                        <td>Melakukan pengarsipan di atas meja dengan posisi duduk tegak
+                                                            <br>
+                                                            dan bersandar pada sandaran kursi
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n13 == '13a' %}
+                                                    <tr>
+                                                        <td>Pemuntiran torso
+                                                        <td>- Posisikan telepon agar ada di tempat yang dapat dijangkau
+                                                            <br>
+                                                            tanpa perlu meraih terlalu jauh. <br>
+                                                            - Berdirilah saat hendak mengambil benda yang ada di <br>
+                                                            belakang badan
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n14 == '14a' %}
+                                                    <tr>
+                                                        <td>Punggung tidak menopang
+                                                        <td>Naikkan atau turunkan sandaran punggung agar bisa menopang
+                                                            <br>
+                                                            lekukan pada punggung
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n15 == '15a' %}
+                                                    <tr>
+                                                        <td>Kaki tidak menginjak</td>
+                                                        <td>Menggunakan kursi yang dapat diatur ketinggiannya</td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n16 == '16a' %}
+                                                    <tr>
+                                                        <td>Menekan lutut
+                                                        </td>
+                                                        <td>- Pilih kursi dengan kedalaman yang tepat. <br>
+                                                            - Perlu ada jarak sekitar 2 atau 3 jari di antara ujung <br>
+                                                            depan kursi dengan bagian belakang lutut. <br>
+                                                            - Dudukan kursi sebaiknya memiliki bagian ujung depan <br>
+                                                            yang
+                                                            melengkung
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n17 == '17a' %}
+                                                    <tr>
+                                                        <td>Layar terlalu terang</td>
+                                                        <td>- Gunakan lampu meja untuk menerangi area <br> di sekitar
+                                                            monitor. <br>
+                                                            - Kurangi pengaturan pencahayaan pada monitor
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n18 == '18a' %}
+                                                    <tr>
+                                                        <td>Cahaya terlalu terang</td>
+                                                        <td>- Mengurangi jumlah sumber cahaya di stasiun kerja <br>
+                                                            - Menggunakan lampu berwarna putih pucat
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n19 == '19a' %}
+                                                    <tr>
+                                                        <td>Silau</td>
+                                                        <td>Menutup sumber cahaya dengan palindung layar anti glare</td>
+                                                        <td>Shopee</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n20 == '20a' %}
+                                                    <tr>
+                                                        <td>Temperatur
+                                                        <td>- Naikkan/turunkan suhu agar sesuai dengan kenyamanan <br>
+                                                            setiap
+                                                            orang. <br>
+                                                            - Gunakan pakaian yang lebih hangat/sejuk
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n21 == '21a' %}
+                                                    <tr>
+                                                        <td>Kursi</td>
+                                                        <td>Atur sudut dan tinggi kursi secara berkala <br> dalam satu
+                                                            hari. </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n22 == '22a' %}
+                                                    <tr>
+                                                        <td>Duduk di kursi lama</td>
+                                                        <td>Membuat alarm pengingat sebagai tanda untuk istirahat <br>
+                                                            sejenak dari posisi duduk</td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if sni.n23 == '23a' %}
+                                                    <tr>
+                                                        <td>Tulang belakang
+                                                        </td>
+                                                        <td>- Pilih kursi dengan penyangga punggung yang baik. <br>
+                                                            - Jarak antara dagu dan dada setidaknya selebar kepalan <br>
+                                                            tangan dengan posisi leher/kepala netral. <br>
+                                                            - Lakukan istirahat dari posisi duduk secara rutin
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    {% endif %}
 
                                                 </tbody>
                                             </table>

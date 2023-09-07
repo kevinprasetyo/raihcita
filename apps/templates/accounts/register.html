@@ -2,66 +2,68 @@
 
 {% block title %} Login {% endblock %}
 
-{% block content %}   
+{% block content %}
 
-    <div class="auth-wrapper">
-        <div class="auth-content">
-            <div class="auth-bg">
-                <span class="r"></span>
-                <span class="r s"></span>
-                <span class="r s"></span>
-                <span class="r"></span>
-            </div>
-            <div class="card">
-                <div class="card-body text-center">
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="auth-bg">
+            <span class="r"></span>
+            <span class="r s"></span>
+            <span class="r s"></span>
+            <span class="r"></span>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
 
-                    <h3 class="mb-4">Daftar</h3>
+                <h3 class="mb-4">Daftar</h3>
 
-                    <span class="mb-2 text-muted">
-                        {% if msg %}
-                            <span class="text-danger">{{ msg | safe }}</span>
-                        {% else %}
-                            Login dengan akun demo
-                        {% endif %} 
-                    </span>
-
-                    <br />
-                    <br />
-
-                    <!-- Hide the form on success -->
-                    {% if success %}
-                        <a href="{{ url_for('authentication_blueprint.login') }}" class="btn btn-primary shadow-2 mb-4">Masuk</a>
+                <span class="mb-2 text-muted">
+                    {% if msg %}
+                    <span class="text-danger">{{ msg | safe }}</span>
                     {% else %}
-
-                        <form role="form" method="post" action="">
-
-                            {{ form.hidden_tag() }}                    
-
-                            <div class="input-group mb-3">
-                                {{ form.username(placeholder="Username", class="form-control") }}
-                            </div>
-                            
-                            <div class="input-group mb-3">
-                                {{ form.email(placeholder="Email", class="input form-control", type="email") }}
-                            </div>
-
-                            <div class="input-group mb-4">
-                                {{ form.password(placeholder="Password", class="form-control", type="password") }}
-                            </div>
-                            
-                            <button type="submit" name="register" class="btn btn-primary shadow-2 mb-4">Daftar</button>
-
-                        </form>
-                        
-                        <p class="mb-0 text-muted">Sudah punya akun? <a href="{{ url_for('authentication_blueprint.login') }}">Masuk</a></p>
-                       
-
+                    Silahkan daftar untuk membuat akun baru.
                     {% endif %}
-                    
+                </span>
 
-                </div>
+                <br />
+                <br />
+
+                <!-- Hide the form on success -->
+                {% if success %}
+                <a href="{{ url_for('authentication_blueprint.login') }}"
+                    class="btn btn-primary shadow-2 mb-4">Masuk</a>
+                {% else %}
+
+                <form role="form" method="post" action="">
+
+                    {{ form.hidden_tag() }}
+
+                    <div class="input-group mb-3">
+                        {{ form.username(placeholder="Username", class="form-control") }}
+                    </div>
+
+                    <div class="input-group mb-3">
+                        {{ form.email(placeholder="Email", class="input form-control", type="email") }}
+                    </div>
+
+                    <div class="input-group mb-4">
+                        {{ form.password(placeholder="Password", class="form-control", type="password") }}
+                    </div>
+
+                    <button type="submit" name="register" class="btn btn-primary shadow-2 mb-4">Daftar</button>
+
+                </form>
+
+                <p class="mb-0 text-muted">Sudah punya akun? <a
+                        href="{{ url_for('authentication_blueprint.login') }}">Masuk</a></p>
+
+
+                {% endif %}
+
+
             </div>
         </div>
     </div>
+</div>
 
 {% endblock content %}
