@@ -118,7 +118,7 @@ def janji():
         janji = Janji(nama=nama, email=email, hp=hp, tgl=tgl)
         db.session.add(janji)
         db.session.commit()
-        flash("Berhasil tersimpan")
+        flash("Berhasil tersimpan. Akan dihubungi dalam waktu 24 jam")
 
         return render_template('home/janji.html', segment='janji', janji=janji)
     return render_template('home/konsultasi.html', segment='konsultasi')
