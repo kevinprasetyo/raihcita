@@ -8,6 +8,7 @@ from flask import render_template, request, flash, redirect
 from flask_login import login_required, current_user
 from jinja2 import TemplateNotFound
 from apps.home.models import Snisub, Janji, Profile
+from apps.authentication.models import Users
 from apps import db
 
 
@@ -37,6 +38,27 @@ def profile():
             profile = Profile.query.filter_by(
                 email=current_user.email).order_by(Profile.id.desc()).first()
             return render_template('home/profile.html', segment='profile', profile=profile)
+    except:
+        return render_template('home/profile.html', segment='profile')
+
+
+@blueprint.route('/profile/<username>', methods=['GET', 'POST'])
+@login_required
+def hapusakun(username):
+    try:
+        if request.method == 'POST':
+            konfirmasi = request.form.get('konfirmasi')
+            konfirmasi = konfirmasi.lower()
+            if konfirmasi == "hapus akun":
+                hapus = Users.query.filter_by(username=username).one()
+                db.session.delete(hapus)
+                db.session.commit()
+                flash("Akun berhasil dihapus!")
+                return redirect('/logout')
+            else:
+                profile = Users.query.filter_by(
+                    email=current_user.email).order_by(Profile.id.desc()).first()
+                return render_template('home/profile.html', segment='profile', profile=profile)
     except:
         return render_template('home/profile.html', segment='profile')
 
