@@ -56,7 +56,7 @@ def hapusakun(username):
                 flash("Akun berhasil dihapus!")
                 return redirect('/logout')
             else:
-                profile = Users.query.filter_by(
+                profile = Profile.query.filter_by(
                     email=current_user.email).order_by(Profile.id.desc()).first()
                 return render_template('home/profile.html', segment='profile', profile=profile)
     except:

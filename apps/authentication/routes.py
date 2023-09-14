@@ -56,7 +56,7 @@ def login():
 
             if not user:
                 return render_template('accounts/login.html',
-                                       msg='Unknown User or Email',
+                                       msg='Username atau Email tidak diketahui',
                                        form=login_form)
 
         # Check the password
@@ -67,7 +67,7 @@ def login():
 
         # Something (user or pass) is not ok
         return render_template('accounts/login.html',
-                               msg='Wrong user or password',
+                               msg='Username atau password salah',
                                form=login_form)
 
     if not current_user.is_authenticated:
@@ -88,7 +88,7 @@ def register():
         user = Users.query.filter_by(username=username).first()
         if user:
             return render_template('accounts/register.html',
-                                   msg='Username already registered',
+                                   msg='Username sudah terdaftar',
                                    success=False,
                                    form=create_account_form)
 
@@ -96,7 +96,7 @@ def register():
         user = Users.query.filter_by(email=email).first()
         if user:
             return render_template('accounts/register.html',
-                                   msg='Email already registered',
+                                   msg='Email sudah terdaftar',
                                    success=False,
                                    form=create_account_form)
 
@@ -109,7 +109,7 @@ def register():
         logout_user()
 
         return render_template('accounts/register.html',
-                               msg='User created successfully.',
+                               msg='Akun berhasil dibuat. Silahkan masuk',
                                success=True,
                                form=create_account_form)
 
