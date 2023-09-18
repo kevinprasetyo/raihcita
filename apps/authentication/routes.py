@@ -9,10 +9,109 @@ from flask_dance.contrib.github import github
 from apps import db, login_manager
 from apps.authentication import blueprint
 from apps.authentication.forms import LoginForm, CreateAccountForm
-from apps.authentication.models import Users
+from apps.authentication.models import Users, Google
 
 from apps.authentication.util import verify_pass
 
+#login
+from sqlalchemy.orm.exc import NoResultFound
+
+import json
+import os
+
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
+from oauthlib.oauth2 import WebApplicationClient
+import requests
+
+GOOGLE_CLIENT_ID = '1000259324040-5tk14re9d5caps1c1bf1h7r3vosk8rvj.apps.googleusercontent.com'
+GOOGLE_CLIENT_SECRET = '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'
+
+GOOGLE_DISCOVERY_URL = (
+    "https://accounts.google.com/.well-known/openid-configuration"
+)
+
+client = WebApplicationClient(GOOGLE_CLIENT_ID)
+
+@blueprint.route('/google_login')
+def google_login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home_blueprint.index'))
+    else:
+        return '<a class="button" href="/google">Login with Google</a>'
+
+@blueprint.route('/google')
+def google():
+    google_provider_cfg = get_google_provider_cfg()
+    authorization_endpoint = google_provider_cfg['authorization_endpoint']
+
+    request_uri = client.prepare_request_uri(
+        authorization_endpoint,
+        redirect_uri=request.base_url + "/callback",
+        scope=["openid", "email", "profile"],
+    )
+    return redirect(request_uri)
+
+@blueprint.route('/google/callback')
+def callback():
+    code = request.args.get('code')
+
+    google_provider_cfg = get_google_provider_cfg()
+
+    token_endpoint = google_provider_cfg["token_endpoint"]
+
+    token_url, headers, body = client.prepare_token_request(
+        token_endpoint,
+        authorization_response=request.url,
+        redirect_url=request.base_url,
+        code=code
+    )    
+
+    token_response = requests.post(
+        token_url,
+        headers=headers,
+        data=body,
+        auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
+    )
+
+    client.parse_request_body_response(json.dumps(token_response.json()))
+
+    userinfo_endpoint = google_provider_cfg['userinfo_endpoint']
+
+    uri,headers,body = client.add_token(userinfo_endpoint)
+
+    userinfo_response = requests.get(uri, headers=headers, data=body)
+    print(userinfo_response.json())
+
+    if userinfo_response.json().get('email_verified'):
+        unique_id = userinfo_response.json()['sub']
+        users_email = userinfo_response.json()['email']
+        users_name = userinfo_response.json()['given_name']
+    else:
+        return "User email not available or not verified by Google.", 400
+ 
+    query = Users.query.filter_by(oauth_github=unique_id)
+    try:
+        user = query.one()
+        login_user(user)
+
+    except NoResultFound:
+        google = Google(google_id=unique_id, username=users_name, email=users_email)
+        db.session.add(google)
+        db.session.commit()
+        user = Users(username=users_name, email=users_email, password=unique_id, oauth_github=unique_id)
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+    
+    return redirect(url_for('home_blueprint.index'))
+
+
+def get_google_provider_cfg():
+    return requests.get(GOOGLE_DISCOVERY_URL).json()
+
+
+# Akhir
 
 @blueprint.route('/')
 def route_default():

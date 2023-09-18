@@ -7,6 +7,11 @@ from apps import db, login_manager
 
 from apps.authentication.util import hash_pass
 
+class Google(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    google_id = db.Column(db.Integer)
+    username = db.Column(db.Text, nullable=True)
+    email = db.Column(db.Text, nullable=False)
 
 class Users(db.Model, UserMixin):
 
