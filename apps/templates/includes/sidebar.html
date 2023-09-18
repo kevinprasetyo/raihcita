@@ -1,80 +1,118 @@
 <!-- [ navigation menu ] start -->
 <nav class="pcoded-navbar">
-    <div class="navbar-wrapper">
-        <div class="navbar-brand header-logo">
-            <a href="/index" class="b-brand">
-                <img src="{{ config.ASSETS_ROOT }}/images/logo-thumb.png" alt="ErgoCust" width="50" height="50">
-                <span class="b-title">Ergocust</span>
-            </a>
-            <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
-        </div>
-        <div class="navbar-content scroll-div">
-            <ul class="nav pcoded-inner-navbar">
-                <li class="nav-item pcoded-menu-caption">
-                    <label>Navigation</label>
-                </li>
-                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
-                    class="nav-item {% if 'index' in segment %} active {% endif %}">
-                    <a href="/index.html" class="nav-link "><span class="pcoded-micon"><i
-                                class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
-                </li>
-                <li data-username="Profile Page" class="nav-item {% if 'profile' in segment %} active {% endif %}">
-                    <a href="/profile" class="nav-link">
-                        <span class="pcoded-micon"><i class="feather icon-user"></i></span>
-                        <span class="pcoded-mtext">Profil</span></a>
-                </li>
-
-                <li class="nav-item pcoded-menu-caption">
-                    <label>Asesmen Ergonomi</label>
-                </li>
-                <li data-username="form elements advance componant validation masking wizard picker select"
-                    class="nav-item {% if 'sni' in segment %} active {% endif %}">
-                    <a href="/sni.html" class="nav-link "><span class="pcoded-micon"><i
-                                class="feather icon-file-text"></i></span><span class="pcoded-mtext">SNI
-                            Perkantoran</span></a>
-                </li>
-                <li data-username="form elements advance componant validation masking wizard picker select"
-                    class="nav-item {% if 'hasil' in segment %} active {% endif %}">
-                    <a href="/hasil?email={{ current_user.email }}" class="nav-link "><span class="pcoded-micon"><i
-                                class="feather icon-file-text"></i></span><span class="pcoded-mtext">Hasil
-                            Asesmen</span></a>
-                </li>
-                <li class="nav-item pcoded-menu-caption">
-                    <label>Konsultasi</label>
-                </li>
-                <li data-username="form elements advance componant validation masking wizard picker select"
-                    class="nav-item {% if 'konsultasi' in segment %} active {% endif %}">
-                    <a href="/konsultasi.html" class="nav-link "><span class="pcoded-micon"><i
-                                class="feather icon-file-text"></i></span><span class="pcoded-mtext">Buat janji
-                            konsultasi</span></a>
-                </li>
-                <li data-username="form elements advance componant validation masking wizard picker select"
-                    class="nav-item {% if 'jadwal' in segment %} active {% endif %}">
-                    <a href="/jadwal?email={{ current_user.email }}" class="nav-link "><span class="pcoded-micon"><i
-                                class="feather icon-file-text"></i></span><span class="pcoded-mtext">Jadwal</span></a>
-                </li>
-                <li class="nav-item pcoded-menu-caption">
-                    <label>Produk Ergonomi</label>
-                </li>
-                <li data-username="form elements advance componant validation masking wizard picker select"
-                    class="nav-item {% if 'produk' in segment %} active {% endif %}">
-                    <a href="/produk.html" class="nav-link "><span class="pcoded-micon"><i
-                                class="feather icon-file-text"></i></span><span class="pcoded-mtext">Produk
-                            Ergonomi</span></a>
-                </li>
-                <li class="nav-item pcoded-menu-caption">
-                    <label>Logout</label>
-                </li>
-
-                <li data-username="Disabled Menu" class="nav-item">
-                    <a href="{{ url_for('authentication_blueprint.logout') }}" class="nav-link">
-                        <span class="pcoded-micon"><i class="feather icon-power"></i></span><span
-                            class="pcoded-mtext">Logout</span>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
+  <div class="navbar-wrapper">
+    <div class="navbar-brand header-logo">
+      <a href="/index" class="b-brand">
+        <img
+          src="{{ config.ASSETS_ROOT }}/images/logo.jpeg"
+          alt="ErgoCust"
+          width="48"
+          height="48"
+        />
+        <span class="b-title">Ergocust</span>
+      </a>
+      <a class="mobile-menu" id="mobile-collapse" href="javascript:"
+        ><span></span
+      ></a>
     </div>
+    <div class="navbar-content scroll-div">
+      <ul class="nav pcoded-inner-navbar">
+        <li class="nav-item pcoded-menu-caption">
+          <label>Navigation</label>
+        </li>
+        <li
+          data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+          class="nav-item {% if 'index' in segment %} active {% endif %}"
+        >
+          <a href="/index.html" class="nav-link"
+            ><span class="pcoded-micon"><i class="feather icon-home"></i></span
+            ><span class="pcoded-mtext">Dashboard</span></a
+          >
+        </li>
+        <li
+          data-username="Profile Page"
+          class="nav-item {% if 'profile' in segment %} active {% endif %}"
+        >
+          <a href="/profile" class="nav-link">
+            <span class="pcoded-micon"><i class="feather icon-user"></i></span>
+            <span class="pcoded-mtext">Profil</span></a
+          >
+        </li>
+
+        <li class="nav-item pcoded-menu-caption">
+          <label>Asesmen Ergonomi</label>
+        </li>
+        <li
+          data-username="form elements advance componant validation masking wizard picker select"
+          class="nav-item {% if 'sni' in segment %} active {% endif %}"
+        >
+          <a href="/sni.html" class="nav-link"
+            ><span class="pcoded-micon"
+              ><i class="feather icon-file-text"></i></span
+            ><span class="pcoded-mtext">SNI Perkantoran</span></a
+          >
+        </li>
+        <li
+          data-username="form elements advance componant validation masking wizard picker select"
+          class="nav-item {% if 'hasil' in segment %} active {% endif %}"
+        >
+          <a href="/hasil?email={{ current_user.email }}" class="nav-link"
+            ><span class="pcoded-micon"
+              ><i class="feather icon-file-text"></i></span
+            ><span class="pcoded-mtext">Hasil Asesmen</span></a
+          >
+        </li>
+        <li class="nav-item pcoded-menu-caption">
+          <label>Konsultasi</label>
+        </li>
+        <li
+          data-username="form elements advance componant validation masking wizard picker select"
+          class="nav-item {% if 'konsultasi' in segment %} active {% endif %}"
+        >
+          <a href="/konsultasi.html" class="nav-link"
+            ><span class="pcoded-micon"
+              ><i class="feather icon-file-text"></i></span
+            ><span class="pcoded-mtext">Buat janji konsultasi</span></a
+          >
+        </li>
+        <li
+          data-username="form elements advance componant validation masking wizard picker select"
+          class="nav-item {% if 'jadwal' in segment %} active {% endif %}"
+        >
+          <a href="/jadwal?email={{ current_user.email }}" class="nav-link"
+            ><span class="pcoded-micon"
+              ><i class="feather icon-file-text"></i></span
+            ><span class="pcoded-mtext">Jadwal</span></a
+          >
+        </li>
+        <li class="nav-item pcoded-menu-caption">
+          <label>Produk Ergonomi</label>
+        </li>
+        <li
+          data-username="form elements advance componant validation masking wizard picker select"
+          class="nav-item {% if 'produk' in segment %} active {% endif %}"
+        >
+          <a href="/produk.html" class="nav-link"
+            ><span class="pcoded-micon"
+              ><i class="feather icon-file-text"></i></span
+            ><span class="pcoded-mtext">Produk Ergonomi</span></a
+          >
+        </li>
+        <li class="nav-item pcoded-menu-caption">
+          <label>Logout</label>
+        </li>
+
+        <li data-username="Disabled Menu" class="nav-item">
+          <a
+            href="{{ url_for('authentication_blueprint.logout') }}"
+            class="nav-link"
+          >
+            <span class="pcoded-micon"><i class="feather icon-power"></i></span
+            ><span class="pcoded-mtext">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
 <!-- [ navigation menu ] end -->
