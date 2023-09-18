@@ -87,6 +87,7 @@ def callback():
         unique_id = userinfo_response.json()['sub']
         users_email = userinfo_response.json()['email']
         users_name = userinfo_response.json()['given_name']
+        family_name = userinfo_response.json()['family_name']
     else:
         return "User email not available or not verified by Google.", 400
  
@@ -96,7 +97,8 @@ def callback():
         login_user(user)
 
     except NoResultFound:
-        user = Users(username=users_name, email=users_email, password=unique_id, oauth_github=unique_id)
+        usernm = users_name + '_' + family_name
+        user = Users(username=usernm, email=users_email, password=unique_id, oauth_github=unique_id)
         db.session.add(user)
         db.session.commit()
         login_user(user)
