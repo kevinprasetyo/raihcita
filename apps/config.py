@@ -41,6 +41,8 @@ class Config(object):
             # Relational DBMS: PSQL, MySql
             SQLALCHEMY_DATABASE_URI = "postgresql://ergocust:PybewFaTEXuUD10qsBwgUresIvnxfhoQ@dpg-ck3uf4j6fquc73f2kj3g-a/ergocust"
 
+            # SQLALCHEMY_DATABASE_URI = "postgresql://ergocust:PybewFaTEXuUD10qsBwgUresIvnxfhoQ@dpg-ck3uf4j6fquc73f2kj3g-a.frankfurt-postgres.render.com/ergocust"
+
             USE_SQLITE  = False
 
         except Exception as e:

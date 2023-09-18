@@ -9,7 +9,7 @@ from flask_dance.contrib.github import github
 from apps import db, login_manager
 from apps.authentication import blueprint
 from apps.authentication.forms import LoginForm, CreateAccountForm
-from apps.authentication.models import Users, Google
+from apps.authentication.models import Users
 
 from apps.authentication.util import verify_pass
 
@@ -96,9 +96,6 @@ def callback():
         login_user(user)
 
     except NoResultFound:
-        google = Google(google_id=unique_id, username=users_name, email=users_email)
-        db.session.add(google)
-        db.session.commit()
         user = Users(username=users_name, email=users_email, password=unique_id, oauth_github=unique_id)
         db.session.add(user)
         db.session.commit()
