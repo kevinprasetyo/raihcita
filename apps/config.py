@@ -44,14 +44,7 @@ class Config(object):
         try:
             
             # Relational DBMS: PSQL, MySql
-            SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}'.format(
-                DB_ENGINE,
-                DB_USERNAME,
-                DB_PASS,
-                DB_HOST,
-                DB_PORT,
-                DB_NAME
-            ) 
+            SQLALCHEMY_DATABASE_URI = "postgresql://ergocust:PybewFaTEXuUD10qsBwgUresIvnxfhoQ@dpg-ck3uf4j6fquc73f2kj3g-a/ergocust"
 
             USE_SQLITE  = False
 
