@@ -146,6 +146,22 @@ def req_reset():
             return render_template('accounts/req_reset.html', form=req_form, msg='Email tidak terdaftar')
     return render_template('accounts/req_reset.html', form=req_form)
 
+@blueprint.route('/gantips', methods=['GET', 'POST'])
+def gantips():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        user = Users.query.filter_by(email=email).first()
+        user.password = password
+        db.session.commit()
+        return redirect('/login')
+    else:
+        return render_template('accounts/req_reset.html')
+
+@blueprint.route('/berhasil')
+def berhasil():
+    return render_template('home/berhasil.html')
+
 # Login & Registration
 
 
@@ -227,9 +243,6 @@ def register():
         user = Users(**request.form)
         db.session.add(user)
         db.session.commit()
-
-        # Delete user from session
-        logout_user()
 
         return render_template('accounts/register.html',
                                msg='Akun berhasil dibuat. Silahkan masuk',
