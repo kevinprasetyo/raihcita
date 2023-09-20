@@ -1,0 +1,67 @@
+{% extends "layouts/base-fullscreen.html" %} {% block title %} Login {% endblock
+%} {% block content %}
+
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <div class="auth-bg">
+      <span class="r"></span>
+      <span class="r s"></span>
+      <span class="r s"></span>
+      <span class="r"></span>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <h3 class="mb-4">Reset Password</h3>
+
+        <span class="mb-2 text-muted">
+          {% if msg %}
+          <span class="text-success">{{ msg | safe }}</span>
+          {% else %} Masukan email untuk dikirim link ubah password {% endif %}
+        </span>
+
+        <br />
+        <br />
+
+        <!-- Hide the form on success -->
+        {% if success %}
+        <a
+          href="{{ url_for('authentication_blueprint.login') }}"
+          class="btn btn-primary shadow-2 mb-4"
+          >Masuk</a
+        >
+        {% else %}
+
+        <form role="form" method="post" action="">
+          {{ form.hidden_tag() }}
+
+          <div class="input-group mb-3">
+            {{ form.email(placeholder="Email", class="input form-control",
+            type="email") }}
+          </div>
+
+          <button
+            type="submit"
+            name="req_reset"
+            class="btn btn-primary shadow-2 mb-4"
+          >
+            Daftar
+          </button>
+        </form>
+        <p class="mb-0 text-muted">
+          Belum punya akun?
+          <a href="{{ url_for('authentication_blueprint.register') }}"
+            >Daftar</a
+          >
+        </p>
+        <p class="mb-0 text-muted">
+          Sudah punya akun?
+          <a href="{{ url_for('authentication_blueprint.login') }}">Masuk</a>
+        </p>
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

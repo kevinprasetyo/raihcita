@@ -8,7 +8,7 @@ from flask_dance.contrib.github import github
 
 from apps import db, login_manager
 from apps.authentication import blueprint
-from apps.authentication.forms import LoginForm, CreateAccountForm
+from apps.authentication.forms import LoginForm, CreateAccountForm, ResetRequestForm
 from apps.authentication.models import Users
 
 from apps.authentication.util import verify_pass
@@ -115,6 +115,33 @@ def get_google_provider_cfg():
 @blueprint.route('/')
 def route_default():
     return render_template('home/homepage.html')
+
+@blueprint.route('/reset', methods=['GET', 'POST'])
+def reset():
+    email = request.args.get('email', None) # use default value repalce 'None'
+    id = request.args.get('id', None)
+    user = Users.query.filter_by(email=email).first()
+    if user:
+        if user.id == int(id):
+            return render_template('accounts/reset.html', email=email)
+        else:
+            return render_template('accounts/reset.html', msg='Link tidak valid')
+    else:
+        return render_template('accounts/reset.html', msg='Email tidak terdaftar')
+    return render_template('accounts/reset.html', email=email, msg='Silahkan ajukan permintaan ulang password pada halaman login')
+
+@blueprint.route('/req_reset', methods=['GET', 'POST'])
+def req_reset():
+    req_form = ResetRequestForm(request.form)
+    if 'req_reset' in request.form:
+        email = request.form['email']
+        user = Users.query.filter_by(email=email).first()
+        if user:
+            id = user.id
+            return redirect(f'https://info.ergocust.com/?email={email}&id={id}')
+        else:
+            return render_template('accounts/req_reset.html', form=req_form, msg='Email tidak terdaftar')
+    return render_template('accounts/req_reset.html', form=req_form)
 
 # Login & Registration
 
