@@ -11,7 +11,8 @@ from apps.authentication import blueprint
 from apps.authentication.forms import LoginForm, CreateAccountForm, ResetRequestForm
 from apps.authentication.models import Users
 
-from apps.authentication.util import verify_pass
+from apps.authentication.util import verify_pass, hash_pass
+
 
 #login
 from sqlalchemy.orm.exc import NoResultFound
@@ -123,15 +124,19 @@ def reset():
         user = Users.query.filter_by(email=email).first() 
         id = request.args.get('id', None)
         if (id is None) or (email is None):
-            return render_template('accounts/req_reset.html', msg='Link tidak valid')
+            req_form = ResetRequestForm(request.form)
+            return render_template('accounts/req_reset.html', form=req_form, msg='Link tidak valid')
         elif user:
             if user.id == int(id):
                 return render_template('accounts/reset.html', email=email)
             else:
-                return render_template('accounts/req_reset.html', msg='Link tidak valid')
+                req_form = ResetRequestForm(request.form)
+                return render_template('accounts/req_reset.html', form=req_form, msg='Link tidak valid')
         else:
-            return render_template('accounts/reset.html', msg='Email tidak terdaftar')
-    return render_template('accounts/req_reset.html', msg='Silahkan ajukan permintaan ganti password')
+            req_form = ResetRequestForm(request.form)
+            return render_template('accounts/reset.html', form=req_form, msg='Email tidak terdaftar')
+    req_form = ResetRequestForm(request.form)
+    return render_template('accounts/req_reset.html', form=req_form, msg='Silahkan ajukan permintaan ganti password')
 
 @blueprint.route('/req_reset', methods=['GET', 'POST'])
 def req_reset():
@@ -151,7 +156,8 @@ def gantips():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-        user = Users.query.filter_by(email=email).first()
+        user = Users.query.filter_by(email=email).one()
+        password = hash_pass(password)
         user.password = password
         db.session.commit()
         return redirect('/login')
