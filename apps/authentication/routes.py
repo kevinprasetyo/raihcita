@@ -118,11 +118,11 @@ def route_default():
 
 @blueprint.route('/reset', methods=['GET', 'POST'])
 def reset():
-    if "email" in request.args and "id" in request.args:
+    if ("email" in request.args) and ("id" in request.args):
         email = request.args.get('email', None)
         user = Users.query.filter_by(email=email).first() 
         id = request.args.get('id', None)
-        if id is None or email is None:
+        if (id is None) or (email is None):
             return render_template('accounts/req_reset.html', msg='Link tidak valid')
         elif user:
             if user.id == int(id):
