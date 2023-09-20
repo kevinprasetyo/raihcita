@@ -60,6 +60,32 @@
             style="width: 200px"
         /></a>
       </div>
+      <button id="login-button">Log in with Google</button>
+
+      <script>
+        const loginButton = document.getElementById("login-button");
+
+        loginButton.addEventListener("click", () => {
+          const authUrl = `https://ergocust.com/google`;
+
+          const popup = window.open(
+            authUrl,
+            "Google Login",
+            "width=500,height=600"
+          );
+
+          const checkPopupUrl = setInterval(() => {
+            if (popup.closed) {
+              clearInterval(checkPopupUrl);
+            } else if (popup.location.href === "https://ergocust.com/index") {
+              // Replace 'YOUR_SPECIFIC_URL_HERE' with the URL you want to check for
+              popup.close();
+            }
+          }, 1000);
+        });
+
+        window.close();
+      </script>
     </div>
   </div>
 </div>
