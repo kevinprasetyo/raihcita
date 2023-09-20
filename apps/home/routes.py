@@ -142,6 +142,7 @@ def janji():
 
 
 @blueprint.route('/jadwal', methods=['GET', 'POST'])
+@login_required
 def jadwal():
     if "email" in request.args:
         email = request.args.get("email")
@@ -160,6 +161,7 @@ def jadwal():
 
 
 @blueprint.route('/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
 def edit(id):
     edit = Janji.query.filter_by(id=id).one()
     if request.method == 'POST':
@@ -170,6 +172,10 @@ def edit(id):
         flash("Berhasil diubah")
         return redirect(f'/jadwal?email={edit.email}')
     return render_template('home/edit_konsultasi.html', segment='edit_konsultasi', edit=edit)
+
+@blueprint.route('/privasi')
+def privasi():
+    return render_template('home/privasi.html', segment='privasi')
 
 
 @blueprint.route('/<template>')
