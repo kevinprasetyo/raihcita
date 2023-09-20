@@ -120,15 +120,17 @@ def route_default():
 def reset():
     email = request.args.get('email', None) # use default value repalce 'None'
     id = request.args.get('id', None)
+    if id is None:
+        return render_template('accounts/req_reset.html', msg='Link tidak valid')
     user = Users.query.filter_by(email=email).first()
     if user:
         if user.id == int(id):
             return render_template('accounts/reset.html', email=email)
         else:
-            return render_template('accounts/reset.html', msg='Link tidak valid')
+            return render_template('accounts/req_reset.html', msg='Link tidak valid')
     else:
         return render_template('accounts/reset.html', msg='Email tidak terdaftar')
-    return render_template('accounts/reset.html', email=email, msg='Silahkan ajukan permintaan ulang password pada halaman login')
+    return render_template('accounts/req_reset.html', msg='Silahkan ajukan permintaan ganti password')
 
 @blueprint.route('/req_reset', methods=['GET', 'POST'])
 def req_reset():
