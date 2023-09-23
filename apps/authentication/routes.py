@@ -194,7 +194,7 @@ def gantips():
         password = hash_pass(password)
         user.password = password
         db.session.commit()
-        return redirect('/login')
+        return redirect('/login', msg='Password berhasil diganti. Silahkan login.')
     else:
         return render_template('accounts/req_reset.html')
 
