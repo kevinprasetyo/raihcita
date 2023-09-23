@@ -29,7 +29,7 @@ endblock %} {% block content %}
           class="btn btn-primary shadow-2 mb-4"
           >Masuk</a
         >
-        {% else %} {% endif %}
+        {% else %}
 
         <form role="form" method="post" action="">
           {{ form.hidden_tag() }}
@@ -67,6 +67,7 @@ endblock %} {% block content %}
             >Permintaan ganti password</a
           >
         </p>
+        {% endif %}
       </div>
     </div>
   </div>
