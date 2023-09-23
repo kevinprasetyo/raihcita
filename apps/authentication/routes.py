@@ -151,6 +151,40 @@ def req_reset():
             return render_template('accounts/req_reset.html', form=req_form, msg='Email tidak terdaftar')
     return render_template('accounts/req_reset.html', form=req_form)
 
+@blueprint.route('/reset_g', methods=['GET', 'POST'])
+def reset_g():
+    if ("email" in request.args) and ("id" in request.args):
+        email = request.args.get('email', None)
+        user = Users.query.filter_by(email=email).first() 
+        id = request.args.get('id', None)
+        if (id is None) or (email is None):
+            req_form = ResetRequestForm(request.form)
+            return render_template('accounts/req_reset.html', form=req_form, msg='Link tidak valid')
+        elif user:
+            if user.id == int(id):
+                return render_template('accounts/reset.html', email=email)
+            else:
+                req_form = ResetRequestForm(request.form)
+                return render_template('accounts/req_reset_g.html', form=req_form, msg='Link tidak valid')
+        else:
+            req_form = ResetRequestForm(request.form)
+            return render_template('accounts/reset_g.html', form=req_form, msg='Email tidak terdaftar')
+    req_form = ResetRequestForm(request.form)
+    return render_template('accounts/req_reset_g.html', form=req_form, msg='Silahkan ajukan permintaan ganti password')
+
+@blueprint.route('/req_reset_g', methods=['GET', 'POST'])
+def req_reset_g():
+    req_form = ResetRequestForm(request.form)
+    if 'req_reset' in request.form:
+        email = request.form['email']
+        user = Users.query.filter_by(email=email).first()
+        if user:
+            id = user.id
+            return redirect(f'https://info.ergocust.com/?email={email}&id={id}')
+        else:
+            return render_template('accounts/req_reset_g.html', form=req_form, msg='Email tidak terdaftar')
+    return render_template('accounts/req_reset_g.html', form=req_form)
+
 @blueprint.route('/gantips', methods=['GET', 'POST'])
 def gantips():
     if request.method == 'POST':
@@ -254,9 +288,88 @@ def register():
                                msg='Akun berhasil dibuat. Silahkan masuk',
                                success=True,
                                form=create_account_form)
+    if not current_user.is_authenticated:
+        return render_template('accounts/register.html',
+                               form=create_account_form)
+    return redirect(url_for('home_blueprint.index'))
 
-    else:
-        return render_template('accounts/register.html', form=create_account_form)
+@blueprint.route('/masuk', methods=['GET', 'POST'])
+def masuk():
+    login_form = LoginForm(request.form)
+    if 'login' in request.form:
+
+        # read form data
+        # we can have here username OR email
+        user_id = request.form['username']
+        password = request.form['password']
+
+        # Locate user
+        user = Users.find_by_username(user_id)
+
+        # if user not found
+        if not user:
+
+            user = Users.find_by_email(user_id)
+
+            if not user:
+                return render_template('accounts/masuk.html',
+                                       msg='Username atau Email tidak diketahui',
+                                       form=login_form)
+
+        # Check the password
+        if verify_pass(password, user.password):
+
+            login_user(user)
+            return redirect(url_for('home_blueprint.index'))
+
+        # Something (user or pass) is not ok
+        return render_template('accounts/masuk.html',
+                               msg='Username atau password salah',
+                               form=login_form)
+
+    if not current_user.is_authenticated:
+        return render_template('accounts/masuk.html',
+                               form=login_form)
+    return redirect(url_for('home_blueprint.index'))
+
+
+@blueprint.route('/daftar', methods=['GET', 'POST'])
+def daftar():
+    create_account_form = CreateAccountForm(request.form)
+    if 'register' in request.form:
+
+        username = request.form['username']
+        email = request.form['email']
+
+        # Check usename exists
+        user = Users.query.filter_by(username=username).first()
+        if user:
+            return render_template('accounts/daftar.html',
+                                   msg='Username sudah terdaftar',
+                                   success=False,
+                                   form=create_account_form)
+
+        # Check email exists
+        user = Users.query.filter_by(email=email).first()
+        if user:
+            return render_template('accounts/daftar.html',
+                                   msg='Email sudah terdaftar',
+                                   success=False,
+                                   form=create_account_form)
+
+        # else we can create the user
+        user = Users(**request.form)
+        db.session.add(user)
+        db.session.commit()
+
+        return render_template('accounts/daftar.html',
+                               msg='Akun berhasil dibuat. Silahkan masuk',
+                               success=True,
+                               form=create_account_form)
+    if not current_user.is_authenticated:
+        return render_template('accounts/daftar.html',
+                               form=create_account_form)
+    return redirect(url_for('home_blueprint.index'))
 
 
 @blueprint.route('/logout')

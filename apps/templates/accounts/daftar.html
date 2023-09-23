@@ -25,7 +25,7 @@ endblock %} {% block content %}
         <!-- Hide the form on success -->
         {% if success %}
         <a
-          href="{{ url_for('authentication_blueprint.login') }}"
+          href="{{ url_for('authentication_blueprint.masuk') }}"
           class="btn btn-primary shadow-2 mb-4"
           >Masuk</a
         >
@@ -59,14 +59,23 @@ endblock %} {% block content %}
 
         <p class="mb-0 text-muted">
           Sudah punya akun?
-          <a href="{{ url_for('authentication_blueprint.login') }}">Masuk</a>
+          <a href="{{ url_for('authentication_blueprint.masuk') }}">Masuk</a>
         </p>
         <p class="mb-0 text-muted">
           Lupa password?
-          <a href="{{ url_for('authentication_blueprint.req_reset') }}"
+          <a href="{{ url_for('authentication_blueprint.req_reset_g') }}"
             >Permintaan ganti password</a
           >
         </p>
+        <br />
+        <p>atau</p>
+        <a href="/google">
+          <img
+            src="{{ config.ASSETS_ROOT }}/images/google.png"
+            alt="Login dengan Google"
+            class="img-fluid"
+            style="width: 200px"
+        /></a>
       </div>
     </div>
   </div>
