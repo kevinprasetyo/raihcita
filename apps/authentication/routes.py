@@ -249,10 +249,12 @@ def login():
                                msg='Username atau password salah',
                                form=login_form)
 
-    if not current_user.is_authenticated:
+    elif current_user.is_authenticated:
+        return redirect(url_for('home_blueprint.index'))
+    else:
         return render_template('accounts/login.html',
                                form=login_form)
-    return redirect(url_for('home_blueprint.index'))
+        
 
 
 @blueprint.route('/register', methods=['GET', 'POST'])
@@ -288,10 +290,12 @@ def register():
                                msg='Akun berhasil dibuat. Silahkan masuk',
                                success=True,
                                form=create_account_form)
-    if not current_user.is_authenticated:
+    elif current_user.is_authenticated:
+        return redirect(url_for('home_blueprint.index'))
+    else:
         return render_template('accounts/register.html',
                                form=create_account_form)
-    return redirect(url_for('home_blueprint.index'))
+    
 
 @blueprint.route('/masuk', methods=['GET', 'POST'])
 def masuk():
