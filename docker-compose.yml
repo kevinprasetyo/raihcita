@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   appseed-app:
-    container_name: ergocust
+    container_name: raihcita
     restart: always
     build: .
     networks:

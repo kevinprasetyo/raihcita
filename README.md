@@ -1,7 +1,7 @@
 > 👉 **Step 1**
 
 ```bash
-$ git clone https://github.com/kevinprasetyo/ergocust.git
+$ git clone https://github.com/kevinprasetyo/raihcita.git
 $ cd ergocust
 ```
 
