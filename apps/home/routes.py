@@ -8,7 +8,6 @@ from apps import db
 
 
 @blueprint.route('/index')
-@login_required
 def index():
     return render_template('home/index.html', segment='index')
 
@@ -173,13 +172,13 @@ def edit(id):
         return redirect(f'/jadwal?email={edit.email}')
     return render_template('home/edit_konsultasi.html', segment='edit_konsultasi', edit=edit)
 
+
 @blueprint.route('/privasi')
 def privasi():
     return render_template('home/privasi.html', segment='privasi')
 
 
 @blueprint.route('/<template>')
-@login_required
 def route_template(template):
 
     try:
