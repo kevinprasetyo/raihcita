@@ -1,18 +1,42 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Join Our Raih Cita Team</title>
-    <meta charset="UTF-8" />
-    <meta
+{% extends "layouts/base-fullscreen.html" %} {% block title %} Program Raih
+TOEFL {% endblock %} {% block meta %}
+<meta
       http-equiv="refresh"
       content="3; URL=https://forms.gle/g3FacgjAQ7DVYEsJ7"
     />
-  </head>
-  <body>
-    <p>
-      This page has been moved. If you are not redirected within 3 seconds,
-      click <a href="https://forms.gle/g3FacgjAQ7DVYEsJ7">here</a> to go to the
-      Google Form.
-    </p>
-  </body>
-</html>
+
+{% endblock %} {% block content %}
+
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <div class="auth-bg">
+      <span class="r"></span>
+      <span class="r s"></span>
+      <span class="r s"></span>
+      <span class="r"></span>
+    </div>
+    <div class="card">
+      <div class="card-body text-center">
+        <div class="mb-4">
+          <i class="feather x-circle"></i>
+        </div>
+        <h3 class="mb-4">Wait a moment...</h3>
+
+        <br />
+
+        <span class="mb-0 text-muted">
+          We're redirecting you to Join . Not Working?
+          <a
+            href="https://forms.gle/g3FacgjAQ7DVYEsJ7"
+            >Click Here</a
+          >
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+
+
