@@ -1,74 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>
-        {% block title %}{% endblock %} | Asesmen Ergonomi
-    </title>
+  <head>
+    <title>{% block title %}{% endblock %} | Raih Cita</title>
     <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 10]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <!-- Meta -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"
+    />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="ErgoCust: Aplikasi Asesmen dan Konsultasi Ergonomi" />
-    <meta name="keywords" content="ergocust, asesmen ergonomi, ergonomi, konsultasi, konsultasi ergonomi, asesmen" />
-    <meta name="author" content="Ergocust" />
+    <meta
+      name="description"
+      content="Raih Cita, RaihCita-mu sekarang untuk meraih skor TOEFL dan IELTS impian"
+    />
+    <meta
+      name="keywords"
+      content="raihcita, raih cita, raih cita, toefl, ielts, toefl gratis, ielts gratis, toefl murah, ielts murah, toefl online, ielts online"
+    />
+    <meta name="author" content="Raih Cita" />
 
     <!-- Favicon icon -->
-    <link rel="icon" href="{{ config.ASSETS_ROOT }}/images/favicon.ico" type="image/x-icon">
+    <link
+      rel="icon"
+      href="{{ config.ASSETS_ROOT }}/images/favicon.ico"
+      type="image/x-icon"
+    />
     <!-- fontawesome icon -->
-    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/fonts/fontawesome/css/fontawesome-all.min.css">
+    <link
+      rel="stylesheet"
+      href="{{ config.ASSETS_ROOT }}/fonts/fontawesome/css/fontawesome-all.min.css"
+    />
     <!-- animation css -->
-    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/plugins/animation/css/animate.min.css">
+    <link
+      rel="stylesheet"
+      href="{{ config.ASSETS_ROOT }}/plugins/animation/css/animate.min.css"
+    />
     <!-- vendor css -->
-    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/style.css">
+    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/style.css" />
     <!-- dark mode css -->
-    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/dark.css">
-
+    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/dark.css" />
 
     <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "iv3qyy1ayi");
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "iv3qyy1ayi");
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2EB69Y11ES"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-2EB69Y11ES"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag('config', 'G-2EB69Y11ES');
+      gtag("config", "G-2EB69Y11ES");
     </script>
 
     <!-- Specific CSS goes HERE -->
     {% block stylesheets %}{% endblock stylesheets %}
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     {% block content %}{% endblock content %}
 
     <!-- Enable the dark mode -->
     <label class="d-none">
-        <i class="icon feather icon-sun" id="theme-indicator"></i>
-        <input type="checkbox" id="theme-switch" class="d-none">
+      <i class="icon feather icon-sun" id="theme-indicator"></i>
+      <input type="checkbox" id="theme-switch" class="d-none" />
     </label>
 
     {% include 'includes/scripts.html' %}
 
     <!-- Specific Page JS goes HERE  -->
     {% block javascripts %}{% endblock javascripts %}
-
-</body>
-
+  </body>
 </html>
