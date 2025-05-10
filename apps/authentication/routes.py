@@ -146,7 +146,7 @@ def req_reset():
         user = Users.query.filter_by(email=email).first()
         if user:
             id = user.id
-            return redirect(f'https://info.ergocust.com/?email={email}&id={id}')
+            return redirect(f'https://info.raihcita.com/?email={email}&id={id}')
         else:
             return render_template('accounts/req_reset.html', form=req_form, msg='Email tidak terdaftar')
     return render_template('accounts/req_reset.html', form=req_form)
@@ -180,7 +180,7 @@ def req_reset_g():
         user = Users.query.filter_by(email=email).first()
         if user:
             id = user.id
-            return redirect(f'https://info.ergocust.com/?email={email}&id={id}')
+            return redirect(f'https://info.raihcita.com/?email={email}&id={id}')
         else:
             return render_template('accounts/req_reset_g.html', form=req_form, msg='Email tidak terdaftar')
     return render_template('accounts/req_reset_g.html', form=req_form)

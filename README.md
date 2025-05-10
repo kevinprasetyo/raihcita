@@ -2,7 +2,7 @@
 
 ```bash
 $ git clone https://github.com/kevinprasetyo/raihcita.git
-$ cd ergocust
+$ cd raihcita
 ```
 
 <br />
@@ -36,8 +36,8 @@ The meaning of each variable can be found below:
 > Download the code
 
 ```bash
-$ git clone https://github.com/kevinprasetyo/ergocust.git
-$ cd ergocust
+$ git clone https://github.com/kevinprasetyo/raihcita.git
+$ cd raihcita
 ```
 
 <br />

@@ -1,0 +1,537 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} TOEFL Simulation Test {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<style>
+
+</style>
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">TOEFL Simulation Test</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="javascript:">TOEFL Simulation Test</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    {% for message in get_flashed_messages() %}
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="card-header">
+                                        <h5>Section 1: Listening Comprehension</h5>
+                                    </div>
+                                    <audio controls autoplay>
+  <source src="{{ config.ASSETS_ROOT }}/audio/toefl.ogg" type="audio/ogg">
+  <source src="{{ config.ASSETS_ROOT }}/audio/toefl.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+                                    <div class="card-body">
+                                        <h5>Informasi Pekerjaan</h5>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <form role="form" method="post" action="/snisub">
+                                                    <div class="form-group">
+                                                        <label>Perusahaan</label>
+                                                        <input type="text" class="form-control" name="perusahaan"
+                                                            id="perusahaan" placeholder="Perusahaan (optional)">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Nama</label>
+                                                        <input type="text" class="form-control" name="nama" id="nama"
+                                                            placeholder="Nama (opsional)">
+                                                    </div>
+                                            </div>
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label>Posisi/jabatan</label>
+                                                    <input type="text" class="form-control" name="posisi" id="posisi"
+                                                        placeholder="Posisi/jabatan (optional)">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control" name="email" id="email" {%
+                                                        if current_user.email %} readonly
+                                                        value="{{ current_user.email }}" {% endif %}>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5 class="mt-5">Kepala / Leher</h5>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                <img src="{{ config.ASSETS_ROOT }}/images/sni/1.png" alt="Kepala mendongak atau menunduk saat bekerja di meja" class="img-fluid" width="360px"><br>
+
+                                                <label>1. Kepala mendongak atau menunduk saat bekerja di meja</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="1" name="1" value="1a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="1">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="1b" name="1" value="1b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="1b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/2.png" alt="2. Leher memuntir ke samping saat bekerja" class="img-fluid" width="360px"><br>
+                                                <label>2. Leher memuntir ke samping saat bekerja</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="2" name="2" value="2a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="2">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="2b" name="2" value="2b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="2b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/3.png" alt="3. Leher tertekuk ke samping saat bekerja" class="img-fluid" width="360px"><br>
+                                                <label>3. Leher tertekuk ke samping saat bekerja</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="3" name="3" value="3a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="3">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="3b" name="3" value="3b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="3b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/4.png" alt="4. Kepala tidak sejajar dengan tulang belakang" class="img-fluid" width="360px"><br>
+                                                <label>4. Kepala tidak sejajar dengan tulang belakang</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="4" name="4" value="4a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="4">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="4b" name="4" value="4b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="4b">Tidak</label>
+                                                </div>
+                                                <br>
+                                            </div>
+                                        </div>
+
+                                        <h5 class="mt-5">Bahu</h5>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/5.png" alt="5. Meraih ke samping atau ke depan saat menggunakan mouse" class="img-fluid" width="360px"><br>
+                                                <label>5. Meraih ke samping atau ke depan saat menggunakan mouse (siku
+                                                    menjauhi bagian samping tubuh)</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="5" name="5" value="5a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="5">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="5b" name="5" value="5b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="5b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/6.png" alt="6. Lengan tidak tertopang dengan baik saat menggunakan
+                                                keyboard" class="img-fluid" width="360px"><br>
+                                                <label>6. Lengan tidak tertopang dengan baik saat menggunakan
+                                                    keyboard</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="6" name="6" value="6a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="6">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="6b" name="6" value="6b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="6b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+
+                                            </div>
+                                        </div>
+
+                                        <h5 class="mt-5">Pergelangan Tangan</h5>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/7.png" alt="7. Pergelangan tangan tidak lurus (netral) saat mengetik" class="img-fluid" width="360px"><br>
+                                                <label>7. Pergelangan tangan tidak lurus (netral) saat mengetik</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="7" name="7" value="7a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="7">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="7b" name="7" value="7b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="7b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/8.png" alt="8. Pergelangan tangan tertekuk ke samping saat menggunakan mouse
+                                                atau keyboard" class="img-fluid" width="360px"><br>
+                                                <label>8. Pergelangan tangan tertekuk ke samping saat menggunakan mouse
+                                                    atau keyboard</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="8" name="8" value="8a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="8">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="8b" name="8" value="8b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="8b">Tidak</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <h5 class="mt-5">Tekanan langsung pada bagian tubuh</h5>
+                                        <hr>
+                                        <img src="{{ config.ASSETS_ROOT }}/images/sni/9.png" alt="9. Kulit tertekan ke benda yang tajam/keras. Misal: tangan disandarkan ke
+                                        permukaan/ujung yang tajam" class="img-fluid" width="360px"><br>
+                                        <label>9. Kulit tertekan ke benda yang tajam/keras. Misal: tangan disandarkan ke
+                                            permukaan/ujung yang tajam</label>
+                                        <br>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="9" name="9" value="9a" class="custom-control-input">
+                                            <label class="custom-control-label" for="9">Ya</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="9b" name="9" value="9b"
+                                                class="custom-control-input">
+                                            <label class="custom-control-label" for="9b">Tidak</label>
+                                        </div>
+
+                                        <h5 class="mt-5">Tulang Belakang</h5>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/10.png" alt="10. Terdapat celah antara tulang belakang dan sandaran
+                                                punggung" class="img-fluid" width="360px"><br>
+                                                <label>10. Terdapat celah antara tulang belakang dan sandaran
+                                                    punggung</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="10" name="10" value="10a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="10">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="10b" name="10" value="10b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="10b">Tidak</label>
+                                                </div>
+                                                <br><br>
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/11.png" alt="11. Tidak ada ruang untuk kaki yang cukup di bawah meja" class="img-fluid" width="360px"><br>
+                                                <label>11. Tidak ada ruang untuk kaki yang cukup di bawah meja</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="11" name="11" value="11a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="11">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="11b" name="11" value="11b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="11b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/12.png" alt="12. Membungkuk yang berulang. Misal: saat mengarsipkan
+                                                dokumen" class="img-fluid" width="360px"><br>
+                                                <label>12. Membungkuk yang berulang. Misal: saat mengarsipkan
+                                                    dokumen</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="12" name="12" value="12a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="12">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="12b" name="12" value="12b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="12b">Tidak</label>
+                                                </div>
+                                                <br><br>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/13.png" alt="13. Pemuntiran torso (batang tubuh). Misal: meraih ke belakang
+                                                atau ke samping badan" class="img-fluid" width="360px"><br>
+                                                <label>13. Pemuntiran torso (batang tubuh). Misal: meraih ke belakang
+                                                    atau ke samping badan</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="13" name="13" value="13a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="13">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="13b" name="13" value="13b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="13b">Tidak</label>
+                                                </div>
+                                                <br><br>
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/14.png" alt="14. Sandaran punggung pada kursi tidak menopang lekukan pada
+                                                punggung" class="img-fluid" width="360px"><br>
+                                                <label>14. Sandaran punggung pada kursi tidak menopang lekukan pada
+                                                    punggung</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="14" name="14" value="14a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="14">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="14b" name="14" value="14b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="14b">Tidak</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <h5 class="mt-5">Kaki</h5>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/15.png" alt="15. Kaki tidak lurus menginjak lantai" class="img-fluid" width="360px"><br>
+                                                <label>15. Kaki tidak lurus menginjak lantai</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="15" name="15" value="15a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="15">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="15b" name="15" value="15b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="15b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/16.png" alt="16. Ujung dudukan kursi terlalu menekan bagian belakang
+                                                lutut" class="img-fluid" width="360px"><br>
+                                                <label>16. Ujung dudukan kursi terlalu menekan bagian belakang
+                                                    lutut</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="16" name="16" value="16a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="16">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="16b" name="16" value="16b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="16b">Tidak</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <h5 class="mt-5">Pencahayaan</h5>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/17.png" alt="17. Layar lebih terang dari pada pencahayaan di sekitar" class="img-fluid" width="360px"><br>
+                                                <label>17. Layar lebih terang dari pada pencahayaan di sekitar</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="17" name="17" value="17a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="17">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="17b" name="17" value="17b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="17b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/18.png" alt="18. Pencahayaan yang terlalu terang" class="img-fluid" width="360px"><br>
+                                                <label>18. Pencahayaan yang terlalu terang</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="18" name="18" value="18a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="18">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="18b" name="18" value="18b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="18b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/19.png" alt="19. Terdapat kilatan cahaya/silau dari komputer" class="img-fluid" width="360px"><br>
+                                                <label>19. Terdapat kilatan cahaya/silau dari komputer</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="19" name="19" value="19a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="19">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="19b" name="19" value="19b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="19b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+                                            </div>
+                                        </div>
+
+
+                                        <h5 class="mt-5">Suhu</h5>
+                                        <hr>
+                                        <img src="{{ config.ASSETS_ROOT }}/images/sni/20.png" alt="20. Temperatur di luar rentang 20-24 derajat celsius (tergantung dari
+                                        musim dan kenyamanan pribadi)" class="img-fluid" width="360px"><br>
+                                        <label>20. Temperatur di luar rentang 20-24 derajat celsius (tergantung dari
+                                            musim dan kenyamanan pribadi)</label>
+                                        <br>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="20" name="20" value="20a"
+                                                class="custom-control-input">
+                                            <label class="custom-control-label" for="20">Ya</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="20b" name="20" value="20b"
+                                                class="custom-control-input">
+                                            <label class="custom-control-label" for="20b">Tidak</label>
+                                        </div>
+
+                                        <h5 class="mt-5">Praktik Ergonomi Umum</h5>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/21.png" alt="21. Tidak mengganti pengaturan kursi dalam sehari" class="img-fluid" width="360px"><br>
+                                                <label>21. Tidak mengganti pengaturan kursi dalam sehari</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="21" name="21" value="21a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="21">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="21b" name="21" value="21b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="21b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/22.png" alt="22. Duduk di kursi lebih dari satu jam tanpa berdiri" class="img-fluid" width="360px"><br>
+                                                <label>22. Duduk di kursi lebih dari satu jam tanpa berdiri</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="22" name="22" value="22a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="22">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="22b" name="22" value="22b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="22b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/sni/23.PNG" alt="23. Postur kerja secara keseluruhan terlihat seperti gambar" class="img-fluid" width="360px"><br>
+                                                <label>23. Postur kerja secara keseluruhan terlihat seperti gambar di
+                                                    bagian atas dibandingkan gambar di bagian bawah.
+                                                    Tulang belakang melengkung dalam bentuk C, bukan bentuk S.</label>
+                                                <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="23" name="23" value="23a"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="23">Ya</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="23b" name="23" value="23b"
+                                                        class="custom-control-input">
+                                                    <label class="custom-control-label" for="23b">Tidak</label>
+                                                </div>
+                                                <br> <br>
+                                            </div>
+                                        </div>
+
+                                        <hr>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                                <!-- Input group -->
+
+
+                            </div>
+                        </div>
+                        <!-- [ Main Content ] end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+{% endblock javascripts %}

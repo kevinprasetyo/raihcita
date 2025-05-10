@@ -25,11 +25,11 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     DB_ENGINE   = 'postgresql'
-    DB_USERNAME = 'ergocust'
+    DB_USERNAME = 'raihcita'
     DB_PASS     = 'PybewFaTEXuUD10qsBwgUresIvnxfhoQ'
     DB_HOST     = 'dpg-ck3uf4j6fquc73f2kj3g-a'
     DB_PORT     = '5432'
-    DB_NAME     = 'ergocust'
+    DB_NAME     = 'raihcita'
 
     USE_SQLITE  = True 
 
@@ -39,9 +39,9 @@ class Config(object):
         try:
             
             # Relational DBMS: PSQL, MySql
-            SQLALCHEMY_DATABASE_URI = "postgresql://ergocust:PybewFaTEXuUD10qsBwgUresIvnxfhoQ@dpg-ck3uf4j6fquc73f2kj3g-a/ergocust"
+            SQLALCHEMY_DATABASE_URI = "postgresql://raihcita:PybewFaTEXuUD10qsBwgUresIvnxfhoQ@dpg-ck3uf4j6fquc73f2kj3g-a/raihcita"
 
-            # SQLALCHEMY_DATABASE_URI = "postgresql://ergocust:PybewFaTEXuUD10qsBwgUresIvnxfhoQ@dpg-ck3uf4j6fquc73f2kj3g-a.frankfurt-postgres.render.com/ergocust"
+            # SQLALCHEMY_DATABASE_URI = "postgresql://raihcita:PybewFaTEXuUD10qsBwgUresIvnxfhoQ@dpg-ck3uf4j6fquc73f2kj3g-a.frankfurt-postgres.render.com/raihcita"
 
             USE_SQLITE  = False
 
