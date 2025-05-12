@@ -328,5 +328,225 @@
             "(D) Borrow a lamp from a colleague"
         ],
         "answer": 0
+    },
+    {
+        "id": 31,
+        "question": "31. What is the conversation mainly about?",
+        "choices": [
+            "(A) A concert the woman attended",
+            "(B) The man's collection of CDs",
+            "(C) A new software program",
+            "(D) An instrument the woman is learning to play"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 32,
+        "question": "32. Why did the woman apologize to the man?",
+        "choices": [
+            "(A) She lost one of his CDs.",
+            "(B) She did not invite him to the concert.",
+            "(C) She missed class.",
+            "(D) She forgot about a meeting."
+        ],
+        "answer": 3
+    },
+    {
+        "id": 33,
+        "question": "33. What is unusual about the baryton?",
+        "choices": [
+            "(A) It does not need to be tuned.",
+            "(B) It has two sets of strings.",
+            "(C) Its pitch is exceptionally high.",
+            "(D) It is played with the hands and feet."
+        ],
+        "answer": 1
+    },
+    {
+        "id": 34,
+        "question": "34. What does the woman want to borrow from the man?",
+        "choices": [
+            "(A) A baryton",
+            "(B) Some CDs",
+            "(C) A computer program",
+            "(D) His class notes"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 35,
+        "question": "35. What are the speakers mainly discussing?",
+        "choices": [
+            "(A) A change in sea turtle behavior",
+            "(B) A form of light pollution",
+            "(C) Various ways different animals perceive light",
+            "(D) Ecological building designs"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 36,
+        "question": "36. What does the professor imply about polarized light that occurs in nature?",
+        "choices": [
+            "(A) It is weakest on water surfaces.",
+            "(B) It makes it difficult for animals to see.",
+            "(C) It is needed by many animals to survive.",
+            "(D) It is similar to light from streetlights."
+        ],
+        "answer": 2
+    },
+    {
+        "id": 37,
+        "question": "37. According to the professor, how do glass buildings affect wildlife?",
+        "choices": [
+            "(A) They block animals' view in their search of food.",
+            "(B) They may mislead animals in their search for water.",
+            "(C) Most animals cannot tolerate their light reflections.",
+            "(D) Many migrating birds fly into them."
+        ],
+        "answer": 3
+    },
+    {
+        "id": 38,
+        "question": "38. What does the professor mainly discuss?",
+        "choices": [
+            "(A) Differences between longitudinal studies and cross-sectional studies",
+            "(B) Advantages of cohort studies over other research approaches",
+            "(C) Differences between child psychology and adult psychology",
+            "(D) Recent improvements in research methodologies"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 39,
+        "question": "39. What question is investigated by the research studies that the professor describes?",
+        "choices": [
+            "(A) Whether shyness is a learned behavior",
+            "(B) Whether shyness can affect children's learning",
+            "(C) Whether many different factors contribute to shyness",
+            "(D) Whether shyness in children is related to age"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 40,
+        "question": "40. What is one of the problems with longitudinal studies that the professor mentions?",
+        "choices": [
+            "(A) Their results are difficult to analyze.",
+            "(B) They can be used only in studies of young children.",
+            "(C) Participants may not be available for the entire study.",
+            "(D) Researchers do not consider the results of such studies reliable."
+        ],
+        "answer": 2
+    },
+    {
+        "id": 41,
+        "question": "41. How would a cross-sectional study observe children?",
+        "choices": [
+            "(A) By observing one group of children as they grow",
+            "(B) By observing groups of different-aged children at one point in time",
+            "(C) By comparing children's behavior at home to their behavior at school",
+            "(D) By comparing children's behavior to their parents' behavior"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 42,
+        "question": "42. What does the professor mainly discuss?",
+        "choices": [
+            "(A) Ways in which human activities affect aquifers",
+            "(B) The formation Of Earth's gravitational field",
+            "(C) The impact of Earth's gravitational anomalies on satellites",
+            "(D) Variations in Earth's gravitational field"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 43,
+        "question": "43. What does the professor emphasize about the instruments on the satellites he mentions?",
+        "choices": [
+            "(A) They were recently replaced.",
+            "(B) They are extremely precise.",
+            "(C) Their settings are changed seasonally.",
+            "(D) Their data are used to make new maps on a daily basis."
+        ],
+        "answer": 1
+    },
+    {
+        "id": 44,
+        "question": "44. According to the professor, where is Earth's gravitational force the strongest?",
+        "choices": [
+            "(A) At sea level",
+            "(B) At the equator",
+            "(C) On mountaintops",
+            "(D) Over aquifers"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 45,
+        "question": "45. What do gravity anomaly maps indicate about California's agricultural region?",
+        "choices": [
+            "(A) Water levels in aquifers there are declining.",
+            "(B) The region has more aquifers than previously thought.",
+            "(C) Water-conservation efforts there are effective.",
+            "(D) The region used to be covered by glaciers."
+        ],
+        "answer": 0
+    },
+    {
+        "id": 46,
+        "question": "46. What does the professor say about climate change?",
+        "choices": [
+            "(A) It is already intensifying droughts in California.",
+            "(B) Its effects are more significant in areas with stronger gravity.",
+            "(C) It can cause measurable changes in gravity in certain areas.",
+            "(D) Its impact on sea levels has not been measured."
+        ],
+        "answer": 2
+    },
+    {
+        "id": 47,
+        "question": "47. What is the talk mainly about?",
+        "choices": [
+            "(A) How people in rural areas preserved food",
+            "(B) The construction of icehouses",
+            "(C) An important industry in the nineteenth century",
+            "(D) How improvements in transportation affected industry"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 48,
+        "question": "48. What does the speaker imply about springhouses?",
+        "choices": [
+            "(A) Only wealthy families had them.",
+            "(B) They were important to the ice industry.",
+            "(C) They were built mostly on the east coast.",
+            "(D) They are no longer in common use."
+        ],
+        "answer": 3
+    },
+    {
+        "id": 49,
+        "question": "49. According to the speaker, what made the ice industry obsolete?",
+        "choices": [
+            "(A) Modern technology for the kitchen",
+            "(B) Improved transportation systems",
+            "(C) Industrial use of streams and rivers",
+            "(D) Increased temperatures in many areas"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 50,
+        "question": "50. What was the purpose of an icebox?",
+        "choices": [
+            "(A) To keep train engines cool",
+            "(B) To preserve perishable food",
+            "(C) To store ice while it was being transported",
+            "(D) To lift blocks of ice from frozen lakes and ponds"
+        ],
+        "answer": 1
     }
 ]
