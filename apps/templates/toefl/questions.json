@@ -1,24 +1,332 @@
 [
     {
         "id": 1,
-        "question": "What does the word 'ubiquitous' mean?",
+        "question": "1. What does the man mean?",
         "choices": [
-            "Rare",
-            "Expensive",
-            "Everywhere",
-            "Complicated"
+            "(A) He would like to take a break.",
+            "(B) He thinks the library will close soon.",
+            "(C) He does not want to stop working.",
+            "(D) He does not like coffee."
+        ],
+        "answer": 0
+    },
+    {
+        "id": 2,
+        "question": "2. What does the woman imply?",
+        "choices": [
+            "(A) Mary is not going to the concert.",
+            "(B) Mary does not know about the concert.",
+            "(C) The man should call Mary.",
+            "(D) The man should go to the concert without Mary."
         ],
         "answer": 2
     },
     {
-        "id": 2,
-        "question": "Choose the correct sentence.",
+        "id": 3,
+        "question": "3. What can be inferred about the man?",
         "choices": [
-            "She don't like apples.",
-            "She doesn't likes apples.",
-            "She doesn't like apples.",
-            "She not like apples."
+            "(A) He bought a new jacket.",
+            "(B) He used to have longer hair.",
+            "(C) He does not usually wear glasses.",
+            "(D)He wants to introduce the woman to his friends."
+        ],
+        "answer": 1
+    },
+    {
+        "id": 4,
+        "question": "4. What does the woman mean?",
+        "choices": [
+            "(A) She did not know about the library's summer schedule.",
+            "(B) The library has only a few employees in the summer.",
+            "(C) The library is closed in the summer.",
+            "(D) Not many people use the library in the summer."
+        ],
+        "answer": 3
+    },
+    {
+        "id": 5,
+        "question": "5. What does the man mean?",
+        "choices": [
+            "(A) He read an article about Professor Monroe's research.",
+            "(B) He does not know Professor Monroe.",
+            "(C) Professor Monroe probably will talk to the woman.",
+            "(D) Professor Monroe does not like giving interviews."
         ],
         "answer": 2
+    },
+    {
+        "id": 6,
+        "question": "6. What does the woman imply about the headphones?",
+        "choices": [
+            "(A) She expects the man to have them repaired.",
+            "(B) She is angry with the man for forgetting them.",
+            "(C) She does not know where they are.",
+            "(D) She would like the man to return them by tonight."
+        ],
+        "answer": 3
+    },
+    {
+        "id": 7,
+        "question": "7. What does the woman imply?",
+        "choices": [
+            "(A) She needs more time to get ready for the dinner.",
+            "(B) She thought the dinner was at another time.",
+            "(C) She forgot about the plans she made for dinner.",
+            "(D) She will not be able to go to dinner."
+        ],
+        "answer": 3
+    },
+    {
+        "id": 8,
+        "question": "8. What will the woman probably do next?",
+        "choices": [
+            "(A) Cash her paycheck",
+            "(B) Lend the man some money",
+            "(C) Pay the man back money she borrowed from him",
+            "(D) Help the man look for his wallet"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 9,
+        "question": "9. What does the man imply?",
+        "choices": [
+            "(A) He will help the woman prepare her speech.",
+            "(B) The woman should prepare her speech carefully.",
+            "(C) The woman is one of the best speakers in the class.",
+            "(D) The speech does not count toward the final grade for the course."
+        ],
+        "answer": 1
+    },
+    {
+        "id": 10,
+        "question": "10. What does the woman mean?",
+        "choices": [
+            "(A) She likes the view of the mountains in winter.",
+            "(B) She has never been in Montana.",
+            "(C) The man should take a winter vacation.",
+            "(D) The man would not enjoy living in Montana all year."
+        ],
+        "answer": 3
+    },
+    {
+        "id": 11,
+        "question": "11. What does the woman mean?",
+        "choices": [
+            "(A) She does not agree that it is a stressful time.",
+            "(B) She does not feel as calm as she seems.",
+            "(C) She admires the man's calmness.",
+            "(D) She will help the man to deal with his stress."
+        ],
+        "answer": 1
+    },
+    {
+        "id": 12,
+        "question": "12. What does the man imply?",
+        "choices": [
+            "(A) The woman can have his old phone.",
+            "(B) The woman should not buy the phone.",
+            "(C) The woman should buy the phone at a different store.",
+            "(D) The woman should wait for the phone to go on sale."
+        ],
+        "answer": 1
+    },
+    {
+        "id": 13,
+        "question": "13. What does the man imply?",
+        "choices": [
+            "(A) He went to the bookstore early.",
+            "(B) The line at the bookstore moves quickly.",
+            "(C) Books are cheaper at the bookstore than online.",
+            "(D) The woman does not have to wait in line at the bookstore."
+        ],
+        "answer": 3
+    },
+    {
+        "id": 14,
+        "question": "14. What does the woman imply the man should do?",
+        "choices": [
+            "(A) Accept the job offer",
+            "(B) Discuss the job offer with a friend",
+            "(C) Apply for a job that is not so far away",
+            "(D) Keep his current job"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 15,
+        "question": "15. What does the woman say about her brother?",
+        "choices": [
+            "(A) He is spending too much time with his friends.",
+            "(B) He was in an accident.",
+            "(C) He is looking for his friend.",
+            "(D) He had a disagreement with his friend."
+        ],
+        "answer": 3
+    },
+    {
+        "id": 16,
+        "question": "16. What can be inferred from the conversation?",
+        "choices": [
+            "(A) The man is in the wrong classroom.",
+            "(B) The man is sitting in the wrong seat.",
+            "(C) The man forgot to bring his textbook.",
+            "(D) The woman did not attend the first class."
+        ],
+        "answer": 1
+    },
+    {
+        "id": 17,
+        "question": "17. What does the woman mean?",
+        "choices": [
+            "(A) She had a difficult time finding a summer job.",
+            "(B) She never had a summer job before.",
+            "(C) She began to enjoy her job as she gained experience.",
+            "(D) Her job became more stressful as she learned more about it."
+        ],
+        "answer": 2
+    },
+    {
+        "id": 18,
+        "question": "18. What does the man imply?",
+        "choices": [
+            "(A) He does not know Peter.",
+            "(B) Peter does not usually eat lunch.",
+            "(C) Peter often behaves the way he did at lunch.",
+            "(D) The woman should invite Peter to lunch."
+        ],
+        "answer": 2
+    },
+    {
+        "id": 19,
+        "question": "19. What will the woman probably do?",
+        "choices": [
+            "(A) Lend the man an umbrella",
+            "(B) Go to the movie by herself",
+            "(C) Wait with the man until the rain stops",
+            "(D) Help the man find his umbrella"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 20,
+        "question": "20. What does the woman imply?",
+        "choices": [
+            "(A) She is planning to quit her job at the bookstore.",
+            "(B) She will have lunch with the man in the cafeteria.",
+            "(C) The man can save money by eating in the cafeteria.",
+            "(D) The man might be able to get a job in the cafeteria."
+        ],
+        "answer": 3
+    },
+    {
+        "id": 21,
+        "question": "21. What does the man mean?",
+        "choices": [
+            "(A) He spent a month in Mexico last year.",
+            "(B) He is ready to leave for Mexico.",
+            "(C) The woman should postpone her trip.",
+            "(D) The woman should apply for a passport soon."
+        ],
+        "answer": 3
+    },
+    {
+        "id": 22,
+        "question": "22. What will the man probably do?",
+        "choices": [
+            "(A) Finish his lab report before the next class",
+            "(B) Ask the professor for help with his lab report",
+            "(C) Ask the professor for a higher grade",
+            "(D) Speak to the professor about the grading system"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 23,
+        "question": "23. What does the woman imply about the bakery?",
+        "choices": [
+            "(A) It lost customers to another business.",
+            "(B) It has a new owner",
+            "(C) It opened only recently",
+            "(D) It stopped selling coffee."
+        ],
+        "answer": 0
+    },
+    {
+        "id": 24,
+        "question": "24. What does the man imply?",
+        "choices": [
+            "(A) He did not enjoy living in a small town.",
+            "(B) He is planning to visit his hometown soon.",
+            "(C) He and the woman are from the same hometown.",
+            "(D) He would like to visit the woman's hometown."
+        ],
+        "answer": 0
+    },
+    {
+        "id": 25,
+        "question": "25. What does the woman want to know?",
+        "choices": [
+            "(A) Whether the man wants money for his ticket",
+            "(B) Whether the man can see the play on a different date",
+            "(C) Whether the man needs more tickets for the play",
+            "(D) Whether the man has already given his ticket to someone else"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 26,
+        "question": "26. What does the woman mean?",
+        "choices": [
+            "(A) She recovered from a cold before the exam period started.",
+            "(B) She is glad she has managed to stay healthy.",
+            "(C) She is relieved she has already finished all her exams.",
+            "(D) She knows several people who are not feeling well."
+        ],
+        "answer": 1
+    },
+    {
+        "id": 27,
+        "question": "27. What does the man mean?",
+        "choices": [
+            "(A) It is too windy to go on a boat ride.",
+            "(B) The woman should take the bus.",
+            "(C) The sightseeing tour is worth taking.",
+            "(D) He is not familiar with the sightseeing tour."
+        ],
+        "answer": 2
+    },
+    {
+        "id": 28,
+        "question": "28. What does the man mean?",
+        "choices": [
+            "(A) He is pleased that so many people auditioned.",
+            "(B) More people would have come if the event had been better organized.",
+            "(C) The weather kept some people from participating.",
+            "(D) The snowstorm was not as severe as the weather report had predicted."
+        ],
+        "answer": 2
+    },
+    {
+        "id": 29,
+        "question": "29. What will the man probably do next Friday?",
+        "choices": [
+            "(A) Get a ride to the station with the woman",
+            "(B) Take the woman to the station",
+            "(C) Borrow the woman's car to go to the station",
+            "(D) Drive his car instead of taking the train"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 30,
+        "question": "30. What does the woman imply the man should do?",
+        "choices": [
+            "(A) Return the lamp to the store",
+            "(B) Have the lamp repaired",
+            "(C) Buy different lightbulbs",
+            "(D) Borrow a lamp from a colleague"
+        ],
+        "answer": 0
     }
 ]

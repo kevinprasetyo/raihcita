@@ -1,220 +1,173 @@
-{% extends "layouts/base.html" %}
-
-{% block title %} TOEFL Simulation Test {% endblock %}
+{% extends "layouts/base.html" %} {% block title %} TOEFL Simulation Test {%
+endblock %}
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}
-<style>
+<style></style>
 
-</style>
-
-{% endblock stylesheets %}
-
-{% block content %}
+{% endblock stylesheets %} {% block content %}
 
 <!-- [ Main Content ] start -->
 <div class="pcoded-main-container">
-    <div class="pcoded-wrapper">
-
-        <div class="pcoded-content">
-            <div class="pcoded-inner-content">
-                <!-- [ breadcrumb ] start -->
-                <div class="page-header">
-                    <div class="page-block">
-                        <div class="row align-items-center">
-                            <div class="col-md-12">
-                                <div class="page-header-title">
-                                    <h5 class="m-b-10">TOEFL Simulation Test</h5>
-                                </div>
-                                <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="javascript:">TOEFL Simulation Test</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+  <div class="pcoded-wrapper">
+    <div class="pcoded-content">
+      <div class="pcoded-inner-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+          <div class="page-block">
+            <div class="row align-items-center">
+              <div class="col-md-12">
+                <div class="page-header-title">
+                  <h5 class="m-b-10">TOEFL Simulation Test</h5>
                 </div>
-                <!-- [ breadcrumb ] end -->
-                <div class="main-body">
-                    <div class="page-wrapper">
-                        <!-- [ Main Content ] start -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="card">
-                                    {% for message in get_flashed_messages() %}
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        {{ message }}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    {% endfor %}
-                                    <div class="card-header">
-                                        <h5>Section 1: Listening Comprehension</h5>
-                                    </div>
-    <div class="card-body">
-                                    <audio controls autoplay>
-  <source src="{{ config.ASSETS_ROOT }}/audio/toefl.ogg" type="audio/ogg">
-  <source src="{{ config.ASSETS_ROOT }}/audio/toefl.mp3" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio>
-<p>In this section of the test, you will have an opportunity to demonstrate your ability to understand conversations and talks in English. There are 3 parts to this section, with special directions for each part. Answer all the questions on the basis of what is stated or implied by the speakers in this test.</p>
-                                
-                                        <h5>Part A</h5>
-                                        <hr>
-                                        <div class="row">
-
-                                            <div class="col-md-8">
-                                                <h7>Directions: In Part A, you'll hear short conversations between 2 people. After each conversation, you will hear a question about the conversation. The conversations and questions will not be repeated. After you hear a question, read the 4 possible answers in your test book and choose the best. Then, on your answer sheet, find the number of the question and fill in the space that corresponds to the letter of the answer you have chosen.
-                                                    <br><br>
-                                                </h7>
-                                                <h7>Here is an example: <br>
-On the recording, you hear:
-<br> <br>
-What does the man mean? <br><br>
-In your test book, you read:
-<br><br>
-(A) He does not like the painting either. <br>
-(B) He does not know how to paint. <br>
-(C) He does not have any paintings. <br>
-(D) He does not know what to do. <br> <br>
-You learn from the conversation that neither the man nor the woman likes the painting.
-The best answer to the question "What does the man mean?" is (A), "He does not like the
-painting either." Therefore, the correct choice is (A).
-
-</h7>
-<br><br>
-<h6>Now begin work on the question</h6>
-                                                <form role="form" method="post" action="/snisub">
-                                                    
-                                                    
-                                            </div>
-                                            
-                                        </div>
-                                      
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-md-8">
-             <br>
-
-                                                <label>{{ q1 }}</label>
-                                                <br>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="1" name="1" value="1a"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="1">(A) He would like to take a break.</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="1b" name="1" value="1b"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="1b">(B) He thinks the library will close soon.</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="1c" name="1" value="1c"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="1c">(C) He does not want to stop working.</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="1d" name="1" value="1d"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="1d">(D) He does not like coffee.</label>
-                                                </div>
-                                                <br> <br>
-                                                
-                                                <label>2. What does the woman imply?</label>
-                                                <br>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="2" name="2" value="2a"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="2">(A) Mary is not going to the concert.</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="2b" name="2" value="2b"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="2b">(B) Mary does not know about the concert.</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="2c" name="2" value="2c"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="2c">(C) The man should call Mary.</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="2d" name="2" value="2d"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="2d">(D) The man should go to the concert without Mary.</label>
-                                                </div>
-                                                <br> <br>
-                                                
-                                              <label>3. What can be inferred about the man?</label>
-                                                <br>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="3" name="3" value="3a"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="3">(A) He bought a new jacket.</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="3b" name="3" value="3b"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="3b">(B) He used to have longer hair.</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="3c" name="3" value="3c"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="3c">(C) He does not usually wear glasses.</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="3d" name="3" value="3d"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="3d">(D)He wants to introduce the woman to his friends.</label>
-                                                </div>
-                                                <br> <br>
-                                                
-                                            </div>
-                                        </div>
-
-                                        <h5 class="mt-5">Part B</h5>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                
-
-                                            </div>
-                                        </div>
-
-                                        <h5 class="mt-5">Part C</h5>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                
-
-                                            </div>
-                                        </div>
-
-                                       
-
-                                        <hr>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
-                                </div>
-                                <!-- Input group -->
-
-
-                            </div>
-                        </div>
-                        <!-- [ Main Content ] end -->
-                    </div>
-                </div>
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="/"><i class="feather icon-home"></i></a>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="javascript:">TOEFL Simulation Test</a>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </div>
         </div>
+        <!-- [ breadcrumb ] end -->
+        <div class="main-body">
+          <div class="page-wrapper">
+            <!-- [ Main Content ] start -->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card">
+                  {% for message in get_flashed_messages() %}
+                  <div
+                    class="alert alert-success alert-dismissible fade show"
+                    role="alert"
+                  >
+                    {{ message }}
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  {% endfor %}
+                  <div class="card-header">
+                    <h5>Section 1: Listening Comprehension</h5>
+                  </div>
+                  <div class="card-body">
+                    <audio controls autoplay>
+                      <source
+                        src="{{ config.ASSETS_ROOT }}/audio/toefl.ogg"
+                        type="audio/ogg"
+                      />
+                      <source
+                        src="{{ config.ASSETS_ROOT }}/audio/toefl.mp3"
+                        type="audio/mpeg"
+                      />
+                      Your browser does not support the audio element.
+                    </audio>
+                    <p>
+                      In this section of the test, you will have an opportunity
+                      to demonstrate your ability to understand conversations
+                      and talks in English. There are 3 parts to this section,
+                      with special directions for each part. Answer all the
+                      questions on the basis of what is stated or implied by the
+                      speakers in this test.
+                    </p>
 
-    </div>
+                    <h5>Part A</h5>
+                    <hr />
+                    <div class="row">
+                      <div class="col-md-8">
+                        <h7
+                          >Directions: In Part A, you'll hear short
+                          conversations between 2 people. After each
+                          conversation, you will hear a question about the
+                          conversation. The conversations and questions will not
+                          be repeated. After you hear a question, read the 4
+                          possible answers in your test book and choose the
+                          best. Then, on your answer sheet, find the number of
+                          the question and fill in the space that corresponds to
+                          the letter of the answer you have chosen. <br /><br />
+                        </h7>
+                        <h7
+                          >Here is an example: <br />
+                          On the recording, you hear:
+                          <br />
+                          <br />
+                          What does the man mean? <br /><br />
+                          In your test book, you read:
+                          <br /><br />
+                          (A) He does not like the painting either. <br />
+                          (B) He does not know how to paint. <br />
+                          (C) He does not have any paintings. <br />
+                          (D) He does not know what to do. <br />
+                          <br />
+                          You learn from the conversation that neither the man
+                          nor the woman likes the painting. The best answer to
+                          the question "What does the man mean?" is (A), "He
+                          does not like the painting either." Therefore, the
+                          correct choice is (A).
+                        </h7>
+                        <br /><br />
+                        <h6>Now begin work on the question</h6>
+                        <form role="form" method="POST" action="/hasil-toefl-listening">
+                          {% for q in questions %}
+                          </div>
 </div>
-<!-- [ Main Content ] end -->
+<hr>
+<div class="row">
+<div class="col-md-8">
+            
+                            <label>{{ q.question }}</label>
+                            {% for choice in q.choices %}
+                             <div class="custom-control custom-radio">
 
-{% endblock content %}
+                            <input
+                    
+                              type="radio"
+                              name="{{ q.id }}"
+                              value="{{ loop.index0 }}"
+ 
+                              id="{{ loop.index0 }}{{ q.id }}"
+                              class="custom-control-input"
+                          
+                            />
+                             <label class="custom-control-label" for="{{ loop.index0 }}{{ q.id }}">{{ choice }}</label>
+                            
+                            </div>
+                            {% endfor %}
+            
+                          <br />
+                          {% endfor %}
+                            </div>
+                                        </div>
+                                         
+                          <button type="submit" class="btn btn-primary">
+                            Submit Answers
+                          </button>
+                        </form>
+                      </div>
+                      <!-- Input group -->
+                    </div>
+                  </div>
+                  <!-- [ Main Content ] end -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [ Main Content ] end -->
 
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}
+      {% endblock content %}
 
-{% endblock javascripts %}
+      <!-- Specific Page JS goes HERE  -->
+      {% block javascripts %} {% endblock javascripts %}
+    </div>
+  </div>
+</div>

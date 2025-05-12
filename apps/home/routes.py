@@ -49,12 +49,32 @@ def submit():
 
 @blueprint.route('/toefl-listening')
 def toefllistening():
-    q1 = "1. What does the man mean?"
-    m1 = ["(A) He would like to take a break.",
-          "(B) He thinks the library will close soon.",
-          "(C) He does not want to stop working.",
-          "(D) He does not like coffee."]
-    return render_template('home/toefl-listening.html', q1=q1, m1=m1)
+    return render_template('home/toefl-listening.html', questions=QUESTIONS)
+
+
+@blueprint.route('/hasil-toefl-listening', methods=['POST'])
+def hasiltoefllistening():
+    user_answers = request.form
+    score = 0
+    results = []
+
+    for question in QUESTIONS:
+        qid = str(question['id'])
+        correct = question['answer']
+        user_answer = int(user_answers.get(qid, -1))
+
+        results.append({
+            'question': question['question'],
+            'choices': question['choices'],
+            'correct_answer': question['choices'][correct],
+            'your_answer': question['choices'][user_answer] if user_answer != -1 else "No answer",
+            'is_correct': user_answer == correct
+        })
+
+        if user_answer == correct:
+            score += 1
+
+    return render_template('home/hasil-toefl-listening.html', score=score, total=len(QUESTIONS), results=results)
 
 
 @blueprint.route('/profile', methods=['GET', 'POST'])
