@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "question": "What does the word 'ubiquitous' mean?",
+        "choices": [
+            "Rare",
+            "Expensive",
+            "Everywhere",
+            "Complicated"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 2,
+        "question": "Choose the correct sentence.",
+        "choices": [
+            "She don't like apples.",
+            "She doesn't likes apples.",
+            "She doesn't like apples.",
+            "She not like apples."
+        ],
+        "answer": 2
+    }
+]

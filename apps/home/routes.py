@@ -5,11 +5,56 @@ from jinja2 import TemplateNotFound
 from apps.home.models import Snisub, Janji, Profile
 from apps.authentication.models import Users
 from apps import db
+import json
 
 
 @blueprint.route('/index')
 def index():
     return render_template('home/index.html', segment='index')
+
+
+with open('apps/templates/toefl/questions.json') as f:
+    QUESTIONS = json.load(f)
+
+
+@blueprint.route('/quiz')
+def quiz():
+    return render_template('home/quiz.html', questions=QUESTIONS)
+
+
+@blueprint.route('/submit', methods=['POST'])
+def submit():
+    user_answers = request.form
+    score = 0
+    results = []
+
+    for question in QUESTIONS:
+        qid = str(question['id'])
+        correct = question['answer']
+        user_answer = int(user_answers.get(qid, -1))
+
+        results.append({
+            'question': question['question'],
+            'choices': question['choices'],
+            'correct_answer': question['choices'][correct],
+            'your_answer': question['choices'][user_answer] if user_answer != -1 else "No answer",
+            'is_correct': user_answer == correct
+        })
+
+        if user_answer == correct:
+            score += 1
+
+    return render_template('home/result.html', score=score, total=len(QUESTIONS), results=results)
+
+
+@blueprint.route('/toefl-listening')
+def toefllistening():
+    q1 = "1. What does the man mean?"
+    m1 = ["(A) He would like to take a break.",
+          "(B) He thinks the library will close soon.",
+          "(C) He does not want to stop working.",
+          "(D) He does not like coffee."]
+    return render_template('home/toefl-listening.html', q1=q1, m1=m1)
 
 
 @blueprint.route('/profile', methods=['GET', 'POST'])
