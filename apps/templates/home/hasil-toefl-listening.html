@@ -81,7 +81,15 @@
                         <tbody>
                           {% for r in results %}
                           <tr>
-                            <td><strong>{{ r.question }}</strong></td>
+                            <td
+                              style="
+                                word-break: break-word;
+                                white-space: normal;
+                                max-width: 500px;
+                              "
+                            >
+                              <strong>{{ r.question }}</strong>
+                            </td>
                             <td>
                               Your answer: {{ r.your_answer }}<br />
                               Correct answer: {{ r.correct_answer }}
