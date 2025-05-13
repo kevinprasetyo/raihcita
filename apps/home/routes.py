@@ -103,7 +103,7 @@ def toefl_reading(passage_id):
             session[q_key] = request.form.get(f'q{i}', None)
 
         # Navigate forward
-        if 'next' in request.form and passage_id < 2:
+        if 'next' in request.form and passage_id < 4:
             return redirect(url_for('home_blueprint.toefl_reading', passage_id=passage_id + 1))
         elif 'prev' in request.form and passage_id > 0:
             return redirect(url_for('home_blueprint.toefl_reading', passage_id=passage_id - 1))
@@ -143,7 +143,7 @@ def hasiltoeflreading():
             if user_answer == correct_answer:
                 score += 1
 
-    return render_template('home/hasil-toefl-reading.html', score=score, total=30, incorrect=hasiltoeflreading)
+    return render_template('home/hasil-toefl-reading.html', score=score, total=50, incorrect=hasiltoeflreading)
 
 
 @blueprint.route('/profile', methods=['GET', 'POST'])
