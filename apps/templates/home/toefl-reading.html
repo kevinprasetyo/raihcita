@@ -15,8 +15,9 @@ endblock %}
   }
 
   .passage {
-    width: 50%;
+    width: 70%;
     border-right: 1px solid #ccc;
+    font-size: 86%;
   }
 
   .questions {
@@ -32,6 +33,8 @@ endblock %}
   hr {
     border-top: 1px solid #ddd;
   }
+
+
 </style>
 
 {% endblock stylesheets %} {% block content %}
@@ -70,7 +73,7 @@ endblock %}
                     <div class="container">
                       <!-- LEFT: Passage -->
                       <div class="passage scroll-box">
-                        {{ passage.text | safe }}
+                       {{ passage.text | safe }}
                       </div>
 
                       <!-- RIGHT: Questions -->
