@@ -13,9 +13,6 @@ def index():
     return render_template('home/index.html', segment='index')
 
 
-with open('apps/templates/toefl/questions.json') as f:
-    QUESTIONS = json.load(f)
-
 with open('apps/templates/toefl/structure.json') as f:
     STRUCTURE = json.load(f)
 
@@ -48,6 +45,10 @@ def submit():
             score += 1
 
     return render_template('home/hasil-toefl-structure.html', score=score, total=len(STRUCTURE), results=results)
+
+
+with open('apps/templates/toefl/questions.json') as f:
+    QUESTIONS = json.load(f)
 
 
 @blueprint.route('/toefl-listening')
