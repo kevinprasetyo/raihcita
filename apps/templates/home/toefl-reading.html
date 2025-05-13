@@ -39,76 +39,42 @@ endblock %}
 <!-- [ Main Content ] start -->
 <div class="pcoded-main-container">
   <div class="pcoded-wrapper">
-    <div class="pcoded-content">
-      <div class="pcoded-inner-content">
-        <!-- [ breadcrumb ] start -->
-        <div class="page-header">
-          <div class="page-block">
-            <div class="row align-items-center">
-              <div class="col-md-12">
-                <div class="page-header-title">
-                  <h5 class="m-b-10">TOEFL Simulation Test</h5>
-                </div>
-                <ul class="breadcrumb">
-                  <li class="breadcrumb-item">
-                    <a href="/"><i class="feather icon-home"></i></a>
-                  </li>
-                  <li class="breadcrumb-item">
-                    <a href="javascript:">TOEFL Reading Comprehension</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- [ breadcrumb ] end -->
-        <div class="main-body">
-          <div class="page-wrapper">
-            <!-- [ Main Content ] start -->
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="card">
-                  {% for message in get_flashed_messages() %}
-                  <div
-                    class="alert alert-success alert-dismissible fade show"
-                    role="alert"
-                  >
-                    {{ message }}
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="alert"
-                      aria-label="Close"
+    <div class="pcoded-inner-content">
+      <!-- [ breadcrumb ] start -->
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+              <div class="page-wrapper">
+                
+                <!-- [ Main Content ] start -->
+                <div class="col-sm-12">
+                  <div class="card">
+                    {% for message in get_flashed_messages() %}
+                    <div
+                      class="alert alert-success alert-dismissible fade show"
+                      role="alert"
                     >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  {% endfor %}
-                  <div class="card-header">
-                    <h5>Section 3: Reading Comprehension</h5>
-                  </div>
-                  <div class="card-body">
-                    <p>
-                      This section is designed to measure your ability to
-                      recognize language that is appropriate for standard
-                      written English. There are 2 types of questions in this
-                      section, with special directions for each type
-                    </p>
+                      {{ message }}
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    {% endfor %}
+                    <div class="card-header">
+                      <h5>Reading Comprehension: Passage {{ passage_id + 1 }}</h5>
+                    </div>
+                    <div class="container">
+                      <!-- LEFT: Passage -->
+                      <div class="passage scroll-box">
+                        {{ passage.text | safe }}
+                      </div>
 
-                    <h5>Structure</h5>
-                    <hr />
-                    <div class="row">
-                      <div class="col-md-8">
-                        <h7>
-                          Directions: Questions 1-15 are incomplete sentences.
-                          Beneath each sentence you will see 4 words or phrases,
-                          marked (A), (B), (C) and (D). Choose the word or
-                          phrase that best completes the sentence. Then, on your
-                          answer sheet, find the number of the question and fill
-                          in the space that corresponds to the letter of the
-                          answer you have chosen <br /><br />
-                        </h7>
-
+                      <!-- RIGHT: Questions -->
+                      <div class="questions scroll-box">
                         <form method="post">
                           {% for q in passage.questions %} {% set q_index =
                           loop.index0 %}
@@ -122,34 +88,33 @@ endblock %}
                           {% endfor %}
                           <hr />
                           {% endfor %} {% if passage_id > 0 %}
-                          <button name="prev" type="submit">
+                          <button name="prev" type="submit" class="btn btn-primary"> 
                             &larr; Previous
                           </button>
                           {% endif %} {% if passage_id < total - 1 %}
-                          <button name="next" type="submit">Next &rarr;</button>
+                          <button name="next" type="submit" class="btn btn-primary">Next &rarr;</button>
                           {% else %}
-                          <button name="submit_all" type="submit">
+                          <button name="submit_all" type="submit" class="btn btn-primary">
                             Submit All
                           </button>
                           {% endif %}
                         </form>
                       </div>
-                      <!-- Input group -->
                     </div>
+
+                    <!-- [ Main Content ] end -->
+
+                    {% endblock content %}
+
+                    <!-- Specific Page JS goes HERE  -->
+                    {% block javascripts %} {% endblock javascripts %}
                   </div>
-                  <!-- [ Main Content ] end -->
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- [ Main Content ] end -->
-
-      {% endblock content %}
-
-      <!-- Specific Page JS goes HERE  -->
-      {% block javascripts %} {% endblock javascripts %}
     </div>
   </div>
 </div>
