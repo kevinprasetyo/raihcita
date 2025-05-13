@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Passage {{ passage_id + 1 }}</title>
+    <style>
+      .container {
+        display: flex;
+        height: 90vh;
+      }
+
+      .scroll-box {
+        overflow-y: auto;
+        padding: 20px;
+      }
+
+      .passage {
+        width: 50%;
+        border-right: 1px solid #ccc;
+      }
+
+      .questions {
+        width: 50%;
+      }
+
+      form button {
+        margin: 10px 10px 0 0;
+        padding: 10px 15px;
+        font-size: 1em;
+      }
+
+      hr {
+        border-top: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Passage {{ passage_id + 1 }}</h2>
+    <div class="container">
+      <!-- LEFT: Passage -->
+      <div class="passage scroll-box">{{ passage.text | safe }}</div>
+
+      <!-- RIGHT: Questions -->
+      <div class="questions scroll-box">
+        <form method="post">
+          {% for q in passage.questions %} {% set q_index = loop.index0 %}
+          <p><strong>{{ loop.index }}. {{ q.text }}</strong></p>
+          {% for opt in q.options %}
+          <label>
+            <input type="radio" name="q{{ q_index }}" value="{{ opt }}" {% if
+            saved_answers[q_index] == opt %}checked{% endif %}> {{ opt }} </label
+          ><br />
+          {% endfor %}
+          <hr />
+          {% endfor %} {% if passage_id > 0 %}
+          <button name="prev" type="submit">&larr; Previous</button>
+          {% endif %} {% if passage_id < total - 1 %}
+          <button name="next" type="submit">Next &rarr;</button>
+          {% else %}
+          <button name="submit_all" type="submit">Submit All</button>
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

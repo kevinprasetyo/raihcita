@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Final Score</title>
+  </head>
+  <body>
+    <h2>Your Final Score: {{ score }}/{{ total }}</h2>
+
+    {% if incorrect %}
+    <h3>Incorrect Answers:</h3>
+    <ul>
+      {% for item in incorrect %}
+      <li>
+        <strong>Passage {{ item.passage }} - Question {{ item.number }}</strong
+        ><br />
+        {{ item.question }}<br />
+        Your answer: <em>{{ item.your_answer }}</em><br />
+        Correct answer: <strong>{{ item.correct_answer }}</strong>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>🎉 Perfect score! Well done!</p>
+    {% endif %}
+
+    <a href="{{ url_for('home_blueprint.index') }}"
+      ><button>Start Over</button></a
+    >
+  </body>
+</html>

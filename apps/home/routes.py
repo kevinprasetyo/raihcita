@@ -1,5 +1,5 @@
 from apps.home import blueprint
-from flask import render_template, request, flash, redirect
+from flask import render_template, request, flash, redirect, session, url_for
 from flask_login import login_required, current_user
 from jinja2 import TemplateNotFound
 from apps.home.models import Snisub, Janji, Profile
@@ -79,6 +79,70 @@ def hasiltoefllistening():
             score += 1
 
     return render_template('home/hasil-toefl-listening.html', score=score, total=len(QUESTIONS), results=results)
+
+
+with open('apps/templates/toefl/reading.json') as f:
+    passages = json.load(f)
+
+
+@blueprint.route('/reading')
+def toeflreading():
+    session.clear()
+    return redirect(url_for('home_blueprint.reading', passage_id=0))
+
+
+@blueprint.route('/reading/<int:passage_id>', methods=['GET', 'POST'])
+def reading(passage_id):
+    if passage_id < 0 or passage_id >= len(passages):
+        return render_template('home/reading.html', passage_id=0)
+
+    if request.method == 'POST':
+        # Save user's answers to session
+        for i in range(13):
+            q_key = f'p{passage_id}_q{i}'
+            session[q_key] = request.form.get(f'q{i}', None)
+
+        # Navigate forward
+        if 'next' in request.form and passage_id < 2:
+            return redirect(url_for('home_blueprint.reading', passage_id=passage_id + 1))
+        elif 'prev' in request.form and passage_id > 0:
+            return redirect(url_for('home_blueprint.reading', passage_id=passage_id - 1))
+        elif 'submit_all' in request.form:
+            return redirect(url_for('home_blueprint.results'))
+
+    passage = passages[passage_id]
+    saved_answers = [session.get(f'p{passage_id}_q{i}') for i in range(13)]
+
+    return render_template(
+        'home/reading.html',
+        passage_id=passage_id,
+        total=len(passages),
+        passage=passage,
+        saved_answers=saved_answers
+    )
+
+
+@blueprint.route('/results')
+def results():
+    total_score = 0
+    incorrect = []
+
+    for p_id, passage in enumerate(passages):
+        for q_id, question in enumerate(passage["questions"]):
+            user_answer = session.get(f'p{p_id}_q{q_id}')
+            correct_answer = question["answer"]
+            if user_answer == correct_answer:
+                total_score += 1
+            else:
+                incorrect.append({
+                    "passage": p_id + 1,
+                    "number": q_id + 1,
+                    "question": question["text"],
+                    "your_answer": user_answer or "No answer",
+                    "correct_answer": correct_answer
+                })
+
+    return render_template('home/result.html', score=total_score, total=39, incorrect=incorrect)
 
 
 @blueprint.route('/profile', methods=['GET', 'POST'])
