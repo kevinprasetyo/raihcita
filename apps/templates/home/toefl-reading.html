@@ -81,12 +81,12 @@ endblock %}
                         <form method="post">
                           {% for q in passage.questions %} {% set q_index =
                           loop.index0 %}
-                          <p><strong>{{ loop.index }}. {{ q.text }}</strong></p>
+                          <p><strong>{{ q.text }}</strong></p>
                           {% for opt in q.options %}
                           <label>
                             <input type="radio" name="q{{ q_index }}" value="{{
                             opt }}" {% if saved_answers[q_index] == opt
-                            %}checked{% endif %}> {{ opt }} </label
+                            %}checked{% endif %} > {{ opt }} </label
                           ><br />
                           {% endfor %}
                           <hr />
