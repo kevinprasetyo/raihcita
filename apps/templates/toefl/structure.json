@@ -1,0 +1,442 @@
+[
+    {
+        "id": 1,
+        "question": "1. Amanda Way's career as a social reformer ____ in 1851 when, at an antislavery meeting in Indiana, she called for a state woman's rights convention.",
+        "choices": [
+            "(A) begin",
+            "(B) began",
+            "(C) have begun",
+            "(D) to have begun"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 2,
+        "question": "2. The celesta, an orchestral percussion instrument, resembles ___ ",
+        "choices": [
+            "(A) a small upright piano",
+            "(B) how a small upright piano",
+            "(C) a small upright piano is",
+            "(D) as a small upright piano"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 3,
+        "question": "3. Thomas Paine, _____, wrote Common Sense, a pamphlet that identified the American colonies with the cause of liberty. ",
+        "choices": [
+            "(A) writer of eloquent",
+            "(B) whose eloquent writing",
+            "(C) an eloquent writer",
+            "(D) writing eloquent"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 4,
+        "question": "4. Although beavers rarely remain submerged for more than two minutes, they can stay underwater ___ fifteen minutes before having to surface for air.",
+        "choices": [
+            "(A) as long",
+            "(B) as long as",
+            "(C) so long",
+            "(D) so long that"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 5,
+        "question": "5. Protein digestion begins in the stomach ___ ends in the small intestine.",
+        "choices": [
+            "(A) while",
+            "(B) and",
+            "(C) how",
+            "(D) because"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 6,
+        "question": "6. When natural gas burns, its ___ into atoms of carbon and hydrogen.",
+        "choices": [
+            "(A) hydrocarbon molecules, breaking up",
+            "(B) broke up by hydrocarbon molecules",
+            "(C) hydrocarbon molecules break up",
+            "(D) broken up hydrocarbon molecules"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 7,
+        "question": "7. _____ ballet dancers learn five basic positions for the arms and feet.",
+        "choices": [
+            "(A) All of",
+            "(B) Of every",
+            "(C) All",
+            "(D) Every"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 8,
+        "question": "8. Some colonies of bryozoans, small marine animals, form ___ with trailing stems.",
+        "choices": [
+            "(A) creeping colonies",
+            "(B) which colonies creep",
+            "(C) creeping colonies are",
+            "(D) colonies creep"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 9,
+        "question": "9. Ruth Bader Ginsburg argued six women's rights cases before the United States Supreme Court in the 1970's, ____",
+        "choices": [
+            "(A) of five winning them",
+            "(B) five winning of them",
+            "(C) of them five winning",
+            "(D) winning five of them"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 10,
+        "question": "10. Natural selection is defined as the process ___ the course of evolution by preserving those traits best adapted for an organism's survival.",
+        "choices": [
+            "(A) to which directs",
+            "(B) of which directs it",
+            "(C) directs it",
+            "(D) that directs"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 11,
+        "question": "11. ____ 363 miles between the cities of Albany and Buffalo in New York State, the Eric Canal helped link the Atlantic Ocean with the Great Lakes.",
+        "choices": [
+            "(A) The extension of",
+            "(B) The extension",
+            "(C) Extending",
+            "(D) Extends"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 12,
+        "question": "12. The chief sources of B12, a water-soluble vitamin ____ stored in the body, include meat, milk and eggs.",
+        "choices": [
+            "(A) is not",
+            "(B) that is not",
+            "(C) not that is",
+            "(D) that not"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 13,
+        "question": "13. ____ is rooted in experiments in iron and steel conducted in the nineteenth century.",
+        "choices": [
+            "(A) While the history of twentieth-century architecture",
+            "(B) The history of twentieth-century architecture",
+            "(C) That the history of twentieth-century architecture",
+            "(D) Both twentieth-century architecture and its history"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 14,
+        "question": "14. The primary source of energy for tropical cyclones is the latent heat released when ____ ",
+        "choices": [
+            "(A) does water vapor condense",
+            "(B) condensed water vapor",
+            "(C) water vapor condenses",
+            "(D) the condensation of water vapor"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 15,
+        "question": "15. Manufacturing is Canada's most important economic activity, ____17 percent of the workforce.",
+        "choices": [
+            "(A) engages",
+            "(B) and to engage",
+            "(C) that it engage",
+            "(D) engaging"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 16,
+        "question": "16. The <b><u>outer</u></b> layer of the heart, <b><u>called</u></b> the pericardium, <b><u>forms</u></b> a sac in <b><u>what</u></b> the heart lies.",
+        "choices": [
+            "(A) outer",
+            "(B) called",
+            "(C) forms",
+            "(D) what"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 17,
+        "question": "17. <b><u>Wood</u></b> from the ash tree becomes extremely <b><u>flexibly</u></b> when <b><u>it</u></b> is <b><u>exposed</u></b> to steam",
+        "choices": [
+            "(A) Wood",
+            "(B) flexibly",
+            "(C) it",
+            "(D) exposed"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 18,
+        "question": "18. The ability to <b><u>talk</u></b> is one of the <b><u>skill</u></b> that make <b><u>humans different</u></b> from the rest of the <b><u>animal world.</u></b>",
+        "choices": [
+            "(A) talk",
+            "(B) skill",
+            "(C) humans different",
+            "(D) animal world"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 19,
+        "question": "19. <b><u>In</u></b> plane geometry, the sum of <b><u>the internal</u></b> angles of <b><u>any</u></b> triangle <b><u>has</u></b> always equal to 180 degrees.",
+        "choices": [
+            "(A) In",
+            "(B) the internal",
+            "(C) any",
+            "(D) has"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 20,
+        "question": "20. Polar <b><u>bears</u></b> are bowlegged and pigeon-toed, adaptations that enable <b><u>this</u></b> massive animals <b><u>to maintain</u></b> their balance as they <b><u>walk</u></b>",
+        "choices": [
+            "(A) bears",
+            "(B) this",
+            "(C) to maintain",
+            "(D) walk"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 21,
+        "question": "21. Caves are formed by the chemical or <b><u>action</u></b> <b><u>mechanical</u></b> of water <b><u>on soluble</u></b> rock, by <b><u>volcanic</u></b> activity, and by <b><u>earthquakes</u></b>",
+        "choices": [
+            "(A) action",
+            "(B) mechanical",
+            "(C) on soluble",
+            "(D) earthquakes"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 22,
+        "question": "22. Celery, an <b><u>edible</u></b> plant <b><u>is having</u></b>  long stalks <b><u>topped with</u></b> feathery leaves, grows <b><u>best</u></b> in cool weather.",
+        "choices": [
+            "(A) edible",
+            "(B) is having",
+            "(C) topped with",
+            "(D) best"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 23,
+        "question": "23. The first fiction <b><u>writer</u></b> in the United States to <b><u>achieve</u></b> international <b><u>fame</u></b> was Washington Irving, who wrote many stories, <b><u>included</u></b> 'Rip Van Winkle' and 'The Legend of Sleepy Hollow'.",
+        "choices": [
+            "(A) writer",
+            "(B) achieve",
+            "(C) fame",
+            "(D) included"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 24,
+        "question": "24. Three fundamental aspects of <b><u>forest conversation</u></b> are the protection of immature trees, the use <b><u>of proper</u></b> harvesting methods, and <b><u>provide</u></b> for an environment <b><u>that supports</u></b> reproduction.",
+        "choices": [
+            "(A) forest conversation",
+            "(B) of proper",
+            "(C) provide",
+            "(D) that supports"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 25,
+        "question": "25. For <b><u>each</u></b> enzyme reaction <b><u>there is</u></b> an optimum <b><u>temperature which</u></b> maximum <b><u>efficiency</u></b> is achieved",
+        "choices": [
+            "(A) each",
+            "(B) there is",
+            "(C) temperature which",
+            "(D) efficiency"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 26,
+        "question": "26. Adolescence is a <b><u>transitional stage</u></b> in  human development from <b><u>the beginning</u></b> of puberty to the attainment of the <b><u>emotion</u></b>  social, and physical maturity of <b><u>adulthood</u></b>.",
+        "choices": [
+            "(A) transitional stage",
+            "(B) the beginning",
+            "(C) emotion",
+            "(D) adulthood"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 27,
+        "question": "27. The <b><u>people native</u></b> to the northwest coast of North American have long <b><u>be known</u></b> <b><u>for</u></b> wood carvings <b><u>of</u></b> stunning beauty and extraordinary quality.",
+        "choices": [
+            "(A) people native",
+            "(B) be known",
+            "(C) for",
+            "(D) of"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 28,
+        "question": "28. Colonial efforts <b><u>to manufacture</u></b> glass at Jamestown and <b><u>later attempts</u></b> near Philadelphia and Boston—failed despite the <b><u>abundant</u></b> of fuel and good raw <b><u>materials</u></b>.",
+        "choices": [
+            "(A) to manufacture",
+            "(B) later attempts",
+            "(C) abundant",
+            "(D) materials"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 29,
+        "question": "29. The <b><u>orbit</u></b> of a celestial <b><u>body</u></b> is <b><u>usually</u></b> in the shape <b><u>of ellipse</u></b>.",
+        "choices": [
+            "(A) orbit",
+            "(B) body",
+            "(C) usually",
+            "(D) of ellipse"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 30,
+        "question": "30. Chicago is the <b><u>the third</u></b> largest <b><u>publishing</u></b> <b><u>center</u></b> in the United States, <b><u>exceeding</u></b> only by New York City and San Francisco.",
+        "choices": [
+            "(A) the third",
+            "(B) publishing",
+            "(C) center",
+            "(D) exceeding"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 31,
+        "question": "31. North American bison <b><u>differ from</u></b> <b><u>domestic</u></b> cattle in <b><u>have</u></b> 14 <b><u>rather than</u></b> 13 pairs of ribs.",
+        "choices": [
+            "(A) differ from",
+            "(B) domestic",
+            "(C) have",
+            "(D) rather than"
+        ],
+        "answer": 2
+    },
+    {
+        "id": 32,
+        "question": "32. Female sea turtles, before laying <b><u>her</u></b> eggs, swim <b><u>as much</u></b> as 2,000 kilometers <b><u>to return</u></b> to the beaches <b><u>where</u></b> they themselves were hatched",
+        "choices": [
+            "(A) her",
+            "(B) as much",
+            "(C) to return",
+            "(D) where"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 33,
+        "question": "33. Water is the only substance that <b><u>occur</u></b> at <b><u>ordinary  temperatures</u></b> in <b><u>all three</u></b> states of matter: <b><u>solid</u></b>, liquid and gas.",
+        "choices": [
+            "(A) occur",
+            "(B) ordinary temperatures",
+            "(C) all three",
+            "(D) solid"
+        ],
+        "answer": 0
+    },
+    {
+        "id": 34,
+        "question": "34.s <b><u>Despite</u></b> the growth of <b><u>manufacturing</u></b> and other industries, the economy of the state of Texas <b><u>has</u></b>  remained heavily <b><u>dependence</u></b> on oil and gas.",
+        "choices": [
+            "(A) Despite",
+            "(B) manufacturing",
+            "(C) has",
+            "(D) dependence"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 35,
+        "question": "35. Lyndon B. Johnson <b><u>was</u></b> the only United States President <b><u>who</u></b> oath of <b><u>office</u></b> was <b><u>administered</u></b> by a woman Judge Sarah Tilghman Hughes.",
+        "choices": [
+            "(A) was",
+            "(B) who",
+            "(C) office",
+            "(D) administered"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 36,
+        "question": "36. <b><u>It</u></b> took <b><u>more than</u></b> fourteen years <b><u>to carve</u></b> the faces of four United States Presidents into the granite cliffs <b><u>to</u></b> Mount Rushmore, South Dakota.",
+        "choices": [
+            "(A) It",
+            "(B) more than",
+            "(C) to carve",
+            "(D) to"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 37,
+        "question": "37. Charles Bullfinch was <b><u>the architect</u></b> who <b><u>design</u></b> the <b><u>original</u></b> red brick core <b><u>of the</u></b> State House in Boston.",
+        "choices": [
+            "(A) the architect",
+            "(B) design",
+            "(C) original",
+            "(D) of the"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 38,
+        "question": "38. <b><u>Rarely has</u></b> a technological development had as great an impact on as <b><u>much</u></b> aspects of social, economic, and cultural <b><u>development</u></b> as the <b><u>growth</u></b> of electronics.",
+        "choices": [
+            "(A) Rarely has",
+            "(B) much",
+            "(C) development",
+            "(D) growth"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 39,
+        "question": "39. Lowell, Massachusetts, known as the 'Spindle City' <b><u>since</u></b> 1822 <b><u>when</u></b> its first textile mills were built, <b><u>attracted</u></b> worldwide attention <b><u>as textile</u></b> center.",
+        "choices": [
+            "(A) since",
+            "(B) when",
+            "(C) attracted",
+            "(D) as textile"
+        ],
+        "answer": 3
+    },
+    {
+        "id": 40,
+        "question": "40. Strange Victory, Sara Teasdale's <b><u>smallest</u></b> and <b><u>most perfect</u></b> collection of <b><u>poems</u></b>, <b><u>appear</u></b> in print in 1933.",
+        "choices": [
+            "(A) smallest",
+            "(B) most perfect",
+            "(C) poems",
+            "(D) appear"
+        ],
+        "answer": 3
+    }
+]
