@@ -90,7 +90,13 @@
                             >
                               <strong>{{ r.question }}</strong>
                             </td>
-                            <td>
+                            <td
+                              style="
+                                word-break: break-word;
+                                white-space: normal;
+                                max-width: 500px;
+                              "
+                            >
                               Your answer: {{ r.your_answer }}<br />
                               Correct answer: {{ r.correct_answer }}
                             </td>
