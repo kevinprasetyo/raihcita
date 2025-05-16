@@ -10,7 +10,7 @@ import json
 
 @blueprint.route('/index')
 def index():
-    return render_template('home/index.html', segment='index')
+    return render_template('home/homepage.html', segment='index')
 
 
 with open('apps/templates/toefl/structure.json') as f:
