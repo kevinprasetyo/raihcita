@@ -1,0 +1,118 @@
+{% extends "layouts/base.html" %} {% block title %} Hasil TOEFL STRUCTURE
+SIMULATION TEST {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %} {% endblock stylesheets %} {% block content %}
+
+<!-- [ Main Content ] start -->
+<section class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10"></h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="/"><i class="feather icon-home"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="#!">Hasil TOEFL Structure</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            <!-- [ Hover-table ] start -->
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    {% for message in get_flashed_messages() %}
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="card-header">
+                                        <h5>Hasil TOEFL Structure</h5>
+                                    </div>
+                                    <div class="card-block table-border-style">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Result</td>
+                                                        <td>TOEFL Structure</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Your Score:</td>
+                                                        <td>{{ score }}/{{ total }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <hr />
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Questions</th>
+                                                        <th>Answers</th>
+                                                        <th>Is it Correct?</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for r in results %}
+                                                    <tr>
+                                                        <td style="
+                                word-break: break-word;
+                                white-space: normal;
+                                max-width: 500px;
+                              ">
+                                                            <strong>{{ r.question|safe }}</strong>
+                                                        </td>
+                                                        <td style="
+                                word-break: break-word;
+                                white-space: normal;
+                                max-width: 500px;
+                              ">
+                                                            Your answer: {{ r.your_answer }}<br />
+                                                            Correct answer: {{ r.correct_answer }}
+                                                        </td>
+                                                        <td>
+                                                            {% if r.is_correct %} ✅ Correct {% else %} ❌
+                                                            Incorrect {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- [ Hover-table ] end -->
+                        </div>
+                        <!-- [ Main Content ] end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- [ Main Content ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

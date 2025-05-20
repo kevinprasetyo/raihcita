@@ -1,3 +1,5 @@
+import requests
+from oauthlib.oauth2 import WebApplicationClient
 from flask import render_template, redirect, request, url_for
 from flask_login import (
     current_user,
@@ -14,7 +16,7 @@ from apps.authentication.models import Users
 from apps.authentication.util import verify_pass, hash_pass
 
 
-#login
+# login
 from sqlalchemy.orm.exc import NoResultFound
 
 import json
@@ -22,8 +24,6 @@ import os
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
-from oauthlib.oauth2 import WebApplicationClient
-import requests
 
 GOOGLE_CLIENT_ID = '1000259324040-5tk14re9d5caps1c1bf1h7r3vosk8rvj.apps.googleusercontent.com'
 GOOGLE_CLIENT_SECRET = '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'
@@ -34,12 +34,14 @@ GOOGLE_DISCOVERY_URL = (
 
 client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
+
 @blueprint.route('/google_login')
 def google_login():
     if current_user.is_authenticated:
         return redirect(url_for('home_blueprint.index'))
     else:
         return '<a class="button" href="/google">Login with Google</a>'
+
 
 @blueprint.route('/google')
 def google():
@@ -52,6 +54,7 @@ def google():
         scope=["openid", "email", "profile"],
     )
     return redirect(request_uri)
+
 
 @blueprint.route('/google/callback')
 def callback():
@@ -66,7 +69,7 @@ def callback():
         authorization_response=request.url,
         redirect_url=request.base_url,
         code=code
-    )    
+    )
 
     token_response = requests.post(
         token_url,
@@ -79,7 +82,7 @@ def callback():
 
     userinfo_endpoint = google_provider_cfg['userinfo_endpoint']
 
-    uri,headers,body = client.add_token(userinfo_endpoint)
+    uri, headers, body = client.add_token(userinfo_endpoint)
 
     userinfo_response = requests.get(uri, headers=headers, data=body)
     print(userinfo_response.json())
@@ -91,7 +94,7 @@ def callback():
         family_name = userinfo_response.json()['family_name']
     else:
         return "User email not available or not verified by Google.", 400
- 
+
     query = Users.query.filter_by(oauth_github=unique_id)
     try:
         user = query.one()
@@ -99,11 +102,12 @@ def callback():
 
     except NoResultFound:
         usernm = users_name + '_' + family_name
-        user = Users(username=usernm, email=users_email, password=unique_id, oauth_github=unique_id)
+        user = Users(username=usernm, email=users_email,
+                     password=unique_id, oauth_github=unique_id)
         db.session.add(user)
         db.session.commit()
         login_user(user)
-    
+
     return redirect(url_for('home_blueprint.index'))
 
 
@@ -117,11 +121,12 @@ def get_google_provider_cfg():
 def route_default():
     return render_template('home/homepage.html')
 
+
 @blueprint.route('/reset', methods=['GET', 'POST'])
 def reset():
     if ("email" in request.args) and ("id" in request.args):
         email = request.args.get('email', None)
-        user = Users.query.filter_by(email=email).first() 
+        user = Users.query.filter_by(email=email).first()
         id = request.args.get('id', None)
         if (id is None) or (email is None):
             req_form = ResetRequestForm(request.form)
@@ -138,6 +143,7 @@ def reset():
     req_form = ResetRequestForm(request.form)
     return render_template('accounts/req_reset.html', form=req_form, msg='Silahkan ajukan permintaan ganti password')
 
+
 @blueprint.route('/req_reset', methods=['GET', 'POST'])
 def req_reset():
     req_form = ResetRequestForm(request.form)
@@ -151,11 +157,12 @@ def req_reset():
             return render_template('accounts/req_reset.html', form=req_form, msg='Email tidak terdaftar')
     return render_template('accounts/req_reset.html', form=req_form)
 
+
 @blueprint.route('/reset_g', methods=['GET', 'POST'])
 def reset_g():
     if ("email" in request.args) and ("id" in request.args):
         email = request.args.get('email', None)
-        user = Users.query.filter_by(email=email).first() 
+        user = Users.query.filter_by(email=email).first()
         id = request.args.get('id', None)
         if (id is None) or (email is None):
             req_form = ResetRequestForm(request.form)
@@ -172,6 +179,7 @@ def reset_g():
     req_form = ResetRequestForm(request.form)
     return render_template('accounts/req_reset_g.html', form=req_form, msg='Silahkan ajukan permintaan ganti password')
 
+
 @blueprint.route('/req_reset_g', methods=['GET', 'POST'])
 def req_reset_g():
     req_form = ResetRequestForm(request.form)
@@ -185,6 +193,7 @@ def req_reset_g():
             return render_template('accounts/req_reset_g.html', form=req_form, msg='Email tidak terdaftar')
     return render_template('accounts/req_reset_g.html', form=req_form)
 
+
 @blueprint.route('/gantips', methods=['GET', 'POST'])
 def gantips():
     if request.method == 'POST':
@@ -197,6 +206,7 @@ def gantips():
         return render_template('home/berhasil.html')
     else:
         return render_template('accounts/req_reset.html')
+
 
 @blueprint.route('/berhasil')
 def berhasil():
@@ -254,7 +264,6 @@ def login():
     else:
         return render_template('accounts/login.html',
                                form=login_form)
-        
 
 
 @blueprint.route('/register', methods=['GET', 'POST'])
@@ -295,7 +304,7 @@ def register():
     else:
         return render_template('accounts/register.html',
                                form=create_account_form)
-    
+
 
 @blueprint.route('/masuk', methods=['GET', 'POST'])
 def masuk():

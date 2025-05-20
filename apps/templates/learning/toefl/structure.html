@@ -1,0 +1,140 @@
+{% extends "layouts/base.html" %} {% block title %} TOEFL Simulation Test {%
+endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<style></style>
+
+{% endblock stylesheets %} {% block content %}
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">TOEFL Simulation Test</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="/"><i class="feather icon-home"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="javascript:">TOEFL Structure and Written Expression</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    {% for message in get_flashed_messages() %}
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="card-header">
+                                        <h5>Section 2: Structure and Written Expression</h5>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <p>
+                                            This section is designed to measure your ability to recognize language that
+                                            is appropriate for standard written English. There are 2 types of questions
+                                            in this section, with special directions for each type
+                                        </p>
+
+                                        <h5>Structure</h5>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <h7>
+                                                    Directions: Questions 1-15 are incomplete sentences. Beneath each
+                                                    sentence you will see 4 words or phrases, marked (A), (B), (C) and
+                                                    (D). Choose the word or phrase that best completes the sentence.
+                                                    Then, on your answer sheet, find the number of the question and fill
+                                                    in the space that corresponds to the letter of the answer you have
+                                                    chosen <br /><br />
+                                                </h7>
+
+                                                <form role="form" method="POST"
+                                                    action="/learning/toefl/structure-result">
+                                                    {% for q in questions %}
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-8">
+
+                                                <label>{{ q.question|safe }}</label>
+                                                {% for choice in q.choices %}
+                                                <div class="custom-control custom-radio">
+
+                                                    <input type="radio" name="{{ q.id }}" value="{{ loop.index0 }}"
+                                                        id="{{ loop.index0 }}{{ q.id }}" class="custom-control-input" />
+                                                    <label class="custom-control-label"
+                                                        for="{{ loop.index0 }}{{ q.id }}">{{ choice }}</label>
+
+                                                </div>
+                                                {% endfor %}
+
+                                                <br />
+                                                {% if q.id == 15 %}
+
+                                                <p>
+                                                <h5>Written Expression</h5>
+                                                <hr>
+                                                <h7> Directions: In questions 16-40, each sentence has 4 underlined
+                                                    words or phrases. The
+                                                    underlined parts of the sentence are marked (A), (B), (C) and (D).
+                                                    Identify the underlined
+                                                    word or phrase that must be changed in order for the sentence to be
+                                                    correct. Then, on
+                                                    your answer sheet, find the number of the question and fill in the
+                                                    space that corresponds
+                                                    to the letter of the answer you have chosen.</h7>
+                                                </p>
+                                                {% endif %}
+
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">
+                                            Submit Answers
+                                        </button>
+                                        </form>
+                                    </div>
+                                    <!-- Input group -->
+                                </div>
+                            </div>
+                            <!-- [ Main Content ] end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->
+
+    {% endblock content %}
+
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %} {% endblock javascripts %}
+</div>
+</div>
+</div>
