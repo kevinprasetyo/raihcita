@@ -333,11 +333,6 @@ def route_template(template):
         return render_template('home/page-500.html'), 500
 
 
-@blueprint.route('/private/ielts')
-def privateielts():
-    return render_template('home/ielts.html')
-
-
 # Helper - Extract current page name from request
 def get_segment(request):
 
