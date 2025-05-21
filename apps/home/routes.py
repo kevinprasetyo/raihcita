@@ -13,6 +13,15 @@ def index():
     return render_template('home/homepage.html', segment='index')
 
 
+@blueprint.route('/tutor', methods=['GET', 'POST'])
+def tutor():
+    if "class" in request.args:
+        class_name = request.args.get("class")
+    else:
+        class_name = "Raih Cita"
+    return render_template('home/choose-tutor.html', tutor=class_name)
+
+
 @blueprint.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
