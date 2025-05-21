@@ -13,8 +13,8 @@ def index():
     return render_template('home/homepage.html', segment='index')
 
 
-@blueprint.route('/tutor', methods=['GET', 'POST'])
-def tutor():
+@blueprint.route('/choosetutor', methods=['GET', 'POST'])
+def choosetutor():
     if "class" in request.args:
         class_name = request.args.get("class")
     else:
