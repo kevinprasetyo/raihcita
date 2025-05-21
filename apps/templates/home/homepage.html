@@ -1,129 +1,104 @@
-
-
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
-{% include 'layouts/head.html'%} 
+{% include 'layouts/head.html'%}
 
-  <body>
-    {% include 'layouts/topnav.html'%} 
-    <main>
-      <!--? slider Area Start-->
-      <section class="slider-area">
-        <div class="slider-active">
-          <!-- Single Slider -->
-          <div class="single-slider slider-height d-flex align-items-center">
-            <div class="container">
-              <div class="row">
-                <div class="col-xl-6 col-lg-7 col-md-12">
-                  <div class="hero__caption">
-                    <h1 data-animation="fadeInLeft" data-delay="0.2s">
-                      Raih Cita-mu<br />
-                      Sekarang
-                    </h1>
-                    <p data-animation="fadeInLeft" data-delay="0.4s">
-                      Daftar untuk mewujudkan citamu meraih beasiswa, kampus top
-                      dunia, TOEFL dan IELTS impian.
-                    </p>
-                    <a
-                      href="/#courses"
-                      class="btn hero-btn"
-                      data-animation="fadeInLeft"
-                      data-delay="0.7s"
-                      >Lihat Program</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- ? services-area -->
-      <div class="services-area">
-        <div class="container">
-          <div class="row justify-content-sm-center">
-            <div class="col-lg-4 col-md-6 col-sm-8">
-              <div class="single-services mb-30">
-                <div class="features-icon">
-                  <img
-                    src="{{ config.ASSETS_ROOT }}/home/img/icon/icon1.svg"
-                    alt=""
-                  />
-                </div>
-                <div class="features-caption">
-                  <h3>Learning Center (LMS)</h3>
-                  <p>RaihCita berkomitmen menjadi platform belajar terbaik</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-8">
-              <div class="single-services mb-30">
-                <div class="features-icon">
-                  <img
-                    src="{{ config.ASSETS_ROOT }}/home/img/icon/icon2.svg"
-                    alt=""
-                  />
-                </div>
-                <div class="features-caption">
-                  <h3>Tutor Berpengalaman</h3>
-                  <p>Belajar dengan tutor terbaik dan memiliki pengalaman</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-8">
-              <div class="single-services mb-30">
-                <div class="features-icon">
-                  <img
-                    src="{{ config.ASSETS_ROOT }}/home/img/icon/icon3.svg"
-                    alt=""
-                  />
-                </div>
-                <div class="features-caption">
-                  <h3>Kurikulum Terstruktur</h3>
-                  <p>Metode belajar terstruktur dan terbukti efektif</p>
+<body>
+  {% include 'layouts/topnav.html'%}
+  <main>
+    <!--? slider Area Start-->
+    <section class="slider-area">
+      <div class="slider-active">
+        <!-- Single Slider -->
+        <div class="single-slider slider-height d-flex align-items-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-6 col-lg-7 col-md-12">
+                <div class="hero__caption">
+                  <h1 data-animation="fadeInLeft" data-delay="0.2s">
+                    Raih Cita-mu<br />
+                    Sekarang
+                  </h1>
+                  <p data-animation="fadeInLeft" data-delay="0.4s">
+                    Daftar untuk mewujudkan citamu meraih beasiswa, kampus top
+                    dunia, TOEFL dan IELTS impian.
+                  </p>
+                  <a href="/#courses" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Lihat
+                    Program</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Courses area start -->
-      <div class="courses-area section-padding40 fix" id="courses">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-8">
-              <div class="section-tittle text-center mb-55">
-                <h2>Program Unggulan RaihCita</h2>
+    </section>
+    <!-- ? services-area -->
+    <div class="services-area">
+      <div class="container">
+        <div class="row justify-content-sm-center">
+          <div class="col-lg-4 col-md-6 col-sm-8">
+            <div class="single-services mb-30">
+              <div class="features-icon">
+                <img src="{{ config.ASSETS_ROOT }}/home/img/icon/icon1.svg" alt="" />
+              </div>
+              <div class="features-caption">
+                <h3>Learning Center (LMS)</h3>
+                <p>RaihCita berkomitmen menjadi platform belajar terbaik</p>
               </div>
             </div>
           </div>
-          <div class="courses-actives">
-            <!-- Single -->
-            <div class="properties pb-20">
-              <div class="properties__card">
-                <div class="properties__img overlay1">
-                  <a href="/jointoefl"
-                    ><img
-                      src="{{ config.ASSETS_ROOT }}/home/img/gallery/featured1.png"
-                      alt=""
-                  /></a>
-                </div>
-                <div class="properties__caption">
-                  <p>TOEFL ITP</p>
-                  <h3>
-                    <a
-                      href="/raih-toefl"
-                      >Program Raih TOEFL</a
-                    >
-                  </h3>
-                  <p>
-                    Program Raih TOEFL cocok untuk kamu yang ingin mendapatkan
-                    nilai TOEFL 550++
-                  </p>
-                  <div
-                    class="properties__footer d-flex justify-content-between align-items-center"
-                  >
-                    <!--
+          <div class="col-lg-4 col-md-6 col-sm-8">
+            <div class="single-services mb-30">
+              <div class="features-icon">
+                <img src="{{ config.ASSETS_ROOT }}/home/img/icon/icon2.svg" alt="" />
+              </div>
+              <div class="features-caption">
+                <h3>Tutor Berpengalaman</h3>
+                <p>Belajar dengan tutor terbaik dan memiliki pengalaman</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-8">
+            <div class="single-services mb-30">
+              <div class="features-icon">
+                <img src="{{ config.ASSETS_ROOT }}/home/img/icon/icon3.svg" alt="" />
+              </div>
+              <div class="features-caption">
+                <h3>Kurikulum Terstruktur</h3>
+                <p>Metode belajar terstruktur dan terbukti efektif</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Courses area start -->
+    <div class="courses-area section-padding40 fix" id="courses">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-7 col-lg-8">
+            <div class="section-tittle text-center mb-55">
+              <h2>Program Unggulan RaihCita</h2>
+            </div>
+          </div>
+        </div>
+        <div class="courses-actives">
+          <!-- Single -->
+          <div class="properties pb-20">
+            <div class="properties__card">
+              <div class="properties__img overlay1">
+                <a href="/jointoefl"><img src="{{ config.ASSETS_ROOT }}/home/img/gallery/featured1.png" alt="" /></a>
+              </div>
+              <div class="properties__caption">
+                <p>TOEFL ITP</p>
+                <h3>
+                  <a href="/raih-toefl">Program Raih TOEFL</a>
+                </h3>
+                <p>
+                  Program Raih TOEFL cocok untuk kamu yang ingin mendapatkan
+                  nilai TOEFL 550++
+                </p>
+                <div class="properties__footer d-flex justify-content-between align-items-center">
+                  <!--
                     <div class="restaurant-name">
                       <div class="rating">
                         <i class="fas fa-star"></i>
@@ -135,58 +110,41 @@
                       <p><span>(4.5)</span> based on 120</p>
                     </div>
                     -->
-                    <div class="price">
-                      <span></span>
-                    </div>
+                  <div class="price">
+                    <span></span>
                   </div>
-                  <a
-                    href="/raih-toefl"
-                    class="border-btn border-btn2"
-                    >Lihat Selengkapnya</a
-                  >
                 </div>
+                <a href="/raih-toefl" class="border-btn border-btn2">Lihat Selengkapnya</a>
               </div>
             </div>
-            <!-- Single -->
-            <!-- Single -->
-            <div class="properties pb-20">
-              <div class="properties__card">
-                <div class="properties__img overlay1">
-                  <a href="#"
-                    ><img
-                      src="{{ config.ASSETS_ROOT }}/home/img/gallery/featured2.png"
-                      alt=""
-                  /></a>
-                </div>
-                <div class="properties__caption">
-                  <p>IELTS</p>
-                  <h3>
-                    <a
-                      href="#"
-                      >Program Raih IELTS</a
-                    >
-                  </h3>
-                  <p>
-                    Kelas dirancang dengan kurikulum yang efektif dalam membantu
-                    siswa mencapai band score 6,5++
-                  </p>
-                  <div
-                    class="properties__footer d-flex justify-content-between align-items-center"
-                  >
-                    <div class="price">
-                      <span></span>
-                    </div>
+          </div>
+          <!-- Single -->
+          <!-- Single -->
+          <div class="properties pb-20">
+            <div class="properties__card">
+              <div class="properties__img overlay1">
+                <a href="#"><img src="{{ config.ASSETS_ROOT }}/home/img/gallery/featured2.png" alt="" /></a>
+              </div>
+              <div class="properties__caption">
+                <p>IELTS</p>
+                <h3>
+                  <a href="#">Program Raih IELTS</a>
+                </h3>
+                <p>
+                  Kelas dirancang dengan kurikulum yang efektif dalam membantu
+                  siswa mencapai band score 6,5++
+                </p>
+                <div class="properties__footer d-flex justify-content-between align-items-center">
+                  <div class="price">
+                    <span></span>
                   </div>
-                  <a
-                    href="#"
-                    class="border-btn border-btn2"
-                    >Coming Soon</a
-                  >
                 </div>
+                <a href="#" class="border-btn border-btn2">Coming Soon</a>
               </div>
             </div>
-            <!-- Single -->
-            <!-- 
+          </div>
+          <!-- Single -->
+          <!-- 
             <div class="properties pb-20">
               <div class="properties__card">
                 <div class="properties__img overlay1">
@@ -226,111 +184,83 @@
               </div>
             </div>
             Single -->
-            <!-- Single -->
-            <div class="properties pb-20">
-              <div class="properties__card">
-                <div class="properties__img overlay1">
-                  <a href="#"
-                    ><img
-                      src="{{ config.ASSETS_ROOT }}/home/img/gallery/featured4.png"
-                      alt=""
-                  /></a>
-                </div>
-                <div class="properties__caption">
-                  <p>1 on 1 Private Class</p>
-                  <h3>
-                    <a
-                      href="/private"
-                      >Program Private Class</a
-                    >
-                  </h3>
-                  <p>
-                    Program private class dirancang untuk kamu yang ingin
-                    belajar secara private
-                  </p>
-                  <div
-                    class="properties__footer d-flex justify-content-between align-items-center"
-                  >
-                    <div class="price">
-                      
-                    </div>
+          <!-- Single -->
+          <div class="properties pb-20">
+            <div class="properties__card">
+              <div class="properties__img overlay1">
+                <a href="#"><img src="{{ config.ASSETS_ROOT }}/home/img/gallery/featured4.png" alt="" /></a>
+              </div>
+              <div class="properties__caption">
+                <p>1 on 1 Private Class</p>
+                <h3>
+                  <a href="/private">Program Private Class</a>
+                </h3>
+                <p>
+                  Program private class dirancang untuk kamu yang ingin
+                  belajar secara private
+                </p>
+                <div class="properties__footer d-flex justify-content-between align-items-center">
+                  <div class="price">
+
                   </div>
-                  <a
-                    href="/private"
-                    class="border-btn border-btn2"
-                    >Lihat Selengkapnya</a
-                  >
                 </div>
+                <a href="/private" class="border-btn border-btn2">Lihat Selengkapnya</a>
               </div>
             </div>
-            <!-- Single -->
           </div>
+          <!-- Single -->
         </div>
       </div>
-      <!-- Courses area End -->
-      <!--? About Area-1 Start -->
-      <section class="about-area1 fix pt-10">
-        <div class="support-wrapper align-items-center" id="about">
-          <div class="left-content1">
-            <div class="about-icon">
-              <img
-                src="{{ config.ASSETS_ROOT }}/home/img/icon/about.svg"
-                alt=""
-              />
-            </div>
-            <!-- section tittle -->
-            <div class="section-tittle section-tittle2 mb-55">
-              <div class="front-text">
-                <h2 class="">Raih nilai TOEFL dan IELTS impianmu</h2>
-                <p>
-                  RaihCita adalah platform belajar online yang membantu kamu
-                  raih TOEFL 550++ dan IELTS 6,5++
-                </p>
-              </div>
-            </div>
-            <div class="single-features">
-              <div class="features-icon">
-                <img
-                  src="{{ config.ASSETS_ROOT }}/home/img/icon/right-icon.svg"
-                  alt=""
-                />
-              </div>
-              <div class="features-caption">
-                <p>100% free placement test</p>
-              </div>
-            </div>
-            <div class="single-features">
-              <div class="features-icon">
-                <img
-                  src="{{ config.ASSETS_ROOT }}/home/img/icon/right-icon.svg"
-                  alt=""
-                />
-              </div>
-              <div class="features-caption">
-                <p>55++ Siswa telah bergabung</p>
-              </div>
-            </div>
-
-            <div class="single-features">
-              <div class="features-icon">
-                <img
-                  src="{{ config.ASSETS_ROOT }}/home/img/icon/right-icon.svg"
-                  alt=""
-                />
-              </div>
-              <div class="features-caption">
-                <p>3++ Latihan Soal dengan Learning Management System (LMS) yang interaktif</p>
-              </div>
+    </div>
+    <!-- Courses area End -->
+    <!--? About Area-1 Start -->
+    <section class="about-area1 fix pt-10">
+      <div class="support-wrapper align-items-center" id="about">
+        <div class="left-content1">
+          <div class="about-icon">
+            <img src="{{ config.ASSETS_ROOT }}/home/img/icon/about.svg" alt="" />
+          </div>
+          <!-- section tittle -->
+          <div class="section-tittle section-tittle2 mb-55">
+            <div class="front-text">
+              <h2 class="">Raih nilai TOEFL dan IELTS impianmu</h2>
+              <p>
+                RaihCita adalah platform belajar online yang membantu kamu
+                raih TOEFL 550++ dan IELTS 6,5++
+              </p>
             </div>
           </div>
-          <div class="right-content1">
-            <!-- img -->
-            <div class="right-img">
-              <img
-                src="{{ config.ASSETS_ROOT }}/home/img/gallery/about.png"
-                alt=""
-              />
-              <!-- Youtube Video 
+          <div class="single-features">
+            <div class="features-icon">
+              <img src="{{ config.ASSETS_ROOT }}/home/img/icon/right-icon.svg" alt="" />
+            </div>
+            <div class="features-caption">
+              <p>100% free placement test</p>
+            </div>
+          </div>
+          <div class="single-features">
+            <div class="features-icon">
+              <img src="{{ config.ASSETS_ROOT }}/home/img/icon/right-icon.svg" alt="" />
+            </div>
+            <div class="features-caption">
+              <p>55++ Siswa telah bergabung</p>
+            </div>
+          </div>
+
+          <div class="single-features">
+            <div class="features-icon">
+              <img src="{{ config.ASSETS_ROOT }}/home/img/icon/right-icon.svg" alt="" />
+            </div>
+            <div class="features-caption">
+              <p>3++ Latihan Soal dengan Learning Management System (LMS) yang interaktif</p>
+            </div>
+          </div>
+        </div>
+        <div class="right-content1">
+          <!-- img -->
+          <div class="right-img">
+            <img src="{{ config.ASSETS_ROOT }}/home/img/gallery/about.png" alt="" />
+            <!-- Youtube Video 
               <div class="video-icon">
                 <a
                   class="popup-video btn-icon"
@@ -339,276 +269,216 @@
                 ></a>
               </div>
               -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Area End -->
+    <!--? top subjects Area Start -->
+    <div class="topic-area section-padding40" id="class">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-7 col-lg-8">
+            <div class="section-tittle text-center mb-55">
+              <h2>Telusuri Kelas RaihCita</h2>
             </div>
           </div>
         </div>
-      </section>
-      <!-- About Area End -->
-      <!--? top subjects Area Start -->
-      <div class="topic-area section-padding40" id="class">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-8">
-              <div class="section-tittle text-center mb-55">
-                <h2>Telusuri Kelas RaihCita</h2>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-topic text-center mb-30">
-                <div class="topic-img">
-                  <img
-                    src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic1.png"
-                    alt=""
-                  />
-                  <div class="topic-content-box">
-                    <div class="topic-content">
-                      <h3>
-                        <a
-                          href="/toefl-class"
-                          >TOEFL Preparation Class</a
-                        >
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-topic text-center mb-30">
-                <div class="topic-img">
-                  <img
-                    src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic2.png"
-                    alt=""
-                  />
-                  <div class="topic-content-box">
-                    <div class="topic-content">
-                      <h3>
-                        <a
-                          href="/jointoefl"
-                          >TOEFL Free Class</a
-                        >
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-topic text-center mb-30">
-                <div class="topic-img">
-                  <img
-                    src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic3.png"
-                    alt=""
-                  />
-                  <div class="topic-content-box">
-                    <div class="topic-content">
-                      <h3>
-                        <a
-                          href="/learning-center"
-                          >TOEFL Simulation Test</a
-                        >
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-topic text-center mb-30">
-                <div class="topic-img">
-                  <img
-                    src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic4.png"
-                    alt=""
-                  />
-                  <div class="topic-content-box">
-                    <div class="topic-content">
-                      <h3>
-                        <a
-                          href="/private"
-                          >TOEFL Private Test</a
-                        >
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-topic text-center mb-30">
-                <div class="topic-img">
-                  <img
-                    src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic5.png"
-                    alt=""
-                  />
-                  <div class="topic-content-box">
-                    <div class="topic-content">
-                      <h3>
-                        <a
-                          href="/private"
-                          >IELTS Academic Private Class</a
-                        >
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-topic text-center mb-30">
-                <div class="topic-img">
-                  <img
-                    src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic6.png"
-                    alt=""
-                  />
-                  <div class="topic-content-box">
-                    <div class="topic-content">
-                      <h3><a href="/toefl-listening">IELTS General Training WHV Private Class</a></h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-topic text-center mb-30">
-                <div class="topic-img">
-                  <img
-                    src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic7.png"
-                    alt=""
-                  />
-                  <div class="topic-content-box">
-                    <div class="topic-content">
-                      <h3>
-                        <a
-                          href="/"
-                          >Grammar Private Class</a
-                        >
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="single-topic text-center mb-30">
-                <div class="topic-img">
-                  <img
-                    src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic8.png"
-                    alt=""
-                  />
-                  <div class="topic-content-box">
-                    <div class="topic-content">
-                      <h3>
-                        <a
-                          href="/"
-                          >Speaking Private Class</a
-                        >
-                      </h3>
-                    </div>
+        <div class="row">
+
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic1.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3>
+                      <a href="/toefl-class">TOEFL Preparation Class</a>
+                    </h3>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row justify-content-center">
-            <div class="col-xl-12">
-              <div class="section-tittle text-center mt-20">
-                <a
-                  href="/class"
-                  class="border-btn"
-                  >Lihat Seluruh Kelas</a
-                >
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic2.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3>
+                      <a href="/jointoefl">TOEFL Free Class</a>
+                    </h3>
+                  </div>
+                </div>
               </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic3.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3>
+                      <a href="/learning-center">TOEFL Simulation Test</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic4.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3>
+                      <a href="/toeflprivate">TOEFL Private Test</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic5.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3>
+                      <a href="/ieltsacprivate">IELTS Academic Private Class</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic6.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3><a href="/ieltswhvprivate">IELTS General Training WHV Private Class</a></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic7.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3>
+                      <a href="/private">Grammar Private Class</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="single-topic text-center mb-30">
+              <div class="topic-img">
+                <img src="{{ config.ASSETS_ROOT }}/home/img/gallery/topic8.png" alt="" />
+                <div class="topic-content-box">
+                  <div class="topic-content">
+                    <h3>
+                      <a href="/speakingprivate">Speaking Private Class</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-xl-12">
+            <div class="section-tittle text-center mt-20">
+              <a href="/class" class="border-btn">Lihat Seluruh Kelas</a>
             </div>
           </div>
         </div>
       </div>
-      <!-- top subjects End -->
+    </div>
+    <!-- top subjects End -->
 
-      <section class="about-area3 fix">
-        <div class="support-wrapper align-items-center">
-          <div class="right-content3">
-          
-            <div class="right-img">
-              <img
-                src="{{ config.ASSETS_ROOT }}/home/img/gallery/logo.png"
-                alt=""
-              />
+    <section class="about-area3 fix">
+      <div class="support-wrapper align-items-center">
+        <div class="right-content3">
+
+          <div class="right-img">
+            <img src="{{ config.ASSETS_ROOT }}/home/img/gallery/logo.png" alt="" />
+          </div>
+        </div>
+        <div class="left-content3">
+
+          <div class="section-tittle section-tittle2 mb-20">
+            <div class="front-text">
+              <h2 class="">Raih Cita-mu Bekerja atau Belajar di Luar Negeri</h2>
             </div>
           </div>
-          <div class="left-content3">
-       
-            <div class="section-tittle section-tittle2 mb-20">
-              <div class="front-text">
-                <h2 class="">Raih Cita-mu Bekerja atau Belajar di Luar Negeri</h2>
-              </div>
+          <div class="single-features">
+            <div class="features-icon">
+              <img src="{{ config.ASSETS_ROOT }}/home/img/icon/right-icon.svg" alt="" />
             </div>
-            <div class="single-features">
-              <div class="features-icon">
-                <img
-                  src="{{ config.ASSETS_ROOT }}/home/img/icon/right-icon.svg"
-                  alt=""
-                />
-              </div>
-              <div class="features-caption">
-                <p>
-                  1. Raih nilai TOEFL atau IELTS
-                </p>
-              </div>
+            <div class="features-caption">
+              <p>
+                1. Raih nilai TOEFL atau IELTS
+              </p>
             </div>
-            <div class="single-features">
-              <div class="features-icon">
-                <img
-                  src="{{ config.ASSETS_ROOT }}/home/img/icon/right-icon.svg"
-                  alt=""
-                />
-              </div>
-              <div class="features-caption">
-                <p>
-                  2. Raih Beasiswa atau Kerja Impian Kamu
-                </p>
-              </div>
+          </div>
+          <div class="single-features">
+            <div class="features-icon">
+              <img src="{{ config.ASSETS_ROOT }}/home/img/icon/right-icon.svg" alt="" />
             </div>
-            
+            <div class="features-caption">
+              <p>
+                2. Raih Beasiswa atau Kerja Impian Kamu
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      </div>
+    </section>
+
+
+    <section class="team-area section-padding40 fix">
+      <div class="container" id="tutor">
+        <div class="row justify-content-center">
+          <div class="col-xl-7 col-lg-8">
+            <div class="section-tittle text-center mb-55">
+              <h2>Excellent Tutors!</h2>
             </div>
           </div>
         </div>
-      </section>
-     
+        <div class="team-active">
+          <div class="single-cat text-center">
+            <div class="cat-icon">
+              <img src="{{ config.ASSETS_ROOT }}/home/img/gallery/team1.jpg" alt="" />
+            </div>
+            <div class="cat-cap">
+              <h5><a href="#">Kevin</a></h5>
 
-      <section class="team-area section-padding40 fix">
-        <div class="container" id="tutor">
-          <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-8">
-              <div class="section-tittle text-center mb-55">
-                <h2>Excellent Tutors!</h2>
+              <h4>IELTS 7</h4>
+              <h4>TOEFL ITP 587</h4>
+              <div class="features-caption">
+                <p>• Pengalaman mengajar 1 tahun</p>
               </div>
+
+              <p>• Alumni ITB (cum laude)</p>
+              <p>• Awardee Beasiswa Indonesia Maju BPI (funded by LPDP)</p>
+
             </div>
           </div>
-          <div class="team-active">
-            <div class="single-cat text-center">
-              <div class="cat-icon">
-                <img
-                  src="{{ config.ASSETS_ROOT }}/home/img/gallery/team1.jpg"
-                  alt=""
-                />
-              </div>
-              <div class="cat-cap">
-                <h5><a href="#">Kevin</a></h5>
-                
-                <h4>IELTS 7</h4>
-                  <h4>TOEFL ITP 587</h4>
-                  <div class="features-caption">
-                  <p>• Pengalaman mengajar 1 tahun</p></div>
-                
-                 <p>• Alumni ITB (cum laude)</p>
-                 <p>• Awardee Beasiswa Indonesia Maju BPI (funded by LPDP)</p>
-
-              </div>
-            </div>
-     <!--?
+          <!--?
             <div class="single-cat text-center">
               <div class="cat-icon">
                 <img
@@ -660,42 +530,37 @@
           </div>
           -->
         </div>
-      </section>
+    </section>
 
-      <!--? About Area-2 Start -->
-      <section class="about-area2 fix pb-padding">
-        <div class="support-wrapper align-items-center">
-          <div class="right-content2">
-            <!-- img -->
-            <div class="right-img">
-              <img
-                src="{{ config.ASSETS_ROOT }}/home/img/gallery/about3.png"
-                alt=""
-              />
-            </div>
+    <!--? About Area-2 Start -->
+    <section class="about-area2 fix pb-padding">
+      <div class="support-wrapper align-items-center">
+        <div class="right-content2">
+          <!-- img -->
+          <div class="right-img">
+            <img src="{{ config.ASSETS_ROOT }}/home/img/gallery/about3.png" alt="" />
           </div>
-          <div class="left-content2">
-            <!-- section tittle -->
-            <div class="section-tittle section-tittle2 mb-20">
-              <div class="front-text">
-                <h2 class="">#RaihCitaSekarang</h2>
-                <p>
-                  Semua bisa Raih Cita bareng RaihCita! Kasih tau target target
-                  skor TOEFL atau IELTS kamu!
-                </p>
-                <p>Biar RaihCita bisa bantu kamu untuk meraih cita-cita kamu</p>
-                <a
-                  href="https://wa.me/6289656432988?text=Hello%20RaihCita%2C%20ingin%20bertanya%20dong!%20%F0%9F%AA%81%F0%9F%9A%80%F0%9F%8E%87"
-                  class="btn"
-                  >Join now for Free</a
-                >
-              </div>
+        </div>
+        <div class="left-content2">
+          <!-- section tittle -->
+          <div class="section-tittle section-tittle2 mb-20">
+            <div class="front-text">
+              <h2 class="">#RaihCitaSekarang</h2>
+              <p>
+                Semua bisa Raih Cita bareng RaihCita! Kasih tau target target
+                skor TOEFL atau IELTS kamu!
+              </p>
+              <p>Biar RaihCita bisa bantu kamu untuk meraih cita-cita kamu</p>
+              <a href="https://wa.me/6289656432988?text=Hello%20RaihCita%2C%20ingin%20bertanya%20dong!%20%F0%9F%AA%81%F0%9F%9A%80%F0%9F%8E%87"
+                class="btn">Join now for Free</a>
             </div>
           </div>
         </div>
-      </section>
-      <!-- About Area End -->
-    </main>
-    {% include 'layouts/footer.html'%} 
-  </body>
+      </div>
+    </section>
+    <!-- About Area End -->
+  </main>
+  {% include 'layouts/footer.html'%}
+</body>
+
 </html>
