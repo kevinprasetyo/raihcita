@@ -427,6 +427,8 @@ def hasiltoeflreading():
 def toefl():
     return render_template('home/toefl.html')
 
+# Affiliate Marketing
+
 
 @blueprint.route('/toeflmurah')
 def toeflmurah():
