@@ -422,6 +422,16 @@ def hasiltoeflreading():
 
     return render_template('home/hasil-toefl-reading.html', score=score, total=50, incorrect=hasiltoeflreading)
 
+
+@blueprint.route('/toefl-class')
+def toefl():
+    return render_template('home/toefl.html')
+
+
+@blueprint.route('/toeflmurah')
+def toeflmurah():
+    return render_template('home/toefl.html', ref="RC001")
+
 # Helper - Extract current page name from request
 
 
