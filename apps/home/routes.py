@@ -443,6 +443,18 @@ def toeflmurah():
 def toeflprivateclassmurce():
     return render_template('home/toeflprivate.html', ref="RC002")
 
+@blueprint.route('/toeflprepclassdaa')
+def toeflprepclassdaa():
+    return render_template('home/toefl.html', ref="RC003")
+
+@blueprint.route('/toeflprepclass')
+def toeflprepclass():
+    return render_template('home/toefl.html', ref="RC004")
+
+@blueprint.route('/toeflprivatemurah')
+def toeflprivatemurah():
+    return render_template('home/toeflprivate.html', ref="RC005")
+
 # Helper - Extract current page name from request
 
 
