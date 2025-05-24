@@ -432,6 +432,10 @@ def hasiltoeflreading():
 def toefl():
     return render_template('home/toefl.html')
 
+@blueprint.route('/toeflclass')
+def toeflclass():
+    return render_template('home/toefl.html')
+
 @blueprint.route('/ieltsacademicprivate')
 def ieltsacademicprivate():
     return render_template('home/ieltsacprivate.html', ref="RC")
@@ -466,6 +470,47 @@ def ieltsforwhv():
 @blueprint.route('/getscholarship')
 def getscholarship():
     return render_template('home/mentoringprivate.html', ref="RC007")
+
+@blueprint.route('/raihbeasiswow')
+def raihbeasiswow():
+    return render_template('home/mentoringprivate.html', ref="RC008")
+
+@blueprint.route('/ieltsacademicpriv')
+def ieltsacademicpriv():
+    return render_template('home/ieltsacprivate.html', ref="RC009")
+
+@blueprint.route('/toeflprivclass')
+def toeflprivclass():
+    return render_template('home/toeflprivate.html', ref="RC010")
+
+@blueprint.route('/grammarprivv')
+def grammarprivv():
+    return render_template('home/grammarprivate.html', ref="RC011")
+
+@blueprint.route('/speakingprivclasss')
+def speakingprivclasss():
+    return render_template('home/speakingprivate.html', ref="RC012")
+
+@blueprint.route('/ieltswhvprivv')
+def ieltswhvprivv():
+    return render_template('home/ieltswhvprivv.html', ref="RC013")
+
+@blueprint.route('/kelasprivatielts')
+def kelasprivatielts():
+    return render_template('home/ieltsacprivate.html', ref="RC014")
+
+@blueprint.route('/grammarprivclass')
+def grammarprivclass():
+    return render_template('home/grammarprivclass.html', ref="RC015")
+
+@blueprint.route('/speakingprivclass')
+def speakingprivclass():
+    return render_template('home/speakingprivclass.html', ref="RC016")
+
+@blueprint.route('/toeflsmumerr')
+def toeflsmumerr():
+    return render_template('home/toeflsmumerr.html', ref="RC017")
+
 
 
 

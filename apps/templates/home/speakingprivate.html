@@ -128,7 +128,15 @@
                                         <strong> Hanya Rp799.000 untuk 10 sesi (15 Jam)</strong>
                                     </center>
                                 </h4>
+                                {% if ref %}
+                                <a href="/choosetutor?class=Speaking&ref={{ ref }}">
 
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                        type="submit">
+                                        Pilih Tutor dan Jadwal
+                                    </button></a></a>
+                                </a>
+                                {% else %}
                                 <a href="/choosetutor?class=Speaking">
 
                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
@@ -136,6 +144,7 @@
                                         Pilih Tutor dan Jadwal
                                     </button></a></a>
                                 </a>
+                                {% endif %}
                             </aside>
                             <aside class="single_sidebar_widget post_category_widget">
                                 <h4 class="widget_title" style="color: #2d2d2d">Speaking Private Class</h4>
