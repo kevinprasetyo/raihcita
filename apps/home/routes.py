@@ -15,11 +15,16 @@ def index():
 
 @blueprint.route('/choosetutor', methods=['GET', 'POST'])
 def choosetutor():
-    if "class" in request.args:
+    if "class" in request.args and "ref" in request.args:
         class_name = request.args.get("class")
+        ref_name = request.args.get("ref")
+    elif "class" in request.args:
+        class_name = request.args.get("class")
+        ref_name = "RC"
     else:
         class_name = "Raih Cita"
-    return render_template('home/choose-tutor.html', tutor=class_name)
+        ref_name = "RC"
+    return render_template('home/choose-tutor.html', tutor=class_name, ref=ref_name)
 
 
 @blueprint.route('/profile', methods=['GET', 'POST'])
@@ -433,6 +438,10 @@ def toefl():
 @blueprint.route('/toeflmurah')
 def toeflmurah():
     return render_template('home/toefl.html', ref="RC001")
+
+@blueprint.route('/toeflprivateclassmurce')
+def toeflprivateclassmurce():
+    return render_template('home/toeflprivate.html', ref="RC002")
 
 # Helper - Extract current page name from request
 
