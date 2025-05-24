@@ -432,6 +432,10 @@ def hasiltoeflreading():
 def toefl():
     return render_template('home/toefl.html')
 
+@blueprint.route('/ieltsacademicprivate')
+def ieltsacademicprivate():
+    return render_template('home/ieltsacprivate.html', ref="RC")
+
 # Affiliate Marketing
 
 
@@ -454,6 +458,17 @@ def toeflprepclass():
 @blueprint.route('/toeflprivatemurah')
 def toeflprivatemurah():
     return render_template('home/toeflprivate.html', ref="RC005")
+
+@blueprint.route('/ieltsforwhv')
+def ieltsforwhv():
+    return render_template('home/ieltswhvprivate.html', ref="RC006")
+
+@blueprint.route('/getscholarship')
+def getscholarship():
+    return render_template('home/mentoringprivate.html', ref="RC007")
+
+
+
 
 # Helper - Extract current page name from request
 

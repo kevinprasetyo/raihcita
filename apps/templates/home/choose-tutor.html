@@ -47,7 +47,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    {% include 'tutor/kevin.html' %}{% include 'tutor/dzaki.html' %}{% include 'tutor/mutiara.html' %}
+                    {% if tutor == "Mentoring" %}
+
+
+                    {% include 'tutor/kevin.html' %}
+                    {% else %}
+                    {% include 'tutor/kevin.html' %}
+                    {% include 'tutor/dzaki.html' %}{% include 'tutor/mutiara.html' %}
+                    {% endif %}
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8">
