@@ -501,11 +501,11 @@ def kelasprivatielts():
 
 @blueprint.route('/grammarprivclass')
 def grammarprivclass():
-    return render_template('home/grammarprivclass.html', ref="RC015")
+    return render_template('home/grammarprivate.html', ref="RC015")
 
 @blueprint.route('/speakingprivclass')
 def speakingprivclass():
-    return render_template('home/speakingprivclass.html', ref="RC016")
+    return render_template('home/speakingprivate.html', ref="RC016")
 
 @blueprint.route('/toeflsmumerr')
 def toeflsmumerr():
