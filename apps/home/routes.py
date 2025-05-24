@@ -509,7 +509,7 @@ def speakingprivclass():
 
 @blueprint.route('/toeflsmumerr')
 def toeflsmumerr():
-    return render_template('home/toeflsmumerr.html', ref="RC017")
+    return render_template('home/toefl.html', ref='RC017')
 
 
 
