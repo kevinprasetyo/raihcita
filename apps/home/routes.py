@@ -493,7 +493,7 @@ def speakingprivclasss():
 
 @blueprint.route('/ieltswhvprivv')
 def ieltswhvprivv():
-    return render_template('home/ieltswhvprivv.html', ref="RC013")
+    return render_template('home/ieltswhvprivate.html', ref="RC013")
 
 @blueprint.route('/kelasprivatielts')
 def kelasprivatielts():
