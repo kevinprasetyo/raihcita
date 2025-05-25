@@ -440,8 +440,32 @@ def toeflclass():
 def ieltsacademicprivate():
     return render_template('home/ieltsacprivate.html', ref="RC")
 
-# Affiliate Marketing
 
+
+
+
+
+
+# Helper - Extract current page name from request
+
+
+def get_segment(request):
+
+    try:
+
+        segment = request.path.split('/')[-1]
+
+        if segment == '':
+            segment = 'index'
+
+        return segment
+
+    except:
+        return None
+
+
+
+# Affiliate Marketing
 
 @blueprint.route('/toeflmurah')
 def toeflmurah():
@@ -511,23 +535,35 @@ def speakingprivclass():
 def toeflsmumerr():
     return render_template('home/toefl.html', ref='RC017')
 
+@blueprint.route('/toeflprepclasz')
+def toeflprepclasz():
+    return render_template('home/toefl.html', ref='RC018')
+
+@blueprint.route('/privattoeflmurah')
+def privattoeflmurah():
+    return render_template('home/toeflprivate.html', ref='RC019')
+
+@blueprint.route('/ieltacademicprivateclass')
+def ieltacademicprivateclass():
+    return render_template('home/ieltsacprivate.html', ref='RC020')
+
+@blueprint.route('/academickelastoefl')
+def academickelastoefl():
+    return render_template('home/ieltsacprivate.html', ref='RC021')
 
 
+@blueprint.route('/ieltsacademicprivateclassdaa')
+def ieltsacademicprivateclassdaa():
+    return render_template('home/ieltsacprivate.html', ref='RC022')
 
+@blueprint.route('/clsprivatemurah')
+def clsprivatemurah():
+    return render_template('home/toeflprivate.html', ref='RC023')
 
-# Helper - Extract current page name from request
+@blueprint.route('/toeflprepclassmurah')
+def toeflprepclassmurah():
+    return render_template('home/toefl.html', ref='RC024')
 
-
-def get_segment(request):
-
-    try:
-
-        segment = request.path.split('/')[-1]
-
-        if segment == '':
-            segment = 'index'
-
-        return segment
-
-    except:
-        return None
+@blueprint.route('/theeliteglobaltoefl')
+def theeliteglobaltoefl():
+    return render_template('home/toeflprivate.html', ref='RC025')
