@@ -641,3 +641,48 @@ def toeflprepterjangkau():
 @blueprint.route('/grammarprvtcls')
 def grammarprvtcls():
     return render_template('home/grammarprivate.html', ref='RC035')
+
+
+@blueprint.route('/grammarprivateclassdaa')
+def grammarprivateclassdaa():
+    return render_template('home/grammarprivate.html', ref='RC036')
+
+
+@blueprint.route('/speakingprivateclassdaa')
+def speakingprivateclassdaa():
+    return render_template('home/speakingprivate.html', ref='RC037')
+
+
+@blueprint.route('/profesional')
+def profesional():
+    return render_template('home/speakingprivate.html', ref='')
+
+
+@blueprint.route('/toeflprepmurah')
+def toeflprepmurah():
+    return render_template('home/toefl.html', ref='RC038')
+
+
+@blueprint.route('/toeflkursusprivatemurah')
+def toeflkursusprivatemurah():
+    return render_template('home/toeflprivate.html', ref='RC039')
+
+
+@blueprint.route('/ieltsakademikprivate')
+def ieltsakademikprivate():
+    return render_template('home/ieltsacprivate.html', ref='RC040')
+
+
+@blueprint.route('/toeflpreperationkursus')
+def toeflpreperationkursus():
+    return render_template('home/toefl.html', ref='RC041')
+
+
+@blueprint.route('/academicprivateclass')
+def academicprivateclass():
+    return render_template('home/ieltsacprivate.html', ref='RC042')
+
+
+@blueprint.route('/easylearntoefl')
+def easylearntoefl():
+    return render_template('home/toefl.html', ref='RC043')
