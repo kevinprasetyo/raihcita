@@ -37,21 +37,25 @@
               <div class="col-xl-12">
                 <div class="card">
                   {% for message in get_flashed_messages() %}
-                  <div
-                    class="alert alert-success alert-dismissible fade show"
-                    role="alert"
-                  >
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ message }}
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="alert"
-                      aria-label="Close"
-                    >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   {% endfor %}
+
+
+                  <script async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3432965017603796"
+                    crossorigin="anonymous"></script>
+                  <!-- Learning Center Ads -->
+                  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3432965017603796"
+                    data-ad-slot="3314571191" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                  <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+
                   <div class="card-header">
                     <h5>Hasil TOEFL Reading</h5>
                   </div>
@@ -81,22 +85,18 @@
                         <tbody>
                           {% for item in incorrect %}
                           <tr>
-                            <td
-                              style="
+                            <td style="
                                 word-break: break-word;
                                 white-space: normal;
                                 max-width: 500px;
-                              "
-                            >
+                              ">
                               <strong> {{ item.question }}</strong>
                             </td>
-                            <td
-                              style="
+                            <td style="
                                 word-break: break-word;
                                 white-space: normal;
                                 max-width: 500px;
-                              "
-                            >
+                              ">
                               Your answer: {{ item.your_answer }}<br />
                               Correct answer: {{ item.correct_answer }}
                             </td>

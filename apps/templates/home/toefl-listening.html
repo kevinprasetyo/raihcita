@@ -40,34 +40,31 @@ endblock %}
               <div class="col-sm-12">
                 <div class="card">
                   {% for message in get_flashed_messages() %}
-                  <div
-                    class="alert alert-success alert-dismissible fade show"
-                    role="alert"
-                  >
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ message }}
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="alert"
-                      aria-label="Close"
-                    >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   {% endfor %}
+
+                  <script async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3432965017603796"
+                    crossorigin="anonymous"></script>
+                  <!-- Learning Center Ads -->
+                  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3432965017603796"
+                    data-ad-slot="3314571191" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                  <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+
                   <div class="card-header">
                     <h5>Section 1: Listening Comprehension</h5>
                   </div>
                   <div class="card-body">
                     <audio controls autoplay>
-                      <source
-                        src="{{ config.ASSETS_ROOT }}/audio/toefl.ogg"
-                        type="audio/ogg"
-                      />
-                      <source
-                        src="{{ config.ASSETS_ROOT }}/audio/toefl.mp3"
-                        type="audio/mpeg"
-                      />
+                      <source src="{{ config.ASSETS_ROOT }}/audio/toefl.ogg" type="audio/ogg" />
+                      <source src="{{ config.ASSETS_ROOT }}/audio/toefl.mp3" type="audio/mpeg" />
                       Your browser does not support the audio element.
                     </audio>
                     <p>
@@ -83,20 +80,18 @@ endblock %}
                     <hr />
                     <div class="row">
                       <div class="col-md-8">
-                        <h7
-                          >Directions: In Part A, you'll hear short
+                        <h7>Directions: In Part A, you'll hear short
                           conversations between 2 people. After each
                           conversation, you will hear a question about the
                           conversation. The conversations and questions will not
-                          be repeated. <br> 
+                          be repeated. <br>
                           After you hear a question, read the 4
                           possible answers in your test book and choose the
                           best. Then, on your answer sheet, find the number of
                           the question and fill in the space that corresponds to
                           the letter of the answer you have chosen. <br /><br />
                         </h7>
-                        <h7
-                          >Here is an example: <br />
+                        <h7>Here is an example: <br />
                           On the recording, you hear:
                           <br />
                           <br />
@@ -118,49 +113,47 @@ endblock %}
                         <h6>Now begin work on the question</h6>
                         <form role="form" method="POST" action="/hasil-toefl-listening">
                           {% for q in questions %}
-                          </div>
-</div>
-<hr>
-<div class="row">
-<div class="col-md-8">
-            
-                            <label>{{ q.question }}</label>
-                            {% for choice in q.choices %}
-                             <div class="custom-control custom-radio">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-8">
 
-                            <input
-                    
-                              type="radio"
-                              name="{{ q.id }}"
-                              value="{{ loop.index0 }}"
- 
-                              id="{{ loop.index0 }}{{ q.id }}"
-                              class="custom-control-input"
-                          
-                            />
-                             <label class="custom-control-label" for="{{ loop.index0 }}{{ q.id }}">{{ choice }}</label>
-                            
-                            </div>
-                            {% endfor %}
-            
-                          <br />
-{% if q.id == 30 %}
-                          
-                            <p>
-                              <h5>Part B</h5> 
-                              <hr>
-<h7> Directions: In this part of the test, you will hear longer conversations. After each conversation, you will hear several questions. The conversations and questions will not be repeated. <br>
-After you hear a question, read the 4 possible answers in your test book and choose the best answer. Then, on your answer sheet, find the number of the question and fill in the space that corresponds to the letter of the answer you have chosen.</h7>
-</p>
-                          {% endif %}
-{% if q.id == 37 %}
-                          <h5>Part C</h5>
-                    <hr />
-               
-                        <h7
-                          >Directions: In this part of the test, you will hear several short talks. After each talk, you hear some questions. The talks and the questions are not repeated. <br> 
-                          After you hear a question, read the 4 possible answers in your test book and choose the best answer. Then, on your answer sheet, find the number of the question and fill in the space that corresponds to the letter of the answer you have chosen. <br /><br />
-                     
+                        <label>{{ q.question }}</label>
+                        {% for choice in q.choices %}
+                        <div class="custom-control custom-radio">
+
+                          <input type="radio" name="{{ q.id }}" value="{{ loop.index0 }}"
+                            id="{{ loop.index0 }}{{ q.id }}" class="custom-control-input" />
+                          <label class="custom-control-label" for="{{ loop.index0 }}{{ q.id }}">{{ choice }}</label>
+
+                        </div>
+                        {% endfor %}
+
+                        <br />
+                        {% if q.id == 30 %}
+
+                        <p>
+                        <h5>Part B</h5>
+                        <hr>
+                        <h7> Directions: In this part of the test, you will hear longer conversations. After each
+                          conversation, you will hear several questions. The conversations and questions will not be
+                          repeated. <br>
+                          After you hear a question, read the 4 possible answers in your test book and choose the best
+                          answer. Then, on your answer sheet, find the number of the question and fill in the space that
+                          corresponds to the letter of the answer you have chosen.</h7>
+                        </p>
+                        {% endif %}
+                        {% if q.id == 37 %}
+                        <h5>Part C</h5>
+                        <hr />
+
+                        <h7>Directions: In this part of the test, you will hear several short talks. After each talk,
+                          you hear some questions. The talks and the questions are not repeated. <br>
+                          After you hear a question, read the 4 possible answers in your test book and choose the best
+                          answer. Then, on your answer sheet, find the number of the question and fill in the space that
+                          corresponds to the letter of the answer you have chosen. <br /><br />
+
                           >Here is an example: <br />
                           On the recording, you hear: <br>
                           Now listen to a sample question:
@@ -173,7 +166,8 @@ After you hear a question, read the 4 possible answers in your test book and cho
                           (C) To explain the workings of the brain <br />
                           (D) To dramatize a famous mystery story <br />
                           <br />
-                          The best answer to the question, "What is the main purpose of the program?" is (C), explain the workings of the brain. "Therefore, the correct answer is (C). <br><br>
+                          The best answer to the question, "What is the main purpose of the program?" is (C), explain
+                          the workings of the brain. "Therefore, the correct answer is (C). <br><br>
                           Now listen to another sample question: <br>
                           In your test book, you read: <br><br>
                           Why does the speaker recommend snatching the program? <br>
@@ -181,37 +175,38 @@ After you hear a question, read the 4 possible answers in your test book and cho
                           (B) It never be shown again. <br>
                           (C) It can help viewers improve their memory skills. <br>
                           (D) It will help with course work. <br><br>
-                          The best answer to the question "Why does the speaker recommend watching the program?" is (D), "It will help with course work. "Therefore, the correct choice is (D). <br>
+                          The best answer to the question "Why does the speaker recommend watching the program?" is (D),
+                          "It will help with course work. "Therefore, the correct choice is (D). <br>
                         </h7>
                         <br /><br />
                         <h6>Now begin work on the question</h6>
                         <hr>
-                         {% endif %}
-                          {% endfor %}
-                            </div>
-                                        </div>
-                                         
-                          <button type="submit" class="btn btn-primary">
-                            Submit Answers
-                          </button>
-                        </form>
+                        {% endif %}
+                        {% endfor %}
                       </div>
-                      <!-- Input group -->
                     </div>
+
+                    <button type="submit" class="btn btn-primary">
+                      Submit Answers
+                    </button>
+                    </form>
                   </div>
-                  <!-- [ Main Content ] end -->
+                  <!-- Input group -->
                 </div>
               </div>
+              <!-- [ Main Content ] end -->
             </div>
           </div>
         </div>
       </div>
-      <!-- [ Main Content ] end -->
-
-      {% endblock content %}
-
-      <!-- Specific Page JS goes HERE  -->
-      {% block javascripts %} {% endblock javascripts %}
     </div>
   </div>
+  <!-- [ Main Content ] end -->
+
+  {% endblock content %}
+
+  <!-- Specific Page JS goes HERE  -->
+  {% block javascripts %} {% endblock javascripts %}
+</div>
+</div>
 </div>
