@@ -1,5 +1,5 @@
 from apps.home import blueprint
-from flask import render_template, request, flash, redirect, session, url_for
+from flask import render_template, request, flash, redirect, session, url_for, send_from_directory
 from flask_login import login_required, current_user
 from jinja2 import TemplateNotFound
 from apps.home.models import Snisub, Janji, Profile
@@ -11,6 +11,11 @@ import json
 @blueprint.route('/index')
 def index():
     return render_template('home/homepage.html', segment='index')
+
+
+@blueprint.route('/ads.txt')
+def ads_txt():
+    return send_from_directory('static', 'ads.txt')
 
 
 @blueprint.route('/choosetutor', methods=['GET', 'POST'])
