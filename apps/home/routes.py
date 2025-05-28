@@ -239,6 +239,11 @@ def learning_template(template):
         return render_template('home/page-500.html'), 500
 
 
+@blueprint.route('/learning/toefl')
+def learningcentertoefl():
+    return render_template('home/learning-center.html', questions=QUESTIONS)
+
+
 @blueprint.route('/learning/toefl/listening')
 def toefllistening2():
     return render_template('learning/toefl/listening.html', questions=QUESTIONS)
