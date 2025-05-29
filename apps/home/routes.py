@@ -262,6 +262,10 @@ def starttoefllistening():
 @blueprint.route('/learning/toefl/listening')
 def toefllistening2():
     # Retrieve end time and calculate remaining seconds
+    if 'end_time' not in session or 'start_time' not in session:
+        flash("Please start the test first.")
+        return redirect(url_for('home_blueprint.starttoefllistening'))
+    
     end_time = datetime.strptime(session['end_time'], "%Y-%m-%d %H:%M:%S")
     now = datetime.now()
     remaining_seconds = int((end_time - now).total_seconds())
@@ -285,7 +289,7 @@ score_map = {
 }
 
 
-@blueprint.route('/learning/toefl/listening-result', methods=['POST'])
+@blueprint.route('/learning/toefl/listening-result', methods=['GET', 'POST' ])
 def hasiltoefllistening2():
     user_answers = request.form
     correctans = 0
@@ -318,7 +322,7 @@ def toefllistening():
     return render_template('home/toefl-listening.html', questions=QUESTIONS)
 
 
-@blueprint.route('/hasil-toefl-listening', methods=['POST'])
+@blueprint.route('/hasil-toefl-listening', methods=['GET', 'POST'])
 def hasiltoefllistening():
     user_answers = request.form
     score = 0
@@ -362,7 +366,7 @@ def quiz2():
     return render_template('learning/toefl/structure.html', questions=STRUCTURE)
 
 
-@blueprint.route('/learning/toefl/structure-result', methods=['POST'])
+@blueprint.route('/learning/toefl/structure-result', methods=['GET', 'POST'])
 def submit2():
     user_answers = request.form
     correctans = 0
@@ -395,7 +399,7 @@ def quiz():
     return render_template('home/toefl-structure.html', questions=STRUCTURE)
 
 
-@blueprint.route('/hasil-toefl-structure', methods=['POST'])
+@blueprint.route('/hasil-toefl-structure', methods=['GET', 'POST'])
 def submit():
     user_answers = request.form
     score = 0
