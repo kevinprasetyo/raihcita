@@ -6,6 +6,7 @@ from apps.home.models import Snisub, Janji, Profile
 from apps.authentication.models import Users
 from apps import db
 import json
+from datetime import datetime, timedelta
 
 
 @blueprint.route('/index')
@@ -246,16 +247,35 @@ def learning_template(template):
 
 @blueprint.route('/learning/toefl')
 def learningcentertoefl():
-    return render_template('learning/dashboard.html', questions=QUESTIONS)
+    return render_template('learning/dashboard.html')
+
+@blueprint.route('/learning/toefl/startlistening')
+def starttoefllistening():
+    # Set start time and end time in session
+    session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (datetime.now() + timedelta(minutes=0.2)).strftime("%Y-%m-%d %H:%M:%S")
+
+    return redirect(url_for('home_blueprint.toefllistening2'))
+
 
 
 @blueprint.route('/learning/toefl/listening')
 def toefllistening2():
-    return render_template('learning/toefl/listening.html', questions=QUESTIONS)
+    # Retrieve end time and calculate remaining seconds
+    end_time = datetime.strptime(session['end_time'], "%Y-%m-%d %H:%M:%S")
+    now = datetime.now()
+    remaining_seconds = int((end_time - now).total_seconds())
+
+    if remaining_seconds <= 0:
+        flash("Time's up! You cannot take the test anymore.")
+        session.clear()  # Clear session to reset the test
+        return redirect(url_for('home_blueprint.hasiltoefllistening2'))
+
+    return render_template('learning/toefl/listening.html', questions=QUESTIONS, remaining_seconds=remaining_seconds)
 
 
 score_map = {
-    1: 31, 2: 31, 3: 31, 4: 31, 5: 31, 6: 31, 7: 31, 8: 31,
+    0: 31, 1: 31, 2: 31, 3: 31, 4: 31, 5: 31, 6: 31, 7: 31, 8: 31,
     9: 32, 10: 32.5, 11: 33, 12: 36, 13: 37.5, 14: 39, 15: 40,
     16: 41, 17: 42, 18: 43, 19: 43.5, 20: 44, 21: 45, 22: 45.5,
     23: 46, 24: 46, 25: 46.5, 26: 47, 27: 48, 28: 48.5, 29: 49,
@@ -324,7 +344,7 @@ def hasiltoefllistening():
 
 
 score_map = {
-    1: 31, 2: 31, 3: 31, 4: 31, 5: 31, 6: 31, 7: 31, 8: 31,
+    0: 31, 1: 31, 2: 31, 3: 31, 4: 31, 5: 31, 6: 31, 7: 31, 8: 31,
     9: 32, 10: 34, 11: 36, 12: 38, 13: 39, 14: 40, 15: 42,
     16: 43, 17: 44, 18: 45, 19: 46, 20: 47, 21: 48, 22: 48.5,
     23: 49, 24: 50, 25: 51, 26: 52, 27: 53, 28: 54, 29: 55,
