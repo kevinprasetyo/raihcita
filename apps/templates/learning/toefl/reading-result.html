@@ -1,4 +1,4 @@
-{% extends "layouts/base.html" %} {% block title %} Hasil TOEFL LISTENING SIMULATION TEST {% endblock %}
+{% extends "layouts/base.html" %} {% block title %} Reading Comprehension Result {% endblock %}
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}
@@ -36,7 +36,7 @@
                                         <a href="/"><i class="feather icon-home"></i></a>
                                     </li>
                                     <li class="breadcrumb-item">
-                                        <a href="#!">Hasil TOEFL Reading</a>
+                                        <a href="#!">Reading Comprehension Result</a>
                                     </li>
                                 </ul>
                             </div>
@@ -73,19 +73,23 @@
                                     </script>
 
                                     <div class="card-header">
-                                        <h5>Hasil TOEFL Reading</h5>
+                                        <h5>Reading Comprehension Result</h5>
                                     </div>
                                     <div class="card-block table-border-style">
                                         <div class="table-responsive">
                                             <table class="table table-hover">
                                                 <tbody>
                                                     <tr>
-                                                        <td>Result</td>
+                                                        <td>Result:</td>
                                                         <td>TOEFL Reading</td>
                                                     </tr>
                                                     <tr>
+                                                        <td>Correct Answers:</td>
+                                                        <td>{{ correctans }}/{{ total }}</td>
+                                                    </tr>
+                                                    <tr>
                                                         <td>Your Score:</td>
-                                                        <td>{{ score }}/{{ total }}</td>
+                                                        <td>{{ score }}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

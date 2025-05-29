@@ -392,6 +392,17 @@ def hasiltoeflstructure2():
 
 # TOEFL Reading Comprehension Quiz
 
+# Score mapping: correct answers → reading score
+score_map = {
+    0: 31, 1: 31, 2: 31, 3: 31, 4: 31, 5: 31, 6: 31, 7: 31, 8: 31,
+    9: 31, 10: 31, 11: 31, 12: 31, 13: 33, 14: 35, 15: 37,
+    16: 38, 17: 40, 18: 41, 19: 42, 20: 43, 21: 44, 22: 45,
+    23: 46, 24: 47, 25: 48, 26: 48, 27: 49, 28: 50, 29: 50,
+    30: 51, 31: 52, 32: 52, 33: 53, 34: 54, 35: 54, 36: 55,
+    37: 56, 38: 56, 39: 57, 40: 58, 41: 58, 42: 59, 43: 60,
+    44: 61, 45: 62, 46: 63, 47: 64, 48: 65, 49: 66, 50: 67
+}
+
 
 with open('apps/templates/toefl/reading.json') as f:
     passages = json.load(f)
@@ -450,7 +461,7 @@ def toefl_reading2(passage_id):
 
 @blueprint.route('/learning/toefl/reading-result')
 def hasiltoeflreading2():
-    score = 0
+    correctans = 0
     hasiltoeflreading = []
 
     for p_id, passage in enumerate(passages):
@@ -467,9 +478,12 @@ def hasiltoeflreading2():
             })
 
             if user_answer == correct_answer:
-                score += 1
+                correctans += 1
 
-    return render_template('learning/toefl/reading-result.html', score=score, total=50, incorrect=hasiltoeflreading, segment='reading')
+            score = score_map.get(correctans, "Invalid input")
+            score = score * 10
+
+    return render_template('learning/toefl/reading-result.html', score=score, correctans=correctans, total=50, incorrect=hasiltoeflreading, segment='reading')
 
 
 
