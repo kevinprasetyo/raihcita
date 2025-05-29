@@ -290,7 +290,6 @@ endblock %}
 
         function updateTimer() {
             if (remaining <= 0) {
-                alert("Time's up!");
                 form.submit();  // auto-submit or redirect
             } else {
                 timerDisplay.textContent = "⌛" + formatTime(remaining);

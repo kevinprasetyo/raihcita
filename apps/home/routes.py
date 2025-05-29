@@ -268,6 +268,7 @@ def toefllistening2():
 
     if remaining_seconds <= 0:
         session.clear()  # Clear session to reset the test
+        flash("Time's up! Please start the test again.")
         return redirect(url_for('home_blueprint.hasiltoefllistening2'))
 
     return render_template('learning/toefl/listening.html', questions=QUESTIONS, remaining_seconds=remaining_seconds)
