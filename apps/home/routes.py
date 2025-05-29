@@ -411,7 +411,7 @@ with open('apps/templates/toefl/reading.json') as f:
 def toeflreading2():
     session.clear()
     session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    session['end_time'] = (datetime.now() + timedelta(minutes=0.1)).strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (datetime.now() + timedelta(minutes=50)).strftime("%Y-%m-%d %H:%M:%S")
     return redirect(url_for('home_blueprint.toefl_reading2', passage_id=0))
 
 @blueprint.route('/learning/toefl/reading/<int:passage_id>', methods=['GET', 'POST'])
