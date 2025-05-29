@@ -1,7 +1,22 @@
 {% extends "layouts/base.html" %} {% block title %} Hasil TOEFL LISTENING SIMULATION TEST {% endblock %}
 
 <!-- Specific CSS goes HERE -->
-{% block stylesheets %} {% endblock stylesheets %} {% block content %}
+{% block stylesheets %}
+
+<style>
+  /* Disable text selection */
+  body {
+    -webkit-user-select: none;
+    /* Chrome/Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE/Edge */
+    user-select: none;
+    /* Standard */
+  }
+</style>
+{% endblock stylesheets %} {% block content %}
 
 <!-- [ Main Content ] start -->
 <section class="pcoded-main-container">
