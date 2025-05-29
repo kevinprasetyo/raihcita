@@ -246,7 +246,7 @@ def learning_template(template):
 
 @blueprint.route('/learning/toefl')
 def learningcentertoefl():
-    return render_template('home/learning-center.html', questions=QUESTIONS)
+    return render_template('learning/dashboard.html', questions=QUESTIONS)
 
 
 @blueprint.route('/learning/toefl/listening')
@@ -254,10 +254,21 @@ def toefllistening2():
     return render_template('learning/toefl/listening.html', questions=QUESTIONS)
 
 
+score_map = {
+    1: 31, 2: 31, 3: 31, 4: 31, 5: 31, 6: 31, 7: 31, 8: 31,
+    9: 32, 10: 32.5, 11: 33, 12: 36, 13: 37.5, 14: 39, 15: 40,
+    16: 41, 17: 42, 18: 43, 19: 43.5, 20: 44, 21: 45, 22: 45.5,
+    23: 46, 24: 46, 25: 46.5, 26: 47, 27: 48, 28: 48.5, 29: 49,
+    30: 49, 31: 49.5, 32: 50, 33: 51, 34: 51.5, 35: 52, 36: 52,
+    37: 53, 38: 54, 39: 54, 40: 55, 41: 56, 42: 56, 43: 57,
+    44: 58, 45: 59, 46: 60.5, 47: 62, 48: 64, 49: 66, 50: 68
+}
+
+
 @blueprint.route('/learning/toefl/listening-result', methods=['POST'])
 def hasiltoefllistening2():
     user_answers = request.form
-    score = 0
+    correctans = 0
     results = []
 
     for question in QUESTIONS:
@@ -274,9 +285,12 @@ def hasiltoefllistening2():
         })
 
         if user_answer == correct:
-            score += 1
+            correctans += 1
 
-    return render_template('learning/toefl/listening-result.html', score=score, total=len(QUESTIONS), results=results)
+        score = score_map.get(correctans, "Invalid input")
+        score = score*10
+
+    return render_template('learning/toefl/listening-result.html', correctans=correctans, score=score, total=len(QUESTIONS), results=results)
 
 
 @blueprint.route('/toefl-listening')
@@ -309,6 +323,16 @@ def hasiltoefllistening():
     return render_template('home/hasil-toefl-listening.html', score=score, total=len(QUESTIONS), results=results)
 
 
+score_map = {
+    1: 31, 2: 31, 3: 31, 4: 31, 5: 31, 6: 31, 7: 31, 8: 31,
+    9: 32, 10: 34, 11: 36, 12: 38, 13: 39, 14: 40, 15: 42,
+    16: 43, 17: 44, 18: 45, 19: 46, 20: 47, 21: 48, 22: 48.5,
+    23: 49, 24: 50, 25: 51, 26: 52, 27: 53, 28: 54, 29: 55,
+    30: 56, 31: 57, 32: 58, 33: 59, 34: 60, 35: 61, 36: 63,
+    37: 65.5, 38: 68, 39: 68, 40: 68
+}
+
+
 with open('apps/templates/toefl/structure.json') as f:
     STRUCTURE = json.load(f)
 
@@ -321,7 +345,7 @@ def quiz2():
 @blueprint.route('/learning/toefl/structure-result', methods=['POST'])
 def submit2():
     user_answers = request.form
-    score = 0
+    correctans = 0
     results = []
 
     for question in STRUCTURE:
@@ -338,9 +362,12 @@ def submit2():
         })
 
         if user_answer == correct:
-            score += 1
+            correctans += 1
 
-    return render_template('/learning/toefl/structure-result.html', score=score, total=len(STRUCTURE), results=results)
+        score = score_map.get(correctans, "Invalid input")
+        score = score * 10
+
+    return render_template('/learning/toefl/structure-result.html', correctans=correctans, score=score, total=len(STRUCTURE), results=results)
 
 
 @blueprint.route('/toefl-structure')
