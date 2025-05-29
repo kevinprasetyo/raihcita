@@ -267,7 +267,6 @@ def toefllistening2():
     remaining_seconds = int((end_time - now).total_seconds())
 
     if remaining_seconds <= 0:
-        flash("Time's up! You cannot take the test anymore.")
         session.clear()  # Clear session to reset the test
         return redirect(url_for('home_blueprint.hasiltoefllistening2'))
 
