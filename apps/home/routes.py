@@ -244,7 +244,9 @@ def learning_template(template):
 def learningcentertoefl():
     return render_template('learning/dashboard.html', segment='toefl')
 
-
+@blueprint.route('/learning')
+def learning():
+    return render_template('learning/dashboard.html', segment='toefl')
 
 with open('apps/templates/toefl/questions.json') as f:
     QUESTIONS = json.load(f)
@@ -385,11 +387,72 @@ def hasiltoeflstructure2():
     return render_template('/learning/toefl/structure-result.html', correctans=correctans, score=score, total=len(STRUCTURE), results=results)
 
 
-
-
-
 with open('apps/templates/toefl/reading.json') as f:
     passages = json.load(f)
+
+@blueprint.route('/learning/toefl/reading')
+def toeflreading2():
+    session.clear()
+    session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (datetime.now() + timedelta(minutes=40)).strftime("%Y-%m-%d %H:%M:%S")
+    return redirect(url_for('home_blueprint.toefl_reading2', passage_id=0))
+
+@blueprint.route('/learning/toefl/reading/<int:passage_id>', methods=['GET', 'POST'])
+def toefl_reading2(passage_id):
+    
+
+
+
+    if passage_id < 0 or passage_id >= len(passages):
+        return render_template('home/home_blueprint.toefl_reading2.html', passage_id=0)
+
+    if request.method == 'POST':
+        # Save user's answers to session
+        for i in range(10):
+            q_key = f'p{passage_id}_q{i}'
+            session[q_key] = request.form.get(f'q{i}', None)
+
+        # Navigate forward
+        if 'next' in request.form and passage_id < 4:
+            return redirect(url_for('home_blueprint.toefl_reading2', passage_id=passage_id + 1))
+        elif 'prev' in request.form and passage_id > 0:
+            return redirect(url_for('home_blueprint.toefl_reading2', passage_id=passage_id - 1))
+        elif 'submit_all' in request.form:
+            return redirect(url_for('home_blueprint.hasiltoeflreading2'))
+
+    passage = passages[passage_id]
+    saved_answers = [session.get(f'p{passage_id}_q{i}') for i in range(10)]
+
+    return render_template(
+        'learning/toefl/reading.html',
+        passage_id=passage_id,
+        total=len(passages),
+        passage=passage,
+        saved_answers=saved_answers, segment='reading'
+    )
+
+@blueprint.route('/learning/toefl/reading-result')
+def hasiltoeflreading2():
+    score = 0
+    hasiltoeflreading = []
+
+    for p_id, passage in enumerate(passages):
+        for q_id, question in enumerate(passage["questions"]):
+            user_answer = session.get(f'p{p_id}_q{q_id}')
+            correct_answer = question["answer"]
+            hasiltoeflreading.append({
+                "passage": p_id + 1,
+                "number": q_id + 1,
+                "question": question["text"],
+                "your_answer": user_answer or "No answer",
+                "correct_answer": correct_answer,
+                "is_correct": user_answer == correct_answer
+            })
+
+            if user_answer == correct_answer:
+                score += 1
+
+    return render_template('learning/toefl/reading-result.html', score=score, total=50, incorrect=hasiltoeflreading, segment='reading')
 
 
 @blueprint.route('/toefl-reading')
