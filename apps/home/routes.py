@@ -240,22 +240,22 @@ def learning_template(template):
     except:
         return render_template('home/page-500.html'), 500
 
+@blueprint.route('/learning/toefl')
+def learningcentertoefl():
+    return render_template('learning/dashboard.html', segment='toefl')
+
+
 
 with open('apps/templates/toefl/questions.json') as f:
     QUESTIONS = json.load(f)
-
-@blueprint.route('/learning/toefl')
-def learningcentertoefl():
-    return render_template('learning/dashboard.html')
 
 @blueprint.route('/learning/toefl/startlistening')
 def starttoefllistening():
     # Set start time and end time in session
     session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    session['end_time'] = (datetime.now() + timedelta(minutes=0.2)).strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (datetime.now() + timedelta(minutes=35)).strftime("%Y-%m-%d %H:%M:%S")
 
     return redirect(url_for('home_blueprint.toefllistening2'))
-
 
 
 @blueprint.route('/learning/toefl/listening')
@@ -316,6 +316,38 @@ def hasiltoefllistening2():
     return render_template('learning/toefl/listening-result.html', correctans=correctans, score=score, total=len(QUESTIONS), results=results, segment='listening')
 
 
+# TOEFL Structure and Written Expression Quiz
+
+with open('apps/templates/toefl/structure.json') as f:
+    STRUCTURE = json.load(f)
+
+@blueprint.route('/learning/toefl/startstructure')
+def starttoeflstructure():
+    # Set start time and end time in session
+    session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (datetime.now() + timedelta(minutes=40)).strftime("%Y-%m-%d %H:%M:%S")
+
+    return redirect(url_for('home_blueprint.toeflstructure2'))
+
+
+@blueprint.route('/learning/toefl/structure')
+def toeflstructure2():
+ # Retrieve end time and calculate remaining seconds
+    if 'end_time' not in session or 'start_time' not in session:
+        flash("Please start the test first.")
+        return redirect(url_for('home_blueprint.starttoeflstructure'))
+    
+    end_time = datetime.strptime(session['end_time'], "%Y-%m-%d %H:%M:%S")
+    now = datetime.now()
+    remaining_seconds = int((end_time - now).total_seconds())
+
+    if remaining_seconds <= 0:
+        session.clear()  # Clear session to reset the test
+        flash("Time's up! Please start the test again.")
+        return redirect(url_for('home_blueprint.hasiltoeflstructure2'))
+
+    return render_template('learning/toefl/structure.html', questions=QUESTIONS, remaining_seconds=remaining_seconds, segment='structure')
+
 score_map = {
     0: 31, 1: 31, 2: 31, 3: 31, 4: 31, 5: 31, 6: 31, 7: 31, 8: 31,
     9: 32, 10: 34, 11: 36, 12: 38, 13: 39, 14: 40, 15: 42,
@@ -325,18 +357,8 @@ score_map = {
     37: 65.5, 38: 68, 39: 68, 40: 68
 }
 
-
-with open('apps/templates/toefl/structure.json') as f:
-    STRUCTURE = json.load(f)
-
-
-@blueprint.route('/learning/toefl/structure')
-def quiz2():
-    return render_template('learning/toefl/structure.html', questions=STRUCTURE)
-
-
 @blueprint.route('/learning/toefl/structure-result', methods=['GET', 'POST'])
-def submit2():
+def hasiltoeflstructure2():
     user_answers = request.form
     correctans = 0
     results = []

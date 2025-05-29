@@ -15,6 +15,47 @@ endblock %}
         user-select: none;
         /* Standard */
     }
+
+    .timer-container {
+        position: fixed;
+        /* Fix position relative to viewport */
+        top: 40px;
+        /* Distance from the top */
+        right: 20px;
+        /* Distance from the right */
+        font-size: 14px;
+        font-weight: bold;
+        color: #ffffff;
+        background: linear-gradient(135deg, #3f4d67, #8f94fb);
+        padding: 10px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        width: fit-content;
+        margin: 20px;
+        margin-left: auto;
+        /* Added */
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        z-index: 9999;
+        /* Ensure it’s above other content */
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        50% {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
 </style>
 
 {% endblock stylesheets %} {% block content %}
@@ -75,6 +116,7 @@ endblock %}
                                     <div class="card-header">
                                         <h5>Section 2: Structure and Written Expression</h5>
                                     </div>
+                                    <div id="timer" class="timer-container">00:00</div>
                                     <div class="card-body">
 
                                         <p>
@@ -96,7 +138,7 @@ endblock %}
                                                     chosen <br /><br />
                                                 </h7>
 
-                                                <form role="form" method="POST"
+                                                <form id="examForm" role="form" method="POST"
                                                     action="/learning/toefl/structure-result">
                                                     {% for q in questions %}
                                             </div>
@@ -159,7 +201,34 @@ endblock %}
     {% endblock content %}
 
     <!-- Specific Page JS goes HERE  -->
-    {% block javascripts %} {% endblock javascripts %}
+    {% block javascripts %}
+
+    <script>
+        let remaining = {{ remaining_seconds }};
+        const timerDisplay = document.getElementById('timer');
+        const form = document.getElementById('examForm');
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        function updateTimer() {
+            if (remaining <= 0) {
+                form.submit();  // auto-submit or redirect
+            } else {
+                timerDisplay.textContent = "⌛" + formatTime(remaining);
+                remaining--;
+                setTimeout(updateTimer, 1000);
+            }
+        }
+
+        updateTimer();
+    </script>
+
+
+    {% endblock javascripts %}
 </div>
 </div>
 </div>
