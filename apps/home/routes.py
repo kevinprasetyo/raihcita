@@ -239,6 +239,9 @@ def learning_template(template):
 
     except:
         return render_template('home/page-500.html'), 500
+    
+
+
 
 @blueprint.route('/learning/toefl')
 def learningcentertoefl():
@@ -484,6 +487,61 @@ def hasiltoeflreading2():
             score = score * 10
 
     return render_template('learning/toefl/reading-result.html', score=score, correctans=correctans, total=50, incorrect=hasiltoeflreading, segment='reading')
+
+# READING Mobile Version
+
+@blueprint.route('/learning/toefl/readingmobile')
+def toeflreadingmobile():
+    session.clear()
+    session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (datetime.now() + timedelta(minutes=50)).strftime("%Y-%m-%d %H:%M:%S")
+    return redirect(url_for('home_blueprint.toefl_readingmobile', passage_id=0))
+
+@blueprint.route('/learning/toefl/readingmobile/<int:passage_id>', methods=['GET', 'POST'])
+def toefl_readingmobile(passage_id):
+    if 'end_time' not in session or 'start_time' not in session:
+        flash("Please start the test first.")
+        return redirect(url_for('home_blueprint.toeflreadingmobile'))
+    
+    end_time = datetime.strptime(session['end_time'], "%Y-%m-%d %H:%M:%S")
+    now = datetime.now()
+    remaining_seconds = int((end_time - now).total_seconds())
+
+    if remaining_seconds <= 0:
+        for i in range(10):
+            q_key = f'p{passage_id}_q{i}'
+            session[q_key] = request.form.get(f'q{i}', None)
+        flash("Time's up! Please start the test again.")
+        return redirect(url_for('home_blueprint.hasiltoeflreading2'))
+
+    if passage_id < 0 or passage_id >= len(passages):
+        return render_template('home/home_blueprint.toefl_readingmobile.html', passage_id=0)
+
+    if request.method == 'POST':
+        # Save user's answers to session
+        for i in range(10):
+            q_key = f'p{passage_id}_q{i}'
+            session[q_key] = request.form.get(f'q{i}', None)
+
+        # Navigate forward
+        if 'next' in request.form and passage_id < 4:
+            return redirect(url_for('home_blueprint.toefl_readingmobile', passage_id=passage_id + 1))
+        elif 'prev' in request.form and passage_id > 0:
+            return redirect(url_for('home_blueprint.toefl_readingmobile', passage_id=passage_id - 1))
+        elif 'submit_all' in request.form:
+            return redirect(url_for('home_blueprint.hasiltoeflreading2'))
+
+    passage = passages[passage_id]
+    saved_answers = [session.get(f'p{passage_id}_q{i}') for i in range(10)]
+
+    return render_template(
+        'learning/toefl/readingmobile.html',
+        passage_id=passage_id,
+        total=len(passages),
+        passage=passage,
+        saved_answers=saved_answers, segment='reading', remaining_seconds=remaining_seconds
+    )
+
 
 
 

@@ -130,11 +130,18 @@ endblock %}
                                     <form id="examForm" role="form" method="POST">
                                         {% for q in passage.questions %} {% set q_index =
                                         loop.index0 %}
-                                        <p><strong>{{ q.text }}</strong></p>
+                                        <label>{{ q.text }}</label>
                                         {% for opt in q.options %}
-                                        <label>
+                                        <div class="custom-control custom-radio">
+
                                             <input type="radio" name="q{{ q_index }}" value="{{
-                            opt }}" {% if saved_answers[q_index]==opt %}checked{% endif %}> {{ opt }} </label><br />
+                            opt }}" id="{{ loop.index0 }}{{ q_index }}" class="custom-control-input" {% if
+                                                saved_answers[q_index]==opt %}checked{% endif %} />
+                                            <label class="custom-control-label" for="{{ loop.index0 }}{{ q_index }}">{{
+                                                opt }}</label>
+
+
+                                        </div>
                                         {% endfor %}
                                         <hr />
                                         {% endfor %} {% if passage_id > 0 %}
