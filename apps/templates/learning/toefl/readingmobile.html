@@ -77,6 +77,9 @@ endblock %}
         box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
     }
 
+    #target-word {
+        text-decoration: underline;
+    }
 
     @keyframes pulse {
         0% {
@@ -179,7 +182,7 @@ endblock %}
                                         <form id="examForm" role="form" method="POST">
                                             {% for q in passage.questions %} {% set q_index =
                                             loop.index0 %}
-                                            <label>{{ q.text }}</label>
+                                            <label>{{ q.text | safe }}</label>
                                             {% for opt in q.options %}
                                             <div class="custom-control custom-radio">
 
