@@ -260,8 +260,8 @@ endblock %}
             const display = document.getElementById('fontSizeDisplay');
 
             currentSize += delta;
-            if (currentSize < 10) currentSize = 10;
-            if (currentSize > 40) currentSize = 40;
+            if (currentSize < 8) currentSize = 8;
+            if (currentSize > 28) currentSize = 28;
 
             text.style.fontSize = currentSize + 'px';
             display.textContent = currentSize + 'px';
