@@ -62,8 +62,33 @@
   <!-- End Google Tag Manager -->
 
 
+
   <!-- Specific CSS goes HERE -->
-  {% block stylesheets %}{% endblock stylesheets %}
+
+
+  <style>
+    /* Default: hide mobile link */
+    .mobile-link {
+      display: none;
+    }
+
+    /* Show mobile, hide desktop on small screens */
+    @media (max-width: 768px) {
+      .desktop-link {
+        display: none;
+      }
+
+      .mobile-link {
+        display: inline-block;
+      }
+    }
+  </style>
+
+
+  {% block stylesheets %}
+
+
+  {% endblock stylesheets %}
 </head>
 
 <body>
@@ -80,7 +105,11 @@
   'includes/scripts.html' %}
 
   <!-- Specific Page JS goes HERE  -->
-  {% block javascripts %}{% endblock javascripts %}
+  {% block javascripts %}
+
+
+
+  {% endblock javascripts %}
 
 
   <!-- Google Tag Manager (noscript) -->

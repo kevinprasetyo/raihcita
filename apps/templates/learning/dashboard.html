@@ -1,7 +1,10 @@
 {% extends "layouts/base.html" %} {% block title %} Dashboard {% endblock %}
 
 <!-- Specific CSS goes HERE -->
-{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+{% block stylesheets %}
+
+
+{% endblock stylesheets %} {% block content %}
 
 <!-- [ Main Content ] start -->
 <div class="pcoded-main-container">
@@ -71,8 +74,12 @@
                                                 <i class="feather icon-box f-30 text-c-black"></i>
                                             </div>
                                             <div class="col">
-                                                <a href="/learning/toefl/reading">
+                                                <a href="/learning/toefl/reading" class="desktop-link">
                                                     <h3 class="f-w-300">TOEFL Reading Comprehension</h3>
+                                                </a>
+                                                <a href="/learning/toefl/readingmobile" class="mobile-link">
+                                                    <h3 class="f-w-300">TOEFL Reading Comprehension (mobile version)
+                                                    </h3>
                                                 </a>
                                                 <span class="d-block text-uppercase">Yuk coba kerjain TOEFL Reading
                                                     Comprehension</span>
