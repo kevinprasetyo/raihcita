@@ -40,6 +40,44 @@ endblock %}
         /* Ensure it’s above other content */
     }
 
+    .font-controls {
+        display: flex;
+        align-items: right;
+        justify-content: right;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+
+    .btn {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+        transform: scale(1.1);
+        background: linear-gradient(to right, #2575fc, #6a11cb);
+    }
+
+    .font-size-display {
+        font-size: 18px;
+        font-weight: bold;
+        width: 60px;
+        text-align: center;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        padding: 10px 0;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+
     @keyframes pulse {
         0% {
             transform: scale(1);
@@ -118,87 +156,120 @@ endblock %}
                                     </div>
                                     <div id="timer" class="timer-container">00:00</div>
                                     <div class="card-body">
+
                                         <h5>Passage {{ passage_id + 1 }}</h5>
 
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                {{ passage.text | safe }}
-                                                <br><br>
-                                                <hr>
-                                                <form id="examForm" role="form" method="POST">
-                                                    {% for q in passage.questions %} {% set q_index =
-                                                    loop.index0 %}
-                                                    <label>{{ q.text }}</label>
-                                                    {% for opt in q.options %}
-                                                    <div class="custom-control custom-radio">
-
-                                                        <input type="radio" name="q{{ q_index }}" value="{{
-                            opt }}" id="{{ loop.index0 }}{{ q_index }}" class="custom-control-input" {% if
-                                                            saved_answers[q_index]==opt %}checked{% endif %} />
-                                                        <label class="custom-control-label"
-                                                            for="{{ loop.index0 }}{{ q_index }}">{{ opt }}</label>
-
-
-                                                    </div>
-                                                    {% endfor %}
-                                                    <hr />
-                                                    {% endfor %} {% if passage_id > 0 %}
-                                                    <button name="prev" type="submit" class="btn btn-primary">
-                                                        &larr; Previous
-                                                    </button>
-                                                    {% endif %} {% if passage_id < total - 1 %} <button name="next"
-                                                        type="submit" class="btn btn-primary">Next &rarr;</button>
-                                                        {% else %}
-                                                        <button name="submit_all" type="submit" class="btn btn-primary">
-                                                            Submit All
-                                                        </button>
-                                                        {% endif %}
-                                                </form>
-                                            </div>
-                                            <!-- Input group -->
+                                        <div class="font-controls">
+                                            <button onclick="changeFontSize(-1)" class="btn">A-</button>
+                                            <span id="fontSizeDisplay" class="font-size-display">17px</span>
+                                            <button onclick="changeFontSize(1)" class="btn">A+</button>
                                         </div>
+                                        <hr />
+
+
+
+                                        <p id="text">
+
+
+                                            {{ passage.text | safe }}
+
+                                        </p>
+                                        <br>
+                                        <hr>
+                                        <form id="examForm" role="form" method="POST">
+                                            {% for q in passage.questions %} {% set q_index =
+                                            loop.index0 %}
+                                            <label>{{ q.text }}</label>
+                                            {% for opt in q.options %}
+                                            <div class="custom-control custom-radio">
+
+                                                <input type="radio" name="q{{ q_index }}" value="{{
+                            opt }}" id="{{ loop.index0 }}{{ q_index }}" class="custom-control-input" {% if
+                                                    saved_answers[q_index]==opt %}checked{% endif %} />
+                                                <label class="custom-control-label"
+                                                    for="{{ loop.index0 }}{{ q_index }}">{{ opt }}</label>
+
+
+                                            </div>
+                                            {% endfor %}
+
+                                            <hr />
+                                            {% endfor %} {% if passage_id > 0 %}
+                                            <button name="prev" type="submit" class="btn btn-primary">
+                                                &larr; Previous
+                                            </button>
+                                            {% endif %} {% if passage_id < total - 1 %} <button name="next"
+                                                type="submit" class="btn btn-primary">Next &rarr;</button>
+                                                {% else %}
+                                                <button name="submit_all" type="submit" class="btn btn-primary">
+                                                    Submit All
+                                                </button>
+                                                {% endif %}
+                                        </form>
                                     </div>
-                                    <!-- [ Main Content ] end -->
+                                    <!-- Input group -->
                                 </div>
                             </div>
+                            <!-- [ Main Content ] end -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- [ Main Content ] end -->
-
-            {% endblock content %}
-
-            <!-- Specific Page JS goes HERE  -->
-            {% block javascripts %}
-
-            <script>
-                let remaining = {{ remaining_seconds }};
-                const timerDisplay = document.getElementById('timer');
-                const form = document.getElementById('examForm');
-
-                function formatTime(seconds) {
-                    const mins = Math.floor(seconds / 60);
-                    const secs = seconds % 60;
-                    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-                }
-
-                function updateTimer() {
-                    if (remaining <= 0) {
-                        form.submit();  // auto-submit or redirect
-                    } else {
-                        timerDisplay.textContent = "⌛" + formatTime(remaining);
-                        remaining--;
-                        setTimeout(updateTimer, 1000);
-                    }
-                }
-
-                updateTimer();
-            </script>
-
-
-            {% endblock javascripts %}
         </div>
     </div>
+    <!-- [ Main Content ] end -->
+
+    {% endblock content %}
+
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %}
+
+    <script>
+        let remaining = {{ remaining_seconds }};
+        const timerDisplay = document.getElementById('timer');
+        const form = document.getElementById('examForm');
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        function updateTimer() {
+            if (remaining <= 0) {
+                form.submit();  // auto-submit or redirect
+            } else {
+                timerDisplay.textContent = "⌛" + formatTime(remaining);
+                remaining--;
+                setTimeout(updateTimer, 1000);
+            }
+        }
+
+        updateTimer();
+
+
+
+
+        let currentSize = 17;
+
+        function changeFontSize(delta) {
+            const text = document.getElementById('text');
+            const display = document.getElementById('fontSizeDisplay');
+
+            currentSize += delta;
+            if (currentSize < 10) currentSize = 10;
+            if (currentSize > 40) currentSize = 40;
+
+            text.style.fontSize = currentSize + 'px';
+            display.textContent = currentSize + 'px';
+        }
+
+
+
+    </script>
+
+
+    {% endblock javascripts %}
+</div>
+</div>
 </div>
