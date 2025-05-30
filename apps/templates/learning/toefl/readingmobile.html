@@ -124,7 +124,8 @@ endblock %}
                                         <div class="row">
                                             <div class="col-md-8">
                                                 {{ passage.text | safe }}
-                                                <br><br><br>
+                                                <br><br>
+                                                <hr>
                                                 <form id="examForm" role="form" method="POST">
                                                     {% for q in passage.questions %} {% set q_index =
                                                     loop.index0 %}
@@ -141,7 +142,7 @@ endblock %}
 
                                                     </div>
                                                     {% endfor %}
-                                                    <br>
+                                                    <hr />
                                                     {% endfor %} {% if passage_id > 0 %}
                                                     <button name="prev" type="submit" class="btn btn-primary">
                                                         &larr; Previous
