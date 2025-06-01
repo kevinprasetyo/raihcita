@@ -43,9 +43,9 @@ class Config(object):
         try:
 
             # Relational DBMS: PSQL, MySql
-            SQLALCHEMY_DATABASE_URI = "postgresql://raihcita:WuB5I8yXtGELcL46mC5xDWJxEAux1LwR@dpg-d0u1v9adbo4c73abdg70-a/raihcita"
+            SQLALCHEMY_DATABASE_URI = "postgresql://raihcita:WuB5I8yXtGELcL46mC5xDWJxEAux1LwR@dpg-d0u1v9adbo4c73abdg70-a.frankfurt-postgres.render.com/raihcita"
 
-            # SQLALCHEMY_DATABASE_URI = "postgresql://raihcita:WuB5I8yXtGELcL46mC5xDWJxEAux1LwR@dpg-d0u1v9adbo4c73abdg70-a/raihcita"
+            # SQLALCHEMY_DATABASE_URI = "postgresql://raihcita:WuB5I8yXtGELcL46mC5xDWJxEAux1LwR@dpg-d0u1v9adbo4c73abdg70-a.frankfurt-postgres.render.com/raihcita"
 
             USE_SQLITE = False
 

@@ -2,7 +2,7 @@ from apps.home import blueprint
 from flask import render_template, request, flash, redirect, session, url_for, send_from_directory
 from flask_login import login_required, current_user
 from jinja2 import TemplateNotFound
-from apps.home.models import Snisub, Janji, Profile
+from apps.home.models import Snisub, Janji, Profile, Level
 from apps.authentication.models import Users
 from apps import db
 import json
@@ -239,13 +239,12 @@ def learning_template(template):
 
     except:
         return render_template('home/page-500.html'), 500
-    
-
 
 
 @blueprint.route('/learning/toefl')
 def learningcentertoefl():
     return render_template('learning/dashboard.html', segment='toefl')
+
 
 @blueprint.route('/learning')
 def learning():
@@ -257,11 +256,13 @@ def learning():
 with open('apps/templates/toefl/questions.json') as f:
     QUESTIONS = json.load(f)
 
+
 @blueprint.route('/learning/toefl/startlistening')
 def starttoefllistening():
     # Set start time and end time in session
     session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    session['end_time'] = (datetime.now() + timedelta(minutes=35)).strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (
+        datetime.now() + timedelta(minutes=35)).strftime("%Y-%m-%d %H:%M:%S")
 
     return redirect(url_for('home_blueprint.toefllistening2'))
 
@@ -272,7 +273,7 @@ def toefllistening2():
     if 'end_time' not in session or 'start_time' not in session:
         flash("Please start the test first.")
         return redirect(url_for('home_blueprint.starttoefllistening'))
-    
+
     end_time = datetime.strptime(session['end_time'], "%Y-%m-%d %H:%M:%S")
     now = datetime.now()
     remaining_seconds = int((end_time - now).total_seconds())
@@ -296,7 +297,7 @@ score_map = {
 }
 
 
-@blueprint.route('/learning/toefl/listening-result', methods=['GET', 'POST' ])
+@blueprint.route('/learning/toefl/listening-result', methods=['GET', 'POST'])
 def hasiltoefllistening2():
     user_answers = request.form
     correctans = 0
@@ -318,22 +319,34 @@ def hasiltoefllistening2():
         if user_answer == correct:
             correctans += 1
 
-        score = score_map.get(correctans, "Invalid input")
-        score = score*10
+    score = score_map.get(correctans, "Invalid input")
+    score = score*10
+
+    level = Level(correct=correctans, score=score)
+    db.session.add(level)
+    db.session.commit()
 
     return render_template('learning/toefl/listening-result.html', correctans=correctans, score=score, total=len(QUESTIONS), results=results, segment='listening')
 
 
+@blueprint.route('/cekdb', methods=['GET', 'POST'])
+def cekdb():
+    list = Level.query.all()
+    return render_template('home/cekdb.html', list=list)
+
 # TOEFL Structure and Written Expression Quiz
+
 
 with open('apps/templates/toefl/structure.json') as f:
     STRUCTURE = json.load(f)
+
 
 @blueprint.route('/learning/toefl/startstructure')
 def starttoeflstructure():
     # Set start time and end time in session
     session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    session['end_time'] = (datetime.now() + timedelta(minutes=40)).strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (
+        datetime.now() + timedelta(minutes=40)).strftime("%Y-%m-%d %H:%M:%S")
 
     return redirect(url_for('home_blueprint.toeflstructure2'))
 
@@ -344,7 +357,7 @@ def toeflstructure2():
     if 'end_time' not in session or 'start_time' not in session:
         flash("Please start the test first.")
         return redirect(url_for('home_blueprint.starttoeflstructure'))
-    
+
     end_time = datetime.strptime(session['end_time'], "%Y-%m-%d %H:%M:%S")
     now = datetime.now()
     remaining_seconds = int((end_time - now).total_seconds())
@@ -356,6 +369,7 @@ def toeflstructure2():
 
     return render_template('learning/toefl/structure.html', questions=QUESTIONS, remaining_seconds=remaining_seconds, segment='structure')
 
+
 score_map = {
     0: 31, 1: 31, 2: 31, 3: 31, 4: 31, 5: 31, 6: 31, 7: 31, 8: 31,
     9: 32, 10: 34, 11: 36, 12: 38, 13: 39, 14: 40, 15: 42,
@@ -364,6 +378,7 @@ score_map = {
     30: 56, 31: 57, 32: 58, 33: 59, 34: 60, 35: 61, 36: 63,
     37: 65.5, 38: 68, 39: 68, 40: 68
 }
+
 
 @blueprint.route('/learning/toefl/structure-result', methods=['GET', 'POST'])
 def hasiltoeflstructure2():
@@ -387,8 +402,8 @@ def hasiltoeflstructure2():
         if user_answer == correct:
             correctans += 1
 
-        score = score_map.get(correctans, "Invalid input")
-        score = score * 10
+    score = score_map.get(correctans, "Invalid input")
+    score = score * 10
 
     return render_template('/learning/toefl/structure-result.html', correctans=correctans, score=score, total=len(STRUCTURE), results=results)
 
@@ -410,19 +425,22 @@ score_map = {
 with open('apps/templates/toefl/reading.json') as f:
     passages = json.load(f)
 
+
 @blueprint.route('/learning/toefl/reading')
 def toeflreading2():
     session.clear()
     session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    session['end_time'] = (datetime.now() + timedelta(minutes=50)).strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (
+        datetime.now() + timedelta(minutes=50)).strftime("%Y-%m-%d %H:%M:%S")
     return redirect(url_for('home_blueprint.toefl_reading2', passage_id=0))
+
 
 @blueprint.route('/learning/toefl/reading/<int:passage_id>', methods=['GET', 'POST'])
 def toefl_reading2(passage_id):
     if 'end_time' not in session or 'start_time' not in session:
         flash("Please start the test first.")
         return redirect(url_for('home_blueprint.toeflreading2'))
-    
+
     end_time = datetime.strptime(session['end_time'], "%Y-%m-%d %H:%M:%S")
     now = datetime.now()
     remaining_seconds = int((end_time - now).total_seconds())
@@ -462,6 +480,7 @@ def toefl_reading2(passage_id):
         saved_answers=saved_answers, segment='reading', remaining_seconds=remaining_seconds
     )
 
+
 @blueprint.route('/learning/toefl/reading-result')
 def hasiltoeflreading2():
     correctans = 0
@@ -483,26 +502,29 @@ def hasiltoeflreading2():
             if user_answer == correct_answer:
                 correctans += 1
 
-            score = score_map.get(correctans, "Invalid input")
-            score = score * 10
+        score = score_map.get(correctans, "Invalid input")
+        score = score * 10
 
     return render_template('learning/toefl/reading-result.html', score=score, correctans=correctans, total=50, incorrect=hasiltoeflreading, segment='reading')
 
 # READING Mobile Version
 
+
 @blueprint.route('/learning/toefl/readingmobile')
 def toeflreadingmobile():
     session.clear()
     session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    session['end_time'] = (datetime.now() + timedelta(minutes=50)).strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (
+        datetime.now() + timedelta(minutes=50)).strftime("%Y-%m-%d %H:%M:%S")
     return redirect(url_for('home_blueprint.toefl_readingmobile', passage_id=0))
+
 
 @blueprint.route('/learning/toefl/readingmobile/<int:passage_id>', methods=['GET', 'POST'])
 def toefl_readingmobile(passage_id):
     if 'end_time' not in session or 'start_time' not in session:
         flash("Please start the test first.")
         return redirect(url_for('home_blueprint.toeflreadingmobile'))
-    
+
     end_time = datetime.strptime(session['end_time'], "%Y-%m-%d %H:%M:%S")
     now = datetime.now()
     remaining_seconds = int((end_time - now).total_seconds())
@@ -543,9 +565,6 @@ def toefl_readingmobile(passage_id):
     )
 
 
-
-
-
 # OLD
 
 @blueprint.route('/toefl-listening')
@@ -577,6 +596,7 @@ def hasiltoefllistening():
 
     return render_template('home/hasil-toefl-listening.html', score=score, total=len(QUESTIONS), results=results)
 
+
 @blueprint.route('/toefl-structure')
 def quiz():
     return render_template('home/toefl-structure.html', questions=STRUCTURE)
@@ -605,6 +625,7 @@ def submit():
             score += 1
 
     return render_template('home/hasil-toefl-structure.html', score=score, total=len(STRUCTURE), results=results)
+
 
 @blueprint.route('/toefl-reading')
 def toeflreading():
@@ -665,11 +686,6 @@ def hasiltoeflreading():
                 score += 1
 
     return render_template('home/hasil-toefl-reading.html', score=score, total=50, incorrect=hasiltoeflreading)
-
-
-
-
-
 
 
 # BEST URL FROM AFFILIATE MARKETING

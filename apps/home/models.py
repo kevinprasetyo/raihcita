@@ -46,6 +46,12 @@ class Janji(db.Model):
 class Profile(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.Text, nullable=True)
-    email = db.Column(db.Text, nullable=False)
+    email = db.Column(db.Text, nullable=True)
     nama = db.Column(db.Text, nullable=True)
     pekerjaan = db.Column(db.Text, nullable=True)
+
+
+class Level(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    correct = db.Column(db.Text, nullable=True)
+    score = db.Column(db.Text, nullable=True)
