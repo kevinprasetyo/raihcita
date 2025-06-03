@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{% block title %}{% endblock %} | Raih Cita</title>
+  <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 11]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <!-- Meta -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="Raih Cita: RaihCita-mu Sekarang untuk meraih TOEFL dan IELTS impian" />
+  <meta name="keywords" content="raihcita, raih cita, IELTS, TOEFL, grais" />
+  <meta name="author" content="Raih Cita" />
+
+  <!-- Favicon icon -->
+  <link rel="icon" href="{{ config.ASSETS_ROOT }}/images/favicon.ico" type="image/x-icon" />
+  <!-- fontawesome icon -->
+  <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/fonts/fontawesome/css/fontawesome-all.min.css" />
+  <!-- animation css -->
+  <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/plugins/animation/css/animate.min.css" />
+  <!-- vendor css -->
+  <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/style.css" />
+  <!-- dark mode css -->
+  <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/dark.css" />
+
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "rioo9x0mq9");
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HPDYNPB28W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HPDYNPB28W');
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5KSCVKQ5');</script>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3432965017603796"
+    crossorigin="anonymous"></script>
+  <!-- End Google Tag Manager -->
+
+
+
+  <!-- Specific CSS goes HERE -->
+
+
+  <style>
+    /* Default: hide mobile link */
+    .mobile-link {
+      display: none;
+    }
+
+    /* Show mobile, hide desktop on small screens */
+    @media (max-width: 768px) {
+      .desktop-link {
+        display: none;
+      }
+
+      .mobile-link {
+        display: inline-block;
+      }
+    }
+  </style>
+
+
+  {% block stylesheets %}
+
+
+  {% endblock stylesheets %}
+</head>
+
+<body>
+  <!-- [ Pre-loader ] start -->
+  <div class="loader-bg">
+    <div class="loader-track">
+      <div class="loader-fill"></div>
+    </div>
+  </div>
+  <!-- [ Pre-loader ] End -->
+
+  {% include 'includes/sidebar-ielts.html' %} {% include 'includes/navigation-ielts.html'
+  %} {% block content %}{% endblock content %} {% include
+  'includes/scripts.html' %}
+
+  <!-- Specific Page JS goes HERE  -->
+  {% block javascripts %}
+
+
+
+  {% endblock javascripts %}
+
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KSCVKQ5" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+</body>
+
+
+
+</html>

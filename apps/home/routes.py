@@ -241,9 +241,56 @@ def learning_template(template):
         return render_template('home/page-500.html'), 500
 
 
+@blueprint.route('/learning/ielts/<template>')
+def learningielts_template(template):
+
+    try:
+
+        if not template.endswith('.html'):
+            template += '.html'
+
+        # Detect the current page
+        segment = get_segment(request)
+
+        # Serve the file (if exists) from app/templates/home/FILE.html
+        return render_template("learning/ielts/" + template, segment=segment)
+
+    except TemplateNotFound:
+        return render_template('home/page-404.html'), 404
+
+    except:
+        return render_template('home/page-500.html'), 500
+
+
+@blueprint.route('/learning/toefl/<template>')
+def learningtoefl_template(template):
+
+    try:
+
+        if not template.endswith('.html'):
+            template += '.html'
+
+        # Detect the current page
+        segment = get_segment(request)
+
+        # Serve the file (if exists) from app/templates/home/FILE.html
+        return render_template("learning/toefl/" + template, segment=segment)
+
+    except TemplateNotFound:
+        return render_template('home/page-404.html'), 404
+
+    except:
+        return render_template('home/page-500.html'), 500
+
+
+@blueprint.route('/learning/ielts')
+def learningcenterielts():
+    return render_template('learning/ielts/dashboard.html', segment='toefl')
+
+
 @blueprint.route('/learning/toefl')
 def learningcentertoefl():
-    return render_template('learning/dashboard.html', segment='toefl')
+    return render_template('learning/toefl/dashboard.html', segment='toefl')
 
 
 @blueprint.route('/learning')
