@@ -298,10 +298,69 @@ def learning():
     return render_template('learning/dashboard.html', segment='toefl')
 
 
-# TOEFL Listening Comprehension Quiz
+# IELTS Listening Quiz
+with open('apps/templates/question/ielts/listening.json') as f:
+    LISTENINGIELTS = json.load(f)
 
-with open('apps/templates/toefl/questions.json') as f:
-    QUESTIONS = json.load(f)
+
+@blueprint.route('/learning/ielts/listening')
+def ieltslistening():
+    session.clear()
+    session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (
+        datetime.now() + timedelta(minutes=50)).strftime("%Y-%m-%d %H:%M:%S")
+    return redirect(url_for('home_blueprint.ielts_listening', section=1))
+
+
+@blueprint.route('/learning/ielts/listening/<int:section>', methods=['GET', 'POST'])
+def ielts_listening(section):
+    if 'end_time' not in session or 'start_time' not in session:
+        flash("Please start the test first.")
+        return redirect(url_for('home_blueprint.ieltslistening'))
+
+    end_time = datetime.strptime(session['end_time'], "%Y-%m-%d %H:%M:%S")
+    now = datetime.now()
+    remaining_seconds = int((end_time - now).total_seconds())
+
+    if remaining_seconds <= 0:
+        for i in range(10):
+            q_key = f'p{section}_q{i}'
+            session[q_key] = request.form.get(f'q{i}', None)
+        flash("Time's up! Please start the test again.")
+        return redirect(url_for('home_blueprint.hasiltoeflreading2'))
+
+    if section < 0 or section >= len(LISTENINGIELTS):
+        return render_template('home/home_blueprint.ielts_listening.html', section=0)
+
+    if request.method == 'POST':
+        # Save user's answers to session
+        for i in range(10):
+            q_key = f'p{section}_q{i}'
+            session[q_key] = request.form.get(f'q{i}', None)
+
+        # Navigate forward
+        if 'next' in request.form and section < 4:
+            return redirect(url_for('home_blueprint.ielts_listening', section=section + 1))
+        elif 'prev' in request.form and section > 0:
+            return redirect(url_for('home_blueprint.ielts_listening', section=section - 1))
+        elif 'submit_all' in request.form:
+            return redirect(url_for('home_blueprint.hasiltoeflreading2'))
+
+    questions = LISTENINGIELTS.get(f'section{section}', [])
+    saved_answers = [session.get(f'p{section}_q{i}') for i in range(10)]
+
+    return render_template(
+        'learning/ielts/listening.html',
+        section=section,
+        total=len(LISTENINGIELTS),
+        questions=questions,
+        saved_answers=saved_answers, segment='listening', remaining_seconds=remaining_seconds
+    )
+
+
+# TOEFL Listening Comprehension Quiz
+with open('apps/templates/question/toefl/listening.json') as f:
+    LISTENING = json.load(f)
 
 
 @blueprint.route('/learning/toefl/startlistening')
@@ -330,7 +389,7 @@ def toefllistening2():
         flash("Time's up! Please start the test again.")
         return redirect(url_for('home_blueprint.hasiltoefllistening2'))
 
-    return render_template('learning/toefl/listening.html', questions=QUESTIONS, remaining_seconds=remaining_seconds, segment='listening')
+    return render_template('learning/toefl/listening.html', questions=LISTENING, remaining_seconds=remaining_seconds, segment='listening')
 
 
 score_map = {
@@ -350,7 +409,7 @@ def hasiltoefllistening2():
     correctans = 0
     results = []
 
-    for question in QUESTIONS:
+    for question in LISTENING:
         qid = str(question['id'])
         correct = question['answer']
         user_answer = int(user_answers.get(qid, -1))
@@ -373,7 +432,7 @@ def hasiltoefllistening2():
     db.session.add(level)
     db.session.commit()
 
-    return render_template('learning/toefl/listening-result.html', correctans=correctans, score=score, total=len(QUESTIONS), results=results, segment='listening')
+    return render_template('learning/toefl/listening-result.html', correctans=correctans, score=score, total=len(LISTENING), results=results, segment='listening')
 
 
 @blueprint.route('/cekdb', methods=['GET', 'POST'])
@@ -384,7 +443,7 @@ def cekdb():
 # TOEFL Structure and Written Expression Quiz
 
 
-with open('apps/templates/toefl/structure.json') as f:
+with open('apps/templates/question/toefl/structure.json') as f:
     STRUCTURE = json.load(f)
 
 
@@ -414,7 +473,7 @@ def toeflstructure2():
         flash("Time's up! Please start the test again.")
         return redirect(url_for('home_blueprint.hasiltoeflstructure2'))
 
-    return render_template('learning/toefl/structure.html', questions=QUESTIONS, remaining_seconds=remaining_seconds, segment='structure')
+    return render_template('learning/toefl/structure.html', questions=STRUCTURE, remaining_seconds=remaining_seconds, segment='structure')
 
 
 score_map = {
@@ -469,7 +528,7 @@ score_map = {
 }
 
 
-with open('apps/templates/toefl/reading.json') as f:
+with open('apps/templates/question/toefl/reading.json') as f:
     passages = json.load(f)
 
 
@@ -616,7 +675,7 @@ def toefl_readingmobile(passage_id):
 
 @blueprint.route('/toefl-listening')
 def toefllistening():
-    return render_template('home/toefl-listening.html', questions=QUESTIONS)
+    return render_template('home/toefl-listening.html', questions=LISTENING)
 
 
 @blueprint.route('/hasil-toefl-listening', methods=['GET', 'POST'])
@@ -625,7 +684,7 @@ def hasiltoefllistening():
     score = 0
     results = []
 
-    for question in QUESTIONS:
+    for question in LISTENING:
         qid = str(question['id'])
         correct = question['answer']
         user_answer = int(user_answers.get(qid, -1))
@@ -641,7 +700,7 @@ def hasiltoefllistening():
         if user_answer == correct:
             score += 1
 
-    return render_template('home/hasil-toefl-listening.html', score=score, total=len(QUESTIONS), results=results)
+    return render_template('home/hasil-toefl-listening.html', score=score, total=len(LISTENING), results=results)
 
 
 @blueprint.route('/toefl-structure')
