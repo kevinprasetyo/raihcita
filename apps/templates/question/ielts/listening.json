@@ -75,49 +75,77 @@
             "questions": [
                 {
                     "id": 11,
-                    "type": "fill_blank",
-                    "question": "The lecture starts at ____.",
-                    "answer": "9 am"
+                    "type": "multiple_choice",
+                    "question": "What is the maximum number of people who can stand on each side of the boat?",
+                    "options": [
+                        "A. 9",
+                        "B. 15",
+                        "C. 18"
+                    ],
+                    "answer": "A. 9"
                 },
                 {
                     "id": 12,
                     "type": "multiple_choice",
-                    "question": "What is the main subject?",
+                    "question": "What colour are the tour boats?",
                     "options": [
-                        "Environment",
-                        "Science",
-                        "History"
+                        "A. dark red",
+                        "B. jet black",
+                        "C. light green"
                     ],
-                    "answer": "environment"
+                    "answer": "C. light green"
                 },
                 {
                     "id": 13,
-                    "type": "matching",
-                    "question": "Match the inventions to inventors:",
+                    "type": "multiple_choice",
+                    "question": "Which lunchbox is suitable for someone who doesn’t eat meat or fish?",
                     "options": {
-                        "Bell": "Telephone",
-                        "Edison": "Lightbulb",
-                        "Wright": "Airplane"
+                        "Bell": "a. Lunchbox 1",
+                        "Edison": "b. Lunchbox 2",
+                        "Wright": "c. Lunchbox 3"
                     },
-                    "answer": "bell=telephone,edison=lightbulb,wright=airplane"
+                    "answer": "b. Lunchbox 2"
                 },
                 {
                     "id": 14,
-                    "type": "fill_blank",
-                    "question": "Who discovered electricity?",
-                    "answer": "benjamin franklin"
+                    "type": "multiple_choice",
+                    "question": "What should people do with their litter?",
+                    "options": {
+                        "Bell": "a. take it home",
+                        "Edison": "b. hand it to a member or staff ",
+                        "Wright": "c. put it in the bins provided on the boat"
+                    },
+                    "answer": "b. hand it to a member or staff"
                 },
                 {
                     "id": 15,
-                    "type": "fill_blank",
-                    "question": "Note: The seminar ends at ____.",
-                    "answer": "4 pm"
+                    "type": "checkbox_two",
+                    "question": "Which TWO things should you bring?",
+                    "options": [
+                        "A. sunscreen",
+                        "B. boots",
+                        "C. snacks",
+                        "D. sunglasses"
+                    ],
+                    "answer": [
+                        "A. sunscreen",
+                        "C. snacks"
+                    ]
                 },
                 {
-                    "id": 16,
-                    "type": "fill_blank",
-                    "question": "The professor is from ____.",
-                    "answer": "canada"
+                    "id": 17,
+                    "type": "checkbox_two",
+                    "question": "Which TWO things should you bring?",
+                    "options": [
+                        "A. sunscreen",
+                        "B. boots",
+                        "C. snacks",
+                        "D. sunglasses"
+                    ],
+                    "answer": [
+                        "A. sunscreen",
+                        "C. snacks"
+                    ]
                 },
                 {
                     "id": 17,

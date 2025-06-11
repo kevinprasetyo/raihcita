@@ -119,7 +119,7 @@ endblock %}
 
 
                                     <div class="card-header">
-                                        <h5>Listening Test. Section {{ section_id }}</h5>
+                                        <h5>Listening Test. PART {{ section_id }}</h5>
                                     </div>
                                     <div id="timer" class="timer-container">00:00</div>
                                     <div class="card-body">
@@ -140,12 +140,9 @@ endblock %}
                                             loop.index0 %}
 
                                             {% if q.id == 1 %}
-                                            <h5>Questions 1-10</h5>
-                                            <hr />
+                                            <h5>Questions 1-10</h5> <br>
                                             Complete the notes below. <br>
                                             Write <b>ONE WORD AND/OR A NUMBER</b> for each answer. <br>
-                                            <br>
-
                                             <hr>
                                             <h5>
                                                 <center>Buckworth Conservation Group </center>
@@ -178,6 +175,14 @@ endblock %}
                                             <ul>
                                                 <li>17th, from 20 a.m. to 3 p.m.</li>
                                             </ul>
+                                            {% elif q.id == 11 %}
+                                            <h5>Questions 11-14</h5> <br>
+                                            Choose the correct letter, <b>A, B, or C.</b><br>
+                                            <hr>
+                                            <h5>
+                                                <center>Boat to round Tasmania</center>
+
+                                            </h5><br>
                                             {% endif %}
                                             {% if q.type == 'fill_blank' %}
                                             <ul>
@@ -191,7 +196,7 @@ endblock %}
                                             </ul>
 
                                             {% elif q.type == 'multiple_choice' %}
-                                            <label>Q{{ q.id }}. {{ q.question }}</label>
+                                            <label>{{ q.id }}. {{ q.question }}</label>
                                             {% for opt in q.options %}
                                             <div class="custom-control custom-radio">
 
@@ -200,23 +205,17 @@ endblock %}
                                                     saved_answers[q_index]==opt %}checked{% endif %} />
                                                 <label class="custom-control-label"
                                                     for="{{ loop.index0 }}{{ q_index }}">{{ opt }}</label>
-
                                             </div>
                                             {% endfor %}
-                                            {% elif q.type == 'matching' %}
-                                            <label>Q{{ q.id }}. {{ q.question }}</label>
-                                            {% for person in q.options.keys() %}
 
-                                            <label>{{ person }}:</label>
 
-                                            <input type="text" name="{{ q.id }}_{{ loop.index }}"
-                                                placeholder="Match for {{ person }}" /><br />
-
-                                            {% endfor %}
+                                            <br>
                                             {% endif %}
 
 
+
                                             {% endfor %}
+                                            <br><br>
                                             {% if section_id > 1 %}
                                             <button name="prev" type="submit" class="btn btn-primary">
                                                 &larr; Previous
