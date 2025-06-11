@@ -2,88 +2,76 @@
     "sections": [
         {
             "title": "Section 1",
-            "audio": "ielts1",
+            "audio": "section1",
             "questions": [
                 {
                     "id": 1,
                     "type": "fill_blank",
-                    "question": "The meeting will be held at ____.",
-                    "answer": "3 pm"
+                    "question": "making sure the beach does not have ____ on it.",
+                    "answer": "litter"
                 },
                 {
                     "id": 2,
-                    "type": "multiple_choice",
-                    "question": "What is the main topic?",
-                    "options": [
-                        "Travel",
-                        "Work",
-                        "Health"
-                    ],
-                    "answer": "travel"
+                    "type": "fill_blank",
+                    "question": "no ____",
+                    "answer": "dogs"
                 },
                 {
                     "id": 3,
-                    "type": "matching",
-                    "question": "Match the people to their hobbies:",
-                    "options": {
-                        "John": "Reading",
-                        "Lisa": "Swimming",
-                        "Tom": "Cycling"
-                    },
-                    "answer": "john=reading,lisa=swimming,tom=cycling"
+                    "type": "fill_blank",
+                    "question": "next task is taking action to attract ____ to the place ",
+                    "answer": "insects"
                 },
                 {
                     "id": 4,
                     "type": "fill_blank",
-                    "question": "What is Tom’s profession?",
-                    "answer": "engineer"
+                    "question": "identifying types of ____",
+                    "answer": "butterflies"
                 },
                 {
                     "id": 5,
                     "type": "fill_blank",
-                    "question": "Note: The train arrives at ____.",
-                    "answer": "5:30"
+                    "question": "build a new ____",
+                    "answer": "wall"
                 },
                 {
                     "id": 6,
                     "type": "fill_blank",
-                    "question": "He was born in ____.",
-                    "answer": "1990"
+                    "question": "walk across the sands and reach the ____",
+                    "answer": "island"
                 },
                 {
                     "id": 7,
-                    "type": "multiple_choice",
-                    "question": "Which country is not mentioned?",
-                    "options": [
-                        "France",
-                        "Germany",
-                        "Brazil"
-                    ],
-                    "answer": "brazil"
+                    "type": "fill_blank",
+                    "question": "well appropriate ____",
+                    "answer": "boots"
                 },
                 {
                     "id": 8,
                     "type": "fill_blank",
-                    "question": "Name one of the speakers.",
-                    "answer": "maria"
+                    "question": "suitable for ____",
+                    "answer": "beginners"
                 },
                 {
                     "id": 9,
                     "type": "fill_blank",
-                    "question": "Reminder: Bring ____ for the presentation.",
-                    "answer": "laptop"
+                    "question": "making ____ out of wood",
+                    "answer": "spoons"
                 },
                 {
                     "id": 10,
                     "type": "fill_blank",
-                    "question": "Label the room with the correct name: (Room A is ____)",
-                    "answer": "kitchen"
+                    "question": "cost of session (no camping): ____",
+                    "answer": [
+                        "35",
+                        "thirty five"
+                    ]
                 }
             ]
         },
         {
             "title": "Section 2",
-            "audio": "section2.mp3",
+            "audio": "section2",
             "questions": [
                 {
                     "id": 11,
@@ -164,7 +152,7 @@
         },
         {
             "title": "Section 3",
-            "audio": "section3.mp3",
+            "audio": "section3",
             "questions": [
                 {
                     "id": 21,
@@ -245,7 +233,7 @@
         },
         {
             "title": "Section 4",
-            "audio": "section4.mp3",
+            "audio": "section4",
             "questions": [
                 {
                     "id": 31,

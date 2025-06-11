@@ -344,7 +344,7 @@ def ielts_listening(section_id):
         elif 'prev' in request.form and section_id > 0:
             return redirect(url_for('home_blueprint.ielts_listening', section_id=section_id - 1))
         elif 'submit_all' in request.form:
-            return redirect(url_for('home_blueprint.hasiltoeflreading2'))
+            return redirect(url_for('home_blueprint.hasilieltslistening'))
 
     section_data = LISTENINGIELTS['sections'][section_id - 1]
     saved_answers = [session.get(f'p{section_id}_q{i}') for i in range(10)]
@@ -356,6 +356,43 @@ def ielts_listening(section_id):
         saved_answers=saved_answers,
         segment='listening', remaining_seconds=remaining_seconds
     )
+
+
+@blueprint.route('/learning/ielts/listening-result')
+def hasilieltslistening():
+    correctans = 0
+    hasilieltslistening = []
+
+    for p_id, section in enumerate(LISTENINGIELTS['sections']):
+        for q_id, question in enumerate(section["questions"]):
+            user_answer = session.get(f'p{p_id + 1}_q{q_id}')
+            user_answer = user_answer.strip().lower() if user_answer else None  # Normalize input
+            correct_answer_raw = question["answer"]
+
+            # Normalize correct answer(s)
+            if isinstance(correct_answer_raw, list):
+                correct_answers = [ans.strip().lower()
+                                   for ans in correct_answer_raw]
+            else:
+                correct_answers = [correct_answer_raw.strip().lower()]
+
+            is_correct = user_answer in correct_answers if user_answer else False
+
+            hasilieltslistening.append({
+                "section": p_id + 1,
+                "number": q_id + 1,
+                "question": question.get("question", "No question text provided"),
+                "your_answer": user_answer or "No answer",
+                "correct_answer": ", ".join(correct_answers),
+                "is_correct": is_correct
+            })
+
+            if is_correct:
+                correctans += 1
+
+    score = correctans * 10
+
+    return render_template('learning/ielts/listening-result.html', score=score, correctans=correctans, total=40, incorrect=hasilieltslistening, segment='listening')
 
 
 # TOEFL Listening Comprehension Quiz

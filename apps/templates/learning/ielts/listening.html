@@ -73,14 +73,17 @@ endblock %}
                         <div class="row align-items-center">
                             <div class="col-md-12">
                                 <div class="page-header-title">
-                                    <h5 class="m-b-10">TOEFL Reading Comprehension</h5>
+                                    <h5 class="m-b-10">IELTS Listening Test</h5>
                                 </div>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="/"><i class="feather icon-home"></i></a>
+                                        <a href="/learning/ielts"><i class="feather icon-home"></i></a>
                                     </li>
                                     <li class="breadcrumb-item">
-                                        <a href="javascript:">TOEFL Reading Comprehension</a>
+                                        <a href="javascript:">IELTS Learning Center</a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="javascript:">Listening Test</a>
                                     </li>
                                 </ul>
                             </div>
@@ -116,7 +119,7 @@ endblock %}
 
 
                                     <div class="card-header">
-                                        <h5>Listening {{ section_id }}</h5>
+                                        <h5>Listening Test. Section {{ section_id }}</h5>
                                     </div>
                                     <div id="timer" class="timer-container">00:00</div>
                                     <div class="card-body">
@@ -129,26 +132,63 @@ endblock %}
                                         </audio>
                                         <hr />
 
+
+
+
                                         <form id="examForm" role="form" method="POST">
                                             {% for q in section.questions %}{% set q_index =
                                             loop.index0 %}
 
+                                            {% if q.id == 1 %}
+                                            <h5>Questions 1-10</h5>
+                                            <hr />
+                                            Complete the notes below. <br>
+                                            Write <b>ONE WORD AND/OR A NUMBER</b> for each answer. <br>
+                                            <br>
 
+                                            <hr>
+                                            <h5>
+                                                <center>Buckworth Conservation Group </center>
+                                                <br>
+                                                <b> Regular activities</b>
+                                            </h5><br>
+                                            Beach <br> <br>
+                                            {% elif q.id == 3 %}
+                                            Nature reserve <br>
+                                            <ul>
+                                                <li>maintaining paths</li>
+                                                <li>nesting boxes for birds installed </li>
+                                            </ul>
 
+                                            {% elif q.id == 6 %}
+                                            <br>
+                                            <h5> Forthcoming events </h5><br>
+                                            Saturday <br>
+                                            <ul>
+                                                <li>meet at the Dunsmore Beach car park</li>
+                                            </ul>
+
+                                            {% elif q.id == 7 %}
+                                            <ul>
+                                                <li>take a picnic</li>
+                                            </ul>
+                                            {% elif q.id == 8 %}
+                                            Woodwork session <br>
+                                            {% elif q.id == 10 %}
+                                            <ul>
+                                                <li>17th, from 20 a.m. to 3 p.m.</li>
+                                            </ul>
+                                            {% endif %}
                                             {% if q.type == 'fill_blank' %}
-                                            <label>Q{{ q.id }}.</label>
-
-                                            <p>
-                                                {{ q.question | replace(
-                                                '____',
-                                                "<input type='text' name='q" ~ q_index ~ "'
-                                                    value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
-                                                ) | safe }}
-                                            </p>
-
-
-
-
+                                            <ul>
+                                                <li>
+                                                    {{ q.question | replace(
+                                                    '____',
+                                                    q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                        value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                    ) | safe }}
+                                                </li>
+                                            </ul>
 
                                             {% elif q.type == 'multiple_choice' %}
                                             <label>Q{{ q.id }}. {{ q.question }}</label>
@@ -176,7 +216,6 @@ endblock %}
                                             {% endif %}
 
 
-                                            <hr />
                                             {% endfor %}
                                             {% if section_id > 1 %}
                                             <button name="prev" type="submit" class="btn btn-primary">
