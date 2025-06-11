@@ -62,6 +62,7 @@ endblock %}
 {% endblock stylesheets %} {% block content %}
 
 <!-- [ Main Content ] start -->
+<!-- [ Main Content ] start -->
 <div class="pcoded-main-container">
     <div class="pcoded-wrapper">
         <div class="pcoded-content">
@@ -72,14 +73,14 @@ endblock %}
                         <div class="row align-items-center">
                             <div class="col-md-12">
                                 <div class="page-header-title">
-                                    <h5 class="m-b-10">IELTS Simulation Test</h5>
+                                    <h5 class="m-b-10">TOEFL Reading Comprehension</h5>
                                 </div>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="/"><i class="feather icon-home"></i></a>
                                     </li>
                                     <li class="breadcrumb-item">
-                                        <a href="javascript:">IELTS Listening</a>
+                                        <a href="javascript:">TOEFL Reading Comprehension</a>
                                     </li>
                                 </ul>
                             </div>
@@ -93,22 +94,6 @@ endblock %}
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
-
-                                    <script async
-                                        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3432965017603796"
-                                        crossorigin="anonymous"></script>
-                                    <!-- Learning Center Ads -->
-                                    <ins class="adsbygoogle" style="display:block"
-                                        data-ad-client="ca-pub-3432965017603796" data-ad-slot="3314571191"
-                                        data-ad-format="auto" data-full-width-responsive="true"></ins>
-                                    <script>
-                                        (adsbygoogle = window.adsbygoogle || []).push({});
-                                    </script>
-                                    <script async
-                                        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3432965017603796"
-                                        crossorigin="anonymous"></script>
-
-
                                     {% for message in get_flashed_messages() %}
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         {{ message }}
@@ -118,8 +103,9 @@ endblock %}
                                     </div>
                                     {% endfor %}
 
-
-
+                                    <script async
+                                        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3432965017603796"
+                                        crossorigin="anonymous"></script>
                                     <!-- Learning Center Ads -->
                                     <ins class="adsbygoogle" style="display:block"
                                         data-ad-client="ca-pub-3432965017603796" data-ad-slot="3314571191"
@@ -130,110 +116,123 @@ endblock %}
 
 
                                     <div class="card-header">
-                                        <h5>Section 1: Listening Comprehension</h5>
-
+                                        <h5>Listening {{ section_id }}</h5>
                                     </div>
                                     <div id="timer" class="timer-container">00:00</div>
                                     <div class="card-body">
                                         <audio controls autoplay>
-                                            <source src="{{ config.ASSETS_ROOT }}/audio/toefl.ogg" type="audio/ogg" />
-                                            <source src="{{ config.ASSETS_ROOT }}/audio/toefl.mp3" type="audio/mpeg" />
+                                            <source src="{{ config.ASSETS_ROOT }}/audio/{{ section.audio }}.ogg"
+                                                type="audio/ogg" />
+                                            <source src="{{ config.ASSETS_ROOT }}/audio/{{ section.audio }}.mp3"
+                                                type="audio/mpeg" />
                                             Your browser does not support the audio element.
                                         </audio>
-                                        <p>
-                                            In this section of the test, you will have an opportunity
-                                            to demonstrate your ability to understand conversations
-                                            and talks in English. There are 3 parts to this section,
-                                            with special directions for each part. Answer all the
-                                            questions on the basis of what is stated or implied by the
-                                            speakers in this test.
-                                        </p>
-
-                                        <h5>Part A</h5>
                                         <hr />
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <form method="post">
-                                                    {% for q in questions %}
-                                                    <div class="question-block">
-                                                        <p><strong>Q{{ q.id }}: {{ q.question }}</strong></p>
 
-                                                        {% if q.type == 'multiple_choice' %}
-                                                        {% for opt in q.options %}
-                                                        <label><input type="radio" name="{{ q.id }}" value="{{ opt }}">
-                                                            {{ opt }}</label><br>
-                                                        {% endfor %}
+                                        <form id="examForm" role="form" method="POST">
+                                            {% for q in section.questions %}{% set q_index =
+                                            loop.index0 %}
 
-                                                        {% elif q.type == 'multiple_choice_two' %}
-                                                        {% for opt in q.options %}
-                                                        <label><input type="checkbox" name="{{ q.id }}"
-                                                                value="{{ opt }}"> {{ opt }}</label><br>
-                                                        {% endfor %}
-                                                        <p><small>Select two answers.</small></p>
 
-                                                        {% elif q.type == 'matching' %}
-                                                        {% for key, options in q.options.items() %}
-                                                        <p>{{ key }}:</p>
-                                                        <select name="{{ q.id }}_{{ key }}">
-                                                            {% for opt in options %}
-                                                            <option value="{{ opt }}">{{ opt }}</option>
-                                                            {% endfor %}
-                                                        </select>
-                                                        {% endfor %}
 
-                                                        {% elif q.type == 'note_completion' or q.type == 'short_answer'
-                                                        %}
-                                                        <input type="text" name="{{ q.id }}">
-                                                        {% endif %}
-                                                    </div>
-                                                    <hr>
-                                                    {% endfor %}
-                                                    <button type="submit">Next</button>
-                                                </form>
+                                            {% if q.type == 'fill_blank' %}
+                                            <label>Q{{ q.id }}.</label>
+
+                                            <p>
+                                                {{ q.question | replace(
+                                                '____',
+                                                "<input type='text' name='q" ~ q_index ~ "'
+                                                    value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                ) | safe }}
+                                            </p>
+
+
+
+
+
+                                            {% elif q.type == 'multiple_choice' %}
+                                            <label>Q{{ q.id }}. {{ q.question }}</label>
+                                            {% for opt in q.options %}
+                                            <div class="custom-control custom-radio">
+
+                                                <input type="radio" name="q{{ q_index }}" value="{{
+                            opt }}" id="{{ loop.index0 }}{{ q_index }}" class="custom-control-input" {% if
+                                                    saved_answers[q_index]==opt %}checked{% endif %} />
+                                                <label class="custom-control-label"
+                                                    for="{{ loop.index0 }}{{ q_index }}">{{ opt }}</label>
 
                                             </div>
-                                            <!-- Input group -->
-                                        </div>
+                                            {% endfor %}
+                                            {% elif q.type == 'matching' %}
+                                            <label>Q{{ q.id }}. {{ q.question }}</label>
+                                            {% for person in q.options.keys() %}
+
+                                            <label>{{ person }}:</label>
+
+                                            <input type="text" name="{{ q.id }}_{{ loop.index }}"
+                                                placeholder="Match for {{ person }}" /><br />
+
+                                            {% endfor %}
+                                            {% endif %}
+
+
+                                            <hr />
+                                            {% endfor %}
+                                            {% if section_id > 1 %}
+                                            <button name="prev" type="submit" class="btn btn-primary">
+                                                &larr; Previous
+                                            </button>
+                                            {% endif %} {% if section_id < 4 %} <button name="next" type="submit"
+                                                class="btn btn-primary">Next &rarr;</button>
+                                                {% else %}
+                                                <button name="submit_all" type="submit" class="btn btn-primary">
+                                                    Submit All
+                                                </button>
+                                                {% endif %}
+                                        </form>
                                     </div>
-                                    <!-- [ Main Content ] end -->
+                                    <!-- Input group -->
                                 </div>
                             </div>
+                            <!-- [ Main Content ] end -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- [ Main Content ] end -->
-
-            {% endblock content %}
-
-            <!-- Specific Page JS goes HERE  -->
-            {% block javascripts %}
-
-            <script>
-                let remaining = {{ remaining_seconds }};
-                const timerDisplay = document.getElementById('timer');
-                const form = document.getElementById('examForm');
-
-                function formatTime(seconds) {
-                    const mins = Math.floor(seconds / 60);
-                    const secs = seconds % 60;
-                    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-                }
-
-                function updateTimer() {
-                    if (remaining <= 0) {
-                        form.submit();  // auto-submit or redirect
-                    } else {
-                        timerDisplay.textContent = "⌛" + formatTime(remaining);
-                        remaining--;
-                        setTimeout(updateTimer, 1000);
-                    }
-                }
-
-                updateTimer();
-            </script>
-
-            {% endblock javascripts %}
         </div>
     </div>
+    <!-- [ Main Content ] end -->
+
+    {% endblock content %}
+
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %}
+
+    <script>
+        let remaining = {{ remaining_seconds }};
+        const timerDisplay = document.getElementById('timer');
+        const form = document.getElementById('examForm');
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        function updateTimer() {
+            if (remaining <= 0) {
+                form.submit();  // auto-submit or redirect
+            } else {
+                timerDisplay.textContent = "⌛" + formatTime(remaining);
+                remaining--;
+                setTimeout(updateTimer, 1000);
+            }
+        }
+
+        updateTimer();
+    </script>
+
+    {% endblock javascripts %}
+</div>
+</div>
 </div>

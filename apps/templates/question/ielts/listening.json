@@ -1,79 +1,328 @@
 {
-    "section1": [
+    "sections": [
         {
-            "id": 1,
-            "type": "note_completion",
-            "question": "making sure the beach does not have ____.",
-            "answer": "2 PM"
-        },
-        {
-            "id": 5,
-            "type": "short_answer",
-            "question": "What is the name of the main speaker?",
-            "answer": "Dr. Smith"
-        }
-    ],
-    "section2": [
-        {
-            "id": 1,
-            "type": "multiple_choice",
-            "question": "What time does the train leave?",
-            "options": [
-                "10:00 AM",
-                "11:00 AM",
-                "12:00 PM"
-            ],
-            "answer": "11:00 AM"
-        },
-        {
-            "id": 2,
-            "type": "multiple_choice_two",
-            "question": "Which two items are included in the service?",
-            "options": [
-                "Breakfast",
-                "Lunch",
-                "Dinner",
-                "Snacks"
-            ],
-            "answer": [
-                "Breakfast",
-                "Snacks"
+            "title": "Section 1",
+            "audio": "ielts1",
+            "questions": [
+                {
+                    "id": 1,
+                    "type": "fill_blank",
+                    "question": "The meeting will be held at ____.",
+                    "answer": "3 pm"
+                },
+                {
+                    "id": 2,
+                    "type": "multiple_choice",
+                    "question": "What is the main topic?",
+                    "options": [
+                        "Travel",
+                        "Work",
+                        "Health"
+                    ],
+                    "answer": "travel"
+                },
+                {
+                    "id": 3,
+                    "type": "matching",
+                    "question": "Match the people to their hobbies:",
+                    "options": {
+                        "John": "Reading",
+                        "Lisa": "Swimming",
+                        "Tom": "Cycling"
+                    },
+                    "answer": "john=reading,lisa=swimming,tom=cycling"
+                },
+                {
+                    "id": 4,
+                    "type": "fill_blank",
+                    "question": "What is Tom’s profession?",
+                    "answer": "engineer"
+                },
+                {
+                    "id": 5,
+                    "type": "fill_blank",
+                    "question": "Note: The train arrives at ____.",
+                    "answer": "5:30"
+                },
+                {
+                    "id": 6,
+                    "type": "fill_blank",
+                    "question": "He was born in ____.",
+                    "answer": "1990"
+                },
+                {
+                    "id": 7,
+                    "type": "multiple_choice",
+                    "question": "Which country is not mentioned?",
+                    "options": [
+                        "France",
+                        "Germany",
+                        "Brazil"
+                    ],
+                    "answer": "brazil"
+                },
+                {
+                    "id": 8,
+                    "type": "fill_blank",
+                    "question": "Name one of the speakers.",
+                    "answer": "maria"
+                },
+                {
+                    "id": 9,
+                    "type": "fill_blank",
+                    "question": "Reminder: Bring ____ for the presentation.",
+                    "answer": "laptop"
+                },
+                {
+                    "id": 10,
+                    "type": "fill_blank",
+                    "question": "Label the room with the correct name: (Room A is ____)",
+                    "answer": "kitchen"
+                }
             ]
         },
         {
-            "id": 3,
-            "type": "matching",
-            "question": "Match the person with their profession.",
-            "options": {
-                "John": [
-                    "Doctor",
-                    "Lawyer",
-                    "Chef"
-                ],
-                "Anna": [
-                    "Nurse",
-                    "Teacher",
-                    "Engineer"
-                ]
-            },
-            "answer": {
-                "John": "Chef",
-                "Anna": "Teacher"
-            }
+            "title": "Section 2",
+            "audio": "section2.mp3",
+            "questions": [
+                {
+                    "id": 11,
+                    "type": "fill_blank",
+                    "question": "The lecture starts at ____.",
+                    "answer": "9 am"
+                },
+                {
+                    "id": 12,
+                    "type": "multiple_choice",
+                    "question": "What is the main subject?",
+                    "options": [
+                        "Environment",
+                        "Science",
+                        "History"
+                    ],
+                    "answer": "environment"
+                },
+                {
+                    "id": 13,
+                    "type": "matching",
+                    "question": "Match the inventions to inventors:",
+                    "options": {
+                        "Bell": "Telephone",
+                        "Edison": "Lightbulb",
+                        "Wright": "Airplane"
+                    },
+                    "answer": "bell=telephone,edison=lightbulb,wright=airplane"
+                },
+                {
+                    "id": 14,
+                    "type": "fill_blank",
+                    "question": "Who discovered electricity?",
+                    "answer": "benjamin franklin"
+                },
+                {
+                    "id": 15,
+                    "type": "fill_blank",
+                    "question": "Note: The seminar ends at ____.",
+                    "answer": "4 pm"
+                },
+                {
+                    "id": 16,
+                    "type": "fill_blank",
+                    "question": "The professor is from ____.",
+                    "answer": "canada"
+                },
+                {
+                    "id": 17,
+                    "type": "multiple_choice",
+                    "question": "Which topic was not covered?",
+                    "options": [
+                        "Climate",
+                        "Astronomy",
+                        "Biology"
+                    ],
+                    "answer": "astronomy"
+                },
+                {
+                    "id": 18,
+                    "type": "fill_blank",
+                    "question": "What was the name of the project?",
+                    "answer": "green earth"
+                },
+                {
+                    "id": 19,
+                    "type": "fill_blank",
+                    "question": "Remember to submit the ____ by Friday.",
+                    "answer": "report"
+                },
+                {
+                    "id": 20,
+                    "type": "fill_blank",
+                    "question": "Label the area with the correct name: (Area B is ____)",
+                    "answer": "library"
+                }
+            ]
         },
         {
-            "id": 4,
-            "type": "note_completion",
-            "question": "Complete the note: The meeting will be held at ____.",
-            "answer": "2 PM"
+            "title": "Section 3",
+            "audio": "section3.mp3",
+            "questions": [
+                {
+                    "id": 21,
+                    "type": "fill_blank",
+                    "question": "The meeting room is ____.",
+                    "answer": "room 101"
+                },
+                {
+                    "id": 22,
+                    "type": "multiple_choice",
+                    "question": "What was the main challenge?",
+                    "options": [
+                        "Budget",
+                        "Time",
+                        "Resources"
+                    ],
+                    "answer": "budget"
+                },
+                {
+                    "id": 23,
+                    "type": "matching",
+                    "question": "Match the students to their majors:",
+                    "options": {
+                        "Anna": "Biology",
+                        "Mark": "Engineering",
+                        "Sarah": "Literature"
+                    },
+                    "answer": "anna=biology,mark=engineering,sarah=literature"
+                },
+                {
+                    "id": 24,
+                    "type": "fill_blank",
+                    "question": "What does Mark study?",
+                    "answer": "engineering"
+                },
+                {
+                    "id": 25,
+                    "type": "fill_blank",
+                    "question": "Note: The deadline is ____.",
+                    "answer": "june 30"
+                },
+                {
+                    "id": 26,
+                    "type": "fill_blank",
+                    "question": "The professor’s office is on ____ floor.",
+                    "answer": "second"
+                },
+                {
+                    "id": 27,
+                    "type": "multiple_choice",
+                    "question": "Which was NOT a topic discussed?",
+                    "options": [
+                        "History",
+                        "Physics",
+                        "Math"
+                    ],
+                    "answer": "math"
+                },
+                {
+                    "id": 28,
+                    "type": "fill_blank",
+                    "question": "Name a recommended book.",
+                    "answer": "biology basics"
+                },
+                {
+                    "id": 29,
+                    "type": "fill_blank",
+                    "question": "Submit your ____ after the class.",
+                    "answer": "assignment"
+                },
+                {
+                    "id": 30,
+                    "type": "fill_blank",
+                    "question": "Label the building part: (Part C is ____)",
+                    "answer": "library"
+                }
+            ]
         },
         {
-            "id": 5,
-            "type": "short_answer",
-            "question": "What is the name of the main speaker?",
-            "answer": "Dr. Smith"
+            "title": "Section 4",
+            "audio": "section4.mp3",
+            "questions": [
+                {
+                    "id": 31,
+                    "type": "fill_blank",
+                    "question": "The conference starts at ____.",
+                    "answer": "10 am"
+                },
+                {
+                    "id": 32,
+                    "type": "multiple_choice",
+                    "question": "What is the theme?",
+                    "options": [
+                        "Technology",
+                        "Business",
+                        "Health"
+                    ],
+                    "answer": "technology"
+                },
+                {
+                    "id": 33,
+                    "type": "matching",
+                    "question": "Match the companies to their CEOs:",
+                    "options": {
+                        "Google": "Sundar",
+                        "Apple": "Tim",
+                        "Microsoft": "Satya"
+                    },
+                    "answer": "google=sundar,apple=tim,microsoft=satya"
+                },
+                {
+                    "id": 34,
+                    "type": "fill_blank",
+                    "question": "Who is the keynote speaker?",
+                    "answer": "alice"
+                },
+                {
+                    "id": 35,
+                    "type": "fill_blank",
+                    "question": "Note: Lunch break is at ____.",
+                    "answer": "1 pm"
+                },
+                {
+                    "id": 36,
+                    "type": "fill_blank",
+                    "question": "The venue is ____.",
+                    "answer": "hall a"
+                },
+                {
+                    "id": 37,
+                    "type": "multiple_choice",
+                    "question": "Which product was launched?",
+                    "options": [
+                        "Phone",
+                        "Laptop",
+                        "Tablet"
+                    ],
+                    "answer": "tablet"
+                },
+                {
+                    "id": 38,
+                    "type": "fill_blank",
+                    "question": "What is the conference duration?",
+                    "answer": "three days"
+                },
+                {
+                    "id": 39,
+                    "type": "fill_blank",
+                    "question": "Remember to collect your ____.",
+                    "answer": "badge"
+                },
+                {
+                    "id": 40,
+                    "type": "fill_blank",
+                    "question": "Label the section: (Section D is ____)",
+                    "answer": "exhibition"
+                }
+            ]
         }
-    ],
-    "section3": [],
-    "section4": []
+    ]
 }

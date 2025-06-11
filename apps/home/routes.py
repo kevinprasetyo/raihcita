@@ -309,11 +309,11 @@ def ieltslistening():
     session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     session['end_time'] = (
         datetime.now() + timedelta(minutes=50)).strftime("%Y-%m-%d %H:%M:%S")
-    return redirect(url_for('home_blueprint.ielts_listening', section=1))
+    return redirect(url_for('home_blueprint.ielts_listening', section_id=1))
 
 
-@blueprint.route('/learning/ielts/listening/<int:section>', methods=['GET', 'POST'])
-def ielts_listening(section):
+@blueprint.route('/learning/ielts/listening/<int:section_id>', methods=['GET', 'POST'])
+def ielts_listening(section_id):
     if 'end_time' not in session or 'start_time' not in session:
         flash("Please start the test first.")
         return redirect(url_for('home_blueprint.ieltslistening'))
@@ -324,37 +324,37 @@ def ielts_listening(section):
 
     if remaining_seconds <= 0:
         for i in range(10):
-            q_key = f'p{section}_q{i}'
+            q_key = f'p{section_id}_q{i}'
             session[q_key] = request.form.get(f'q{i}', None)
         flash("Time's up! Please start the test again.")
         return redirect(url_for('home_blueprint.hasiltoeflreading2'))
 
-    if section < 0 or section >= len(LISTENINGIELTS):
-        return render_template('home/home_blueprint.ielts_listening.html', section=0)
+    if section_id < 1 or section_id > 4:
+        return render_template('home/home_blueprint.ielts_listening.html', section_id=1)
 
     if request.method == 'POST':
         # Save user's answers to session
         for i in range(10):
-            q_key = f'p{section}_q{i}'
+            q_key = f'p{section_id}_q{i}'
             session[q_key] = request.form.get(f'q{i}', None)
 
         # Navigate forward
-        if 'next' in request.form and section < 4:
-            return redirect(url_for('home_blueprint.ielts_listening', section=section + 1))
-        elif 'prev' in request.form and section > 0:
-            return redirect(url_for('home_blueprint.ielts_listening', section=section - 1))
+        if 'next' in request.form and section_id < 4:
+            return redirect(url_for('home_blueprint.ielts_listening', section_id=section_id + 1))
+        elif 'prev' in request.form and section_id > 0:
+            return redirect(url_for('home_blueprint.ielts_listening', section_id=section_id - 1))
         elif 'submit_all' in request.form:
             return redirect(url_for('home_blueprint.hasiltoeflreading2'))
 
-    questions = LISTENINGIELTS.get(f'section{section}', [])
-    saved_answers = [session.get(f'p{section}_q{i}') for i in range(10)]
+    section_data = LISTENINGIELTS['sections'][section_id - 1]
+    saved_answers = [session.get(f'p{section_id}_q{i}') for i in range(10)]
 
     return render_template(
         'learning/ielts/listening.html',
-        section=section,
-        total=len(LISTENINGIELTS),
-        questions=questions,
-        saved_answers=saved_answers, segment='listening', remaining_seconds=remaining_seconds
+        section_id=section_id,
+        section=section_data,
+        saved_answers=saved_answers,
+        segment='listening', remaining_seconds=remaining_seconds
     )
 
 
