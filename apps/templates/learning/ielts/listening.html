@@ -179,10 +179,36 @@ endblock %}
                                             <h5>Questions 11-14</h5> <br>
                                             Choose the correct letter, <b>A, B, or C.</b><br>
                                             <hr>
-                                            <h5>
-                                                <center>Boat to round Tasmania</center>
+                                            {% elif q.id == 15 %}
+                                            <hr>
+                                            <h5>Questions 15-20</h5> <br>
+                                            Choose TWO letters <b>A-E</b><br>
+                                            <hr>
+                                            {% elif q.id == 21 %}
+                                            <hr>
+                                            <h5>Questions 21-26</h5> <br>
+                                            Choose the correct letter <b>A, B, or C</b><br>
+                                            <hr>
+                                            <b>
+                                                <center>Work experience for veterinary science students</center>
+                                            </b>
+                                            <br>
+                                            {% elif q.id == 27 %}
+                                            <hr>
+                                            <h5>Questions 27-30</h5> <br>
+                                            What opinion do the students give about each of the following modules on
+                                            their
+                                            veterinary science course?<br> <br>
+                                            Choose <b>FOUR </b>answers from the box and write the correct letter, A-F,
+                                            next to
+                                            questions 27-30. <br>
+                                            <hr>
+                                            <b>
+                                                <center>Opinions</center>
+                                            </b>
+                                            <br>
 
-                                            </h5><br>
+
                                             {% endif %}
                                             {% if q.type == 'fill_blank' %}
                                             <ul>

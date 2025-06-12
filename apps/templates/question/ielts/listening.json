@@ -98,7 +98,7 @@
                 {
                     "id": 13,
                     "type": "multiple_choice",
-                    "question": "Which lunchbox is suitable for someone who doesn’t eat meat or fish?",
+                    "question": "Which lunchbox is suitable for someone who doesn't eat meat or fish?",
                     "options": {
                         "Bell": "a. Lunchbox 1",
                         "Edison": "b. Lunchbox 2",
@@ -120,61 +120,50 @@
                 {
                     "id": 15,
                     "type": "checkbox_two",
-                    "question": "Which TWO things should you bring?",
+                    "question": "Which TWO features of the lighthouse does Lou mention?",
                     "options": [
-                        "A. sunscreen",
-                        "B. boots",
-                        "C. snacks",
-                        "D. sunglasses"
+                        "A. why it was built",
+                        "B. who built it",
+                        "C. how long it took to build",
+                        "D. who staffed it",
+                        "E. what it was built with"
                     ],
                     "answer": [
-                        "A. sunscreen",
-                        "C. snacks"
+                        "A. why it was built",
+                        "D. who staffed it"
                     ]
                 },
                 {
                     "id": 17,
                     "type": "checkbox_two",
-                    "question": "Which TWO things should you bring?",
+                    "question": "Which TWO types of creature might come close to the boat?",
                     "options": [
-                        "A. sunscreen",
-                        "B. boots",
-                        "C. snacks",
-                        "D. sunglasses"
+                        "A. sea eagles",
+                        "B. fur seals",
+                        "C. dolphins",
+                        "D. whales",
+                        "E. penguins"
                     ],
                     "answer": [
-                        "A. sunscreen",
-                        "C. snacks"
+                        "B. fur seals",
+                        "C. dolphins"
                     ]
                 },
                 {
-                    "id": 17,
-                    "type": "multiple_choice",
-                    "question": "Which topic was not covered?",
-                    "options": [
-                        "Climate",
-                        "Astronomy",
-                        "Biology"
-                    ],
-                    "answer": "astronomy"
-                },
-                {
-                    "id": 18,
-                    "type": "fill_blank",
-                    "question": "What was the name of the project?",
-                    "answer": "green earth"
-                },
-                {
                     "id": 19,
-                    "type": "fill_blank",
-                    "question": "Remember to submit the ____ by Friday.",
-                    "answer": "report"
-                },
-                {
-                    "id": 20,
-                    "type": "fill_blank",
-                    "question": "Label the area with the correct name: (Area B is ____)",
-                    "answer": "library"
+                    "type": "checkbox_two",
+                    "question": "Which TWO points does Lou make about the caves? ",
+                    "options": [
+                        "A. Only large tourist boats can visit them",
+                        "B. The entrances to them are often blocked",
+                        "C. It is too dangerous for individuals to go near them",
+                        "D. Someone will explain what is inside them",
+                        "E. They cannot be reached on foot"
+                    ],
+                    "answer": [
+                        "D. Someone will explain what is inside them",
+                        "E. They cannot be reached on foot"
+                    ]
                 }
             ]
         },
@@ -184,78 +173,125 @@
             "questions": [
                 {
                     "id": 21,
-                    "type": "fill_blank",
-                    "question": "The meeting room is ____.",
-                    "answer": "room 101"
+                    "type": "multiple_choice",
+                    "question": "What problem did both Diana and Tim have when arranging their work experience? ",
+                    "options": [
+                        "a. making initial contact with suitable farms",
+                        "b. organizing transport to and from the farm",
+                        "c. finding a placement for the required length of time"
+                    ],
+                    "answer": "a. making initial contact with suitable farms"
                 },
                 {
                     "id": 22,
                     "type": "multiple_choice",
-                    "question": "What was the main challenge?",
+                    "question": "Tim was pleased to be able to help",
                     "options": [
-                        "Budget",
-                        "Time",
-                        "Resources"
+                        "a. a lamb that had a broken leg ",
+                        "b. a sheep that was having difficulty giving birth",
+                        "c. a newly born lamb that was having trouble feeding"
                     ],
-                    "answer": "budget"
+                    "answer": "b. a sheep that was having difficulty giving birth"
                 },
                 {
                     "id": 23,
-                    "type": "matching",
-                    "question": "Match the students to their majors:",
-                    "options": {
-                        "Anna": "Biology",
-                        "Mark": "Engineering",
-                        "Sarah": "Literature"
-                    },
-                    "answer": "anna=biology,mark=engineering,sarah=literature"
+                    "type": "multiple_choice",
+                    "question": "Diana says the sheep on her farm ",
+                    "options": [
+                        "a. were of various different varieties",
+                        "b. were mainly reared for their meat",
+                        "c. had better quality wool than sheep on the hills"
+                    ],
+                    "answer": "b. were mainly reared for their meat"
                 },
                 {
                     "id": 24,
-                    "type": "fill_blank",
-                    "question": "What does Mark study?",
-                    "answer": "engineering"
+                    "type": "multiple_choice",
+                    "question": "What did the students learn about adding supplements to chicken feed?",
+                    "options": [
+                        "a. These should only be given if specially needed",
+                        "b. It is worth paying extra for the effective ones",
+                        "c. The amount given at one time should be limited"
+                    ],
+                    "answer": "a. These should only be given if specially needed"
                 },
                 {
                     "id": 25,
-                    "type": "fill_blank",
-                    "question": "Note: The deadline is ____.",
-                    "answer": "june 30"
+                    "type": "multiple_choice",
+                    "question": "What happened when Diana was working with dairy cows?",
+                    "options": [
+                        "a. She identified some cows incorrectly",
+                        "b. She accidentally threw some milk away",
+                        "c. She made a mistake when storing milk"
+                    ],
+                    "answer": "c. She made a mistake when storing milk"
                 },
                 {
                     "id": 26,
-                    "type": "fill_blank",
-                    "question": "The professor’s office is on ____ floor.",
-                    "answer": "second"
+                    "type": "multiple_choice",
+                    "question": "What did both farmers mention about vets and farming?",
+                    "options": [
+                        "a. Vets are failing to cope with some aspects of animal health",
+                        "b. There needs to be a fundamental change in the training of vets",
+                        "c. Some jobs could be done by the farmer rather than by a vet "
+                    ],
+                    "answer": "c. Some jobs could be done by the farmer rather than by a vet "
                 },
                 {
                     "id": 27,
-                    "type": "multiple_choice",
-                    "question": "Which was NOT a topic discussed?",
+                    "type": "matching",
+                    "question": "Medical terminology ",
                     "options": [
-                        "History",
-                        "Physics",
-                        "Math"
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
                     ],
-                    "answer": "math"
+                    "answer": "A"
                 },
                 {
                     "id": 28,
-                    "type": "fill_blank",
-                    "question": "Name a recommended book.",
-                    "answer": "biology basics"
+                    "type": "matching",
+                    "question": "Diet and nutrition ",
+                    "options": [
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
+                    ],
+                    "answer": "E"
                 },
                 {
                     "id": 29,
-                    "type": "fill_blank",
-                    "question": "Submit your ____ after the class.",
-                    "answer": "assignment"
+                    "type": "matching",
+                    "question": "Animal disease ",
+                    "options": [
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
+                    ],
+                    "answer": "F"
                 },
                 {
                     "id": 30,
-                    "type": "fill_blank",
-                    "question": "Label the building part: (Part C is ____)",
-                    "answer": "library"
+                    "type": "matching",
+                    "question": "Wildlife medication ",
+                    "options": [
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
+                    ],
+                    "answer": "C"
                 }
             ]
         },
@@ -266,77 +302,62 @@
                 {
                     "id": 31,
                     "type": "fill_blank",
-                    "question": "The conference starts at ____.",
-                    "answer": "10 am"
+                    "question": "Mazes are type of ____",
+                    "answer": "puzzle"
                 },
                 {
                     "id": 32,
-                    "type": "multiple_choice",
-                    "question": "What is the theme?",
-                    "options": [
-                        "Technology",
-                        "Business",
-                        "Health"
-                    ],
-                    "answer": "technology"
+                    "type": "fill_blank",
+                    "question": "____  is needed to navigate through a maze",
+                    "answer": "logic"
                 },
                 {
                     "id": 33,
-                    "type": "matching",
-                    "question": "Match the companies to their CEOs:",
-                    "options": {
-                        "Google": "Sundar",
-                        "Apple": "Tim",
-                        "Microsoft": "Satya"
-                    },
-                    "answer": "google=sundar,apple=tim,microsoft=satya"
+                    "type": "fill_blank",
+                    "question": "the word 'maze' is derived from a word meaning a feeling of ____",
+                    "answer": "confusion"
                 },
                 {
                     "id": 34,
                     "type": "fill_blank",
-                    "question": "Who is the keynote speaker?",
-                    "answer": "alice"
+                    "question": "they have frequently been used in ____ and prayer",
+                    "answer": "meditation"
                 },
                 {
                     "id": 35,
                     "type": "fill_blank",
-                    "question": "Note: Lunch break is at ____.",
-                    "answer": "1 pm"
+                    "question": "Ancient carvings on ____ have been found across many cultures",
+                    "answer": "stone"
                 },
                 {
                     "id": 36,
                     "type": "fill_blank",
-                    "question": "The venue is ____.",
-                    "answer": "hall a"
+                    "question": "Ancient Greeks used the symbol on ____.",
+                    "answer": "coins"
                 },
                 {
                     "id": 37,
-                    "type": "multiple_choice",
-                    "question": "Which product was launched?",
-                    "options": [
-                        "Phone",
-                        "Laptop",
-                        "Tablet"
-                    ],
-                    "answer": "tablet"
+                    "type": "fill_blank",
+                    "question": "The largest surviving example of a turf labyrinth once had a big ____ at its centre ",
+                    "answer": "tree"
                 },
                 {
                     "id": 38,
                     "type": "fill_blank",
-                    "question": "What is the conference duration?",
-                    "answer": "three days"
+                    "question": "Believed to have a beneficial impact on mental and physical health, e.g., walking a maze can reduce a person's ____ rate",
+                    "answer": "breathing"
                 },
                 {
                     "id": 39,
                     "type": "fill_blank",
-                    "question": "Remember to collect your ____.",
-                    "answer": "badge"
+                    "question": "patients who can't walk can use ‘finger labyrinths' made from ____",
+                    "answer": "paper"
                 },
                 {
                     "id": 40,
                     "type": "fill_blank",
-                    "question": "Label the section: (Section D is ____)",
-                    "answer": "exhibition"
+                    "question": "research has shown that Alzheimer's sufferers experience less ____",
+                    "answer": "anxiety"
                 }
             ]
         }
