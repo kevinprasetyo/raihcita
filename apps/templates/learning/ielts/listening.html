@@ -218,7 +218,7 @@ endblock %}
                                                         of this </li>
                                                 </ol>
                                             </fieldset>
-                                            <b>Modules on Veterinary Science course</b>
+                                            <b>Modules on Veterinary Science course</b><br><br>
                                             {% elif q.id == 31 %}
                                             <hr>
                                             <h5>Questions 31-40</h5> <br>
@@ -315,8 +315,16 @@ endblock %}
                                                     for="{{ loop.index0 }}{{ q_index }}">{{ opt }}</label>
                                             </div>
                                             {% endfor %}
-
-
+                                            <br>
+                                            {% elif q.type == 'matching' %}
+                                            <label for="q{{ q_index }}">{{ q.id }}. {{ q.question }}</label>
+                                            <select name="q{{ q_index }}" id="q{{ q_index }}">
+                                                <option value="">-- Select an answer --</option>
+                                                {% for opt in q.options %}
+                                                <option value="{{ opt }}" {% if saved_answers[q_index]==opt %}selected{%
+                                                    endif %}>{{ opt }}</option>
+                                                {% endfor %}
+                                            </select>
                                             <br>
                                             {% endif %}
 
