@@ -203,14 +203,96 @@ endblock %}
                                             next to
                                             questions 27-30. <br>
                                             <hr>
+                                            <fieldset>
+                                                <legend> <b>
+                                                        Opinions
+                                                    </b></legend>
+                                                <ol type="A">
+                                                    <li>Tim found this easier than expected </li>
+                                                    <li>Tim thought this was not very clearly organized </li>
+                                                    <li> Diana may do some further study on this</li>
+                                                    <li>They both found the reading required for this was difficult</li>
+                                                    <li>Tim was shocked at something he learned on this module</li>
+                                                    <li>
+                                                        They were both surprised how little is known about some aspects
+                                                        of this </li>
+                                                </ol>
+                                            </fieldset>
+                                            <b>Modules on Veterinary Science course</b>
+                                            {% elif q.id == 31 %}
+                                            <hr>
+                                            <h5>Questions 31-40</h5> <br>
+                                            Write <b>ONE WORD ONLY</b> for each answer.<br>
+                                            <hr>
                                             <b>
-                                                <center>Opinions</center>
+                                                <center>Labyrinths</center>
                                             </b>
                                             <br>
+                                            <b>Definition</b>
+                                            <ul>
+                                                <li>a winding spiral path leading to a central area </li>
+                                            </ul>
+                                            <b>Labyrinth compared with mazes </b>
+                                            <br><br>
+                                            {% elif q.id == 32 or q.id == 33 %}
+                                            <ul>
+                                                <ul>
+                                                    <li>{{ q.question | replace(
+                                                        '____',
+                                                        q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                            value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                        ) | safe }}</li>
+                                                </ul>
+                                            </ul>
+                                            {% elif q.id == 34 %}
+                                            <ul>
+                                                <li>Labyrinths represent a journey through life </li>
+                                                <ul>
+                                                    <li>{{ q.question | replace(
+                                                        '____',
+                                                        q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                            value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                        ) | safe }}</li>
+                                                </ul>
+                                            </ul>
+                                            {% elif q.id == 35 %}
+                                            <b>Early examples of the labyrinth spiral</b><br> <br>
+                                            {% elif q.id == 36 %}
+                                            <ul>
+                                                <li>The Pima, a Native American tribe, wove the symbol on baskets</li>
+                                            </ul>
+                                            {% elif q.id == 37 %}
+                                            <b>Walking labyrinths</b> <br><br>
+                                            {% elif q.id == 38 %}
+                                            <b>Labyrinths nowadays</b> <br><br>
+                                            {% elif q.id == 39 %}
+                                            <ul>
+                                                <li>Used in medical and health and fitness settings and also prisons
+                                                </li>
+                                                <li>Popular with patients, visitors and staff hospitals </li>
+                                                <ul>
+                                                    <li>{{ q.question | replace(
+                                                        '____',
+                                                        q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                            value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                        ) | safe }}</li>
+                                                </ul>
+                                            </ul>
+                                            {% elif q.id == 40 %}
+                                            <ul>
 
+                                                <ul>
+                                                    <li>{{ q.question | replace(
+                                                        '____',
+                                                        q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                            value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                        ) | safe }}</li>
+                                                </ul>
+                                            </ul>
 
                                             {% endif %}
-                                            {% if q.type == 'fill_blank' %}
+                                            {% if q.type == 'fill_blank' and q.id != 32 and q.id != 33 and q.id != 34
+                                            and q.id != 39 and q.id != 40 %}
                                             <ul>
                                                 <li>
                                                     {{ q.question | replace(

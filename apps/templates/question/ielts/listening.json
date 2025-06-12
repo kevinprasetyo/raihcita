@@ -344,13 +344,13 @@
                 {
                     "id": 38,
                     "type": "fill_blank",
-                    "question": "Believed to have a beneficial impact on mental and physical health, e.g., walking a maze can reduce a person's ____ rate",
+                    "question": "Believed to have a beneficial impact on mental and physical health, <br> e.g., walking a maze can reduce a person's ____ rate",
                     "answer": "breathing"
                 },
                 {
                     "id": 39,
                     "type": "fill_blank",
-                    "question": "patients who can't walk can use ‘finger labyrinths' made from ____",
+                    "question": "patients who can't walk can use 'finger labyrinths' made from ____",
                     "answer": "paper"
                 },
                 {
