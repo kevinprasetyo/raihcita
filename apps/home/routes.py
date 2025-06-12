@@ -358,6 +358,32 @@ def ielts_listening(section_id):
     )
 
 
+def get_band_score(correct_answers):
+    bands = [
+        (39, 40, 9),
+        (37, 38, 8.5),
+        (35, 36, 8),
+        (32, 34, 7.5),
+        (30, 31, 7),
+        (26, 29, 6.5),
+        (23, 25, 6),
+        (18, 22, 5.5),
+        (16, 17, 5),
+        (13, 15, 4.5),
+        (11, 12, 4),
+        (9, 10, 3.5),
+        (7, 8, 3),
+        (5, 6, 2.5),
+        (3, 4, 2),
+        (1, 2, 1.5),
+        (0, 0, 1),
+    ]
+
+    for low, high, band in bands:
+        if low <= correct_answers <= high:
+            return band
+
+
 @blueprint.route('/learning/ielts/listening-result')
 def hasilieltslistening():
     correctans = 0
@@ -390,7 +416,7 @@ def hasilieltslistening():
             if is_correct:
                 correctans += 1
 
-    score = correctans * 10
+    score = get_band_score(correctans)
 
     return render_template('learning/ielts/listening-result.html', score=score, correctans=correctans, total=40, incorrect=hasilieltslistening, segment='listening')
 
