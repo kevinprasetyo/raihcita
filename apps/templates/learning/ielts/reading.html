@@ -15,13 +15,13 @@ endblock %}
     }
 
     .passage {
-        width: 70%;
+        width: 60%;
         border-right: 1px solid #ccc;
-        font-size: 86%;
+        font-size: 100%;
     }
 
     .questions {
-        width: 50%;
+        width: 40%;
     }
 
     form button {
@@ -132,6 +132,7 @@ endblock %}
                             <div class="container">
                                 <!-- LEFT: Passage -->
                                 <div class="passage scroll-box">
+                                    <center> <b> {{ section.title | safe }}</b></center>
                                     {{ section.text | safe }}
                                 </div>
 
@@ -142,32 +143,74 @@ endblock %}
                                         loop.index0 %}
 
                                         {% if q.id == 1 %}
-                                        <h5>Questions 1-10</h5> <br>
+                                        <h5>Questions 1-8</h5> <br>
                                         Complete the notes below. <br>
-                                        Write <b>ONE WORD AND/OR A NUMBER</b> for each answer. <br>
+                                        Choose <b>NO MORE THAN TWO WORDS</b> from the passage for each answer <br>
+                                        Write your answers in boxes 1-8 on your answer sheet. <br>
+
                                         <hr>
                                         <h5>
-                                            <center>Buckworth Conservation Group </center>
+                                            <center>Stonehenge</center>
                                             <br>
-                                            <b> Regular activities</b>
+                                            <b> Construction</b>
                                         </h5><br>
-                                        Beach <br> <br>
+                                        Stage 1: <br> <br>
                                         {% elif q.id == 3 %}
-                                        Nature reserve <br>
+                                        Stage 2: <br>
                                         <ul>
-                                            <li>maintaining paths</li>
-                                            <li>nesting boxes for birds installed </li>
+                                            <li>bluestones from the Preseli Hills were placed in standing position</li>
+                                            <li>theories about the transportation of the bluestones:
+                                                <br><em>archaeological:</em>
+                                                <ul>
+                                                    <li>{{ q.question | replace(
+                                                        '____',
+                                                        q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                            value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                        ) | safe }}</li>
+                                                    {% elif q.id == 4 %}
+                                                    <li>{{ q.question | replace(
+                                                        '____',
+                                                        q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                            value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                        ) | safe }}</li>
+                                                </ul>
+                                                <br><em>geological:</em>
+                                                <ul>
+                                                    {% elif q.id == 5 %}
+                                                    <li>{{ q.question | replace(
+                                                        '____',
+                                                        q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                            value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                        ) | safe }}</li>
+                                                </ul>
+                                            </li>
                                         </ul>
 
                                         {% elif q.id == 6 %}
                                         <br>
-                                        <h5> Forthcoming events </h5><br>
+                                        Stage 3<br>
                                         Saturday <br>
                                         <ul>
-                                            <li>meet at the Dunsmore Beach car park</li>
+                                            <li>sandstone slabs were arranged into an outer crescent or ring</li>
                                         </ul>
+                                        <h5>Builders</h5>
+                                        {% elif q.id == 7 %}
+                                        <h5>Purpose</h5>
+                                        {% elif q.id == 9 %}
+                                        <br>
+                                        <hr>
+                                        <h5>Questions 9-13</h5> <br>
+                                        <p>Do the following statements agree with the information given in Reading
+                                            Passage 1?</p>
+                                        <p><i>In boxes 9–13 on your answer sheet, write</i></p>
+                                        <ul>
+                                            <li><b>TRUE</b> if the statement agrees with the information</li>
+                                            <li><b>FALSE</b> if the statement contradicts the information</li>
+                                            <li><b>NOT GIVEN</b> if there is no information on this</li>
+                                        </ul>
+                                        <br>
                                         {% endif %}
-                                        {% if q.type == 'fill_blank' and q.id != 32 and q.id != 33 and q.id != 34
+                                        {% if q.type == 'fill_blank' and q.id != 3 and q.id != 4 and q.id != 5
                                         and q.id != 39 and q.id != 40 %}
                                         <ul>
                                             <li>
@@ -227,7 +270,7 @@ endblock %}
                                         <button name="prev" type="submit" class="btn btn-primary">
                                             &larr; Previous
                                         </button>
-                                        {% endif %} {% if section_id < 4 %} <button name="next" type="submit"
+                                        {% endif %} {% if section_id < 3 %} <button name="next" type="submit"
                                             class="btn btn-primary">Next &rarr;</button>
                                             {% else %}
                                             <button name="submit_all" type="submit" class="btn btn-primary">

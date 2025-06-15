@@ -475,18 +475,18 @@ def ielts_reading(section_id):
     remaining_seconds = int((end_time - now).total_seconds())
 
     if remaining_seconds <= 0:
-        for i in range(10):
+        for i in range(13):
             q_key = f'p{section_id}_q{i}'
             session[q_key] = request.form.get(f'q{i}', None)
         flash("Time's up! Please start the test again.")
         return redirect(url_for('home_blueprint.hasiltoeflreading2'))
 
-    if section_id < 1 or section_id > 4:
+    if section_id < 1 or section_id > 3:
         return render_template('home/home_blueprint.ielts_reading.html', section_id=1)
 
     if request.method == 'POST':
         # Save user's answers to session
-        for i in range(10):
+        for i in range(13):
             q_key = f'p{section_id}_q{i}'
             answers = request.form.getlist(f'q{i}[]')
             if not answers:
@@ -494,7 +494,7 @@ def ielts_reading(section_id):
             session[q_key] = answers
 
         # Navigate forward
-        if 'next' in request.form and section_id < 4:
+        if 'next' in request.form and section_id < 3:
             return redirect(url_for('home_blueprint.ielts_reading', section_id=section_id + 1))
         elif 'prev' in request.form and section_id > 0:
             return redirect(url_for('home_blueprint.ielts_reading', section_id=section_id - 1))
@@ -502,7 +502,7 @@ def ielts_reading(section_id):
             return redirect(url_for('home_blueprint.hasilieltslistening'))
 
     section_data = READINGIELTS['sections'][section_id - 1]
-    saved_answers = [session.get(f'p{section_id}_q{i}') for i in range(10)]
+    saved_answers = [session.get(f'p{section_id}_q{i}') for i in range(13)]
 
     return render_template(
         'learning/ielts/reading.html',
