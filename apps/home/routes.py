@@ -308,7 +308,7 @@ def ieltslistening():
     session.clear()
     session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     session['end_time'] = (
-        datetime.now() + timedelta(minutes=50)).strftime("%Y-%m-%d %H:%M:%S")
+        datetime.now() + timedelta(minutes=30)).strftime("%Y-%m-%d %H:%M:%S")
     return redirect(url_for('home_blueprint.ielts_listening', section_id=1))
 
 

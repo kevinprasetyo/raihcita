@@ -331,9 +331,10 @@ endblock %}
                                             {% for opt in q.options %}
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" name="q{{ q_index }}[]" value="{{ opt }}"
-                                                    id="chk{{ loop.index0 }}{{ q_index }}" class="custom-control-input"
-                                                    {% if saved_answers[q_index] and opt in saved_answers[q_index]
-                                                    %}checked{% endif %}>
+                                                    id="chk{{ loop.index0 }}{{ q_index }}"
+                                                    class="custom-control-input checkbox-limit"
+                                                    data-question="{{ q_index }}" {% if saved_answers[q_index] and opt
+                                                    in saved_answers[q_index] %}checked{% endif %}>
                                                 <label class="custom-control-label"
                                                     for="chk{{ loop.index0 }}{{ q_index }}">{{ opt }}</label>
                                             </div>
@@ -377,6 +378,39 @@ endblock %}
     {% block javascripts %}
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Group checkboxes by their data-question attribute
+            const allCheckboxes = document.querySelectorAll('.checkbox-limit');
+
+            function updateCheckboxGroup(qIndex) {
+                const group = [...allCheckboxes].filter(cb => cb.dataset.question === qIndex);
+                const checkedCount = group.filter(cb => cb.checked).length;
+
+                group.forEach(cb => {
+                    if (!cb.checked) {
+                        cb.disabled = checkedCount >= 2;
+                    }
+                });
+            }
+
+            // Attach event listener to all checkboxes
+            allCheckboxes.forEach(cb => {
+                cb.addEventListener('change', function () {
+                    updateCheckboxGroup(cb.dataset.question);
+                });
+            });
+
+            // Initialize all groups on page load (handles pre-checked boxes)
+            const questionIds = [...new Set([...allCheckboxes].map(cb => cb.dataset.question))];
+            questionIds.forEach(qIndex => updateCheckboxGroup(qIndex));
+        });
+    </script>
+
+    <script>
+
+
+
+
         let remaining = {{ remaining_seconds }};
         const timerDisplay = document.getElementById('timer');
         const form = document.getElementById('examForm');
