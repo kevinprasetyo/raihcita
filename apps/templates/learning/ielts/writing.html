@@ -1,0 +1,262 @@
+{% extends "layouts/base-ielts.html" %} {% block title %} IELTS Writing Test {%
+endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<style>
+    .container {
+        display: flex;
+        height: 90vh;
+    }
+
+    .scroll-box {
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .passage {
+        width: 60%;
+        border-right: 1px solid #ccc;
+        font-size: 100%;
+    }
+
+    .questions {
+        width: 40%;
+    }
+
+    form button {
+        margin: 10px 10px 0 0;
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+
+    hr {
+        border-top: 1px solid #ddd;
+    }
+
+
+    /* Disable text selection */
+    body {
+        -webkit-user-select: none;
+        /* Chrome/Safari */
+        -moz-user-select: none;
+        /* Firefox */
+        -ms-user-select: none;
+        /* IE/Edge */
+        user-select: none;
+        /* Standard */
+    }
+
+    p {
+        font-size: 1.1em;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    .timer-container {
+        position: fixed;
+        /* Fix position relative to viewport */
+        top: 40px;
+        /* Distance from the top */
+        right: 20px;
+        /* Distance from the right */
+        font-size: 14px;
+        font-weight: bold;
+        color: #ffffff;
+        background: linear-gradient(135deg, #3f4d67, #8f94fb);
+        padding: 10px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        width: fit-content;
+        margin: 20px;
+        margin-left: auto;
+        /* Added */
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        z-index: 9999;
+        /* Ensure it's above other content */
+    }
+
+    #target-word {
+        text-decoration: underline;
+    }
+
+    .underline {
+        text-decoration: underline;
+        color: #2d2d2d;
+    }
+
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        50% {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+</style>
+
+{% endblock stylesheets %} {% block content %}
+
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-inner-content">
+            <!-- [ breadcrumb ] start -->
+            <!-- [ breadcrumb ] end -->
+            <div class="main-body">
+                <div class="page-wrapper">
+
+                    <!-- [ Main Content ] start -->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            {% for message in get_flashed_messages() %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {% endfor %}
+
+
+
+                            <div class="card-header">
+                                <h5>Reading Passage {{ section_id }}</h5>
+                            </div>
+
+                            <div id="timer" class="timer-container">00:00</div>
+                            <div class="container">
+                                <!-- LEFT: Passage -->
+                                <div class="passage scroll-box">
+                                    <center> <b> {{ section.title | safe }}</b></center>
+                                    {{ section.text | safe }}
+                                </div>
+
+                                <!-- RIGHT: Questions -->
+                                <div class="questions scroll-box">
+                                    <form id="examForm" role="form" method="POST">
+                                        {% for q in section.questions %}{% set q_index =
+                                        loop.index0 %}
+
+                                        {% if q.id == 1 %}
+                                        <h5>Questions 1-8</h5> <br>
+                                        Complete the notes below. <br>
+                                        Choose <b>NO MORE THAN TWO WORDS</b> from the passage for each answer <br>
+                                        Write your answers in boxes 1-8 on your answer sheet. <br>
+
+                                        <hr>
+                                        <h5>
+                                            <center>Stonehenge</center>
+                                            <br>
+                                            <b> Construction</b>
+                                        </h5><br>
+                                        Stage 1: <br> <br>
+
+                                        {% endif %}
+
+
+
+                                        {% if q.type == 'fill_blank' and q.id != 3 and q.id != 4 and q.id != 5 and q.id
+                                        != 34 and q.id != 35 and q.id != 36 and q.id != 37 and q.id != 38 and q.id != 39
+                                        and q.id != 40 %}
+                                        <ul>
+                                            <li>
+                                                {{ q.question | replace(
+                                                '____',
+                                                q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                    value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                ) | safe }}
+                                            </li>
+                                        </ul>
+
+                                        {% elif q.type == 'multiple_choice' %}
+                                        <label>{{ q.id }}. {{ q.question }}</label>
+                                        {% for opt in q.options %}
+                                        <div class="custom-control custom-radio">
+
+                                            <input type="radio" name="q{{ q_index }}" value="{{
+                            opt }}" id="{{ loop.index0 }}{{ q_index }}" class="custom-control-input" {% if
+                                                saved_answers[q_index]==opt %}checked{% endif %} />
+                                            <label class="custom-control-label" for="{{ loop.index0 }}{{ q_index }}">{{
+                                                opt }}</label>
+                                        </div>
+                                        {% endfor %}
+                                        <br>
+
+                                        {% endif %}
+
+
+
+
+                                        {% endfor %}
+                                        <br><br>
+                                        {% if section_id > 1 %}
+                                        <button name="prev" type="submit" class="btn btn-primary">
+                                            &larr; Previous
+                                        </button>
+                                        {% endif %} {% if section_id < 1 %} <button name="next" type="submit"
+                                            class="btn btn-primary">Next &rarr;</button>
+                                            {% else %}
+                                            <button name="submit_all" type="submit" class="btn btn-primary">
+                                                Submit All
+                                            </button>
+                                            {% endif %}
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- [ Main Content ] end -->
+
+                            {% endblock content %}
+
+                            <!-- Specific Page JS goes HERE  -->
+                            {% block javascripts %}
+
+
+                            <script>
+                                let remaining = {{ remaining_seconds }};
+                                const timerDisplay = document.getElementById('timer');
+                                const form = document.getElementById('examForm');
+
+                                function formatTime(seconds) {
+                                    const mins = Math.floor(seconds / 60);
+                                    const secs = seconds % 60;
+                                    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+                                }
+
+                                function updateTimer() {
+                                    if (remaining <= 0) {
+                                        form.submit();  // auto-submit or redirect
+                                    } else {
+                                        timerDisplay.textContent = "⌛" + formatTime(remaining);
+                                        remaining--;
+                                        setTimeout(updateTimer, 1000);
+                                    }
+                                }
+
+                                updateTimer();
+                            </script>
+
+
+
+                            {% endblock javascripts %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>

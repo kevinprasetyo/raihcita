@@ -460,7 +460,7 @@ def ieltsreading():
     session.clear()
     session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     session['end_time'] = (
-        datetime.now() + timedelta(minutes=30)).strftime("%Y-%m-%d %H:%M:%S")
+        datetime.now() + timedelta(minutes=60)).strftime("%Y-%m-%d %H:%M:%S")
     return redirect(url_for('home_blueprint.ielts_reading', section_id=1))
 
 
@@ -479,7 +479,7 @@ def ielts_reading(section_id):
             q_key = f'p{section_id}_q{i}'
             session[q_key] = request.form.get(f'q{i}', None)
         flash("Time's up! Please start the test again.")
-        return redirect(url_for('home_blueprint.hasiltoeflreading2'))
+        return redirect(url_for('home_blueprint.hasilieltsreading'))
 
     if section_id < 1 or section_id > 3:
         return render_template('home/home_blueprint.ielts_reading.html', section_id=1)
@@ -575,6 +575,69 @@ def hasilieltsreading():
     score = reading_bandscore(correctans)
 
     return render_template('learning/ielts/reading-result.html', score=score, correctans=correctans, total=40, incorrect=hasilieltsreading, segment='reading')
+
+
+# IELTS WRITING Quiz
+with open('apps/templates/question/ielts/writing.json') as f:
+    WRITINGIELTS = json.load(f)
+
+
+@blueprint.route('/learning/ielts/writing')
+def ieltswriting():
+    session.clear()
+    session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (
+        datetime.now() + timedelta(minutes=60)).strftime("%Y-%m-%d %H:%M:%S")
+    return redirect(url_for('home_blueprint.ielts_writing', section_id=1))
+
+
+@blueprint.route('/learning/ielts/writing/<int:section_id>', methods=['GET', 'POST'])
+def ielts_writing(section_id):
+    if 'end_time' not in session or 'start_time' not in session:
+        flash("Please start the test first.")
+        return redirect(url_for('home_blueprint.ieltswriting'))
+
+    end_time = datetime.strptime(session['end_time'], "%Y-%m-%d %H:%M:%S")
+    now = datetime.now()
+    remaining_seconds = int((end_time - now).total_seconds())
+
+    if remaining_seconds <= 0:
+        for i in range(13):
+            q_key = f'p{section_id}_q{i}'
+            session[q_key] = request.form.get(f'q{i}', None)
+        flash("Time's up! Please start the test again.")
+        return redirect(url_for('home_blueprint.hasiltoeflwriting'))
+
+    if section_id < 1 or section_id > 2:
+        return render_template('home/home_blueprint.ielts_writing.html', section_id=1)
+
+    if request.method == 'POST':
+        # Save user's answers to session
+        for i in range(13):
+            q_key = f'p{section_id}_q{i}'
+            answers = request.form.getlist(f'q{i}[]')
+            if not answers:
+                answers = request.form.get(f'q{i}', None)
+            session[q_key] = answers
+
+        # Navigate forward
+        if 'next' in request.form and section_id < 2:
+            return redirect(url_for('home_blueprint.ielts_writing', section_id=section_id + 1))
+        elif 'prev' in request.form and section_id > 0:
+            return redirect(url_for('home_blueprint.ielts_writing', section_id=section_id - 1))
+        elif 'submit_all' in request.form:
+            return redirect(url_for('home_blueprint.hasilieltswriting'))
+
+    section_data = WRITINGIELTS['sections'][section_id - 1]
+    saved_answers = [session.get(f'p{section_id}_q{i}') for i in range(13)]
+
+    return render_template(
+        'learning/ielts/writing.html',
+        section_id=section_id,
+        section=section_data,
+        saved_answers=saved_answers,
+        segment='writing', remaining_seconds=remaining_seconds
+    )
 
 
 # TOEFL Listening Comprehension Quiz
