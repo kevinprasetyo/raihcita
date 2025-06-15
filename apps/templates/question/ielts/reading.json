@@ -147,48 +147,48 @@
                     "id": 16,
                     "type": "multiple_choice",
                     "question": "Why does the writer mention the story of King Midas?",
-                    "options": {
-                        "Bell": "A. to compare different visions of progress",
-                        "Edison": "B. to illustrate that poorly defined objectives can go wrong",
-                        "Wright": "C. to emphasise the need for cooperation",
-                        "Hawking": "D. to point out the financial advantages of a course of action"
-                    },
+                    "options": [
+                        "A. to compare different visions of progress",
+                        "B. to illustrate that poorly defined objectives can go wrong",
+                        "C. to emphasise the need for cooperation",
+                        "D. to point out the financial advantages of a course of action"
+                    ],
                     "answer": "B. to illustrate that poorly defined objectives can go wrong"
                 },
                 {
                     "id": 17,
                     "type": "multiple_choice",
                     "question": "What challenge does the writer refer to in the fourth paragraph?",
-                    "options": {
-                        "Bell": "A. encouraging humans to behave in a more principled way",
-                        "Edison": "B. deciding which values we want AI to share with us",
-                        "Wright": "C. creating a better world for all creatures on the planet",
-                        "Hawking": "D. ensuring AI is more human-friendly than we are ourselves"
-                    },
+                    "options": [
+                        "A. encouraging humans to behave in a more principled way",
+                        "B. deciding which values we want AI to share with us",
+                        "C. creating a better world for all creatures on the planet",
+                        "D. ensuring AI is more human-friendly than we are ourselves"
+                    ],
                     "answer": "D. ensuring AI is more human-friendly than we are ourselves"
                 },
                 {
                     "id": 18,
                     "type": "multiple_choice",
                     "question": "What does the writer suggest about the future of AI in the fifth paragraph?",
-                    "options": {
-                        "Bell": "A. The safety of machines will become a key issue.",
-                        "Edison": "B. It is hard to know what impact machines will have on the world.",
-                        "Wright": "C. Machines will be superior to humans in certain respects.",
-                        "Hawking": "D. Many humans will oppose machines having a wider role."
-                    },
+                    "options": [
+                        "A. The safety of machines will become a key issue.",
+                        "B. It is hard to know what impact machines will have on the world.",
+                        "C. Machines will be superior to humans in certain respects.",
+                        "D. Many humans will oppose machines having a wider role."
+                    ],
                     "answer": "C. Machines will be superior to humans in certain respects."
                 },
                 {
                     "id": 19,
                     "type": "multiple_choice",
                     "question": "Which of the following best summarises the writer's argument in the sixth paragraph?",
-                    "options": {
-                        "Bell": "A. More intelligent machines will result in greater abuses of power.",
-                        "Edison": "B. Machine learning will share very few features with human learning.",
-                        "Wright": "C. There are a limited number of people with the knowledge to program machines.",
-                        "Hawking": "D. Human shortcomings will make creating the machines we need more difficult."
-                    },
+                    "options": [
+                        "A. More intelligent machines will result in greater abuses of power.",
+                        "B. Machine learning will share very few features with human learning.",
+                        "C. There are a limited number of people with the knowledge to program machines.",
+                        "D. Human shortcomings will make creating the machines we need more difficult."
+                    ],
                     "answer": "D. Human shortcomings will make creating the machines we need more difficult."
                 },
                 {
