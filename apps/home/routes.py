@@ -336,7 +336,10 @@ def ielts_listening(section_id):
         # Save user's answers to session
         for i in range(10):
             q_key = f'p{section_id}_q{i}'
-            session[q_key] = request.form.get(f'q{i}', None)
+            answers = request.form.getlist(f'q{i}[]')
+            if not answers:
+                answers = request.form.get(f'q{i}', None)
+            session[q_key] = answers
 
         # Navigate forward
         if 'next' in request.form and section_id < 4:
@@ -392,29 +395,55 @@ def hasilieltslistening():
     for p_id, section in enumerate(LISTENINGIELTS['sections']):
         for q_id, question in enumerate(section["questions"]):
             user_answer = session.get(f'p{p_id + 1}_q{q_id}')
-            user_answer = user_answer.strip().lower() if user_answer else None  # Normalize input
+
             correct_answer_raw = question["answer"]
 
-            # Normalize correct answer(s)
-            if isinstance(correct_answer_raw, list):
+            if question.get("type") == "checkbox_two":
+                # Ensure user_answer is a list
+                if not isinstance(user_answer, list):
+                    user_answer = [user_answer] if user_answer else []
                 correct_answers = [ans.strip().lower()
                                    for ans in correct_answer_raw]
+
+                # Count number of correct selections (can be 0, 1, 2)
+                num_correct = sum(
+                    1 for ans in user_answer if ans.strip().lower() in correct_answers)
+
+                # Add points accordingly
+                correctans += num_correct
+
+                is_correct = False if num_correct == 0 else True
+
+                hasilieltslistening.append({
+                    "section": p_id + 1,
+                    "number": q_id + 1,
+                    "question": question.get("question", "No question text provided"),
+                    "your_answer": ", ".join(user_answer) if user_answer else "No answer",
+                    "correct_answer": ", ".join(correct_answers),
+                    "is_correct": is_correct
+                })
             else:
-                correct_answers = [correct_answer_raw.strip().lower()]
+                # Handle normal single-answer questions
+                user_answer_norm = user_answer.strip().lower() if user_answer else None
+                if isinstance(correct_answer_raw, list):
+                    correct_answers = [ans.strip().lower()
+                                       for ans in correct_answer_raw]
+                else:
+                    correct_answers = [correct_answer_raw.strip().lower()]
 
-            is_correct = user_answer in correct_answers if user_answer else False
+                is_correct = user_answer_norm in correct_answers if user_answer_norm else False
 
-            hasilieltslistening.append({
-                "section": p_id + 1,
-                "number": q_id + 1,
-                "question": question.get("question", "No question text provided"),
-                "your_answer": user_answer or "No answer",
-                "correct_answer": ", ".join(correct_answers),
-                "is_correct": is_correct
-            })
+                hasilieltslistening.append({
+                    "section": p_id + 1,
+                    "number": q_id + 1,
+                    "question": question.get("question", "No question text provided"),
+                    "your_answer": user_answer or "No answer",
+                    "correct_answer": ", ".join(correct_answers),
+                    "is_correct": is_correct
+                })
 
-            if is_correct:
-                correctans += 1
+                if is_correct:
+                    correctans += 1
 
     score = get_band_score(correctans)
 

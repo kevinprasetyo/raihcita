@@ -326,7 +326,21 @@ endblock %}
                                                 {% endfor %}
                                             </select>
                                             <br>
+                                            {% elif q.type == 'checkbox_two' %}
+                                            <label>{{ q.id }}. {{ q.question }} (Choose TWO)</label>
+                                            {% for opt in q.options %}
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" name="q{{ q_index }}[]" value="{{ opt }}"
+                                                    id="chk{{ loop.index0 }}{{ q_index }}" class="custom-control-input"
+                                                    {% if saved_answers[q_index] and opt in saved_answers[q_index]
+                                                    %}checked{% endif %}>
+                                                <label class="custom-control-label"
+                                                    for="chk{{ loop.index0 }}{{ q_index }}">{{ opt }}</label>
+                                            </div>
+                                            {% endfor %}
+                                            <br>
                                             {% endif %}
+
 
 
 
