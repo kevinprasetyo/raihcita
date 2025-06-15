@@ -2,7 +2,7 @@
     "sections": [
         {
             "title": "Section 1",
-            "audio": "section1",
+            "text": "section1",
             "questions": [
                 {
                     "id": 1,
@@ -71,7 +71,7 @@
         },
         {
             "title": "Section 2",
-            "audio": "section2",
+            "text": "section2",
             "questions": [
                 {
                     "id": 11,
@@ -99,22 +99,22 @@
                     "id": 13,
                     "type": "multiple_choice",
                     "question": "Which lunchbox is suitable for someone who doesn't eat meat or fish?",
-                    "options": [
-                        "a. Lunchbox 1",
-                        "b. Lunchbox 2",
-                        "c. Lunchbox 3"
-            ],
+                    "options": {
+                        "Bell": "a. Lunchbox 1",
+                        "Edison": "b. Lunchbox 2",
+                        "Wright": "c. Lunchbox 3"
+                    },
                     "answer": "b. Lunchbox 2"
                 },
                 {
                     "id": 14,
                     "type": "multiple_choice",
                     "question": "What should people do with their litter?",
-                    "options": [
-                        "a. take it home",
-                        "b. hand it to a member or staff ",
-                        "c. put it in the bins provided on the boat"
-            ],
+                    "options": {
+                        "Bell": "a. take it home",
+                        "Edison": "b. hand it to a member or staff ",
+                        "Wright": "c. put it in the bins provided on the boat"
+                    },
                     "answer": "b. hand it to a member or staff"
                 },
                 {
@@ -169,7 +169,7 @@
         },
         {
             "title": "Section 3",
-            "audio": "section3",
+            "text": "section3",
             "questions": [
                 {
                     "id": 21,
@@ -297,7 +297,7 @@
         },
         {
             "title": "Section 4",
-            "audio": "section4",
+            "text": "section4",
             "questions": [
                 {
                     "id": 31,
