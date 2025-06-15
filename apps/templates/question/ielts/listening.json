@@ -118,7 +118,7 @@
                     "answer": "b. hand it to a member or staff"
                 },
                 {
-                    "id": 15-16,
+                    "id": "15-16",
                     "type": "checkbox_two",
                     "question": "Which TWO features of the lighthouse does Lou mention?",
                     "options": [
@@ -134,7 +134,7 @@
                     ]
                 },
                 {
-                    "id": 17-18,
+                    "id": "17-18",
                     "type": "checkbox_two",
                     "question": "Which TWO types of creature might come close to the boat?",
                     "options": [
@@ -150,7 +150,7 @@
                     ]
                 },
                 {
-                    "id": 19-20,
+                    "id": "19-20",
                     "type": "checkbox_two",
                     "question": "Which TWO points does Lou make about the caves? ",
                     "options": [
