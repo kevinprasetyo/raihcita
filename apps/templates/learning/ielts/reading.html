@@ -47,6 +47,12 @@ endblock %}
         /* Standard */
     }
 
+    p {
+        font-size: 1.1em;
+        line-height: 1.6;
+        color: #333;
+    }
+
     .timer-container {
         position: fixed;
         /* Fix position relative to viewport */
@@ -202,14 +208,78 @@ endblock %}
                                         <h5>Questions 9-13</h5> <br>
                                         <p>Do the following statements agree with the information given in Reading
                                             Passage 1?</p>
-                                        <p><i>In boxes 9–13 on your answer sheet, write</i></p>
+                                        <p><i>In boxes 9-13 on your answer sheet, write</i></p>
                                         <ul>
                                             <li><b>TRUE</b> if the statement agrees with the information</li>
                                             <li><b>FALSE</b> if the statement contradicts the information</li>
                                             <li><b>NOT GIVEN</b> if there is no information on this</li>
                                         </ul>
                                         <br>
+                                        {% elif q.id == 14 %}
+                                        <h5>Questions 14-19</h5>
+                                        <p>Choose the correct letter, <strong>A, B, C</strong> or <strong>D</strong>.
+                                        </p>
+                                        <p>Write the correct letter in boxes <strong>14-19</strong> on your answer
+                                            sheet.</p>
+                                        {% elif q.id == 20 %}
+                                        <h5>Questions 20-23</h5>
+                                        <p>Do the following statements agree with the claims of the writer in Reading
+                                            Passage 2?</p>
+                                        <i>In boxes 20-23 on your answer sheet, write</i><br>
+                                        <ul>
+                                            <li><b>YES</b> if the statement agrees with the claims of the writer</li>
+                                            <li> <b>NO</b> if the statement contradicts the claims of the writer</li>
+                                            <li><b>NOT GIVEN</b> if it is impossible to say what the writer thinks about
+                                                this</li>
+                                        </ul>
+                                        {% elif q.id == 24 %}
+                                        <h5>Questions 24-26</h5>
+                                        <p>Complete the summary using the list of phrases, <strong>A-F</strong>, below.
+                                        </p>
+                                        <p>Write the correct letter, <strong>A-F</strong>, in boxes
+                                            <strong>24-26</strong> on your answer sheet.
+                                        </p>
+                                        <div style="border:1px solid #000; padding:10px; margin-top:10px;">
+                                            <h3>Using AI in the UK health system</h3>
+                                            {% set select_html = '<select name="q' ~ q_index ~ '"
+                                                id="q' ~ q_index ~ '">' %}
+                                                {% set select_html = select_html + '<option value="">-- Select an answer
+                                                    --</option>' %}
+                                                {% for opt in q.options %}
+                                                {% set selected = ' selected' if saved_answers[q_index]==opt else '' %}
+                                                {% set select_html = select_html + '<option
+                                                    value="' ~ opt ~ '"' ~ selected ~ '>' ~ opt ~ '</option>' %}
+                                                {% endfor %}
+                                                {% set select_html = select_html + '</select>' %}
+
+                                            {{ q.question | replace('____', q.id ~ '. ' ~ select_html) | safe }}
+
+
+
+                                            <p>
+                                                The positive aspect of AI having a bigger role is that it would be more
+                                                efficient and lead to patient benefits.
+                                                However, such a change would result, for example, in certain
+                                                <strong>25</strong> ......................... not having their current
+                                                level of <strong>26</strong> ......................... .
+                                                It is therefore important that AI goals are appropriate so that
+                                                discriminatory practices could be avoided.
+                                            </p>
+                                        </div>
+
+                                        <ul>
+                                            <li><strong>A</strong> medical practitioners</li>
+                                            <li><strong>B</strong> specialised tasks</li>
+                                            <li><strong>C</strong> available resources</li>
+                                            <li><strong>D</strong> reduced illness</li>
+                                            <li><strong>E</strong> professional authority</li>
+                                            <li><strong>F</strong> technology experts</li>
+                                        </ul>
+
                                         {% endif %}
+
+
+
                                         {% if q.type == 'fill_blank' and q.id != 3 and q.id != 4 and q.id != 5
                                         and q.id != 39 and q.id != 40 %}
                                         <ul>
