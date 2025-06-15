@@ -3,6 +3,15 @@ from flask import Blueprint, render_template, redirect, url_for, session, reques
 from jinja2 import TemplateNotFound
 import json
 from datetime import datetime, timedelta
+# import openai
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Set OpenAI API key
+# openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 @blueprint.route('/')
