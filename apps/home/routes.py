@@ -585,6 +585,66 @@ def hasilieltsreading():
 
     return render_template('learning/ielts/reading-result.html', score=score, correctans=correctans, total=40, incorrect=hasilieltsreading, segment='reading')
 
+# IELTS Reading Mobile Version
+
+
+@blueprint.route('/learning/ielts/readingmobile')
+def ieltsreadingmobile():
+    session.clear()
+    session['start_time'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    session['end_time'] = (
+        datetime.now() + timedelta(minutes=60)).strftime("%Y-%m-%d %H:%M:%S")
+    return redirect(url_for('home_blueprint.ielts_readingmobile', section_id=1))
+
+
+@blueprint.route('/learning/ielts/readingmobile/<int:section_id>', methods=['GET', 'POST'])
+def ielts_readingmobile(section_id):
+    if 'end_time' not in session or 'start_time' not in session:
+        flash("Please start the test first.")
+        return redirect(url_for('home_blueprint.ieltsreadingmobile'))
+
+    end_time = datetime.strptime(session['end_time'], "%Y-%m-%d %H:%M:%S")
+    now = datetime.now()
+    remaining_seconds = int((end_time - now).total_seconds())
+
+    if remaining_seconds <= 0:
+        for i in range(13):
+            q_key = f'p{section_id}_q{i}'
+            session[q_key] = request.form.get(f'q{i}', None)
+        flash("Time's up! Please start the test again.")
+        return redirect(url_for('home_blueprint.hasilieltsreadingmobile'))
+
+    if section_id < 1 or section_id > 3:
+        return render_template('home/home_blueprint.ielts_readingmobile.html', section_id=1)
+
+    if request.method == 'POST':
+        # Save user's answers to session
+        for i in range(13):
+            q_key = f'p{section_id}_q{i}'
+            answers = request.form.getlist(f'q{i}[]')
+            if not answers:
+                answers = request.form.get(f'q{i}', None)
+            session[q_key] = answers
+
+        # Navigate forward
+        if 'next' in request.form and section_id < 3:
+            return redirect(url_for('home_blueprint.ielts_readingmobile', section_id=section_id + 1))
+        elif 'prev' in request.form and section_id > 0:
+            return redirect(url_for('home_blueprint.ielts_readingmobile', section_id=section_id - 1))
+        elif 'submit_all' in request.form:
+            return redirect(url_for('home_blueprint.hasilieltsreading'))
+
+    section_data = READINGIELTS['sections'][section_id - 1]
+    saved_answers = [session.get(f'p{section_id}_q{i}') for i in range(13)]
+
+    return render_template(
+        'learning/ielts/readingmobile.html',
+        section_id=section_id,
+        section=section_data,
+        saved_answers=saved_answers,
+        segment='reading', remaining_seconds=remaining_seconds
+    )
+
 
 # IELTS WRITING Quiz
 with open('apps/templates/question/ielts/writing.json') as f:
@@ -616,7 +676,6 @@ def ielts_writing(section_id):
             session[q_key] = request.form.get(f'q{i}', None)
         flash("Time's up! Please start the test again.")
         return redirect(url_for('home_blueprint.hasiltoeflwriting'))
-
 
     if request.method == 'POST':
         # Save user's answers to session
@@ -961,7 +1020,7 @@ def hasiltoeflreading2():
 
     return render_template('learning/toefl/reading-result.html', score=score, correctans=correctans, total=50, incorrect=hasiltoeflreading, segment='reading')
 
-# READING Mobile Version
+# TOEFL READING Mobile Version
 
 
 @blueprint.route('/learning/toefl/readingmobile')

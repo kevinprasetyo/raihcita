@@ -1,0 +1,529 @@
+{% extends "layouts/base-ielts.html" %} {% block title %} IELTS Reading Test {%
+endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<style>
+    /* Disable text selection */
+    body {
+        -webkit-user-select: none;
+        /* Chrome/Safari */
+        -moz-user-select: none;
+        /* Firefox */
+        -ms-user-select: none;
+        /* IE/Edge */
+        user-select: none;
+        /* Standard */
+    }
+
+    .timer-container {
+        position: fixed;
+        /* Fix position relative to viewport */
+        top: 40px;
+        /* Distance from the top */
+        right: 20px;
+        /* Distance from the right */
+        font-size: 14px;
+        font-weight: bold;
+        color: #ffffff;
+        background: linear-gradient(135deg, #3f4d67, #8f94fb);
+        padding: 10px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        width: fit-content;
+        margin: 20px;
+        margin-left: auto;
+        /* Added */
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        z-index: 9999;
+        /* Ensure it’s above other content */
+    }
+
+    .font-controls {
+        display: flex;
+        align-items: right;
+        justify-content: right;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+
+    .btn {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+        transform: scale(1.1);
+        background: linear-gradient(to right, #2575fc, #6a11cb);
+    }
+
+    .font-size-display {
+        font-size: 14px;
+        font-weight: bold;
+        width: 50px;
+        text-align: center;
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        padding: 10px 0;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #target-word {
+        text-decoration: underline;
+    }
+
+    .underline {
+        text-decoration: underline;
+        color: #2d2d2d;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        50% {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+</style>
+
+{% endblock stylesheets %} {% block content %}
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">IELTS Learning Center</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="/learning/ielts"><i class="feather icon-home"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="javascript:">IELTS Reading Test</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    {% for message in get_flashed_messages() %}
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% endfor %}
+
+                                    <script async
+                                        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3432965017603796"
+                                        crossorigin="anonymous"></script>
+                                    <!-- Learning Center Ads -->
+                                    <ins class="adsbygoogle" style="display:block"
+                                        data-ad-client="ca-pub-3432965017603796" data-ad-slot="3314571191"
+                                        data-ad-format="auto" data-full-width-responsive="true"></ins>
+                                    <script>
+                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                    </script>
+
+
+                                    <div class="card-header">
+                                        <h5>Reading Passage {{ section_id }} </h5>
+                                    </div>
+                                    <div id="timer" class="timer-container">00:00</div>
+
+                                    <div class="card-body">
+                                        <div class="font-controls">
+                                            <button onclick="changeFontSize(-1)" class="btn">A-</button>
+                                            <span id="fontSizeDisplay" class="font-size-display">14px</span>
+                                            <button onclick="changeFontSize(1)" class="btn">A+</button>
+                                        </div>
+                                        <hr />
+
+                                        <center>
+                                            <h5> <b> {{ section.title | safe }}</b></h5>
+                                        </center>
+                                        <p id="text">
+                                            {{ section.text | safe }}
+                                        </p>
+                                        <br>
+                                        <hr>
+
+
+                                        <form id="examForm" role="form" method="POST">
+                                            {% for q in section.questions %}{% set q_index =
+                                            loop.index0 %}
+
+                                            {% if q.id == 1 %}
+                                            <h5>Questions 1-8</h5> <br>
+                                            Complete the notes below. <br>
+                                            Choose <b>NO MORE THAN TWO WORDS</b> from the passage for each answer <br>
+                                            Write your answers in boxes 1-8 on your answer sheet. <br>
+
+                                            <hr>
+                                            <h5>
+                                                <center>Stonehenge</center>
+                                                <br>
+                                                <b> Construction</b>
+                                            </h5><br>
+                                            Stage 1: <br> <br>
+                                            {% elif q.id == 3 %}
+                                            Stage 2: <br>
+                                            <ul>
+                                                <li>bluestones from the Preseli Hills were placed in standing position
+                                                </li>
+                                                <li>theories about the transportation of the bluestones:
+                                                    <br><em>archaeological:</em>
+                                                    <ul>
+                                                        <li>{{ q.question | replace(
+                                                            '____',
+                                                            q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                                value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                            ) | safe }}</li>
+                                                        {% elif q.id == 4 %}
+                                                        <li>{{ q.question | replace(
+                                                            '____',
+                                                            q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                                value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                            ) | safe }}</li>
+                                                    </ul>
+                                                    <br><em>geological:</em>
+                                                    <ul>
+                                                        {% elif q.id == 5 %}
+                                                        <li>{{ q.question | replace(
+                                                            '____',
+                                                            q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                                value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                            ) | safe }}</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+                                            {% elif q.id == 6 %}
+                                            <br>
+                                            Stage 3<br>
+                                            Saturday <br>
+                                            <ul>
+                                                <li>sandstone slabs were arranged into an outer crescent or ring</li>
+                                            </ul>
+                                            <h5>Builders</h5>
+                                            {% elif q.id == 7 %}
+                                            <h5>Purpose</h5>
+                                            {% elif q.id == 9 %}
+                                            <br>
+                                            <hr>
+                                            <h5>Questions 9-13</h5> <br>
+                                            <p>Do the following statements agree with the information given in Reading
+                                                Passage 1?</p>
+                                            <p><i>In boxes 9-13 on your answer sheet, write</i></p>
+                                            <ul>
+                                                <li><b>TRUE</b> if the statement agrees with the information</li>
+                                                <li><b>FALSE</b> if the statement contradicts the information</li>
+                                                <li><b>NOT GIVEN</b> if there is no information on this</li>
+                                            </ul>
+                                            <br>
+                                            {% elif q.id == 14 %}
+                                            <h5>Questions 14-19</h5>
+                                            <p>Choose the correct letter, <strong>A, B, C</strong> or
+                                                <strong>D</strong>.
+                                            </p>
+                                            <p>Write the correct letter in boxes <strong>14-19</strong> on your answer
+                                                sheet.</p>
+                                            {% elif q.id == 20 %}
+                                            <h5>Questions 20-23</h5>
+                                            <p>Do the following statements agree with the claims of the writer in
+                                                Reading
+                                                Passage 2?</p>
+                                            <i>In boxes 20-23 on your answer sheet, write</i><br>
+                                            <ul>
+                                                <li><b>YES</b> if the statement agrees with the claims of the writer
+                                                </li>
+                                                <li> <b>NO</b> if the statement contradicts the claims of the writer
+                                                </li>
+                                                <li><b>NOT GIVEN</b> if it is impossible to say what the writer thinks
+                                                    about
+                                                    this</li>
+                                            </ul>
+                                            {% elif q.id == 24 %}
+                                            <h5>Questions 24-26</h5>
+                                            <p>Complete the summary using the list of phrases, <strong>A-F</strong>,
+                                                below.
+                                            </p>
+                                            <p>Write the correct letter, <strong>A-F</strong>, in boxes
+                                                <strong>24-26</strong> on your answer sheet.
+                                            </p>
+                                            <div style="border:1px solid #000; padding:10px; margin-top:10px;">
+                                                <center>
+                                                    <h5>Using AI in the UK health system</h5>
+                                                </center>
+                                                {% set select_html %}
+                                                <select name="q{{ q_index }}" id="q{{ q_index }}">
+                                                    <option value="">-- Select an answer --</option>
+                                                    {% for opt in q.options %}
+                                                    <option value="{{ opt }}" {% if saved_answers[q_index]==opt
+                                                        %}selected{% endif %}>{{ opt }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                {% endset %}
+
+                                                {{ q.question | replace('____', q.id ~ '. ' ~ select_html) | safe }}
+
+
+
+                                                The positive aspect of AI having a bigger role is that it would be more
+                                                efficient and lead to patient benefits.
+                                                {% elif q.id == 25 %}
+
+                                                {% set select_html %}
+                                                <select name="q{{ q_index }}" id="q{{ q_index }}">
+                                                    <option value="">-- Select an answer --</option>
+                                                    {% for opt in q.options %}
+                                                    <option value="{{ opt }}" {% if saved_answers[q_index]==opt
+                                                        %}selected{% endif %}>{{ opt }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                {% endset %}
+
+                                                {{ q.question | replace('____', q.id ~ '. ' ~ select_html) | safe }}
+
+                                                {% elif q.id == 26 %}
+
+                                                {% set select_html %}
+                                                <select name="q{{ q_index }}" id="q{{ q_index }}">
+                                                    <option value="">-- Select an answer --</option>
+                                                    {% for opt in q.options %}
+                                                    <option value="{{ opt }}" {% if saved_answers[q_index]==opt
+                                                        %}selected{% endif %}>{{ opt }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                {% endset %}
+
+                                                {{ q.question | replace('____', q.id ~ '. ' ~ select_html) | safe }}
+
+                                                It is therefore important that AI goals are appropriate so that
+                                                discriminatory practices could be avoided.
+                                            </div>
+
+                                            {% elif q.id == 27 %}
+                                            <h5>Questions 27-33</h5>
+                                            <p>Do the following statements agree with the information given in Reading
+                                                Passage 3?</p>
+                                            <p><i>In boxes 27-33 on your answer sheet, write</i></p>
+                                            <ul>
+                                                <li><b>TRUE</b> if the statement agrees with the information</li>
+                                                <li><b>FALSE</b> if the statement contradicts the information</li>
+                                                <li><b>NOT GIVEN</b> if there is no information on this</li>
+                                            </ul>
+                                            {% elif q.id == 34 %}
+                                            <h5>Questions 34-40</h5>
+                                            <p>Complete the summary below.</p>
+                                            <p><strong>Choose ONE WORD ONLY</strong> from the passage for each answer.
+                                            </p>
+                                            <p>Write your answers in boxes 34-40 on your answer sheet.</p>
+
+                                            <div style="border: 1px solid #000; padding: 10px; margin-top: 10px;">
+                                                <center>
+                                                    <h5>Leonardo da Vinci's ideal city</h5>
+                                                </center>
+                                                A collection of Leonardo da Vinci's paperwork reveals his design of a
+                                                new city beside the Ticino River.
+                                                {{ q.question | replace(
+                                                '____',
+                                                q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                    value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                ) | safe }}. Although Leonardo da Vinci's city shared many of the
+                                                ideals
+                                                of his time, some of his innovations were considered unconventional in
+                                                their design.
+                                                {% elif q.id == 35 %}
+                                                {{ q.question | replace(
+                                                '____',
+                                                q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                    value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                ) | safe }}
+                                                <br><br>
+                                                Leonardo da Vinci wasn't only an architect.
+                                                {% elif q.id == 36 %}
+                                                {{ q.question | replace(
+                                                '____',
+                                                q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                    value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                ) | safe }}. He also believed that the
+                                                height of houses should relate to the width of streets in case
+                                                earthquakes occurred.
+                                                {% elif q.id == 37 %}
+                                                {{ q.question | replace(
+                                                '____',
+                                                q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                    value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                ) | safe }}.
+                                                <br><br>
+                                                {% elif q.id == 38 %}
+                                                {{ q.question | replace(
+                                                '____',
+                                                q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                    value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                ) | safe }}.
+                                                {% elif q.id == 39 %}
+                                                {{ q.question | replace(
+                                                '____',
+                                                q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                    value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                ) | safe }}.
+                                                {% elif q.id == 40 %}
+                                                {{ q.question | replace(
+                                                '____',
+                                                q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                    value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                ) | safe }}
+                                                <br><br>
+                                            </div>
+
+                                            {% endif %}
+
+
+
+                                            {% if q.type == 'fill_blank' and q.id != 3 and q.id != 4 and q.id != 5 and
+                                            q.id
+                                            != 34 and q.id != 35 and q.id != 36 and q.id != 37 and q.id != 38 and q.id
+                                            != 39
+                                            and q.id != 40 %}
+                                            <ul>
+                                                <li>
+                                                    {{ q.question | replace(
+                                                    '____',
+                                                    q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                        value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                                    ) | safe }}
+                                                </li>
+                                            </ul>
+
+                                            {% elif q.type == 'multiple_choice' %}
+                                            <label>{{ q.id }}. {{ q.question }}</label>
+                                            {% for opt in q.options %}
+                                            <div class="custom-control custom-radio">
+
+                                                <input type="radio" name="q{{ q_index }}" value="{{
+                            opt }}" id="{{ loop.index0 }}{{ q_index }}" class="custom-control-input" {% if
+                                                    saved_answers[q_index]==opt %}checked{% endif %} />
+                                                <label class="custom-control-label"
+                                                    for="{{ loop.index0 }}{{ q_index }}">{{
+                                                    opt }}</label>
+                                            </div>
+                                            {% endfor %}
+                                            <br>
+
+                                            {% endif %}
+
+
+
+
+                                            {% endfor %}
+                                            <br><br>
+                                            {% if section_id > 1 %}
+                                            <button name="prev" type="submit" class="btn btn-primary">
+                                                &larr; Previous
+                                            </button>
+                                            {% endif %} {% if section_id < 3 %} <button name="next" type="submit"
+                                                class="btn btn-primary">Next &rarr;</button>
+                                                {% else %}
+                                                <button name="submit_all" type="submit" class="btn btn-primary">
+                                                    Submit All
+                                                </button>
+                                                {% endif %}
+                                        </form>
+                                    </div>
+                                    <!-- Input group -->
+                                </div>
+                            </div>
+                            <!-- [ Main Content ] end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->
+
+    {% endblock content %}
+
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %}
+
+
+    <script>
+        let remaining = {{ remaining_seconds }};
+        const timerDisplay = document.getElementById('timer');
+        const form = document.getElementById('examForm');
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        function updateTimer() {
+            if (remaining <= 0) {
+                form.submit();  // auto-submit or redirect
+            } else {
+                timerDisplay.textContent = "⌛" + formatTime(remaining);
+                remaining--;
+                setTimeout(updateTimer, 1000);
+            }
+        }
+
+        updateTimer();
+
+        let currentSize = 14;
+
+        function changeFontSize(delta) {
+            const text = document.getElementById('text');
+            const display = document.getElementById('fontSizeDisplay');
+
+            currentSize += delta;
+            if (currentSize < 8) currentSize = 8;
+            if (currentSize > 28) currentSize = 28;
+
+            text.style.fontSize = currentSize + 'px';
+            display.textContent = currentSize + 'px';
+        }
+
+    </script>
+
+
+
+    {% endblock javascripts %}
+</div>
+</div>
+</div>
