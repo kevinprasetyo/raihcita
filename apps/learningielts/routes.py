@@ -3,15 +3,6 @@ from flask import Blueprint, render_template, redirect, url_for, session, reques
 from jinja2 import TemplateNotFound
 import json
 from datetime import datetime, timedelta
-# import openai
-import os
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
-
-# Set OpenAI API key
-# openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 @blueprint.route('/')
@@ -458,16 +449,16 @@ User Writing: {user_writing}
 
 @blueprint.route('/writing-result', methods=['GET', 'POST'])
 def hasilieltswriting():
-    for p_id, section in enumerate(WRITINGIELTS['sections']):
-        user_writing = session.get(f'p{p_id + 1}_writing', None)
+    for section in WRITINGIELTS['sections']:
+        section_id = section['id']
+        user_writing = request.form.get("writing", "")
+        if user_writing:
+            session[f'p{section_id}_writing'] = user_writing
         task_type = "Academic"
         task_number = 1
-        prompt_text = "In their advertising, businesses nowadays usually emphasise that their products are new in some way. Why is this? Do you think it is a positive or negative development?"
-        result = "The result is coming soon."
+        prompt_text = section['text']
 
-    if request.method == "POST":
-        user_writing = request.form.get("writing", None)
-        # result = get_gpt_feedback(prompt_text, user_writing, task_number, task_type)
+    result = "The result is coming soon."
 
     return render_template('learning/ielts/writing-result.html', segment='writing',
                            writing=user_writing,

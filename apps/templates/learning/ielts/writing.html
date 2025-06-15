@@ -160,14 +160,15 @@ endblock %}
 
                                 <!-- RIGHT: Questions -->
                                 <div class="questions scroll-box">
-                                    <form id="examForm" role="form" method="POST">
+                                    <form id="examForm"
+                                        action="{{ url_for('learningielts_blueprint.hasilieltswriting') }}" role="form"
+                                        method="POST">
 
 
                                         {% if section_id == 1 %}
 
                                         <label for="writing">Your Writing:</label><br>
-                                        <textarea name="writing" id="writing" rows="10"
-                                            cols="60">{{ writing }}</textarea>
+                                        <textarea name="writing" id="writing" rows="10" cols="60"></textarea>
                                         <div id="word-count">Word Count: 0</div>
                                         {% endif %}
 
