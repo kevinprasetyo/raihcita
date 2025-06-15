@@ -74,7 +74,7 @@ endblock %}
         text-align: center;
         font-family: 'Courier New', Courier, monospace;
         z-index: 9999;
-        /* Ensure it’s above other content */
+        /* Ensure it's above other content */
     }
 
     #target-word {
@@ -240,48 +240,138 @@ endblock %}
                                             <strong>24-26</strong> on your answer sheet.
                                         </p>
                                         <div style="border:1px solid #000; padding:10px; margin-top:10px;">
-                                            <h3>Using AI in the UK health system</h3>
-                                            {% set select_html = '<select name="q' ~ q_index ~ '"
-                                                id="q' ~ q_index ~ '">' %}
-                                                {% set select_html = select_html + '<option value="">-- Select an answer
-                                                    --</option>' %}
+                                            <center>
+                                                <h5>Using AI in the UK health system</h5>
+                                            </center>
+                                            {% set select_html %}
+                                            <select name="q{{ q_index }}" id="q{{ q_index }}">
+                                                <option value="">-- Select an answer --</option>
                                                 {% for opt in q.options %}
-                                                {% set selected = ' selected' if saved_answers[q_index]==opt else '' %}
-                                                {% set select_html = select_html + '<option
-                                                    value="' ~ opt ~ '"' ~ selected ~ '>' ~ opt ~ '</option>' %}
+                                                <option value="{{ opt }}" {% if saved_answers[q_index]==opt %}selected{%
+                                                    endif %}>{{ opt }}</option>
                                                 {% endfor %}
-                                                {% set select_html = select_html + '</select>' %}
+                                            </select>
+                                            {% endset %}
 
                                             {{ q.question | replace('____', q.id ~ '. ' ~ select_html) | safe }}
 
 
 
-                                            <p>
-                                                The positive aspect of AI having a bigger role is that it would be more
-                                                efficient and lead to patient benefits.
-                                                However, such a change would result, for example, in certain
-                                                <strong>25</strong> ......................... not having their current
-                                                level of <strong>26</strong> ......................... .
-                                                It is therefore important that AI goals are appropriate so that
-                                                discriminatory practices could be avoided.
-                                            </p>
+                                            The positive aspect of AI having a bigger role is that it would be more
+                                            efficient and lead to patient benefits.
+                                            {% elif q.id == 25 %}
+
+                                            {% set select_html %}
+                                            <select name="q{{ q_index }}" id="q{{ q_index }}">
+                                                <option value="">-- Select an answer --</option>
+                                                {% for opt in q.options %}
+                                                <option value="{{ opt }}" {% if saved_answers[q_index]==opt %}selected{%
+                                                    endif %}>{{ opt }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            {% endset %}
+
+                                            {{ q.question | replace('____', q.id ~ '. ' ~ select_html) | safe }}
+
+                                            {% elif q.id == 26 %}
+
+                                            {% set select_html %}
+                                            <select name="q{{ q_index }}" id="q{{ q_index }}">
+                                                <option value="">-- Select an answer --</option>
+                                                {% for opt in q.options %}
+                                                <option value="{{ opt }}" {% if saved_answers[q_index]==opt %}selected{%
+                                                    endif %}>{{ opt }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            {% endset %}
+
+                                            {{ q.question | replace('____', q.id ~ '. ' ~ select_html) | safe }}
+
+                                            It is therefore important that AI goals are appropriate so that
+                                            discriminatory practices could be avoided.
                                         </div>
 
+                                        {% elif q.id == 27 %}
+                                        <h5>Questions 27-33</h5>
+                                        <p>Do the following statements agree with the information given in Reading
+                                            Passage 3?</p>
+                                        <p><i>In boxes 27-33 on your answer sheet, write</i></p>
                                         <ul>
-                                            <li><strong>A</strong> medical practitioners</li>
-                                            <li><strong>B</strong> specialised tasks</li>
-                                            <li><strong>C</strong> available resources</li>
-                                            <li><strong>D</strong> reduced illness</li>
-                                            <li><strong>E</strong> professional authority</li>
-                                            <li><strong>F</strong> technology experts</li>
+                                            <li><b>TRUE</b> if the statement agrees with the information</li>
+                                            <li><b>FALSE</b> if the statement contradicts the information</li>
+                                            <li><b>NOT GIVEN</b> if there is no information on this</li>
                                         </ul>
+                                        {% elif q.id == 34 %}
+                                        <h5>Questions 34-40</h5>
+                                        <p>Complete the summary below.</p>
+                                        <p><strong>Choose ONE WORD ONLY</strong> from the passage for each answer.</p>
+                                        <p>Write your answers in boxes 34-40 on your answer sheet.</p>
+
+                                        <div style="border: 1px solid #000; padding: 10px; margin-top: 10px;">
+                                            <center>
+                                                <h5>Leonardo da Vinci's ideal city</h5>
+                                            </center>
+                                            A collection of Leonardo da Vinci's paperwork reveals his design of a
+                                            new city beside the Ticino River.
+                                            {{ q.question | replace(
+                                            '____',
+                                            q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                            ) | safe }}. Although Leonardo da Vinci's city shared many of the
+                                            ideals
+                                            of his time, some of his innovations were considered unconventional in
+                                            their design.
+                                            {% elif q.id == 35 %}
+                                            {{ q.question | replace(
+                                            '____',
+                                            q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                            ) | safe }}
+                                            <br><br>
+                                            Leonardo da Vinci wasn't only an architect.
+                                            {% elif q.id == 36 %}
+                                            {{ q.question | replace(
+                                            '____',
+                                            q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                            ) | safe }}. He also believed that the
+                                            height of houses should relate to the width of streets in case
+                                            earthquakes occurred.
+                                            {% elif q.id == 37 %}
+                                            {{ q.question | replace(
+                                            '____',
+                                            q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                            ) | safe }}.
+                                            <br><br>
+                                            {% elif q.id == 38 %}
+                                            {{ q.question | replace(
+                                            '____',
+                                            q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                            ) | safe }}.
+                                            {% elif q.id == 39 %}
+                                            {{ q.question | replace(
+                                            '____',
+                                            q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                            ) | safe }}.
+                                            {% elif q.id == 40 %}
+                                            {{ q.question | replace(
+                                            '____',
+                                            q.id ~ ". <input type='text' name='q" ~ q_index ~ "'
+                                                value='" ~ (saved_answers[q_index] if saved_answers[q_index] else '') ~ "' />"
+                                            ) | safe }}
+                                            <br><br>
+                                        </div>
 
                                         {% endif %}
 
 
 
-                                        {% if q.type == 'fill_blank' and q.id != 3 and q.id != 4 and q.id != 5
-                                        and q.id != 39 and q.id != 40 %}
+                                        {% if q.type == 'fill_blank' and q.id != 3 and q.id != 4 and q.id != 5 and q.id
+                                        != 34 and q.id != 35 and q.id != 36 and q.id != 37 and q.id != 38 and q.id != 39
+                                        and q.id != 40 %}
                                         <ul>
                                             <li>
                                                 {{ q.question | replace(
@@ -305,30 +395,7 @@ endblock %}
                                         </div>
                                         {% endfor %}
                                         <br>
-                                        {% elif q.type == 'matching' %}
-                                        <label for="q{{ q_index }}">{{ q.id }}. {{ q.question }}</label>
-                                        <select name="q{{ q_index }}" id="q{{ q_index }}">
-                                            <option value="">-- Select an answer --</option>
-                                            {% for opt in q.options %}
-                                            <option value="{{ opt }}" {% if saved_answers[q_index]==opt %}selected{%
-                                                endif %}>{{ opt }}</option>
-                                            {% endfor %}
-                                        </select>
-                                        <br>
-                                        {% elif q.type == 'checkbox_two' %}
-                                        <label>{{ q.id }}. {{ q.question }} (Choose TWO)</label>
-                                        {% for opt in q.options %}
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="q{{ q_index }}[]" value="{{ opt }}"
-                                                id="chk{{ loop.index0 }}{{ q_index }}"
-                                                class="custom-control-input checkbox-limit"
-                                                data-question="{{ q_index }}" {% if saved_answers[q_index] and opt in
-                                                saved_answers[q_index] %}checked{% endif %}>
-                                            <label class="custom-control-label"
-                                                for="chk{{ loop.index0 }}{{ q_index }}">{{ opt }}</label>
-                                        </div>
-                                        {% endfor %}
-                                        <br>
+
                                         {% endif %}
 
 

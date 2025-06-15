@@ -499,7 +499,7 @@ def ielts_reading(section_id):
         elif 'prev' in request.form and section_id > 0:
             return redirect(url_for('home_blueprint.ielts_reading', section_id=section_id - 1))
         elif 'submit_all' in request.form:
-            return redirect(url_for('home_blueprint.hasilieltslistening'))
+            return redirect(url_for('home_blueprint.hasilieltsreading'))
 
     section_data = READINGIELTS['sections'][section_id - 1]
     saved_answers = [session.get(f'p{section_id}_q{i}') for i in range(13)]
@@ -518,25 +518,63 @@ def reading_bandscore(correct_answers):
         (39, 40, 9),
         (37, 38, 8.5),
         (35, 36, 8),
-        (32, 34, 7.5),
-        (30, 31, 7),
-        (26, 29, 6.5),
-        (23, 25, 6),
-        (18, 22, 5.5),
-        (16, 17, 5),
-        (13, 15, 4.5),
-        (11, 12, 4),
-        (9, 10, 3.5),
-        (7, 8, 3),
-        (5, 6, 2.5),
-        (3, 4, 2),
-        (1, 2, 1.5),
+        (33, 34, 7.5),
+        (30, 32, 7),
+        (27, 29, 6.5),
+        (23, 26, 6),
+        (19, 22, 5.5),
+        (15, 18, 5),
+        (13, 14, 4.5),
+        (10, 12, 4),
+        (8, 9, 3.5),
+        (6, 7, 3),
+        (4, 5, 2.5),
+        (2, 3, 2),
+        (1, 1, 1.5),
         (0, 0, 1),
     ]
 
-    for low, high, band in bands:
-        if low <= correct_answers <= high:
+    for lower, upper, band in bands:
+        if lower <= correct_answers <= upper:
             return band
+    return 0  # fallback if input is out of expected range
+
+
+@blueprint.route('/learning/ielts/reading-result')
+def hasilieltsreading():
+    correctans = 0
+    hasilieltsreading = []
+
+    for p_id, section in enumerate(READINGIELTS['sections']):
+        for q_id, question in enumerate(section["questions"]):
+            user_answer = session.get(f'p{p_id + 1}_q{q_id}')
+            user_answer = user_answer.strip().lower() if user_answer else None  # Normalize input
+            correct_answer_raw = question["answer"]
+
+            # Normalize correct answer(s)
+            if isinstance(correct_answer_raw, list):
+                correct_answers = [ans.strip().lower()
+                                   for ans in correct_answer_raw]
+            else:
+                correct_answers = [correct_answer_raw.strip().lower()]
+
+            is_correct = user_answer in correct_answers if user_answer else False
+
+            hasilieltsreading.append({
+                "section": p_id + 1,
+                "number": q_id + 1,
+                "question": question.get("question", "No question text provided"),
+                "your_answer": user_answer or "No answer",
+                "correct_answer": ", ".join(correct_answers),
+                "is_correct": is_correct
+            })
+
+            if is_correct:
+                correctans += 1
+
+    score = reading_bandscore(correctans)
+
+    return render_template('learning/ielts/reading-result.html', score=score, correctans=correctans, total=40, incorrect=hasilieltsreading, segment='reading')
 
 
 # TOEFL Listening Comprehension Quiz
