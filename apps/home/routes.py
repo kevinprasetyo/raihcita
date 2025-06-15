@@ -7,6 +7,15 @@ from apps.authentication.models import Users
 from apps import db
 import json
 from datetime import datetime, timedelta
+# import openai
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Set OpenAI API key
+# openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 @blueprint.route('/index')
@@ -608,8 +617,6 @@ def ielts_writing(section_id):
         flash("Time's up! Please start the test again.")
         return redirect(url_for('home_blueprint.hasiltoeflwriting'))
 
-    if section_id < 1 or section_id > 2:
-        return render_template('home/home_blueprint.ielts_writing.html', section_id=1)
 
     if request.method == 'POST':
         # Save user's answers to session
@@ -619,6 +626,11 @@ def ielts_writing(section_id):
             if not answers:
                 answers = request.form.get(f'q{i}', None)
             session[q_key] = answers
+
+        # ✅ SAVE the writing input
+        writing_input = request.form.get("writing", None)
+        if writing_input:
+            session[f'p{section_id}_writing'] = writing_input
 
         # Navigate forward
         if 'next' in request.form and section_id < 2:
@@ -638,6 +650,60 @@ def ielts_writing(section_id):
         saved_answers=saved_answers,
         segment='writing', remaining_seconds=remaining_seconds
     )
+
+
+def get_gpt_feedback(prompt_text, user_writing, task_number, task_type):
+    """Send prompt + user writing to GPT for feedback"""
+    system_prompt = f"""
+You are an IELTS Writing Examiner. Evaluate the following Task {task_number} ({task_type}) response.
+Score it on the IELTS band scale (0–9), and give detailed feedback.
+
+Return your response in this format:
+
+Band Score: [score]
+Strengths: [list of strengths]
+Weaknesses: [list of weaknesses]
+Model Answer: [a full model answer for this prompt]
+Improvement Tips: [tips for improvement]
+Resources: [suggest 2–3 useful websites/books for IELTS writing]
+
+User Prompt: {prompt_text}
+User Writing: {user_writing}
+"""
+
+    try:
+        response = openai.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": system_prompt}
+            ],
+            max_tokens=1000,
+            temperature=0.7
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        return f"Error getting feedback: {str(e)}"
+
+
+@blueprint.route('/learning/ielts/writing-result', methods=['GET', 'POST'])
+def hasilieltswriting():
+    for p_id, section in enumerate(WRITINGIELTS['sections']):
+        user_writing = session.get(f'p{p_id + 1}_writing', None)
+        task_type = "Academic"
+        task_number = 1
+        prompt_text = "In their advertising, businesses nowadays usually emphasise that their products are new in some way. Why is this? Do you think it is a positive or negative development?"
+        result = "The result is coming soon."
+
+    if request.method == "POST":
+        user_writing = request.form.get("writing", None)
+        # result = get_gpt_feedback(prompt_text, user_writing, task_number, task_type)
+
+    return render_template('learning/ielts/writing-result.html', segment='writing',
+                           writing=user_writing,
+                           task_type=task_type,
+                           task_number=task_number,
+                           prompt_text=prompt_text,
+                           result=result)
 
 
 # TOEFL Listening Comprehension Quiz

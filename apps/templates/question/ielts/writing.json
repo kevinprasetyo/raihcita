@@ -1,46 +1,16 @@
 {
     "sections": [
         {
-            "title": "Stonehenge ",
-            "text": "For centuries, historians and archaeologists have puzzled over the many mysteries of Stonehenge, a prehistoric monument that took an estimated 1,500 years to erect. Located on Salisbury Plain in southern England, it is comprised of roughly 100 massive upright stones placed in a circular layout.<br><br>Archaeologists believe England's most iconic prehistoric ruin was built in several stages with the earliest constructed 5,000 or more years ago. First, Neolithic* Britons used primitive tools,",
-            "questions": [
-                {
-                    "id": 1,
-                    "type": "fill_blank",
-                    "question": "the ditch and henge were dug, possibly using tools made from ____",
-                    "answer": [
-                        "deer antlers",
-                        "antlers"
-                    ]
-                },
-                {
-                    "id": 2,
-                    "type": "fill_blank",
-                    "question": "____ may have been arranged in deep pits inside the circle",
-                    "answer": [
-                        "timber posts",
-                        "posts"
-                    ]
-                }
-            ]
+            "id": 1,
+            "title": "Writing Task 2",
+            "text": "In their advertising, businesses nowadays usually emphasise that their products are new in some way.<br> <br> Why is this? Do you think it is a positive or negative development? ",
+            "questions": "Give reasons for your answer and include any relevant examples from your own knowledge or experience. "
         },
         {
+            "id": 2,
             "title": "Living with artificial intelligence",
             "text": "<center><i> Powerful artificial intelligence (AI) needs to be reliably aligned with human values, but does this mean AI will eventually have to police those values?</i></center><br><br>This has been the decade of AI, with one astonishing feat after another. A chess-playing AI that can defeat not only all human chess players",
-            "questions": [
-                {
-                    "id": 14,
-                    "type": "multiple_choice",
-                    "question": "What point does the writer make about AI in the first paragraph?",
-                    "options": [
-                        "A. It is difficult to predict how quickly AI will progress.",
-                        "B. Much can be learned about the use of AI in chess machines.",
-                        "C. The future is unlikely to see limitations on the capabilities of AI.",
-                        "D. Experts disagree on which specialised tasks AI will be able to perform."
-                    ],
-                    "answer": "C. The future is unlikely to see limitations on the capabilities of AI."
-                }
-            ]
+            "questions": "Give reasons for your answer and include any relevant examples from your own knowledge or experience. "
         }
     ]
 }
