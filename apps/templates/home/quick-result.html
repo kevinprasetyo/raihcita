@@ -1,0 +1,56 @@
+{% extends "layouts/class-detail.html" %}
+{% block title %} Your Quick Placement Test Result {% endblock %}
+
+{% block main %}
+<main>
+    <section class="slider-area slider-area2">
+        <div class="slider-active">
+            <div class="single-slider slider-height2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-11 col-md-12">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="bounceIn" data-delay="0.2s">
+                                    Your Quick Placement Test Result
+                                </h1>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Quick Placement Test Result</a></li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sample-text-area">
+        <div class="container box_1170">
+            <h1 class="text-center">Your Quick Placement Test Result</h1>
+            <div class="text-center my-4">
+                <h2>{{ result.level }}</h2>
+                <p class="lead">Score: {{ score }} / 10</p>
+            </div>
+
+            <div class="mb-4">
+                <h3>English Description:</h3>
+                <p>{{ result.desc_en }}</p>
+            </div>
+
+            <div class="mb-4">
+                <h3>Deskripsi Bahasa Indonesia:</h3>
+                <p>{{ result.desc_id }}</p>
+            </div>
+
+            <div class="text-center">
+                <a href="/" class="btn btn-primary">Back to Home</a>
+                <a href="/quick" class="btn btn-success">Try Again</a>
+                <a href="https://wa.me/6289656432988" class="btn btn-warning">Contact Admin</a>
+            </div>
+
+        </div>
+    </section>
+</main>
+{% endblock %}

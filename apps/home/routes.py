@@ -5,6 +5,7 @@ from jinja2 import TemplateNotFound
 from apps.home.models import Snisub, Janji, Profile, Level
 from apps.authentication.models import Users
 from apps import db
+import json
 
 
 @blueprint.route('/index')
@@ -93,6 +94,133 @@ def edit(id):
 @blueprint.route('/privasi')
 def privasi():
     return render_template('home/privasi.html', segment='privasi')
+
+
+@blueprint.route('/get-quick-result', methods=['GET', 'POST'])
+def get_quick_result():
+    correct_answers = [
+        "wants", "are", "has", "bought", "She visited her grandmother in Yogyakarta",
+        "do not", "on", "rains", "She sings beautifully.", "He enjoys reading, jogging, and cooking."
+    ]
+
+    # Get user's answers
+    data = request.form.get('answers')
+    user_answers = json.loads(data)
+
+    # Calculate score
+    score = sum(1 for user, correct in zip(
+        user_answers, correct_answers) if user == correct)
+
+    session['score'] = score  # Store score in session for later use
+
+    return redirect(url_for('home_blueprint.quick_result'))
+
+
+@blueprint.route('/quick-result')
+def quick_result():
+    # Retrieve score from session
+    score = session.get('score')
+
+    if score is None:
+        return redirect('/quick')
+
+    # Placement table with full descriptors
+    placement_levels = [
+        {
+            "min": 0, "max": 2, "level": "Seeker",
+            "desc_en": """
+                You are a Seeker! Every expert was once a beginner, and guess what? You’re just getting started — and that’s exciting!
+                What You Can Do Next:
+                - Learn grammar basics with simple, clear examples.
+                - Practice daily with short, guided exercises.
+                - Join Raihcita Basic English. Contact admin for more info.
+            """,
+            "desc_id": """
+                Kamu adalah seorang Seeker! Setiap ahli dulunya juga seorang pemula, dan tebak apa? Kamu baru saja memulai — dan itu luar biasa!
+                Yang Bisa Kamu Lakukan Selanjutnya:
+                - Pelajari dasar-dasar grammar dengan contoh yang simpel dan jelas.
+                - Latihan setiap hari dengan soal-soal singkat dan terarah.
+                - Gabung di Raihcita Basic English! Hubungi admin untuk info selengkapnya.
+            """
+        },
+        {
+            "min": 3, "max": 5, "level": "Starter",
+            "desc_en": """
+                You Are a Starter! Welcome to the journey! You’ve learned the basics, and now it’s time to strengthen your core grammar skills.
+                What You Can Do Next:
+                - Watch videos or use visuals to understand grammar better.
+                - Repeat key structures until they feel natural.
+                - Join Raihcita Basic English. Contact admin for more info.
+            """,
+            "desc_id": """
+                Kamu adalah seorang Starter! Selamat datang di perjalanan ini! Kamu sudah memahami dasar-dasarnya, dan sekarang saatnya memperkuat kemampuan Bahasa Inggris-mu.
+                Yang Bisa Kamu Lakukan Selanjutnya:
+                - Berlatih dengan contoh soal dan mencari pembahasannya.
+                - Pahami pola dan struktur kalimat.
+                - Gabung di Raihcita Basic English! Hubungi admin untuk info selengkapnya.
+            """
+        },
+        {
+            "min": 6, "max": 7, "level": "Explorer",
+            "desc_en": """
+                You Are an Explorer! You’re making great progress! You understand the key grammar patterns and are ready to take things to the next level.
+                What’s Next for You:
+                - Join our TOEFL Preparation Class (Beginner Track)!
+                - Strengthen your grammar through guided lessons and practice.
+                - Get personalized feedback to help you improve faster.
+            """,
+            "desc_id": """
+                Kamu adalah seorang Explorer! Progress-mu sudah keren! Kamu sudah memahami pola grammar dasar dan siap naik ke level berikutnya.
+                Langkah Selanjutnya:
+                - Gabung di TOEFL Preparation Class (Beginner Track) di Raihcita!
+                - Perkuat grammar-mu melalui pelajaran yang terarah dan latihan rutin.
+                - Dapatkan feedback personal untuk membantumu berkembang lebih cepat.
+            """
+        },
+        {
+            "min": 8, "max": 9, "level": "Visionary",
+            "desc_en": """
+                You Are a Visionary! Great job! You’ve built a strong foundation and are just a few steps away from advanced fluency.
+                What’s Next for You:
+                - You're eligible for our TOEFL or IELTS Preparation Class!
+                - Polish your grammar accuracy and expand your vocabulary.
+                - Join interactive sessions to boost your confidence.
+            """,
+            "desc_id": """
+                Kamu adalah seorang Visionary! Keren banget! Kamu sudah punya dasar yang kuat dan sekarang tinggal selangkah lagi menuju kefasihan tingkat lanjut.
+                Langkah Seru Selanjutnya:
+                - Kamu sudah bisa ikut TOEFL atau IELTS Preparation Class dari kami!
+                - Asah grammar-mu dan tambah perbendaharaan kata.
+                - Ikut sesi interaktif yang bikin kamu makin percaya diri.
+            """
+        },
+        {
+            "min": 10, "max": 10, "level": "Achiever",
+            "desc_en": """
+                You Are an Achiever! Wow — you nailed it! You’ve shown excellent control of English grammar.
+                What’s Next for You:
+                - Join our TOEFL or IELTS Preparation Class.
+                - Practice advanced grammar and real-world communication.
+                - Get personalized feedback to refine your speaking and writing.
+            """,
+            "desc_id": """
+                Kamu adalah seorang Achiever! Wow — keren banget! Penguasaan grammarmu udah keren, dan sekarang kamu siap banget buat ngulik topik-topik yang lebih kompleks.
+                Langkah Seru Berikutnya:
+                - Gabung di TOEFL atau IELTS Preparation Class buat ningkatin skill ke level selanjutnya.
+                - Latihan grammar yang lebih kompleks dan belajar menyusun kalimat yang bisa diaplikasikan di kehidupan sehari-hari maupun akademik.
+                - Dapatkan feedback personal supaya kemampuan grammar dan pemahaman bacaanmu makin tepat.
+            """
+        },
+    ]
+
+    # Find matching placement level
+    result = next(
+        (item for item in placement_levels if item['min'] <= score <= item['max']), None)
+
+    # Clear score from session after displaying
+    session.pop('score', None)
+
+    return render_template("home/quick-result.html", score=score, result=result)
 
 
 @blueprint.route('/<template>')

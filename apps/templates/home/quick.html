@@ -148,6 +148,11 @@
 
             <button id="prev-btn" class="btn btn-primary" disabled>Previous</button>
             <button id="next-btn" class="btn btn-primary">Next</button>
+
+            <form id="quiz-form" action="/get-quick-result" method="POST">
+                <input type="hidden" name="answers" id="answers-input">
+            </form>
+
         </div>
     </section>
 
@@ -320,20 +325,11 @@
         }
 
         function showResults() {
-            questions.forEach((question, index) => {
-                if (answers[index] === question.correctAnswer) {
-                    score++;
-                }
-            });
-
-            resultsContainer.style.display = 'block';
-            quizContainer.style.display = 'none';
-            scoreDisplay.textContent = score;
-            totalQuestionsDisplay.textContent = questions.length;
-
-            const unanswered = questions.filter((_, index) => answers[index] === null);
-            unansweredList.innerHTML = unanswered.map(q => `<li>Question ${questions.indexOf(q) + 1}: ${q.question}</li>`).join('');
+            clearInterval(timerInterval);
+            document.getElementById('answers-input').value = JSON.stringify(answers);
+            document.getElementById('quiz-form').submit();
         }
+
 
         function restartQuiz() {
             currentQuestionIndex = 0;
