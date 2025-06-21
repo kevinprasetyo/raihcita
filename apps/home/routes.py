@@ -128,89 +128,29 @@ def quick_result():
     placement_levels = [
         {
             "min": 0, "max": 2, "level": "Seeker",
-            "desc_en": """
-                You are a Seeker! Every expert was once a beginner, and guess what? You’re just getting started — and that’s exciting!
-                What You Can Do Next:
-                - Learn grammar basics with simple, clear examples.
-                - Practice daily with short, guided exercises.
-                - Join Raihcita Basic English. Contact admin for more info.
-            """,
-            "desc_id": """
-                Kamu adalah seorang Seeker! Setiap ahli dulunya juga seorang pemula, dan tebak apa? Kamu baru saja memulai — dan itu luar biasa!
-                Yang Bisa Kamu Lakukan Selanjutnya:
-                - Pelajari dasar-dasar grammar dengan contoh yang simpel dan jelas.
-                - Latihan setiap hari dengan soal-soal singkat dan terarah.
-                - Gabung di Raihcita Basic English! Hubungi admin untuk info selengkapnya.
-            """
+            "desc_en": "<b>You are a Seeker!</b><br>Every expert was once a beginner, and guess what? You’re just getting started — and that’s exciting!<br><br><b>What You Can Do Next:</b><br>- Learn grammar basics with simple, clear examples.<br>- Practice daily with short, guided exercises.<br>- Join Raihcita Basic English. Contact admin for more info.<br>",
+            "desc_id": "<b>Kamu adalah seorang Seeker!</b><br>Setiap ahli dulunya juga seorang pemula, dan tebak apa? Kamu baru saja memulai — dan itu luar biasa!<br><br><b>Yang Bisa Kamu Lakukan Selanjutnya:</b><br>- Pelajari dasar-dasar grammar dengan contoh yang simpel dan jelas.<br>- Latihan setiap hari dengan soal-soal singkat dan terarah.<br>- Gabung di Raihcita Basic English! Hubungi admin untuk info selengkapnya.<br>"
         },
         {
             "min": 3, "max": 5, "level": "Starter",
-            "desc_en": """
-                You Are a Starter! Welcome to the journey! You’ve learned the basics, and now it’s time to strengthen your core grammar skills.
-                What You Can Do Next:
-                - Watch videos or use visuals to understand grammar better.
-                - Repeat key structures until they feel natural.
-                - Join Raihcita Basic English. Contact admin for more info.
-            """,
-            "desc_id": """
-                Kamu adalah seorang Starter! Selamat datang di perjalanan ini! Kamu sudah memahami dasar-dasarnya, dan sekarang saatnya memperkuat kemampuan Bahasa Inggris-mu.
-                Yang Bisa Kamu Lakukan Selanjutnya:
-                - Berlatih dengan contoh soal dan mencari pembahasannya.
-                - Pahami pola dan struktur kalimat.
-                - Gabung di Raihcita Basic English! Hubungi admin untuk info selengkapnya.
-            """
+            "desc_en": "<b>You Are a Starter!</b><br>Welcome to the journey! You’ve learned the basics, and now it’s time to strengthen your core grammar skills.<br><br><b>What You Can Do Next:</b><br>- Watch videos or use visuals to understand grammar better.<br>- Repeat key structures until they feel natural.<br>- Join Raihcita Basic English. Contact admin for more info.<br>",
+            "desc_id": "<b>Kamu adalah seorang Starter!</b><br>Selamat datang di perjalanan ini! Kamu sudah memahami dasar-dasarnya, dan sekarang saatnya memperkuat kemampuan Bahasa Inggris-mu.<br><br><b>Yang Bisa Kamu Lakukan Selanjutnya:</b><br>- Berlatih dengan contoh-contoh soal dan mencari pembahasannya.<br>- Pahami pola dan struktur kalimat.<br>- Mulailah mencoba membuat kalimat sederhana.<br>- Gabung di Raihcita Basic English! Hubungi admin untuk info selengkapnya.<br>"
         },
         {
             "min": 6, "max": 7, "level": "Explorer",
-            "desc_en": """
-                You Are an Explorer! You’re making great progress! You understand the key grammar patterns and are ready to take things to the next level.
-                What’s Next for You:
-                - Join our TOEFL Preparation Class (Beginner Track)!
-                - Strengthen your grammar through guided lessons and practice.
-                - Get personalized feedback to help you improve faster.
-            """,
-            "desc_id": """
-                Kamu adalah seorang Explorer! Progress-mu sudah keren! Kamu sudah memahami pola grammar dasar dan siap naik ke level berikutnya.
-                Langkah Selanjutnya:
-                - Gabung di TOEFL Preparation Class (Beginner Track) di Raihcita!
-                - Perkuat grammar-mu melalui pelajaran yang terarah dan latihan rutin.
-                - Dapatkan feedback personal untuk membantumu berkembang lebih cepat.
-            """
+            "desc_en": "<b>You Are an Explorer!</b><br>You’re making great progress! You understand the key grammar patterns and are ready to take things to the next level.<br><br><b>What’s Next for You:</b><br>- Join our TOEFL Preparation Class (Beginner Track)!<br>- Strengthen your grammar through guided lessons and practice.<br>- Get personalized feedback to help you improve faster.<br>",
+            "desc_id": "<b>Kamu adalah seorang Explorer!</b><br>Progress-mu sudah keren! Kamu sudah memahami pola grammar dasar dan siap naik ke level berikutnya dengan lebih banyak latihan dan bimbingan terstruktur.<br><br><b>Langkah Selanjutnya untuk Kamu:</b><br>- Sekarang kamu bisa bergabung di TOEFL Preparation Class (Beginner Track) di Raihcita!<br>- Perkuat grammar-mu melalui pelajaran yang terarah dan latihan rutin.<br>- Dapatkan feedback personal untuk membantumu berkembang lebih cepat.<br>- Kamu siap naik level — dan Raihcita akan selalu mendampingi!<br>"
         },
         {
             "min": 8, "max": 9, "level": "Visionary",
-            "desc_en": """
-                You Are a Visionary! Great job! You’ve built a strong foundation and are just a few steps away from advanced fluency.
-                What’s Next for You:
-                - You're eligible for our TOEFL or IELTS Preparation Class!
-                - Polish your grammar accuracy and expand your vocabulary.
-                - Join interactive sessions to boost your confidence.
-            """,
-            "desc_id": """
-                Kamu adalah seorang Visionary! Keren banget! Kamu sudah punya dasar yang kuat dan sekarang tinggal selangkah lagi menuju kefasihan tingkat lanjut.
-                Langkah Seru Selanjutnya:
-                - Kamu sudah bisa ikut TOEFL atau IELTS Preparation Class dari kami!
-                - Asah grammar-mu dan tambah perbendaharaan kata.
-                - Ikut sesi interaktif yang bikin kamu makin percaya diri.
-            """
+            "desc_en": "<b>You Are a Visionary!</b><br>Great job! You’ve built a strong foundation and are just a few steps away from advanced fluency.<br><br><b>What’s Next for You:</b><br>- You're eligible for our TOEFL or IELTS Preparation Class!<br>- Polish your grammar accuracy and expand your vocabulary.<br>- Join interactive sessions to boost your confidence.<br>",
+            "desc_id": "<b>Kamu adalah seorang Visionary!</b><br>Keren banget! Kamu sudah punya dasar yang kuat dan sekarang tinggal selangkah lagi menuju kefasihan tingkat lanjut.<br><br><b>Langkah Seru Selanjutnya:</b><br>- Kamu sudah bisa ikut TOEFL atau IELTS Preparation Class dari kami!<br>- Asah ketepatan grammar dan tambah perbendaharaan kata.<br>- Ikut sesi interaktif yang bikin kamu makin percaya diri dan lancar ngomong.<br>- Perjalananmu sudah oke — dan kami siap bantu kamu sampai tujuan!<br>"
         },
         {
             "min": 10, "max": 10, "level": "Achiever",
-            "desc_en": """
-                You Are an Achiever! Wow — you nailed it! You’ve shown excellent control of English grammar.
-                What’s Next for You:
-                - Join our TOEFL or IELTS Preparation Class.
-                - Practice advanced grammar and real-world communication.
-                - Get personalized feedback to refine your speaking and writing.
-            """,
-            "desc_id": """
-                Kamu adalah seorang Achiever! Wow — keren banget! Penguasaan grammarmu udah keren, dan sekarang kamu siap banget buat ngulik topik-topik yang lebih kompleks.
-                Langkah Seru Berikutnya:
-                - Gabung di TOEFL atau IELTS Preparation Class buat ningkatin skill ke level selanjutnya.
-                - Latihan grammar yang lebih kompleks dan belajar menyusun kalimat yang bisa diaplikasikan di kehidupan sehari-hari maupun akademik.
-                - Dapatkan feedback personal supaya kemampuan grammar dan pemahaman bacaanmu makin tepat.
-            """
-        },
+            "desc_en": "<b>You Are an Achiever!</b><br>Wow — you nailed it! You’ve shown excellent control of English grammar.<br><br><b>What’s Next for You:</b><br>- Join our TOEFL or IELTS Preparation Class.<br>- Practice advanced grammar and real-world communication.<br>- Get personalized feedback to refine your speaking and writing.<br>",
+            "desc_id": "<b>Kamu adalah seorang Achiever!</b><br>Wow — keren banget, kamu berhasil sampai di tahap ini! Penguasaan grammarmu udah keren, dan sekarang kamu siap banget buat ngulik topik-topik yang lebih kompleks dengan percaya diri.<br><br><b>Langkah Seru Berikutnya:</b><br>- Gabung di TOEFL atau IELTS Preparation Class buat ningkatin skill ke level selanjutnya.<br>- Latihan grammar yang lebih kompleks dan belajar menyusun kalimat yang bisa diaplikasikan di kehidupan sehari-hari maupun akademik.<br>- Dapatkan bimbingan terstruktur dan feedback personal supaya kemampuan grammar dan pemahaman bacaanmu makin tepat.<br>- Kamu udah di level atas — dan kami siap bantu kamu bersinar lebih terang lagi! ✨<br>"
+        }
     ]
 
     # Find matching placement level

@@ -11,8 +11,7 @@
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
                                 <h1 data-animation="bounceIn" data-delay="0.2s">
-                                    Your Quick Placement Test Result
-                                </h1>
+                                    Quick Placement Result </h1>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -28,7 +27,7 @@
     </section>
     <section class="sample-text-area">
         <div class="container box_1170">
-            <h1 class="text-center">Your Quick Placement Test Result</h1>
+            <h1 class="text-center">Your Quick Placement Result</h1>
             <div class="text-center my-4">
                 <h2>{{ result.level }}</h2>
                 <p class="lead">Score: {{ score }} / 10</p>
@@ -36,12 +35,12 @@
 
             <div class="mb-4">
                 <h3>English Description:</h3>
-                <p>{{ result.desc_en }}</p>
+                <p>{{ result.desc_en | safe }}</p>
             </div>
 
             <div class="mb-4">
                 <h3>Deskripsi Bahasa Indonesia:</h3>
-                <p>{{ result.desc_id }}</p>
+                <p>{{ result.desc_id | safe }}</p>
             </div>
 
             <div class="text-center">
