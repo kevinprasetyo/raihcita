@@ -225,12 +225,18 @@
         function startTimer() {
             timerInterval = setInterval(() => {
                 timeLeft--;
-                timerDisplay.textContent = timeLeft;
+                timerDisplay.textContent = formatTime(timeLeft);
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
                     showResults();
                 }
             }, 1000);
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
 
         function createQuestionIndicators() {
