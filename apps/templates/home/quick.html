@@ -1,0 +1,355 @@
+{% extends "layouts/class-detail.html" %}
+{% block title %} Quick Placement Test {% endblock %}
+
+{% block css %}
+<style>
+    .question-indicators {
+        display: flex;
+        gap: 8px;
+        font-size: 20px;
+        margin-bottom: 30px;
+        overflow-x: auto;
+        padding: 8px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .indicator-box {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        border: 2px solid #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+        cursor: pointer;
+        background-color: #f0f0f0;
+        transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    .indicator-box:hover {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+
+    .answered {
+        background-color: #28a745;
+        color: white;
+        border-color: #28a745;
+    }
+
+    .unanswered {
+        background-color: #f8f9fa;
+        color: #333;
+    }
+
+    .question h3 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #333;
+        font-weight: 700;
+    }
+
+    .options {
+        display: grid;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .options label {
+        display: flex;
+        align-items: center;
+        background-color: #f9f9f9;
+        padding: 15px 20px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .options label:hover {
+        background-color: #e9f5ff;
+        border-color: #007bff;
+    }
+
+    .options input[type="radio"] {
+        margin-right: 12px;
+        transform: scale(1.3);
+        accent-color: #007bff;
+    }
+
+    .options input[type="radio"]:checked+span {
+        color: #007bff;
+        font-weight: 600;
+    }
+
+    .results h2 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        color: #007bff;
+    }
+
+    .results p {
+        font-size: 22px;
+    }
+
+    .results li {
+        font-size: 18px;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<main>
+    <section class="slider-area slider-area2">
+        <div class="slider-active">
+            <div class="single-slider slider-height2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-11 col-md-12">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="bounceIn" data-delay="0.2s">
+                                    Quick Placement Test
+                                </h1>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Quick Placement Test</a></li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sample-text-area">
+        <div class="container box_1170">
+            <div class="text-heading">Time Left: <span id="time"></span></div>
+
+            <div id="question-container"></div>
+
+            <div class="results" id="results-container" style="display: none;">
+                <h2>Quiz Completed!</h2>
+                <p>Your Score: <span id="score"></span> / <span id="total-questions"></span></p>
+                <div id="unanswered-questions">
+                    <h3>Unanswered Questions:</h3>
+                    <ul id="unanswered-list"></ul>
+                </div>
+                <br>
+                <button id="restart-btn" class="btn btn-primary">Restart Quiz</button>
+            </div>
+            <br>
+            <div class="question-indicators" id="question-indicators"></div>
+
+            <button id="prev-btn" class="btn btn-primary" disabled>Previous</button>
+            <button id="next-btn" class="btn btn-primary">Next</button>
+        </div>
+    </section>
+
+    <script>
+        const quizContainer = document.getElementById('question-container');
+        const resultsContainer = document.getElementById('results-container');
+        const scoreDisplay = document.getElementById('score');
+        const totalQuestionsDisplay = document.getElementById('total-questions');
+        const unansweredList = document.getElementById('unanswered-list');
+        const prevButton = document.getElementById('prev-btn');
+        const nextButton = document.getElementById('next-btn');
+        const timerDisplay = document.getElementById('time');
+        const restartButton = document.getElementById('restart-btn');
+        const questionIndicatorsContainer = document.getElementById('question-indicators');
+
+        const questions = [
+            {
+                question: "She ____ to be a doctor.",
+                options: ["want", "wants", "wanted", "is want"],
+                correctAnswer: "wants"
+            },
+            {
+                question: "Kevin and Fajri ____ playing together.",
+                options: ["are", "is", "did", "does"],
+                correctAnswer: "are"
+            },
+            {
+                question: "The ice cream ____ smooth and creamy texture.",
+                options: ["is", "are", "have", "has"],
+                correctAnswer: "has"
+            },
+            {
+                question: "Yesterday, my brother ____ new toys.",
+                options: ["buy", "buys", "bought", "buying"],
+                correctAnswer: "bought"
+            },
+            {
+                question: "Choose the correct form:",
+                options: ["She did visit her grandmother in Yogyakarta", "She is visited her grandmother in Yogyakarta", "She visited her grandmother in Yogyakarta", "She visiting her grandmother in Yogyakarta"],
+                correctAnswer: "She visited her grandmother in Yogyakarta"
+            },
+            {
+                question: " I ____ like mathematics, it is too hard.",
+                options: ["am not", "do not", "did not", "does not"],
+                correctAnswer: "do not"
+            },
+            {
+                question: "She goes to English course ____ Wednesday.",
+                options: ["in", "on", "at", "during"],
+                correctAnswer: "on"
+            },
+            {
+                question: "If it ___ tomorrow, we will cancel the trip.",
+                options: ["rains", "rained", "will rain", "raining"],
+                correctAnswer: "will rain"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["She sings beautiful.", "She sings beautifully.", "She beautifully sings.", "She singing beautiful."],
+                correctAnswer: "She sings beautifully."
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: [" He enjoys reading, to jog, and cooking.", " He enjoys reading, jogging, and to cook.", "He enjoys reading, jogging, and cooking.", " He enjoys to read, jogging, and cooking."],
+                correctAnswer: "He enjoys reading, jogging, and cooking."
+            },
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timeLeft = 600;
+        let timerInterval;
+        const answers = new Array(questions.length).fill(null);
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerDisplay.textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    showResults();
+                }
+            }, 1000);
+        }
+
+        function createQuestionIndicators() {
+            questionIndicatorsContainer.innerHTML = questions.map((_, index) => `
+                <div class="indicator-box" data-index="${index}">${index + 1}</div>
+            `).join('');
+
+            const indicatorBoxes = questionIndicatorsContainer.querySelectorAll('.indicator-box');
+            indicatorBoxes.forEach(box => {
+                box.addEventListener('click', function () {
+                    currentQuestionIndex = parseInt(this.dataset.index);
+                    showQuestion();
+                });
+            });
+        }
+
+        function updateQuestionIndicators() {
+            const indicatorBoxes = questionIndicatorsContainer.querySelectorAll('.indicator-box');
+            indicatorBoxes.forEach((box, index) => {
+                if (answers[index] !== null) {
+                    box.classList.add('answered');
+                    box.classList.remove('unanswered');
+                } else {
+                    box.classList.add('unanswered');
+                    box.classList.remove('answered');
+                }
+                box.style.fontWeight = index === currentQuestionIndex ? 'bold' : 'normal';
+            });
+        }
+
+        function showQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            quizContainer.innerHTML = `
+                <div class="question">
+                    <h3>${currentQuestionIndex + 1}. ${currentQuestion.question}</h3>
+                    <div class="options">
+                        ${currentQuestion.options.map(option => `
+                            <label>
+                                <input type="radio" name="q${currentQuestionIndex}" value="${option}" ${answers[currentQuestionIndex] === option ? 'checked' : ''}>
+                                <span>${option}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            updateNavigationButtons();
+            attachOptionListeners();
+            updateQuestionIndicators();
+        }
+
+        function attachOptionListeners() {
+            const options = quizContainer.querySelectorAll('input[type="radio"]');
+            options.forEach(option => {
+                option.addEventListener('change', () => {
+                    answers[currentQuestionIndex] = option.value;
+                    updateQuestionIndicators();
+                });
+            });
+        }
+
+        function updateNavigationButtons() {
+            prevButton.disabled = currentQuestionIndex === 0;
+            nextButton.textContent = currentQuestionIndex === questions.length - 1 ? 'Submit' : 'Next';
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+            } else {
+                clearInterval(timerInterval);
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+            }
+        }
+
+        function showResults() {
+            questions.forEach((question, index) => {
+                if (answers[index] === question.correctAnswer) {
+                    score++;
+                }
+            });
+
+            resultsContainer.style.display = 'block';
+            quizContainer.style.display = 'none';
+            scoreDisplay.textContent = score;
+            totalQuestionsDisplay.textContent = questions.length;
+
+            const unanswered = questions.filter((_, index) => answers[index] === null);
+            unansweredList.innerHTML = unanswered.map(q => `<li>Question ${questions.indexOf(q) + 1}: ${q.question}</li>`).join('');
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            timeLeft = 60;
+            answers.fill(null);
+            resultsContainer.style.display = 'none';
+            quizContainer.style.display = 'block';
+            timerDisplay.textContent = timeLeft;
+            startTimer();
+            showQuestion();
+            updateQuestionIndicators();
+        }
+
+        prevButton.addEventListener('click', prevQuestion);
+        nextButton.addEventListener('click', nextQuestion);
+        restartButton.addEventListener('click', restartQuiz);
+
+        createQuestionIndicators();
+        startTimer();
+        showQuestion();
+        updateQuestionIndicators();
+    </script>
+</main>
+{% endblock %}
