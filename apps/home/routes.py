@@ -157,9 +157,6 @@ def quick_result():
     result = next(
         (item for item in placement_levels if item['min'] <= score <= item['max']), None)
 
-    # Clear score from session after displaying
-    session.pop('score', None)
-
     return render_template("home/quick-result.html", score=score, result=result)
 
 
